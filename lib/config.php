@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '21.6.0',	// Plugin version.
+					'version'     => '21.7.0-dev.1',	// Plugin version.
 					'opt_version' => '1030',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -282,132 +282,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'wc_compat' => array(
 						'custom_order_tables',
-					),
-				),
-				'wpssoafs' => array(			// Plugin acronym.
-					'short'       => 'WPSSO AFS',	// Short plugin name.
-					'name'        => 'WPSSO Add Five Stars',
-					'desc'        => 'Add a 5 star rating and review from the site organization if the Schema markup does not already have an \'aggregateRating\' property.',
-					'slug'        => 'wpsso-add-five-stars',
-					'base'        => 'wpsso-add-five-stars/wpsso-add-five-stars.php',
-					'update_auth' => '',		// No premium version.
-
-					/*
-					 * URLs or relative paths to plugin banners and icons.
-					 */
-					'assets' => array(
-
-						/*
-						 * Banner image array keys are 'low' and 'high'.
-						 */
-						'banners' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-add-five-stars/assets/banner-772x250.jpg',
-							'high' => 'https://surniaulula.github.io/wpsso-add-five-stars/assets/banner-1544x500.jpg',
-						),
-
-						/*
-						 * Icon image array keys are '1x' and '2x'.
-						 */
-						'icons' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-add-five-stars/assets/icon-128x128.png',
-							'2x' => 'https://surniaulula.github.io/wpsso-add-five-stars/assets/icon-256x256.png',
-						),
-					),
-					'hosts' => array(
-						'wp_org' => true,
-						'github' => true,
-						'wpsso'  => true,
-					),
-					'url' => array(
-
-						/*
-						 * WordPress.org URLs.
-						 */
-						'home'   => 'https://wordpress.org/plugins/wpsso-add-five-stars/',
-						'forum'  => 'https://wordpress.org/support/plugin/wpsso-add-five-stars',
-						'review' => 'https://wordpress.org/support/plugin/wpsso-add-five-stars/reviews/?rate=5#new-post',
-
-						/*
-						 * GitHub.com URLs.
-						 */
-						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-add-five-stars/master/readme.txt',
-
-						/*
-						 * WPSSO.com URLs.
-						 */
-						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-add-five-stars/changelog/',
-						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-add-five-stars/',
-						'install'   => 'https://wpsso.com/docs/plugins/wpsso-add-five-stars/installation/',
-						'faqs'      => '',
-						'notes'     => '',
-						'support'   => '',	// Premium support ticket.
-						'purchase'  => '',	// Purchase page.
-						'info'      => '',	// License information.
-						'update'    => 'https://wpsso.com/extend/plugins/wpsso-add-five-stars/update/',
-						'download'  => 'https://wpsso.com/extend/plugins/wpsso-add-five-stars/latest/',
-					),
-				),
-				'wpssoam' => array(			// Plugin acronym.
-					'short'       => 'WPSSO AM',	// Short plugin name.
-					'name'        => 'WPSSO Mobile App Meta Tags',
-					'desc'        => 'Apple Store and Google Play App meta tags for Apple\'s mobile Safari banner and X\'s (Twitter) App Card.',
-					'slug'        => 'wpsso-am',
-					'base'        => 'wpsso-am/wpsso-am.php',
-					'update_auth' => '',		// No premium version.
-
-					/*
-					 * URLs or relative paths to plugin banners and icons.
-					 */
-					'assets' => array(
-
-						/*
-						 * Banner image array keys are 'low' and 'high'.
-						 */
-						'banners' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-am/assets/banner-772x250.jpg',
-							'high' => 'https://surniaulula.github.io/wpsso-am/assets/banner-1544x500.jpg',
-						),
-
-						/*
-						 * Icon image array keys are '1x' and '2x'.
-						 */
-						'icons' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-am/assets/icon-128x128.png',
-							'2x' => 'https://surniaulula.github.io/wpsso-am/assets/icon-256x256.png',
-						),
-					),
-					'hosts' => array(
-						'wp_org' => true,
-						'github' => true,
-						'wpsso'  => true,
-					),
-					'url' => array(
-
-						/*
-						 * WordPress.org URLs.
-						 */
-						'home'   => 'https://wordpress.org/plugins/wpsso-am/',
-						'forum'  => 'https://wordpress.org/support/plugin/wpsso-am',
-						'review' => 'https://wordpress.org/support/plugin/wpsso-am/reviews/?rate=5#new-post',
-
-						/*
-						 * GitHub.com URLs.
-						 */
-						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-am/master/readme.txt',
-
-						/*
-						 * WPSSO.com URLs.
-						 */
-						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-am/changelog/',
-						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-am/',
-						'install'   => 'https://wpsso.com/docs/plugins/wpsso-am/installation/',
-						'faqs'      => '',
-						'notes'     => '',
-						'support'   => '',	// Premium support ticket.
-						'purchase'  => '',	// Purchase page.
-						'info'      => '',	// License information.
-						'update'    => 'https://wpsso.com/extend/plugins/wpsso-am/update/',
-						'download'  => 'https://wpsso.com/extend/plugins/wpsso-am/latest/',
 					),
 				),
 				'wpssobc' => array(			// Plugin acronym.
@@ -912,69 +786,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-rest-api/update/',
 						'download'  => 'https://wpsso.com/extend/plugins/wpsso-rest-api/latest/',
-					),
-				),
-				'wpssorrssb' => array(			// Plugin acronym.
-					'short'       => 'WPSSO RRSSB',	// Short plugin name.
-					'name'        => 'WPSSO Ridiculously Responsive Social Sharing Buttons',
-					'desc'        => 'Ridiculously Responsive (SVG) Social Sharing Buttons for your content, excerpts, CSS sidebar, widget, shortcode, templates, and editor.',
-					'slug'        => 'wpsso-rrssb',
-					'base'        => 'wpsso-rrssb/wpsso-rrssb.php',
-					'update_auth' => '',		// No premium version.
-
-					/*
-					 * URLs or relative paths to plugin banners and icons.
-					 */
-					'assets' => array(
-
-						/*
-						 * Banner image array keys are 'low' and 'high'.
-						 */
-						'banners' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-rrssb/assets/banner-772x250.jpg',
-							'high' => 'https://surniaulula.github.io/wpsso-rrssb/assets/banner-1544x500.jpg',
-						),
-
-						/*
-						 * Icon image array keys are '1x' and '2x'.
-						 */
-						'icons' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-rrssb/assets/icon-128x128.png',
-							'2x' => 'https://surniaulula.github.io/wpsso-rrssb/assets/icon-256x256.png',
-						),
-					),
-					'hosts' => array(
-						'wp_org' => true,
-						'github' => true,
-						'wpsso'  => true,
-					),
-					'url' => array(
-
-						/*
-						 * WordPress.org URLs.
-						 */
-						'home'   => 'https://wordpress.org/plugins/wpsso-rrssb/',
-						'forum'  => 'https://wordpress.org/support/plugin/wpsso-rrssb',
-						'review' => 'https://wordpress.org/support/plugin/wpsso-rrssb/reviews/?rate=5#new-post',
-
-						/*
-						 * GitHub.com URLs.
-						 */
-						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-rrssb/master/readme.txt',
-
-						/*
-						 * WPSSO.com URLs.
-						 */
-						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-rrssb/changelog/',
-						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-rrssb/',
-						'install'   => 'https://wpsso.com/docs/plugins/wpsso-rrssb/installation/',
-						'faqs'      => '',
-						'notes'     => 'https://wpsso.com/docs/plugins/wpsso-rrssb/notes/',
-						'support'   => '',	// Premium support ticket.
-						'purchase'  => '',	// Purchase page.
-						'info'      => '',	// License information.
-						'update'    => 'https://wpsso.com/extend/plugins/wpsso-rrssb/update/',
-						'download'  => 'https://wpsso.com/extend/plugins/wpsso-rrssb/latest/',
 					),
 				),
 				'wpssossm' => array(			// Plugin acronym.

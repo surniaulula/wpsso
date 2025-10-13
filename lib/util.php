@@ -2624,7 +2624,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					'utm_medium'   => $utm[ 'utm_medium' ],		// Example: 'social'.
 					'utm_source'   => $utm[ 'utm_source' ],		// Example: 'facebook'.
 					'utm_campaign' => $utm[ 'utm_campaign' ],	// Example: 'book-launch'
-					'utm_content'  => $utm[ 'utm_content' ],	// Example: 'wpsso-rrssb-content-bottom'
+					'utm_content'  => $utm[ 'utm_content' ],
 					'utm_term'     => $utm[ 'utm_term' ],
 				), $url );
 			}
