@@ -277,6 +277,23 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 21.7.0-dev.1 (2025/10/13)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Deprecated the WPSSO Add Five Stars add-on.
+	* Deprecated the WPSSO Mobile App Meta Tags add-on.
+	* Deprecated the WPSSO Ridiculously Responsive Social Sharing Buttons add-on.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v5.9.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
+
 **Version 21.6.0 (2025/09/30)**
 
 * **New Features**
@@ -324,6 +341,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 21.7.0-dev.1 =
+
+(2025/10/13) Deprecated the WPSSO Add Five Stars, WPSSO Mobile App Meta Tags, and WPSSO Ridiculously Responsive Social Sharing Buttons add-ons.
 
 = 21.6.0 =
 
