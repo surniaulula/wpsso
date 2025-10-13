@@ -4,8 +4,6 @@
 // 
 _x( 'Premium', 'package name', 'wpsso' );
 _x( 'Standard', 'package name', 'wpsso' );
-_x( 'WPSSO Schema Shortcode', 'plugin name', 'wpsso' );
-_x( 'Schema shortcode to define and customize additional properties and types for sections of the content.', 'plugin description', 'wpsso' );
 _x( 'Update Manager', 'lib file description', 'wpsso' );
 _x( 'Update Manager', 'lib file description', 'wpsso' );
 _x( 'WPSSO Update Manager', 'plugin name', 'wpsso' );
