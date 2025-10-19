@@ -74,6 +74,14 @@ if ( ! class_exists( 'WpssoJsonTypeSoftwareApplication' ) ) {
 			}
 
 			/*
+			 * See https://schema.org/downloadUrl.
+			 */
+			if ( ! empty( $md_opts[ 'schema_software_app_dl_url' ] ) ) {
+
+				$json_ret[ 'downloadUrl' ] = (string) $md_opts[ 'schema_software_app_dl_url' ];
+			}
+
+			/*
 			 * Prevent recursion for an itemOffered within a Schema Offer.
 			 */
 			static $local_recursion = false;

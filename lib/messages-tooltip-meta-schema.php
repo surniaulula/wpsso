@@ -959,6 +959,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
+						case 'tooltip-meta-schema_review_item_software_app_dl_url':	// Reviews Software App Download URL.
+
+							$text = $this->p->msgs->get( 'tooltip-meta-schema_software_app_dl_url' );
+
+						 	break;
+
 						case 'tooltip-meta-schema_review_item_software_app_os':		// Reviews Software App Operating System.
 
 							$text = $this->p->msgs->get( 'tooltip-meta-schema_software_app_os' );
@@ -1042,8 +1048,13 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						case 'tooltip-meta-schema_software_app_cat':	// Application Category.
 
-							$text = sprintf( __( 'Type of software application (example: %s, etc.).', 'wpsso' ),
-								'"Game, Multimedia"' );
+							$text = sprintf( __( 'Type of software application (example: %s, etc.).', 'wpsso' ), '"Game, Multimedia"' );
+
+						 	break;
+
+						case 'tooltip-meta-schema_software_app_dl_url':	// Download URL.
+
+							$text = __( 'URL to download the binary, if the application can be downloaded', 'wpsso' );
 
 						 	break;
 

@@ -872,8 +872,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/*
 					 * Schema Review Subject: Software Application.
 					 */
-					'schema_review_item_software_app_os'               => '',	// Operating System.
 					'schema_review_item_software_app_cat'              => '',	// Application Category.
+					'schema_review_item_software_app_os'               => '',	// Operating System.
+					'schema_review_item_software_app_dl_url'           => '',	// Download URL.
 					'schema_review_item_software_app_offer_name_0'     => '',
 					'schema_review_item_software_app_offer_name_1'     => '',
 					'schema_review_item_software_app_offer_name_2'     => '',
@@ -917,8 +918,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/*
 					 * Schema Software Application.
 					 */
-					'schema_software_app_os'  => '',	// Operating System.
-					'schema_software_app_cat' => '',	// Application Category.
+					'schema_software_app_cat'    => '',	// Application Category.
+					'schema_software_app_os'     => '',	// Operating System.
+					'schema_software_app_dl_url' => '',	// Download URL.
 
 					/*
 					 * Schema WebPage.

@@ -2508,6 +2508,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					self::add_data_itemprop_from_assoc( $json_data, $md_opts, array(
 						'applicationCategory'  => 'schema_review_item_software_app_cat',
 						'operatingSystem'      => 'schema_review_item_software_app_os',
+						'downloadUrl'          => 'schema_review_item_software_app_dl_url',
 					) );
 
 					$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX' );

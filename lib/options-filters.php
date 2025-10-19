@@ -296,12 +296,12 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_review_item_cw_author_name':			// Review: Subject Author Name.
 					case 'schema_review_item_cw_movie_actor_person_name':		// Review: Subject Movie Cast Names.
 					case 'schema_review_item_cw_movie_director_person_name':	// Review: Subject Movie Director Names.
-					case 'schema_review_item_software_app_cat':
-					case 'schema_review_item_software_app_os':
+					case 'schema_review_item_software_app_cat':	// Reviews: Software App Category.
+					case 'schema_review_item_software_app_os':	// Reviews: Software App Operating System.
 					case 'schema_service_offer_catalog':		// Offer Catalog Name.
 					case 'schema_service_offer_catalog_text':	// Offer Catalog Description.
-					case 'schema_software_app_cat':
-					case 'schema_software_app_os':
+					case 'schema_software_app_cat':		// Application Category.
+					case 'schema_software_app_os':		// Operating System.
 
 						return 'one_line';
 
@@ -395,8 +395,10 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_review_item_sameas_url':		// Review: Subject Same-As URL.
 					case 'schema_review_item_cw_author_url':	// Review: Subject Author URL.
 					case 'schema_review_claim_first_url':		// First Appearance URL.
+					case 'schema_review_item_software_app_dl_url':	// Reviews: Software App Download URL.
 					case 'schema_sameas_url':			// Same-As URLs.
 					case 'schema_service_offer_catalog_url':	// Offer Catalog URL.
+					case 'schema_software_app_dl_url':		// Download URL.
 
 						return 'url';
 				}

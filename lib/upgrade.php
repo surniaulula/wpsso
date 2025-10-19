@@ -1047,6 +1047,13 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 				$opts[ 'schema_def_add_text_prop' ] = 0;	// Default is unchecked.
 			}
 
+			if ( $prev_version > 0 && $prev_version <= 1030 ) {
+				
+				$notice_key = 'timed-notice-wpsso-plugin-review';
+
+				$this->p->notice->is_dismissed( $notice_key, $user_id = null, $force_expire = true );
+			}
+
 			/*
 			 * Check for schema type IDs to be renamed.
 			 */

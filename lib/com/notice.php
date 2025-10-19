@@ -424,10 +424,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 					delete_user_option( $user_id, $this->dismiss_name, $global = false );
 
-				} else {
-
-					update_user_option( $user_id, $this->dismiss_name, $user_dismissed, $global = false );
-				}
+				} else update_user_option( $user_id, $this->dismiss_name, $user_dismissed, $global = false );
 			}
 
 			return false;
@@ -621,10 +618,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 							$nag_html .= $this->get_notice_html( $msg_type, $payload );
 						}
 
-					} else {
-
-						$msg_html .= $this->get_notice_html( $msg_type, $payload );
-					}
+					} else $msg_html .= $this->get_notice_html( $msg_type, $payload );
 				}
 			}
 
@@ -637,10 +631,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 					delete_user_option( $user_id, $this->dismiss_name, $global = false );
 
-				} else {
-
-					update_user_option( $user_id, $this->dismiss_name, $user_dismissed, $global = false );
-				}
+				} else update_user_option( $user_id, $this->dismiss_name, $user_dismissed, $global = false );
 			}
 
 			echo "\n" . '<!-- ' . $this->plugin_id . ' admin notices begin -->' . "\n";
@@ -785,10 +776,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 					delete_user_option( $user_id, $this->dismiss_name, $global = false );
 
-				} else {
-
-					update_user_option( $user_id, $this->dismiss_name, $user_dismissed, $global = false );
-				}
+				} else update_user_option( $user_id, $this->dismiss_name, $user_dismissed, $global = false );
 			}
 
 			$json_encoded = wp_json_encode( $json_notices );

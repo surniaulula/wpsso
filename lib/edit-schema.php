@@ -1097,6 +1097,13 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				/*
 				 * Schema Review Subject: CreativeWork > SoftwareApplication.
 				 */
+				'schema_review_item_software_app_cat' => array(
+					'tr_class' => 'hide_schema_type ' . $item_type_row_class[ 'software.application' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Application Category', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_review_item_software_app_cat',
+					'content'  => $form->get_input( 'schema_review_item_software_app_cat', $css_class = 'wide' ),
+				),
 				'schema_review_item_software_app_os' => array(
 					'tr_class' => 'hide_schema_type ' . $item_type_row_class[ 'software.application' ],
 					'th_class' => 'medium',
@@ -1104,12 +1111,12 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'tooltip'  => 'meta-schema_review_item_software_app_os',
 					'content'  => $form->get_input( 'schema_review_item_software_app_os', $css_class = 'wide' ),
 				),
-				'schema_review_item_software_app_cat' => array(
+				'schema_review_item_software_app_dl_url' => array(
 					'tr_class' => 'hide_schema_type ' . $item_type_row_class[ 'software.application' ],
 					'th_class' => 'medium',
-					'label'    => _x( 'Application Category', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-schema_review_item_software_app_cat',
-					'content'  => $form->get_input( 'schema_review_item_software_app_cat', $css_class = 'wide' ),
+					'label'    => _x( 'Download URL', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_review_item_software_app_dl_url',
+					'content'  => $form->get_input( 'schema_review_item_software_app_dl_url', $css_class = 'wide' ),
 				),
 				'schema_review_item_software_app_offers' => array(
 					'tr_class' => 'hide_schema_type ' . $item_type_row_class[ 'software.application' ],
@@ -1320,6 +1327,13 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'header'   => 'h5',
 					'label'    => _x( 'Software App Information', 'metabox title', 'wpsso' )
 				),
+				'schema_software_app_cat' => array(
+					'tr_class' => $args[ 'tr_class_schema' ][ 'software.application' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Application Category', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_software_app_cat',
+					'content'  => $form->get_input( 'schema_software_app_cat', $css_class = 'wide' ),
+				),
 				'schema_software_app_os' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'software.application' ],
 					'th_class' => 'medium',
@@ -1327,12 +1341,12 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'tooltip'  => 'meta-schema_software_app_os',
 					'content'  => $form->get_input( 'schema_software_app_os', $css_class = 'wide' ),
 				),
-				'schema_software_app_cat' => array(
+				'schema_software_app_dl_url' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'software.application' ],
 					'th_class' => 'medium',
-					'label'    => _x( 'Application Category', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-schema_software_app_cat',
-					'content'  => $form->get_input( 'schema_software_app_cat', $css_class = 'wide' ),
+					'label'    => _x( 'Download URL', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_software_app_dl_url',
+					'content'  => $form->get_input( 'schema_software_app_dl_url', $css_class = 'wide' ),
 				),
 			);
 
