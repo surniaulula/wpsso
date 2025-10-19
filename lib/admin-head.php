@@ -352,14 +352,14 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				$notice_msg .= '<p><strong>';
 
 				// translators: %1$s is the plugin name, %2$s is the plugin type (ie. "plugin" or "add-on"), and %3$s is a measure of time.
-				$notice_msg .= sprintf( __( 'The %1$s %2$s was last activated %3$s ago.', 'wpsso' ),
+				$notice_msg .= sprintf( __( 'The %1$s %2$s was activated %3$s ago.', 'wpsso' ),
 					$wp_plugin_link, $ext_type_transl, $activated_ago ) . ' ';
 
 				$notice_msg .= '</strong></p><p>';
 
 				// translators: %1$s is the plugin type (ie. "plugin" or "add-on").
-				$notice_msg .= sprintf( __( 'Please encourage your %1$s %2$s developers by rating the %3$s.', 'wpsso' ),
-					$wp_plugin_link, $ext_type_transl, $ext_type_transl ) . ' ';
+				$notice_msg .= sprintf( __( 'Please encourage your %1$s %2$s developers by rating the %2$s.', 'wpsso' ),
+					$wp_plugin_link, $ext_type_transl ) . ' ';
 
 				$notice_msg .= '</p><p>';
 
@@ -447,7 +447,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			$notice_msg .= sprintf( __( 'Have you thought about purchasing the %s edition?', 'wpsso' ), $pkg_pro_transl ) . ' ';
 
-			$notice_msg .= sprintf( __( 'The %s edition comes with loads of extra features!', 'wpsso' ), $pkg_pro_transl ) . ' ';
+			$notice_msg .= sprintf( __( 'The %s edition includes loads of extra features!', 'wpsso' ), $pkg_pro_transl ) . ' ';
 
 			$notice_msg .= convert_smilies( ':-)' ) . ' ';
 

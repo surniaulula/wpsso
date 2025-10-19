@@ -7296,12 +7296,12 @@ msgstr ""
 #. translators: %1$s is the plugin name, %2$s is the plugin type (ie. "plugin"
 #. or "add-on"), and %3$s is a measure of time.
 #: lib/admin-head.php:355
-msgid "The %1$s %2$s was last activated %3$s ago."
+msgid "The %1$s %2$s was activated %3$s ago."
 msgstr ""
 
 #. translators: %1$s is the plugin type (ie. "plugin" or "add-on").
 #: lib/admin-head.php:361
-msgid "Please encourage your %1$s %2$s developers by rating the %3$s."
+msgid "Please encourage your %1$s %2$s developers by rating the %2$s."
 msgstr ""
 
 #. translators: %1$s is the plugin type (ie. "plugin" or "add-on").
@@ -7342,7 +7342,7 @@ msgid "Have you thought about purchasing the %s edition?"
 msgstr ""
 
 #: lib/admin-head.php:450
-msgid "The %s edition comes with loads of extra features!"
+msgid "The %s edition includes loads of extra features!"
 msgstr ""
 
 #: lib/admin.php:260
