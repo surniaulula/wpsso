@@ -7290,55 +7290,59 @@ msgid "Thank you!"
 msgstr ""
 
 #: lib/admin-head.php:340
-msgid "I've already rated this %2$s"
+msgid "I've already rated the %2$s"
 msgstr ""
 
 #. translators: %1$s is the plugin name, %2$s is the plugin type (ie. "plugin"
 #. or "add-on"), and %3$s is a measure of time.
-#: lib/admin-head.php:359 lib/admin-head.php:449
-msgid "You've been using the %1$s %2$s for a little over %3$s now."
+#: lib/admin-head.php:355
+msgid "The %1$s %2$s was last activated %3$s ago."
 msgstr ""
 
 #. translators: %1$s is the plugin type (ie. "plugin" or "add-on").
-#: lib/admin-head.php:365
+#: lib/admin-head.php:361
+msgid "Please encourage your %1$s %2$s developers by rating the %3$s."
+msgstr ""
+
+#. translators: %1$s is the plugin type (ie. "plugin" or "add-on").
+#: lib/admin-head.php:367
 msgid ""
-"If you have a moment, please support and encourage your developers by rating "
+"It only takes a moment, and it really does encourage us to keep improving "
 "the %1$s."
 msgstr ""
 
-#. translators: %1$s is the plugin type (ie. "plugin" or "add-on").
-#: lib/admin-head.php:371
-msgid ""
-"It only takes a moment, and it really encourages us to keep improving the "
-"%1$s."
-msgstr ""
-
-#: lib/admin-head.php:430
+#: lib/admin-head.php:422
 msgid "View the %s edition prices"
 msgstr ""
 
-#: lib/admin-head.php:431
+#: lib/admin-head.php:423
 msgid "Thank you for supporting the continued development of %s."
 msgstr ""
 
-#: lib/admin-head.php:435
+#: lib/admin-head.php:427
 msgid "I'll stay with the %s edition"
 msgstr ""
 
-#: lib/admin-head.php:436
+#: lib/admin-head.php:428
 msgid "Please consider supporting the development of %s in the future."
 msgstr ""
 
-#: lib/admin-head.php:437
+#: lib/admin-head.php:429
 msgid "Thank you."
 msgstr ""
 
-#: lib/admin-head.php:452
+#. translators: %1$s is the plugin name, %2$s is the plugin type (ie. "plugin"
+#. or "add-on"), and %3$s is a measure of time.
+#: lib/admin-head.php:443
+msgid "The %1$s %2$s was installed %3$s ago."
+msgstr ""
+
+#: lib/admin-head.php:448
 msgid "Have you thought about purchasing the %s edition?"
 msgstr ""
 
-#: lib/admin-head.php:453
-msgid "The %s edition comes loaded with a lot of extra features!"
+#: lib/admin-head.php:450
+msgid "The %s edition comes with loads of extra features!"
 msgstr ""
 
 #: lib/admin.php:260

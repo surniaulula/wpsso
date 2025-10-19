@@ -337,7 +337,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				/*
 				 * Already rated action button.
 				 */
-				$already_rated_label   = sprintf( __( 'I\'ve already rated this %2$s', 'wpsso' ), $ext_info[ 'short' ], $ext_type_transl );
+				$already_rated_label   = sprintf( __( 'I\'ve already rated the %2$s', 'wpsso' ), $ext_info[ 'short' ], $ext_type_transl );
 				$already_rated_clicked = '<p>' . __( 'Thank you!', 'wpsso' ) . '</p>';
 				$already_rated_button  = '<div class="notice-single-button">' . $form->get_button( $already_rated_label, 'button-secondary dismiss-on-click',
 					'', '', false, false, array( 'dismiss-msg' => $already_rated_clicked ) ) . '</div>';
@@ -346,39 +346,31 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				 * The notice message.
 				 */
 				$notice_msg = '<div style="display:table-cell;">';
-
 				$notice_msg .= '<p style="margin-right:30px;">' . $this->p->admin->get_ext_img_icon( $ext ) . '</p>';
-
 				$notice_msg .= '</div>';
-
 				$notice_msg .= '<div style="display:table-cell;vertical-align:top;">';
-
 				$notice_msg .= '<p><strong>';
 
 				// translators: %1$s is the plugin name, %2$s is the plugin type (ie. "plugin" or "add-on"), and %3$s is a measure of time.
-				$notice_msg .= sprintf( __( 'You\'ve been using the %1$s %2$s for a little over %3$s now.', 'wpsso' ),
+				$notice_msg .= sprintf( __( 'The %1$s %2$s was last activated %3$s ago.', 'wpsso' ),
 					$wp_plugin_link, $ext_type_transl, $activated_ago ) . ' ';
 
 				$notice_msg .= '</strong></p><p>';
 
 				// translators: %1$s is the plugin type (ie. "plugin" or "add-on").
-				$notice_msg .= sprintf( __( 'If you have a moment, please support and encourage your developers by rating the %1$s.', 'wpsso' ),
-					$ext_type_transl ) . ' ';
+				$notice_msg .= sprintf( __( 'Please encourage your %1$s %2$s developers by rating the %3$s.', 'wpsso' ),
+					$wp_plugin_link, $ext_type_transl, $ext_type_transl ) . ' ';
 
 				$notice_msg .= '</p><p>';
 
 				// translators: %1$s is the plugin type (ie. "plugin" or "add-on").
-				$notice_msg .= sprintf( __( 'It only takes a moment, and it really encourages us to keep improving the %1$s.', 'wpsso' ),
+				$notice_msg .= sprintf( __( 'It only takes a moment, and it really does encourage us to keep improving the %1$s.', 'wpsso' ),
 					$ext_type_transl ) . ' ' . convert_smilies( ':-)' ) . ' ';
 
 				$notice_msg .= '</p>';
-
 				$notice_msg .= '<div class="notice-actions">';
-
 				$notice_msg .= $rate_plugin_button . $already_rated_button;
-
 				$notice_msg .= '</div>';
-
 				$notice_msg .= '</div>';
 
 				$this->p->notice->nag( $notice_msg, $user_id, $notice_key, $dismiss_time );
@@ -446,12 +438,19 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			$notice_msg .= '</div>';
 			$notice_msg .= '<div style="display:table-cell;vertical-align:top;">';
 			$notice_msg .= '<p><strong>';
-			$notice_msg .= sprintf( __( 'You\'ve been using the %1$s %2$s for a little over %3$s now.', 'wpsso' ), $wp_plugin_link,
-				$ext_type_transl, $installed_ago ) . ' ';
+
+			// translators: %1$s is the plugin name, %2$s is the plugin type (ie. "plugin" or "add-on"), and %3$s is a measure of time.
+			$notice_msg .= sprintf( __( 'The %1$s %2$s was installed %3$s ago.', 'wpsso' ),
+				$wp_plugin_link, $ext_type_transl, $installed_ago ) . ' ';
+
 			$notice_msg .= '</strong></p><p>';
+
 			$notice_msg .= sprintf( __( 'Have you thought about purchasing the %s edition?', 'wpsso' ), $pkg_pro_transl ) . ' ';
-			$notice_msg .= sprintf( __( 'The %s edition comes loaded with a lot of extra features!', 'wpsso' ), $pkg_pro_transl ) . ' ';
+
+			$notice_msg .= sprintf( __( 'The %s edition comes with loads of extra features!', 'wpsso' ), $pkg_pro_transl ) . ' ';
+
 			$notice_msg .= convert_smilies( ':-)' ) . ' ';
+
 			$notice_msg .= '</p>';
 			$notice_msg .= '<div class="notice-actions">';
 			$notice_msg .= $purchase_button . $no_thanks_button;
