@@ -277,7 +277,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.8.0-rc.4 (2025/10/25)**
+**Version 21.8.0 (2025/10/25)**
 
 * **New Features**
 	* None.
@@ -358,7 +358,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.8.0-rc.4 =
+= 21.8.0 =
 
 (2025/10/25) Added a "Download URL" option in the Document SSO metabox for the Schema Software Application type.
 
