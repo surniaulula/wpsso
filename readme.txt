@@ -277,7 +277,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.8.0-rc.1 (2025/10/21)**
+**Version 21.8.0-rc.2 (2025/10/24)**
 
 * **New Features**
 	* None.
@@ -357,9 +357,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.8.0-rc.1 =
+= 21.8.0-rc.2 =
 
-(2025/10/21) Added a "Download URL" option in the Document SSO metabox for the Schema Software Application type.
+(2025/10/24) Added a "Download URL" option in the Document SSO metabox for the Schema Software Application type.
 
 = 21.7.0 =
 
