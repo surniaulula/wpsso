@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '21.8.0-rc.2',	// Plugin version.
-					'opt_version' => '1031',	// Increment when changing default option values.
+					'version'     => '21.8.0-rc.3',	// Plugin version.
+					'opt_version' => '1032',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1736,7 +1736,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_inherit_featured'        => 1,			// Inherit Featured Image.
 					'plugin_inherit_images'          => 1,			// Inherit Custom Images.
 					'plugin_attached_images'         => 1,			// Consider Attached Images.
-					'plugin_content_images'          => 1,			// Consider Content Images.
+					'plugin_content_images'          => 0,			// Consider Content Images.
 					'plugin_check_img_dims'          => 1,			// Image Dimension Checks.
 					'plugin_prevent_thumb_conflicts' => 1,			// Prevent Thumbnail Conflicts.
 					'plugin_upscale_images'          => 1,			// Upscale Media Library Images.

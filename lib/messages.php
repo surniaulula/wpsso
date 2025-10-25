@@ -305,7 +305,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= sprintf( __( 'A larger image can also be uploaded and/or selected in the %1$s metabox under the %2$s tab.', 'wpsso' ), $mb_title, $media_tab ) . ' ';
 						}
 
-						$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on how WordPress manages large images and creates smaller image thumbnails.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
+						$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on how WordPress handles large images and automatically creates smaller image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
 
 						$text .= '</p>';
 
@@ -319,6 +319,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								$image_dim_opt_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
 									_x( 'Image Dimension Checks', 'option label', 'wpsso' ) );
+
+								$attached_img_opt_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
+									_x( 'Consider Attached Images', 'option label', 'wpsso' ) );
 
 								$content_img_opt_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
 									_x( 'Consider Content Images', 'option label', 'wpsso' ) );
@@ -340,12 +343,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								$text .= '<ul>';
 
-								$text .= ' <li>' . __( 'Replace the original with a higher resolution image.', 'wpsso' ) . '</li>';
+								$text .= ' <li>' . __( 'Replace the uploaded full size image with a higher resolution version.',
+									'wpsso' ) . '</li>';
 
 								if ( $is_meta_page ) {
 
-									$text .= ' <li>' . sprintf( __( 'Select a larger image under the %1$s &gt; %2$s tab.',
+									$text .= ' <li>' . sprintf( __( 'Select a higher resolution image under the %1$s &gt; %2$s tab.',
 										'wpsso' ), $mb_title, $media_tab ) . '</li>';
+								}
+
+								if ( empty( $this->p->options[ 'plugin_attached_images' ] ) ) {
+									
+									$text .= ' <li>' . sprintf( __( 'Enable the %s option to use attached images (recommended).',
+										'wpsso' ), $attached_img_opt_link ) . '</li>';
 								}
 
 								if ( empty( $this->p->options[ 'plugin_content_images' ] ) ) {
@@ -371,7 +381,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								 */
 								if ( ! isset( $info[ 'show_adjust_img_size_opts' ] ) || ! empty( $info[ 'show_adjust_img_size_opts' ] ) ) {
 
-									$text .= ' <li>' . sprintf( __( 'Update image size dimensions in the %s settings page.',
+									$text .= ' <li>' . sprintf( __( 'Reduce the image size dimensions in the %s settings page.',
 										'wpsso' ), $image_sizes_tab_link ) . '</li>';
 
 									if ( ! empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {
