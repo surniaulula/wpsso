@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 21.8.0-rc.3\n"
+"Project-Id-Version: WPSSO Core 21.8.0-rc.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -13469,8 +13469,8 @@ msgstr ""
 #: lib/messages.php:308
 msgid ""
 "See <a href=\"%s\">Why shouldn't I upload small images to the media library?"
-"</a> for more information on how WordPress handles large images and "
-"automatically creates smaller image sizes."
+"</a> for more information on how WordPress uses high resolution images and "
+"automatically creates smaller images from them."
 msgstr ""
 
 #: lib/messages.php:336
@@ -13495,7 +13495,7 @@ msgid "Enable the %s option to use attached images (recommended)."
 msgstr ""
 
 #: lib/messages.php:363
-msgid "Enable the %s option to search content text for more images."
+msgid "Enable the %s option to search the content text for more images."
 msgstr ""
 
 #: lib/messages.php:366

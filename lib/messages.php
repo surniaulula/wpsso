@@ -305,7 +305,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= sprintf( __( 'A larger image can also be uploaded and/or selected in the %1$s metabox under the %2$s tab.', 'wpsso' ), $mb_title, $media_tab ) . ' ';
 						}
 
-						$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on how WordPress handles large images and automatically creates smaller image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
+						$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on how WordPress uses high resolution images and automatically creates smaller images from them.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
 
 						$text .= '</p>';
 
@@ -360,7 +360,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								if ( empty( $this->p->options[ 'plugin_content_images' ] ) ) {
 									
-									$text .= ' <li>' . sprintf( __( 'Enable the %s option to search content text for more images.',
+									$text .= ' <li>' . sprintf( __( 'Enable the %s option to search the content text for more images.',
 										'wpsso' ), $content_img_opt_link ) . '</li>';
 
 								} else $text .= ' <li>' . sprintf( __( 'Disable the %s option if uploaded content images are too small.',
