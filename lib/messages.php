@@ -246,12 +246,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-check-img-dims-disabled':
 
-						$option_label = _x( 'Image Dimension Checks', 'option label', 'wpsso' );
-						$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_label );
+						$opt_label = _x( 'Image Dimension Checks', 'option label', 'wpsso' );
+						$opt_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $opt_label );
 
 						$text = '<p class="top">';
 
-						$text .= '<b>' . sprintf( __( 'The %s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
+						$text .= '<b>' . sprintf( __( 'The %s advanced option is currently disabled.', 'wpsso' ), $opt_link ) . '</b> ';
 
 						$text = __( 'Users may upload small images to the Media Library without knowing that WordPress creates (or tries to create) several different image sizes from the uploaded originals.', 'wpsso' ) . ' ';
 
@@ -265,12 +265,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-content-filters-disabled':
 
-						$option_label = _x( 'Use Filtered Content', 'option label', 'wpsso' );
-						$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_label );
+						$opt_label = _x( 'Use Filtered Content', 'option label', 'wpsso' );
+						$opt_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $opt_label );
 
 						$text = '<p class="top">';
 
-						$text .= '<b>' . sprintf( __( 'The %s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
+						$text .= '<b>' . sprintf( __( 'The %s advanced option is currently disabled.', 'wpsso' ), $opt_link ) . '</b> ';
 
 						$text .= sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions and detect additional images and/or embedded videos provided by shortcodes.', 'wpsso' ), $this->p_name );
 
@@ -294,7 +294,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= ' <p>';
 
-						$text .= __( 'Please note that correct image sizes are required for several standards, including Google Rich Results.', 'wpsso' ) . ' ';
+						$text .= __( 'Note that correct image sizes are required for several markup standards, including Google Rich Results.', 'wpsso' ) . ' ';
 
 						$text .= __( 'Correct image sizes also improve click through rates by presenting your content at its best on social sites and in search results.', 'wpsso' ) . ' ';
 
@@ -305,7 +305,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= sprintf( __( 'A larger image can also be uploaded and/or selected in the %1$s metabox under the %2$s tab.', 'wpsso' ), $mb_title, $media_tab ) . ' ';
 						}
 
-						$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on WordPress image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
+						$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on how WordPress manages large images and creates smaller image thumbnails.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
 
 						$text .= '</p>';
 
@@ -317,14 +317,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							if ( current_user_can( 'manage_options' ) ) {
 
-								$upscale_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
+								$image_dim_opt_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
+									_x( 'Image Dimension Checks', 'option label', 'wpsso' ) );
+
+								$content_img_opt_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
+									_x( 'Consider Content Images', 'option label', 'wpsso' ) );
+
+								$upscale_opt_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
 									_x( 'Upscale Media Library Images', 'option label', 'wpsso' ) );
 
-								$percent_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
+								$percent_opt_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
 									_x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ) );
-
-								$image_dim_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
-									_x( 'Image Dimension Checks', 'option label', 'wpsso' ) );
 
 								$image_sizes_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_image_sizes',
 									_x( 'Image Sizes', 'lib file description', 'wpsso' ) );
@@ -345,16 +348,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 										'wpsso' ), $mb_title, $media_tab ) . '</li>';
 								}
 
+								if ( empty( $this->p->options[ 'plugin_content_images' ] ) ) {
+									
+									$text .= ' <li>' . sprintf( __( 'Enable the %s option to search content text for more images.',
+										'wpsso' ), $content_img_opt_link ) . '</li>';
+
+								} else $text .= ' <li>' . sprintf( __( 'Disable the %s option if uploaded content images are too small.',
+										'wpsso' ), $content_img_opt_link ) . '</li>';
+
 								if ( empty( $this->p->options[ 'plugin_upscale_images' ] ) ) {
 
-									$text .= ' <li>' . sprintf( __( 'Enable the %s option.', 'wpsso' ),
-										$upscale_option_link ) . '</li>';
+									$text .= ' <li>' . sprintf( __( 'Enable the %s option.', 'wpsso' ), $upscale_opt_link ) . '</li>';
 
-								} else {
-
-									$text .= ' <li>' . sprintf( __( 'Increase the %s option value.', 'wpsso' ),
-										$percent_option_link ) . '</li>';
-								}
+								} else $text .= ' <li>' . sprintf( __( 'Increase the %s option value.', 'wpsso' ), $percent_opt_link ) . '</li>';
 
 								/*
 								 * Note that WpssoMedia->is_image_within_config_limits() sets
@@ -371,7 +377,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 									if ( ! empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {
 
 										$text .= ' <li>' . sprintf( __( 'Disable the %s option (not recommended).',
-											'wpsso' ), $image_dim_option_link ) . '</li>';
+											'wpsso' ), $image_dim_opt_link ) . '</li>';
 									}
 								}
 
@@ -448,8 +454,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					 */
 					case 'notice-ratings-reviews-wc-enabled':
 
-						$option_label     = _x( 'Ratings and Reviews Service', 'option label', 'wpsso' );
-						$option_link      = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_ratings_reviews', $option_label );
+						$opt_label        = _x( 'Ratings and Reviews Service', 'option label', 'wpsso' );
+						$opt_link         = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_ratings_reviews', $opt_label );
 						$wc_settings_url  = get_admin_url( $blog_id = null, 'admin.php?page=wc-settings&tab=products' );
 						$svc_label_transl = empty( $info[ 'svc_title_transl' ] ) ?
 							_x( 'ratings and reviews', 'tooltip fragment', 'wpsso' ) : $info[ 'svc_title_transl' ];
@@ -458,7 +464,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$svc_label_transl ) . ' ';
 
 						$text .= sprintf( __( 'Please choose another %1$s or <a href="%2$s">disable product reviews in WooCommerce</a>.',
-							'wpsso' ), $option_link, $wc_settings_url ) . ' ';
+							'wpsso' ), $opt_link, $wc_settings_url ) . ' ';
 
 						break;
 
@@ -561,12 +567,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-wc-inherit-featured-disabled':
 
-						$option_label = _x( 'Inherit Featured Image', 'option label', 'wpsso' );
-						$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_label );
+						$opt_label = _x( 'Inherit Featured Image', 'option label', 'wpsso' );
+						$opt_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $opt_label );
 
 						$text = '<p class="top">';
 
-						$text .= '<b>' . sprintf( __( 'The %s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
+						$text .= '<b>' . sprintf( __( 'The %s advanced option is currently disabled.', 'wpsso' ), $opt_link ) . '</b> ';
 
 						$text .= __( 'WooCommerce product variations are children of their product page.', 'wpsso' ) . ' ';
 
@@ -1348,12 +1354,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		public function pin_img_disabled( $extra_css_class = '' ) {
 
-			$option_label = _x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' );
-
-			$option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_social_search-tab_pinterest', $option_label );
+			$opt_label = _x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' );
+			$opt_link  = $this->p->util->get_admin_url( 'general#sucom-tabset_social_search-tab_pinterest', $opt_label );
 
 			// translators: %s is the option name, linked to its settings page.
-			$text = sprintf( __( 'Modifications disabled (%s option is disabled).', 'wpsso' ), $option_link );
+			$text = sprintf( __( 'Modifications disabled (%s option is disabled).', 'wpsso' ), $opt_link );
 
 			return '<p class="status-msg smaller disabled ' . $extra_css_class . '">' . $text . '</p>';
 		}
