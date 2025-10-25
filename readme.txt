@@ -282,6 +282,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
+	* Improved the 'notice-image-rejected' notice message text.
 	* Added a "Download URL" option in the Document SSO metabox for the Schema Software Application type.
 * **Bugfixes**
 	* None.
