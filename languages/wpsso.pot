@@ -509,7 +509,7 @@ msgstr ""
 #: gettext/gettext-html-setup.php:35
 msgctxt "html list item"
 msgid ""
-"<a href=\"https://www.facebook.com/business/learn/set-up-facebook-page"
+"<a href=\"https://www.facebook.com/business/tools/facebook-pages/get-started/"
 "\">Setup a Facebook Business Page</a>"
 msgstr ""
 
