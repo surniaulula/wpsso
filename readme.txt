@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.8.1-rc.1 (2025/11/10)**
+**Version 21.8.1 (2025/11/11)**
 
 * **New Features**
 	* None.
@@ -372,9 +372,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.8.1-rc.1 =
+= 21.8.1 =
 
-(2025/11/10) Updated reference links in the SSO &gt; Setup Guide.
+(2025/11/11) Updated reference links in the SSO &gt; Setup Guide.
 
 = 21.8.0 =
 
