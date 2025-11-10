@@ -221,7 +221,6 @@ WPSSO Core and its add-ons can also run in combination with other SEO plugins to
 * [How can I see what the Facebook crawler sees?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-see-what-the-facebook-crawler-sees/)
 * [How do I create a Schema FAQPage?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-create-a-schema-faqpage/)
 * [How do I enable WordPress WP_DEBUG?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-enable-wordpress-wp_debug/)
-* [How do I fix Google Structured Data &gt; hatom errors?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-google-structured-data-hatom-errors/)
 * [How do I remove duplicate meta tags?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-remove-duplicate-meta-tags/)
 * [How does WPSSO Core find and select images?](https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/)
 * [How does WPSSO Core find and select videos?](https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/)

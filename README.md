@@ -235,7 +235,6 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-see-what-the-facebook-crawler-sees/">How can I see what the Facebook crawler sees?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-create-a-schema-faqpage/">How do I create a Schema FAQPage?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-enable-wordpress-wp_debug/">How do I enable WordPress WP_DEBUG?</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-google-structured-data-hatom-errors/">How do I fix Google Structured Data &gt; hatom errors?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-remove-duplicate-meta-tags/">How do I remove duplicate meta tags?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/">How does WPSSO Core find and select images?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/">How does WPSSO Core find and select videos?</a></li>
