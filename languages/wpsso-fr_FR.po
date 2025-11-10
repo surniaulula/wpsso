@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 21.8.0\n"
+"Project-Id-Version: WPSSO Core 21.8.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2025-10-25 07:40-0700\n"
+"PO-Revision-Date: 2025-11-10 15:52-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -265,135 +265,130 @@ msgstr "Soumettez quelques URL d'articles et de page au <a href=\"https://develo
 
 #: gettext/gettext-html-setup.php:27
 msgctxt "html paragraph"
-msgid "Submit an example post and/or page to the <a href=\"http://developers.pinterest.com/rich_pins/validator/\">Pinterest Rich Pins Validator</a>. Note that the Pinterest validator recognizes only known Rich Pin types (article, recipe, product, etc.). Your home page and archive pages are not \"Rich Pin\" types. If you haven't already requested Rich Pin approval from Pinterest for your website, you can submit a request when validating your first example post or page."
-msgstr "Soumettez un exemple d'article et/ou de page au <a href=\"http://developers.pinterest.com/rich_pins/validator/\">validateur Pinterest épingles riches</a>. Notez que le validateur Pinterest ne reconnaît que les types de Rich Pin connus (article, recette, produit, etc.). Votre page d'accueil et les pages d'archives WordPress ne sont pas des types de Rich Pin. Si vous n'avez pas encore demandé l'approbation Rich Pin de Pinterest pour votre site Web, vous pouvez soumettre une demande lors de la validation de votre premier exemple d'article ou de page."
-
-#: gettext/gettext-html-setup.php:28
-msgctxt "html paragraph"
 msgid "Submit the home page URL, along with a post, page, and archive page URL to the <a href=\"https://search.google.com/test/rich-results\">Google Rich Results Test Tool</a> or the <a href=\"https://validator.schema.org/\">Schema Markup Validator</a>. If any information is missing from the Schema markup, use the Document SSO metabox in the WordPress editing page to complete the missing information."
 msgstr "Soumettez l'URL de la page d'accueil, ainsi qu'une URL d'article et de page d'archive, à l'<a href=\"https://search.google.com/test/rich-results?hl=fr\">outil de test de résultats enrichis Google</a> ou le <a href=\"https://validator.schema.org/?hl=fr\">validateur de balisage de Schéma</a>. S'il manque des informations dans le balisage de Schéma, utilisez la métabox SSO du document dans la page d'édition WordPress pour compléter les informations manquantes."
 
-#: gettext/gettext-html-setup.php:29
+#: gettext/gettext-html-setup.php:28
 msgctxt "html list item"
 msgid "<a href=\"#business-social-accounts\">Business Social Accounts (Optional)</a>"
 msgstr "<a href=\"#business-social-accounts\">Comptes sociaux d'entreprise (facultatif)</a>"
 
-#: gettext/gettext-html-setup.php:30
+#: gettext/gettext-html-setup.php:29
 msgctxt "html list item"
 msgid "<a href=\"#author-social-accounts\">Author Social Accounts (Optional)</a>"
 msgstr "<a href=\"#author-social-accounts\">Comptes sociaux des auteurs (facultatif)</a>"
 
-#: gettext/gettext-html-setup.php:31
+#: gettext/gettext-html-setup.php:30
 msgctxt "html list item"
 msgid "<a href=\"#essential-settings\">Review Essential Settings</a>"
 msgstr "<a href=\"#essential-settings\">Parcourez les réglages essentiels</a>"
 
-#: gettext/gettext-html-setup.php:32
+#: gettext/gettext-html-setup.php:31
 msgctxt "html list item"
 msgid "<a href=\"#notifications\">Keep an Eye on Notifications</a>"
 msgstr "<a href=\"#notifications\">Gardez un œil sur les notifications</a>"
 
-#: gettext/gettext-html-setup.php:33
+#: gettext/gettext-html-setup.php:32
 msgctxt "html list item"
 msgid "<a href=\"#user-interface\">User Interface and General Usage</a>"
 msgstr "<a href=\"#user-interface\">Interface utilisateur et utilisation générale</a>"
 
-#: gettext/gettext-html-setup.php:34
+#: gettext/gettext-html-setup.php:33
 msgctxt "html list item"
 msgid "<a href=\"#schema-markup\">Schema Markup vs Google Rich Results</a>"
 msgstr "<a href=\"#schema-markup\">Balisage de Schéma vs résultats enrichis Google</a>"
 
-#: gettext/gettext-html-setup.php:35
+#: gettext/gettext-html-setup.php:34
 msgctxt "html list item"
 msgid "<a href=\"#validation-tools\">Validation Tools</a>"
 msgstr "<a href=\"#validation-tools\">Outils de validation</a>"
 
+#: gettext/gettext-html-setup.php:35
+msgctxt "html list item"
+msgid "<a href=\"https://www.facebook.com/business/tools/facebook-pages/get-started/\">Setup a Facebook Business Page</a>"
+msgstr "<a href=\"https://www.facebook.com/business/tools/facebook-pages/get-started/\">Configurer une page d'entreprise Facebook</a>"
+
 #: gettext/gettext-html-setup.php:36
 msgctxt "html list item"
-msgid "<a href=\"https://www.facebook.com/business/learn/set-up-facebook-page\">Setup a Facebook Business Page</a>"
-msgstr "<a href=\"https://www.facebook.com/business/learn/set-up-facebook-page\">Configurer une page d'entreprise Facebook</a>"
+msgid "<a href=\"https://business.x.com/en/basics/get-your-business-started-with-x\">Create an X (Twitter) Business Profile</a>"
+msgstr "<a href=\"https://business.x.com/en/basics/get-your-business-started-with-x\">Créer un profil d'entreprise X (Twitter)</a>"
 
 #: gettext/gettext-html-setup.php:37
-msgctxt "html list item"
-msgid "<a href=\"https://business.twitter.com/en/basics/create-a-twitter-business-profile.html\">Create an X (Twitter) Business Profile</a>"
-msgstr "<a href=\"https://business.twitter.com/en/basics/create-a-twitter-business-profile.html\">Créer un profil d'entreprise X (Twitter)</a>"
-
-#: gettext/gettext-html-setup.php:38
 msgctxt "html list item"
 msgid "<a href=\"https://business.google.com/create\">Add or claim your business on Google My Business</a> (recommended)"
 msgstr "<a href=\"https://business.google.com/create?hl=fr\">Ajoutez ou revendiquez votre entreprise sur Google My Business</a> (recommandé)"
 
-#: gettext/gettext-html-setup.php:39
+#: gettext/gettext-html-setup.php:38
 msgctxt "html list item"
 msgid "<a href=\"https://www.pinterest.com/business/create/\">Create a Pinterest Business Account</a>"
 msgstr "<a href=\"https://www.pinterest.com/business/create/\">Créer un compte d'entreprise Pinterest</a>"
 
-#: gettext/gettext-html-setup.php:40
+#: gettext/gettext-html-setup.php:39
 msgctxt "html list item"
 msgid "<a href=\"https://developers.facebook.com/tools/debug/\">Facebook Sharing Debugger</a>"
 msgstr "<a href=\"https://developers.facebook.com/tools/debug/\">Débogueur de partage Facebook</a>"
 
-#: gettext/gettext-html-setup.php:41
+#: gettext/gettext-html-setup.php:40
 msgctxt "html list item"
 msgid "<a href=\"https://business.facebook.com/ads/microdata/debug\">Facebook Microdata Debug Tool</a>"
 msgstr "<a href=\"https://business.facebook.com/ads/microdata/debug\">Outil de débogage des microdonnées Facebook</a>"
 
-#: gettext/gettext-html-setup.php:42
+#: gettext/gettext-html-setup.php:41
 msgctxt "html list item"
 msgid "<a href=\"https://search.google.com/test/amp\">Google AMP Test</a>"
 msgstr "<a href=\"https://search.google.com/test/amp?hl=fr\">Test AMP de Google</a>"
 
-#: gettext/gettext-html-setup.php:43
+#: gettext/gettext-html-setup.php:42
 msgctxt "html list item"
 msgid "<a href=\"https://search.google.com/test/rich-results\">Google Rich Results Test</a>"
 msgstr "<a href=\"https://search.google.com/test/rich-results?hl=fr\">Test de résultats enrichis Google</a>"
 
-#: gettext/gettext-html-setup.php:44
+#: gettext/gettext-html-setup.php:43
 msgctxt "html list item"
 msgid "<a href=\"https://www.linkedin.com/post-inspector/inspect/\">LinkedIn Post Inspector</a>"
 msgstr "<a href=\"https://www.linkedin.com/post-inspector/inspect/\">Inspecteur LinkedIn de publication</a>"
 
-#: gettext/gettext-html-setup.php:45
+#: gettext/gettext-html-setup.php:44
 msgctxt "html list item"
 msgid "<a href=\"https://developers.pinterest.com/tools/url-debugger/\">Pinterest Rich Pins Validator</a>"
 msgstr "<a href=\"https://developers.pinterest.com/tools/url-debugger/\">Validateur Pinterest épingles riches</a>"
 
-#: gettext/gettext-html-setup.php:46
+#: gettext/gettext-html-setup.php:45
 msgctxt "html list item"
 msgid "<a href=\"https://validator.schema.org/\">Schema Markup Validator</a>"
 msgstr "<a href=\"https://validator.schema.org/?hl=fr\">Validateur de balisage de Schéma</a>"
 
-#: gettext/gettext-html-setup.php:47
+#: gettext/gettext-html-setup.php:46
 msgctxt "html list item"
 msgid "<a href=\"https://cards-dev.twitter.com/validator\">X (Twitter) Card Validator</a>"
 msgstr "<a href=\"https://cards-dev.twitter.com/validator\">Vérificateur de carte X (Twitter)</a>"
 
-#: gettext/gettext-html-setup.php:48
+#: gettext/gettext-html-setup.php:47
 msgctxt "html list item"
 msgid "<a href=\"https://validator.w3.org/\">W3C Markup Validator</a> is recommended to check your theme templates for HTML markup issues."
 msgstr "<a href=\"https://validator.w3.org/\">Validateur W3C de balisage</a> est recommandé pour vérifier vos modèles de thème afin de détecter les problèmes de balisage HTML."
 
-#: gettext/gettext-html-setup.php:49
+#: gettext/gettext-html-setup.php:48
 msgctxt "html list item"
 msgid "<a href=\"https://www.xml-sitemaps.com/validate-xml-sitemap.html\">XML Sitemap Validator</a>"
 msgstr "<a href=\"https://www.xml-sitemaps.com/validate-xml-sitemap.html\">Validateur de plan de site XML</a>"
 
-#: gettext/gettext-html-setup.php:50
+#: gettext/gettext-html-setup.php:49
 msgctxt "html list item"
 msgid "<a href=\"https://pagespeed.web.dev/\">Google's PageSpeed Insights</a> is recommended for general site and webpage health checks (improving pagespeed results will improve SEO ranking)."
 msgstr "<a href=\"https://pagespeed.web.dev/\">PageSpeed ​​Insights de Google</a> est recommandé pour les vérifications générales de l'état des sites et des pages Web (l'amélioration des résultats de la vitesse des pages améliorera le classement SEO)."
 
-#: gettext/gettext-html-setup.php:51
+#: gettext/gettext-html-setup.php:50
 msgctxt "html list item"
-msgid "<a href=\"https://support.google.com/webmasters/answer/7451184\">Google's Search Engine Optimization (SEO) Starter Guide</a> is recommended to understand Google SEO ranking factors."
-msgstr "<a href=\"https://support.google.com/webmasters/answer/7451184\">Guide de démarrage de l'optimisation des moteurs de recherche (SEO) de Google</a> est recommandé pour comprendre les facteurs de classement SEO de Google."
+msgid "<a href=\"https://developers.google.com/search/docs/fundamentals/seo-starter-guide\">Google's Search Engine Optimization (SEO) Starter Guide</a> is recommended to understand Google SEO ranking factors."
+msgstr "<a href=\"https://developers.google.com/search/docs/fundamentals/seo-starter-guide\">Guide de démarrage de l'optimisation des moteurs de recherche (SEO) de Google</a> est recommandé pour comprendre les facteurs de classement SEO de Google."
 
-#: gettext/gettext-html-setup.php:52
+#: gettext/gettext-html-setup.php:51
 msgctxt "html list item"
 msgid "<a href=\"https://www.webpagetest.org/\">Webpage Performance Test with Waterfall</a> is recommended to check and diagnose basic performance issues."
 msgstr "<a href=\"https://www.webpagetest.org/\">Test de performance de page Web avec cascade</a> est recommandé pour vérifier et diagnostiquer les problèmes de performances de base."
 
-#: gettext/gettext-html-setup.php:53
+#: gettext/gettext-html-setup.php:52
 msgctxt "html list item"
 msgid "<a href=\"https://www.ssllabs.com/ssltest/\">SSL Server Test by SSL Labs</a> is recommended to test SSL certificates and available HTTPS protocols."
 msgstr "<a href=\"https://www.ssllabs.com/ssltest/\">Test de serveur SSL par SSL Labs</a> est recommandé pour tester les certificats SSL et les protocoles HTTPS disponibles."
