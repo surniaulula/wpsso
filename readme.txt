@@ -276,6 +276,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 21.9.0-dev.1 (2025/11/14)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Disabled the Schema and Open Graph type selects in the Document SSO metabox for WooCommerce account, cart, and checkout pages.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new 'wpsso_include_video_previews' filter.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v5.9.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
+
 **Version 21.8.1 (2025/11/11)**
 
 * **New Features**
@@ -371,6 +386,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 21.9.0-dev.1 =
+
+(2025/11/14) Disabled Schema and Open Graph type in Document SSO metabox for WooCommerce account, cart, and checkout pages. Added 'wpsso_include_video_previews' filter.
 
 = 21.8.1 =
 
