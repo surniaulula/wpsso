@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '21.8.1',	// Plugin version.
+					'version'     => '21.9.0-dev.1',	// Plugin version.
 					'opt_version' => '1032',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -3647,6 +3647,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'og_type_by_schema_type' => array(
 					'article'              => 'article',
 					'book'                 => 'book',
+					'webpage.checkout'     => 'website',
 					'event'                => 'product',
 					'item.list'            => 'website',
 					'place'                => 'place',	// Check for Schema place before Schema organization.

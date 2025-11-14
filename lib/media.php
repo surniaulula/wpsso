@@ -242,7 +242,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 * original number to get all possible videos (from its cache), then maybe limit the number of preview
 			 * images if necessary.
 			 */
-			$max_nums  = $this->p->util->get_max_nums( $mod );
+			$max_nums = $this->p->util->get_max_nums( $mod );
+
 			$mt_videos = $this->get_all_videos( $max_nums[ 'og_vid_max' ], $mod, $md_pre, $force_prev );
 
 			$this->p->util->clear_uniq_urls( $uniq_context = array( 'preview' ), $mod );
@@ -327,7 +328,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$this->p->util->clear_uniq_urls( array( 'video', 'video_details' ), $mod );
 
-			$use_prev = $this->p->options[ 'og_vid_prev_img' ];
+			$use_prev = empty( $this->p->options[ 'og_vid_prev_img' ] ) ? false : true;	// Change value from 0/1 to false/true.
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( '$use_prev is ' . ( $use_prev ? 'true' : 'false' ) );
+			}
 
 			$num_diff = SucomUtil::array_count_diff( $mt_videos, $num );
 
@@ -339,14 +345,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				/*
 				 * Note that get_options() returns null if an index key is not found.
 				 */
-				if ( ( $mod_prev = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'og_vid_prev_img' ) ) !== null ) {
-
-					$use_prev = $mod_prev;	// Use true/false/1/0 value from the custom option.
+				if ( ( $mod_prev = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'og_vid_prev_img' ) ) !== null ) {	// Returns null, 0, or 1.
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'setting use_prev to ' . ( empty( $use_prev ) ? 'false' : 'true' ) . ' from meta data' );
+						$this->p->debug->log( '$mod_prev is ' . ( $mod_prev ? 'true' : 'false' ) );
 					}
+
+					$use_prev = empty( $mod_prev ) ? false : true;	// Change value from 0/1 to false/true.
 				}
 
 				if ( $this->p->debug->enabled ) {
@@ -388,7 +394,21 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			$this->p->util->slice_max( $mt_videos, $num );
+			$this->p->util->slice_max( $mt_videos, $num );	// Maybe trim the $mt_videos array.
+
+			$filter_name = 'wpsso_include_video_previews';
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
+			}
+
+			$use_prev = (bool) apply_filters( $filter_name, $use_prev, $mod, $mt_videos );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( '$use_prev (filtered) is ' . ( $use_prev ? 'true' : 'false' ) );
+			}
 
 			/*
 			 * Maybe remove the image meta tags (aka video preview).
@@ -397,7 +417,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'use_prev and force_prev are false - removing video preview images' );
+					$this->p->debug->log( 'removing video preview images: $use_prev and $force_prev are both false' );
 				}
 
 				foreach ( $mt_videos as &$mt_single_video ) {	// Uses reference.

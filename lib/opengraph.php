@@ -1714,10 +1714,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						$type_id = $md_opts[ 'schema_type' ];
 
-					} else {
-
-						$type_id = $this->p->schema->get_mod_schema_type_id( $mod, $use_md_opts = false );
-					}
+					} else $type_id = $this->p->schema->get_mod_schema_type_id( $mod, $use_md_opts = false );
 
 					/*
 					 * Check if the Schema type matches a pre-defined Open Graph type.

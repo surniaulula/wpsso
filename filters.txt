@@ -131,6 +131,8 @@
 
 'wpsso_import_product_attributes' ( array $md_opts, array $mod, $wp_obj )
 
+'wpsso_include_video_previews' ( $bool, array $mod, array $mt_videos )
+
 'wpsso_inherit_custom_images' ( $bool, array $mod )
 
 'wpsso_inherit_featured_image' ( $bool, array $mod )

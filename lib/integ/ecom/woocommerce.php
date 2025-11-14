@@ -715,15 +715,15 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				if ( $mod[ 'id' ] === $this->page_ids[ 'account' ] ) {
 
-					$desc_text = 'Account Page';
+					$desc_text = __( 'My account page', 'woocommerce' );
 
 				} elseif ( $mod[ 'id' ] === $this->page_ids[ 'cart' ] ) {
 
-					$desc_text = 'Shopping Cart';
+					$desc_text = __( 'Cart page', 'woocommerce' );
 
 				} elseif ( $mod[ 'id' ] === $this->page_ids[ 'checkout' ] ) {
 
-					$desc_text = 'Checkout Page';
+					$desc_text = __( 'Checkout page', 'woocommerce' );
 				}
 			}
 
@@ -799,6 +799,14 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			}
 
 			if ( ! SucomUtilWP::is_mod_post_type( $mod, $this->prod_post_type ) ) {
+
+				/*
+				 * Maybe force the schema type for the account, cart, and checkout pages.
+				 */
+				if ( $schema_type = $this->filter_schema_type( null, $mod, $is_custom = false ) ) {
+
+					$md_defs[ 'schema_type' ] = $schema_type;
+				}
 
 				return $md_defs;
 

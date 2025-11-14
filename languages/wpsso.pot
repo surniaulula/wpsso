@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 21.8.1\n"
+"Project-Id-Version: WPSSO Core 21.9.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3062,8 +3062,8 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:35 lib/com/form.php:977
-#: lib/media-filters.php:117 lib/media.php:1609 lib/media.php:1760
-#: lib/media.php:3790
+#: lib/media-filters.php:117 lib/media.php:1629 lib/media.php:1780
+#: lib/media.php:3810
 msgid "Media Library"
 msgstr ""
 
@@ -7601,12 +7601,12 @@ msgstr ""
 msgid "Insufficient privileges to edit comment ID %1$s."
 msgstr ""
 
-#: lib/config.php:5460
+#: lib/config.php:5461
 msgctxt "plugin type"
 msgid "plugin"
 msgstr ""
 
-#: lib/config.php:5460
+#: lib/config.php:5461
 msgctxt "plugin type"
 msgid "add-on"
 msgstr ""
@@ -9539,15 +9539,15 @@ msgid ""
 "Products &gt; General</a> section."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:243
+#: lib/integ/ecom/woocommerce.php:243 lib/integ/ecom/woocommerce.php:718
 msgid "My account page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:244
+#: lib/integ/ecom/woocommerce.php:244 lib/integ/ecom/woocommerce.php:722
 msgid "Cart page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:245
+#: lib/integ/ecom/woocommerce.php:245 lib/integ/ecom/woocommerce.php:726
 msgid "Checkout page"
 msgstr ""
 
@@ -9567,23 +9567,23 @@ msgstr ""
 msgid "Products Group"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1633
+#: lib/integ/ecom/woocommerce.php:1641
 msgid "World"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1860
+#: lib/integ/ecom/woocommerce.php:1868
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1863
+#: lib/integ/ecom/woocommerce.php:1871
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1866
+#: lib/integ/ecom/woocommerce.php:1874
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
@@ -9774,7 +9774,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media-filters.php:120 lib/media.php:3800
+#: lib/media-filters.php:120 lib/media.php:3820
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -9803,87 +9803,87 @@ msgid ""
 "%3$dpx height."
 msgstr ""
 
-#: lib/media.php:1390
+#: lib/media.php:1410
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1613
+#: lib/media.php:1633
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:1615 lib/media.php:1829
+#: lib/media.php:1635 lib/media.php:1849
 msgid ""
 "You may consider regenerating the sizes of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:1631
+#: lib/media.php:1651
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> returned an error for <a href=\"%4$s\">image ID %5$s</a>: %6$s."
 msgstr ""
 
-#: lib/media.php:1652
+#: lib/media.php:1672
 msgid ""
 "Possible %1$s corruption detected - the full size image dimensions for <a "
 "href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1671
+#: lib/media.php:1691
 msgid ""
 "Possible %1$s corruption detected - the full size image file path for <a "
 "href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1762
+#: lib/media.php:1782
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1798 lib/register.php:315 lib/util-cache.php:757
+#: lib/media.php:1818 lib/register.php:315 lib/util-cache.php:757
 #: lib/util.php:889 lib/util.php:1004 lib/util.php:1036 lib/util.php:1074
 #: lib/util.php:3539
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1799 lib/util.php:890 lib/util.php:3540
+#: lib/media.php:1819 lib/util.php:890 lib/util.php:3540
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
-#: lib/media.php:1800
+#: lib/media.php:1820
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to make image size "
 "\"%3$s\" from %4$s (%5$s)."
 msgstr ""
 
-#: lib/media.php:1827
+#: lib/media.php:1847
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:3138
+#: lib/media.php:3158
 msgid "Getting video details for %s."
 msgstr ""
 
-#: lib/media.php:3811
+#: lib/media.php:3831
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:3864
+#: lib/media.php:3884
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:3899
+#: lib/media.php:3919
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
