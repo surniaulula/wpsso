@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 21.8.1\n"
+"Project-Id-Version: WPSSO Core 21.9.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2025-11-10 15:52-0800\n"
+"PO-Revision-Date: 2025-11-15 07:20-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2813,8 +2813,8 @@ msgstr "de"
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:35 lib/com/form.php:977
-#: lib/media-filters.php:117 lib/media.php:1609 lib/media.php:1760
-#: lib/media.php:3790
+#: lib/media-filters.php:117 lib/media.php:1615 lib/media.php:1766
+#: lib/media.php:3811
 msgid "Media Library"
 msgstr "la médiathèque"
 
@@ -6558,33 +6558,33 @@ msgid "Video Upload Date"
 msgstr "Date téléchargement du vidéo"
 
 #: gettext/gettext-lib-pro.php:207 gettext/gettext-lib-pro.php:210
-#: gettext/gettext-lib-pro.php:213 lib/pro/media/slideshare.php:216
-#: lib/pro/media/vimeo.php:195 lib/pro/media/wistia.php:359
+#: gettext/gettext-lib-pro.php:213 lib/pro/media/slideshare.php:244
+#: lib/pro/media/vimeo.php:217 lib/pro/media/wistia.php:384
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr "https://secure.php.net/manual/fr/function.simplexml-load-string.php"
 
 #: gettext/gettext-lib-pro.php:208 gettext/gettext-lib-pro.php:211
-#: gettext/gettext-lib-pro.php:214 lib/pro/media/slideshare.php:217
-#: lib/pro/media/vimeo.php:196 lib/pro/media/wistia.php:360
+#: gettext/gettext-lib-pro.php:214 lib/pro/media/slideshare.php:245
+#: lib/pro/media/vimeo.php:218 lib/pro/media/wistia.php:385
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr "La <a href=\"%1$s\">fonction PHP %2$s</a> n'est pas disponible."
 
 #: gettext/gettext-lib-pro.php:209 gettext/gettext-lib-pro.php:212
 #: gettext/gettext-lib-pro.php:215 lib/conflict.php:337
-#: lib/pro/media/slideshare.php:220 lib/pro/media/vimeo.php:199
-#: lib/pro/media/wistia.php:363
+#: lib/pro/media/slideshare.php:248 lib/pro/media/vimeo.php:221
+#: lib/pro/media/wistia.php:388
 msgid "Please contact your hosting provider to have the missing PHP function installed."
 msgstr "SVP contacter votre hébergeur pour installer la fonction PHP manquante."
 
-#: gettext/gettext-lib-pro.php:216 lib/pro/media/youtube.php:186
+#: gettext/gettext-lib-pro.php:216 lib/pro/media/youtube.php:211
 msgid "Video title not found for %s."
 msgstr "Titre de la vidéo introuvable pour %s."
 
-#: gettext/gettext-lib-pro.php:217 lib/pro/media/youtube.php:196
+#: gettext/gettext-lib-pro.php:217 lib/pro/media/youtube.php:221
 msgid "Video description not found for %s."
 msgstr "Description de la vidéo introuvable pour %s."
 
-#: gettext/gettext-lib-pro.php:218 lib/pro/media/youtube.php:206
+#: gettext/gettext-lib-pro.php:218 lib/pro/media/youtube.php:231
 msgid "Video upload date not found for %s."
 msgstr "Date de téléchargement de la vidéo introuvable pour %s."
 
@@ -7243,12 +7243,12 @@ msgstr "commentaire"
 msgid "Insufficient privileges to edit comment ID %1$s."
 msgstr "Privilèges insuffisants pour modifier le commentaire ID %1$s."
 
-#: lib/config.php:5460
+#: lib/config.php:5461
 msgctxt "plugin type"
 msgid "plugin"
 msgstr "extension"
 
-#: lib/config.php:5460
+#: lib/config.php:5461
 msgctxt "plugin type"
 msgid "add-on"
 msgstr "ajout"
@@ -9135,15 +9135,15 @@ msgstr "Veuillez choisir une page dans la section <a href=\"%s\">WooCommerce  R�
 msgid "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; Products &gt; General</a> section."
 msgstr "Veuillez choisir une page dans la section <a href=\"%s\">WooCommerce  Réglages &gt; Produits &gt; Général</a> ."
 
-#: lib/integ/ecom/woocommerce.php:243
+#: lib/integ/ecom/woocommerce.php:243 lib/integ/ecom/woocommerce.php:718
 msgid "My account page"
 msgstr "My account page"
 
-#: lib/integ/ecom/woocommerce.php:244
+#: lib/integ/ecom/woocommerce.php:244 lib/integ/ecom/woocommerce.php:722
 msgid "Cart page"
 msgstr "Cart page"
 
-#: lib/integ/ecom/woocommerce.php:245
+#: lib/integ/ecom/woocommerce.php:245 lib/integ/ecom/woocommerce.php:726
 msgid "Checkout page"
 msgstr "Checkout page"
 
@@ -9163,19 +9163,19 @@ msgstr "Attributs suggérés:"
 msgid "Products Group"
 msgstr "Groupe de produits"
 
-#: lib/integ/ecom/woocommerce.php:1633
+#: lib/integ/ecom/woocommerce.php:1641
 msgid "World"
 msgstr "Monde"
 
-#: lib/integ/ecom/woocommerce.php:1860
+#: lib/integ/ecom/woocommerce.php:1868
 msgid "The rating and review counts provided by WooCommerce for product ID %d are invalid."
 msgstr "Le nombre de notes et de critiques fournis par WooCommerce pour l'ID de produit %d n'est pas valide."
 
-#: lib/integ/ecom/woocommerce.php:1863
+#: lib/integ/ecom/woocommerce.php:1871
 msgid "The average rating is %.2f, but the rating count is %d and the review count is %d."
 msgstr "La note moyenne est %.2f, mais le nombre de notes est %d et le nombre de critiques est %d."
 
-#: lib/integ/ecom/woocommerce.php:1866
+#: lib/integ/ecom/woocommerce.php:1874
 msgid "The rating count or the review count must be greater than 0."
 msgstr "Le nombre de notes ou le nombre de critiques doit être supérieur à 0."
 
@@ -9353,7 +9353,7 @@ msgstr "Le plugin installé est incomplet ou le serveur Web ne peut pas accéder
 msgid "full size original"
 msgstr "originale pleine grandeur"
 
-#: lib/media-filters.php:120 lib/media.php:3800
+#: lib/media-filters.php:120 lib/media.php:3821
 msgid "image ID %1$s (%2$s)"
 msgstr "ID d'image %1$s (%2$s)"
 
@@ -9373,65 +9373,65 @@ msgstr "%1$s inclut un attribut supplémentaire 'data-wp-pid' pour les images de
 msgid "Minimum image dimension to satisfy all %1$d image sizes: %2$dpx width by %3$dpx height."
 msgstr "Dimension minimale d'image pour satisfaire les %1$d tailles d'image: %2$dpx de largeur sur %3$dpx de hauteur."
 
-#: lib/media.php:1390
+#: lib/media.php:1396
 msgid "Content"
 msgstr "Contenu"
 
-#: lib/media.php:1613
+#: lib/media.php:1619
 msgid "https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/"
 msgstr "https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/"
 
-#: lib/media.php:1615 lib/media.php:1829
+#: lib/media.php:1621 lib/media.php:1835
 msgid "You may consider regenerating the sizes of all WordPress Media Library images using one of <a href=\"%s\">several available plugins from WordPress.org</a>."
 msgstr "Vous pouvez régénérer les tailles de toutes les images de la médiathèque WordPress en utilisant l'une <a href=\"%s\">des extensions disponibles sur WordPress.org</a>."
 
-#: lib/media.php:1631
+#: lib/media.php:1637
 msgid "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s function</a> returned an error for <a href=\"%4$s\">image ID %5$s</a>: %6$s."
 msgstr "Corruption possible de %1$s détecté - la <a href=\"%2$s\">fonction WordPress %3$s</a> a renvoyé une erreur pour <a href=\"%4$s\">l'ID d'image %5$s</a>: %6$s."
 
-#: lib/media.php:1652
+#: lib/media.php:1658
 msgid "Possible %1$s corruption detected - the full size image dimensions for <a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr "Corruption possible de %1$s détecté - les dimensions de l'image pleine grandeur pour <a href=\"%2$s\">l'ID d'image %3$s</a> sont manquantes dans les métadonnées d'image retourné par la <a href=\"%4$s\">fonction WordPress %5$s</a>."
 
-#: lib/media.php:1671
+#: lib/media.php:1677
 msgid "Possible %1$s corruption detected - the full size image file path for <a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr "Corruption possible de %1$s détecté - le chemin du fichier d'image pleine grandeur pour <a href=\"%2$s\">l'ID d'image %3$s</a> est manquant dans les métadonnées d'image retourné par la <a href=\"%4$s\">fonction WordPress %5$s</a>."
 
-#: lib/media.php:1762
+#: lib/media.php:1768
 msgid "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 msgstr "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 
-#: lib/media.php:1798 lib/register.php:315 lib/util-cache.php:757
+#: lib/media.php:1804 lib/register.php:315 lib/util-cache.php:757
 #: lib/util.php:889 lib/util.php:1004 lib/util.php:1036 lib/util.php:1074
 #: lib/util.php:3539
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
-#: lib/media.php:1799 lib/util.php:890 lib/util.php:3540
+#: lib/media.php:1805 lib/util.php:890 lib/util.php:3540
 msgid "longer than recommended max of %1$.3f secs"
 msgstr "supérieur au max recommandé de %1$.3f secs"
 
-#: lib/media.php:1800
+#: lib/media.php:1806
 msgid "Slow WordPress function detected - %1$s took %2$.3f secs to make image size \"%3$s\" from %4$s (%5$s)."
 msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour créer la taille d'image \"%3$s\" à partir de %4$s (%5$s)."
 
-#: lib/media.php:1827
+#: lib/media.php:1833
 msgid "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr "Corruption possible de %1$s détecté - la <a href=\"%2$s\">fonction WordPress %3$s</a> n'a pas pu créer la taille d'image \"%4$s\" (%5$s) à partir de %6$s."
 
-#: lib/media.php:3138
+#: lib/media.php:3159
 msgid "Getting video details for %s."
 msgstr "Obtention des détails de la vidéo pour %s."
 
-#: lib/media.php:3811
+#: lib/media.php:3832
 msgid "image URL %s"
 msgstr "URL d'image %s"
 
-#: lib/media.php:3864
+#: lib/media.php:3885
 msgid "%1$s %2$s ignored - the resulting resized image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr "L'%2$s de %1$s a été ignoré - l'image redimensionnée résultante de %3$s a une <strong>proportion égale ou supérieur a %4$d:1 permise par la norme %5$s</strong>."
 
-#: lib/media.php:3899
+#: lib/media.php:3920
 msgid "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>."
 msgstr "L'%2$s de %1$s a été ignoré - l'image redimensionnée résultante de %3$s est <strong>plus petite que le minimum %4$s permise par la norme %5$s</strong>."
 
