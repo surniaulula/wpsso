@@ -131,8 +131,6 @@
 
 'wpsso_import_product_attributes' ( array $md_opts, array $mod, $wp_obj )
 
-'wpsso_include_video_previews' ( $bool, array $mod, array $mt_videos )
-
 'wpsso_inherit_custom_images' ( $bool, array $mod )
 
 'wpsso_inherit_featured_image' ( $bool, array $mod )
@@ -230,6 +228,8 @@
 'wpsso_og_add_mt_reviews' ( $bool = true, $mod )
 
 'wpsso_og_add_mt_variants' ( $bool = true, $mod )
+
+'wpsso_og_add_mt_video_image_url' ( $image_url, $video_url )
 
 'wpsso_og_add_wc_mt_rating' ( $bool = false, $mod )	// $book = true if 'woocommerce_enable_review_rating' option is 'yes'.
 

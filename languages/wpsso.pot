@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 21.9.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 21.9.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3062,8 +3062,8 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:35 lib/com/form.php:977
-#: lib/media-filters.php:117 lib/media.php:1629 lib/media.php:1780
-#: lib/media.php:3810
+#: lib/media-filters.php:117 lib/media.php:1615 lib/media.php:1766
+#: lib/media.php:3811
 msgid "Media Library"
 msgstr ""
 
@@ -6865,15 +6865,15 @@ msgid ""
 "installed."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:216 lib/pro/media/youtube.php:186
+#: gettext/gettext-lib-pro.php:216 lib/pro/media/youtube.php:213
 msgid "Video title not found for %s."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:217 lib/pro/media/youtube.php:196
+#: gettext/gettext-lib-pro.php:217 lib/pro/media/youtube.php:223
 msgid "Video description not found for %s."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:218 lib/pro/media/youtube.php:206
+#: gettext/gettext-lib-pro.php:218 lib/pro/media/youtube.php:233
 msgid "Video upload date not found for %s."
 msgstr ""
 
@@ -9774,7 +9774,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media-filters.php:120 lib/media.php:3820
+#: lib/media-filters.php:120 lib/media.php:3821
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -9803,87 +9803,87 @@ msgid ""
 "%3$dpx height."
 msgstr ""
 
-#: lib/media.php:1410
+#: lib/media.php:1396
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1633
+#: lib/media.php:1619
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:1635 lib/media.php:1849
+#: lib/media.php:1621 lib/media.php:1835
 msgid ""
 "You may consider regenerating the sizes of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:1651
+#: lib/media.php:1637
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> returned an error for <a href=\"%4$s\">image ID %5$s</a>: %6$s."
 msgstr ""
 
-#: lib/media.php:1672
+#: lib/media.php:1658
 msgid ""
 "Possible %1$s corruption detected - the full size image dimensions for <a "
 "href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1691
+#: lib/media.php:1677
 msgid ""
 "Possible %1$s corruption detected - the full size image file path for <a "
 "href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1782
+#: lib/media.php:1768
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1818 lib/register.php:315 lib/util-cache.php:757
+#: lib/media.php:1804 lib/register.php:315 lib/util-cache.php:757
 #: lib/util.php:889 lib/util.php:1004 lib/util.php:1036 lib/util.php:1074
 #: lib/util.php:3539
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1819 lib/util.php:890 lib/util.php:3540
+#: lib/media.php:1805 lib/util.php:890 lib/util.php:3540
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
-#: lib/media.php:1820
+#: lib/media.php:1806
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to make image size "
 "\"%3$s\" from %4$s (%5$s)."
 msgstr ""
 
-#: lib/media.php:1847
+#: lib/media.php:1833
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:3158
+#: lib/media.php:3159
 msgid "Getting video details for %s."
 msgstr ""
 
-#: lib/media.php:3831
+#: lib/media.php:3832
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:3884
+#: lib/media.php:3885
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:3919
+#: lib/media.php:3920
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
