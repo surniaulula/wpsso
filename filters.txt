@@ -217,6 +217,8 @@
 
 'wpsso_meta_name' ( $mt_name, $mod )
 
+'wpsso_og' ( array $mt_og, $mod )
+
 'wpsso_og_add_media_from_url' ( $url, $service )	// $service = 'facebook' or 'soundcloud'.
 
 'wpsso_og_add_media_throttle_secs' ( $secs = 5, $service )	// $service = 'facebook' or 'soundcloud'.
@@ -228,8 +230,6 @@
 'wpsso_og_add_mt_reviews' ( $bool = true, $mod )
 
 'wpsso_og_add_mt_variants' ( $bool = true, $mod )
-
-'wpsso_og_add_mt_video_image_url' ( $image_url, $video_url )	// Image URL or empty string.
 
 'wpsso_og_add_wc_mt_rating' ( $bool = false, $mod )	// $book = true if 'woocommerce_enable_review_rating' option is 'yes'.
 
@@ -255,11 +255,11 @@
 
 'wpsso_og_ns' ( $ns )
 
-'wpsso_og' ( array $mt_og, $mod )
-
 'wpsso_og_seed' ( array $mt_og, $mod )
 
 'wpsso_og_type' ( $type_id, $mod, $is_custom )
+
+'wpsso_og_video_image_url' ( $image_url, $video_url )	// Image URL or empty string.
 
 'wpsso_option_type' ( $option_type = '', $base_key, $network, $mod )	// Return the sanitation type for a given option key.
 

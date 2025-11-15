@@ -2637,7 +2637,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$this->p->debug->log( 'prev_url missing from args array' );
 				}
 
-				$filter_name = 'wpsso_og_add_mt_video_image_url';
+				$filter_name = 'wpsso_og_video_image_url';
 
 				if ( $this->p->debug->enabled ) {
 
