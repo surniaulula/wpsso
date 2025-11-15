@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 21.9.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 21.9.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6845,35 +6845,35 @@ msgid "Video Upload Date"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:207 gettext/gettext-lib-pro.php:210
-#: gettext/gettext-lib-pro.php:213 lib/pro/media/slideshare.php:216
-#: lib/pro/media/vimeo.php:195 lib/pro/media/wistia.php:359
+#: gettext/gettext-lib-pro.php:213 lib/pro/media/slideshare.php:244
+#: lib/pro/media/vimeo.php:217 lib/pro/media/wistia.php:384
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:208 gettext/gettext-lib-pro.php:211
-#: gettext/gettext-lib-pro.php:214 lib/pro/media/slideshare.php:217
-#: lib/pro/media/vimeo.php:196 lib/pro/media/wistia.php:360
+#: gettext/gettext-lib-pro.php:214 lib/pro/media/slideshare.php:245
+#: lib/pro/media/vimeo.php:218 lib/pro/media/wistia.php:385
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:209 gettext/gettext-lib-pro.php:212
 #: gettext/gettext-lib-pro.php:215 lib/conflict.php:337
-#: lib/pro/media/slideshare.php:220 lib/pro/media/vimeo.php:199
-#: lib/pro/media/wistia.php:363
+#: lib/pro/media/slideshare.php:248 lib/pro/media/vimeo.php:221
+#: lib/pro/media/wistia.php:388
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:216 lib/pro/media/youtube.php:213
+#: gettext/gettext-lib-pro.php:216 lib/pro/media/youtube.php:211
 msgid "Video title not found for %s."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:217 lib/pro/media/youtube.php:223
+#: gettext/gettext-lib-pro.php:217 lib/pro/media/youtube.php:221
 msgid "Video description not found for %s."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:218 lib/pro/media/youtube.php:233
+#: gettext/gettext-lib-pro.php:218 lib/pro/media/youtube.php:231
 msgid "Video upload date not found for %s."
 msgstr ""
 

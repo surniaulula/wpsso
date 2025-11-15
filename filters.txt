@@ -229,7 +229,7 @@
 
 'wpsso_og_add_mt_variants' ( $bool = true, $mod )
 
-'wpsso_og_add_mt_video_image_url' ( $image_url, $video_url )
+'wpsso_og_add_mt_video_image_url' ( $image_url, $video_url )	// Image URL or empty string.
 
 'wpsso_og_add_wc_mt_rating' ( $bool = false, $mod )	// $book = true if 'woocommerce_enable_review_rating' option is 'yes'.
 
