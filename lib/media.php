@@ -2623,31 +2623,51 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$mt_single_video[ 'og:video:has_image' ] = false;	// Default.
 
+				/*
+				 * Check for preview image.
+				 */
+				$vid_img_url = '';
+
 				if ( ! empty( $args[ 'prev_url' ] ) ) {
 
-					/*
-					 * og:image meta tags.
-					 */
-					$filter_name  = 'wpsso_og_add_mt_video_image_url';
+					$vid_img_url = $args[ 'prev_url' ];
+
+				} elseif ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'prev_url missing from args array' );
+				}
+
+				$filter_name = 'wpsso_og_add_mt_video_image_url';
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'applying filters "' . $filter_name . '" for "' . $vid_img_url . '"' );
+				}
+
+				if ( $vid_img_url = apply_filters( $filter_name, $vid_img_url, $args[ 'url' ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying filters "' . $filter_name . '" for ' . $args[ 'prev_url' ] );
+						$this->p->debug->log( 'adding video preview url = ' . $vid_img_url );
 					}
 
-					if ( $vid_prev_url = apply_filters( $filter_name, $args[ 'prev_url' ], $args[ 'url' ] ) ) {
+					if ( SucomUtil::is_https( $vid_img_url ) ) {	// Just in case.
 
-						$mt_single_video[ 'og:video:has_image' ]     = true;
-						$mt_single_video[ 'og:video:thumbnail_url' ] = $vid_prev_url;
-						$mt_single_video[ 'og:image:url' ]           = $vid_prev_url;
+						$mt_single_video[ 'og:image:secure_url' ] = $vid_img_url;
+					
+						unset( $mt_single_video[ 'og:image:url' ] );	// Just in case.
 
-						/*
-						 * Add correct image sizes for the image URL using getimagesize().
-						 *
-						 * Note that PHP v7.1 or better is required to get the image size of WebP images.
-						 */
-						$this->p->util->add_image_url_size( $mt_single_video );
-					}
+					} else $mt_single_video[ 'og:image:url' ] = $vid_img_url;
+
+					$mt_single_video[ 'og:video:thumbnail_url' ] = $vid_img_url;
+					$mt_single_video[ 'og:video:has_image' ]     = true;
+
+					/*
+					 * Add correct image sizes for the image URL using getimagesize().
+					 *
+					 * Note that PHP v7.1 or better is required to get the image size of WebP images.
+					 */
+					$this->p->util->add_image_url_size( $mt_single_video );
 				}
 
 				/*
