@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.4.33
 Requires At Least: 5.9
 Tested Up To: 6.8.3
-WC Tested Up To: 10.2.2
+WC Tested Up To: 10.3.5
 Stable Tag: 21.8.1
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.9.0-dev.2 (2025/11/14)**
+**Version 21.9.0-dev.3 (2025/11/15)**
 
 * **New Features**
 	* None.
@@ -387,9 +387,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.9.0-dev.2 =
+= 21.9.0-dev.3 =
 
-(2025/11/14) Disabled Schema and Open Graph type in Document SSO metabox for WooCommerce account, cart, and checkout pages.
+(2025/11/15) Disabled Schema and Open Graph type in Document SSO metabox for WooCommerce account, cart, and checkout pages.
 
 = 21.8.1 =
 
