@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.9.0-dev.3 (2025/11/15)**
+**Version 21.9.0-b.1 (2025/11/15)**
 
 * **New Features**
 	* None.
@@ -387,7 +387,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.9.0-dev.3 =
+= 21.9.0-b.1 =
 
 (2025/11/15) Disabled Schema and Open Graph type in Document SSO metabox for WooCommerce account, cart, and checkout pages.
 
