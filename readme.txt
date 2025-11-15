@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.9.0-rc.1 (2025/11/15)**
+**Version 21.9.0 (2025/11/15)**
 
 * **New Features**
 	* None.
@@ -387,7 +387,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.9.0-rc.1 =
+= 21.9.0 =
 
 (2025/11/15) Schema and Open Graph type drop-downs in the Document SSO metabox now disabled for WooCommerce account, cart, and checkout pages. Added a new 'wpsso_og_video_image_url' filter.
 
