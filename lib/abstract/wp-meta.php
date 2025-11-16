@@ -414,10 +414,10 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/*
 					 * Edit Media tab.
 					 */
-					'og_img_max'             => isset( $opts[ 'og_img_max' ] ) ? (int) $opts[ 'og_img_max' ] : 1,	// 1 by default.
-					'og_vid_max'             => isset( $opts[ 'og_vid_max' ] ) ? (int) $opts[ 'og_vid_max' ] : 1,	// 1 by default.
-					'og_vid_prev_img'        => empty( $opts[ 'og_vid_prev_img' ] ) ? 0 : 1,			// Enabled by default.
-					'og_vid_autoplay'        => empty( $opts[ 'og_vid_autoplay' ] ) ? 0 : 1,			// Enabled by default.
+					'og_img_max'             => isset( $opts[ 'og_img_max' ] ) ? (int) $opts[ 'og_img_max' ] : 1,
+					'og_vid_max'             => isset( $opts[ 'og_vid_max' ] ) ? (int) $opts[ 'og_vid_max' ] : 1,
+					'og_vid_prev_img'        => empty( $opts[ 'og_vid_prev_img' ] ) ? 0 : 1,
+					'og_vid_autoplay'        => empty( $opts[ 'og_vid_autoplay' ] ) ? 0 : 1,
 					'og_img_id'              => '',
 					'og_img_id_lib'          => 'wp',
 					'og_img_url'             => '',

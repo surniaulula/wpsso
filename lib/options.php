@@ -594,6 +594,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$adv_incl = array(
 						'add_.*',
 						'og_type_for_.*',
+						'og_vid_.*',
 						'plugin_.*',
 						'schema_def_.*',
 						'schema_type_for_.*',

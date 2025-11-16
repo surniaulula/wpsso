@@ -1375,7 +1375,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		public function preview_images_are_first() {
 
-			return ' ' . _x( 'video preview images are included first', 'option comment', 'wpsso' );
+			return ' (' . _x( 'video preview images are included first', 'option comment', 'wpsso' ) . ')';
 		}
 
 		public function pro_feature( $ext ) {

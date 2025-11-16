@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '21.9.0',	// Plugin version.
-					'opt_version' => '1032',	// Increment when changing default option values.
+					'opt_version' => '1033',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1275,8 +1275,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_title_sep'              => '-',		// Title Separator.
 					'og_ellipsis'               => '...',		// Truncated Text Ellipsis.
 					'og_desc_hashtags'          => 0,		// Description Hashtags.
-					'og_vid_max'                => 1,
-					'og_vid_autoplay'           => 1,
+					'og_vid_max'                => 1,		// Maximum Videos to Include.
+					'og_vid_autoplay'           => 0,		// Force Autoplay when Possible.
 					'og_vid_prev_img'           => 1,		// Include Video Preview Images.
 
 					/*

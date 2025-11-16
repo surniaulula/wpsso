@@ -190,7 +190,6 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 					case 'schema_book_pages':			// Number of Pages.
 					case 'schema_reading_mins':			// Est. Reading Time.
-					case 'schema_vid_max':				// Maximum Videos to Include.
 
 						if ( empty( $mod[ 'name' ] ) ) {	// Must be an interger for plugin settings (ie. no module).
 

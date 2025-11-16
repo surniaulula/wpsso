@@ -55,7 +55,7 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 					$css_class = '', $css_id = 'og_vid_prev_img' ) .
 				$form->get_no_td_checkbox( 'og_vid_prev_img', $this->p->msgs->preview_images_are_first() );
 
-			$table_rows[ 'og_vid_autoplay' ] = '' .
+			$table_rows[ 'og_vid_autoplay' ] = $form->get_tr_hide( $in_view = 'basic', 'og_vid_autoplay' ) .
 				$form->get_th_html( _x( 'Force Autoplay when Possible', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'og_vid_autoplay' ) .
 				$form->get_no_td_checkbox( 'og_vid_autoplay' );

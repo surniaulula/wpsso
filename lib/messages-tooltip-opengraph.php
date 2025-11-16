@@ -165,7 +165,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 
 				case 'tooltip-og_vid_autoplay':		// Force Autoplay when Possible.
 
-					$text = __( 'If possible, add or modify the video URL "autoplay" argument for videos in meta tags and Schema markup.', 'wpsso' );
+					$text = __( 'If possible, add or modify the video URL "autoplay" argument for videos in meta tags and Schema markup.', 'wpsso' ) . ' ';
+
+					$text .= __( 'Video URLs from Vimeo and Wistia allow for an autoplay argument.', 'wpsso' );
 
 					break;
 
