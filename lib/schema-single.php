@@ -2048,23 +2048,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			if ( empty( $json_ret[ 'priceValidUntil' ] ) ) {
 
-				static $price_valid_until = null;
+				if ( $valid_max_time = SucomUtil::get_const( 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' ) ) {
 
-				if ( null === $price_valid_until ) {
-
-					/*
-					 * Skip if WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME = 0 or false.
-					 */
-					if ( $valid_max_time = SucomUtil::get_const( 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' ) ) {
-
-						$price_valid_until = gmdate( 'c', time() + $valid_max_time );
-
-					} else $price_valid_until = false;	// Check only once.
-				}
-
-				if ( $price_valid_until ) {
-
-					$json_ret[ 'priceValidUntil' ] = $price_valid_until;
+					$json_ret[ 'priceValidUntil' ] = gmdate( 'c', time() + $valid_max_time );
 				}
 			}
 
@@ -2091,7 +2077,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				if ( empty( $price_spec[ 'validThrough' ] ) ) {	// Avoid Google validator warnings.
 
-					$price_spec[ 'validThrough' ] = gmdate( 'c', time() + MONTH_IN_SECONDS );
+					if ( $valid_max_time = SucomUtil::get_const( 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' ) ) {
+
+						$json_ret[ 'validThrough' ] = gmdate( 'c', time() + $valid_max_time );
+					}
 				}
 
 				/*

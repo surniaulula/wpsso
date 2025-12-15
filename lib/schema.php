@@ -2535,8 +2535,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 								/*
 								 * Avoid Google validator warnings.
 								 */
-								$offer[ 'url' ]             = $json_data[ 'url' ];
-								$offer[ 'priceValidUntil' ] = gmdate( 'c', time() + MONTH_IN_SECONDS );
+								$offer[ 'url' ] = $json_data[ 'url' ];
+
+								if ( $valid_max_time = SucomUtil::get_const( 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' ) ) {
+								
+									$offer[ 'priceValidUntil' ] = gmdate( 'c', time() + $valid_max_time );
+								}
 
 								/*
 								 * Add the offer.

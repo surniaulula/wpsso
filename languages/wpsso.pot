@@ -15086,11 +15086,11 @@ msgstr ""
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema-single.php:2309
+#: lib/schema-single.php:2298
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:2447
+#: lib/schema-single.php:2436
 msgid "adding schema product"
 msgstr ""
 
@@ -15113,7 +15113,7 @@ msgstr ""
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:4127
+#: lib/schema.php:4131
 msgid "checking schema properties"
 msgstr ""
 
