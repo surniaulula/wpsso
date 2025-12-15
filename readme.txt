@@ -276,6 +276,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 21.9.1-dev.1 (2025/12/15)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added Pinterest image duplicate check in case the WordPress content filter is applied twice.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Updated the `WpssoPinterest->get_mod_image_html()` method.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v5.9.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
+
 **Version 21.9.0 (2025/11/15)**
 
 * **New Features**
@@ -386,6 +401,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 21.9.1-dev.1 =
+
+(2025/12/15) Added Pinterest image duplicate check in case the WordPress content filter is applied twice.
 
 = 21.9.0 =
 
