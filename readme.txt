@@ -283,10 +283,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Added Pinterest image duplicate check in case the WordPress content filter is applied twice.
 * **Bugfixes**
-	* None.
+	* Fixed consistency of 'priceValidUntil' and 'priceValidUntil' values if no sale end date is available.
 * **Developer Notes**
-	* Updated the `WpssoPinterest->get_mod_image_html()` method.
 	* Changed the default WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME constant value from 12 months to 3 months.
+	* Updated the `WpssoPinterest->get_mod_image_html()` method to avoid adding the Pinterest image more than once.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
@@ -405,7 +405,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 21.9.1-dev.1 =
 
-(2025/12/15) Added Pinterest image duplicate check in case the WordPress content filter is applied twice.
+(2025/12/15) Added Pinterest image duplicate check. Fixed consistency of 'priceValidUntil' and 'priceValidUntil' values.
 
 = 21.9.0 =
 
