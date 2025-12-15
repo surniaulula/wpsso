@@ -286,6 +286,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Updated the `WpssoPinterest->get_mod_image_html()` method.
+	* Changed the default WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME constant value from 12 months to 3 months.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
