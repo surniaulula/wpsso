@@ -258,19 +258,19 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			 */
 			$cache_salt = SucomUtil::get_mod_salt( $mod );
 
-			static $local_recursion = array();	// Check for any unexpected recursion.
+			static $do_once = array();	// Just in case - prevent recursion and duplicate CSS IDs in the webpage.
 
-			if ( ! empty( $local_recursion[ $cache_salt ] ) ) {
+			if ( ! empty( $do_once[ $cache_salt ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: recursion detected for ' . $cache_salt );
+					$this->p->debug->log( 'exiting early: already added for ' . $cache_salt );
 				}
 
 				return $image_html;	// Stop here.
 			}
 
-			$local_recursion[ $cache_salt ] = true;
+			$do_once[ $cache_salt ] = true;	// Set early to prevent recursion.
 
 			$size_name = 'wpsso-pinterest';
 			$mt_images = $this->p->media->get_all_images( $num = 1, $size_name, $mod, $md_pre = array( 'pin', 'schema', 'og' ) );
@@ -316,8 +316,6 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			}
 
 			$image_html .= '</div>';
-
-			unset( $local_recursion[ $cache_salt ] );
 
 			return $image_html;
 		}
