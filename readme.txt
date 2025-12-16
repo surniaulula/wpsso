@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.4.33
 Requires At Least: 5.9
 Tested Up To: 6.9
-WC Tested Up To: 10.3.6
+WC Tested Up To: 10.4.2
 Stable Tag: 21.9.0
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
@@ -276,17 +276,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.9.1-rc.1 (2025/12/16)**
+**Version 21.10.0-dev.1 (2025/12/16)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added Pinterest image duplicate prevention in case the WordPress content filter is applied twice.
+	* Added a new "Default Product Prices Valid For" option under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration tab.
 * **Bugfixes**
 	* Fixed inconsistency of 'priceValidUntil' and 'validThrough' default values when no sale end date is available.
 * **Developer Notes**
-	* Changed default WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME constant value from 12 months to 3 months.
 	* Updated `WpssoPinterest->get_mod_image_html()` method to avoid adding the Pinterest image more than once.
+	* Removed the WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME constant.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
@@ -403,9 +404,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.9.1-rc.1 =
+= 21.10.0-dev.1 =
 
-(2025/12/16) Added Pinterest image CSS ID duplicate prevention. Fixed inconsistency of 'priceValidUntil' and 'validThrough' default values.
+(2025/12/16) Added Pinterest image CSS ID duplicate prevention. Fixed inconsistency of 'priceValidUntil' and 'validThrough' default values. Added a new "Default Product Prices Valid For" option.
 
 = 21.9.0 =
 
