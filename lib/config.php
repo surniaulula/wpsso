@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '21.9.1-dev.1',	// Plugin version.
+					'version'     => '21.9.1-b.1',	// Plugin version.
 					'opt_version' => '1033',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -5165,7 +5165,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_SCHEMA_MOVIE_DIRECTORS_MAX' ]     = 5;
 			$var_const[ 'WPSSO_SCHEMA_OFFER_CATALOGS_MAX' ]      = 5;
 			$var_const[ 'WPSSO_SCHEMA_ORGANIZATION_TYPE_ID' ]    = 'organization';
-			$var_const[ 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' ]  = 3 * MONTH_IN_SECONDS;	// Used for Schema 'priceValidUntil' property default.
+			$var_const[ 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' ]  = 3 * MONTH_IN_SECONDS;	// Default for Schema 'priceValidUntil' and 'validThrough'.
 			$var_const[ 'WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX' ]  = 40;
 			$var_const[ 'WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX' ] = 40;
 			$var_const[ 'WPSSO_SCHEMA_REVIEWS_MAX' ]             = 100;
