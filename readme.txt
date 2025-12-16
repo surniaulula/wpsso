@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.9.1-b.1 (2025/12/15)**
+**Version 21.9.1-rc.1 (2025/12/16)**
 
 * **New Features**
 	* None.
@@ -403,9 +403,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.9.1-b.1 =
+= 21.9.1-rc.1 =
 
-(2025/12/15) Added Pinterest image CSS ID duplicate prevention. Fixed inconsistency of 'priceValidUntil' and 'validThrough' default values.
+(2025/12/16) Added Pinterest image CSS ID duplicate prevention. Fixed inconsistency of 'priceValidUntil' and 'validThrough' default values.
 
 = 21.9.0 =
 
