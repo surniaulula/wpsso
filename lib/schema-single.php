@@ -2048,7 +2048,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			if ( empty( $json_ret[ 'priceValidUntil' ] ) ) {
 
-				if ( ! empty( $wpsso->options[ 'plugin_product_price_valid_days' ] ) ) {	// Disable default 'priceValidUntil' property value with 0.
+				if ( ! empty( $wpsso->options[ 'plugin_product_price_valid_days' ] ) ) {
 
 					$json_ret[ 'priceValidUntil' ] = gmdate( 'c', time() + ( $wpsso->options[ 'plugin_product_price_valid_days' ] * DAY_IN_SECONDS ) );
 				}
@@ -2075,11 +2075,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$price_spec[ 'priceCurrency' ] = $wpsso->options[ 'og_def_currency' ];
 				}
 
-				if ( empty( $price_spec[ 'validThrough' ] ) ) {	// Avoid Google validator warnings.
+				if ( empty( $price_spec[ 'validThrough' ] ) ) {		// Avoid Google validator warnings.
 
-					if ( ! empty( $wpsso->options[ 'plugin_product_price_valid_days' ] ) ) {	// Disable default 'validThrough' property value with 0.
+					if ( ! empty( $wpsso->options[ 'plugin_product_price_valid_days' ] ) ) {
 
-						$json_ret[ 'validThrough' ] = gmdate( 'c', time() + ( $wpsso->options[ 'plugin_product_price_valid_days' ] * DAY_IN_SECONDS ) );
+						$price_spec[ 'validThrough' ] = gmdate( 'c', time() + ( $wpsso->options[ 'plugin_product_price_valid_days' ] * DAY_IN_SECONDS ) );
 					}
 				}
 
