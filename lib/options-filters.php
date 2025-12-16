@@ -69,17 +69,21 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 						return 'csv_blank';
 
+					case 'plugin_product_price_valid_days':		// Default Product Prices Valid For.
+
+						return 'zero_pos_int';	// Integer options that must be 0 or more.
+
 					case 'plugin_gravatar_size':			// Gravatar Image Size.
 					case 'plugin_min_shorten':			// Minimum URL Length to Shorten.
 					case 'plugin_ratings_reviews_num_max':		// Maximum Number of Reviews.
 					case 'plugin_ratings_reviews_months_max':	// Maximum Age of Reviews.
 					case 'plugin_upscale_pct_max':			// Maximum Image Upscale Percent.
 
-						return 'pos_int';
+						return 'pos_int';	// Integer options that must be 1 or more.
 
 					case 'plugin_stamped_store_hash':	// Stamped.io Store Hash.
 
-						return 'blank_num';
+						return 'blank_num';	// Empty string or numeric.
 
 					case 'plugin_title_part_site':		// Title Tag Site Prefix / Suffix.
 					case 'plugin_title_part_tagline':	// Title Tag Tagline Prefix / Suffix.

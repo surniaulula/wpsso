@@ -2537,9 +2537,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 								 */
 								$offer[ 'url' ] = $json_data[ 'url' ];
 
-								if ( $valid_max_time = SucomUtil::get_const( 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' ) ) {
-								
-									$offer[ 'priceValidUntil' ] = gmdate( 'c', time() + $valid_max_time );
+								if ( ! empty( $wpsso->options[ 'plugin_product_price_valid_days' ] ) ) {	// Disable default 'priceValidUntil' property value with 0.
+
+									$offer[ 'priceValidUntil' ] = gmdate( 'c', time() + ( $wpsso->options[ 'plugin_product_price_valid_days' ] * DAY_IN_SECONDS ) );
 								}
 
 								/*

@@ -2048,9 +2048,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			if ( empty( $json_ret[ 'priceValidUntil' ] ) ) {
 
-				if ( $valid_max_time = SucomUtil::get_const( 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' ) ) {
+				if ( ! empty( $wpsso->options[ 'plugin_product_price_valid_days' ] ) ) {	// Disable default 'priceValidUntil' property value with 0.
 
-					$json_ret[ 'priceValidUntil' ] = gmdate( 'c', time() + $valid_max_time );
+					$json_ret[ 'priceValidUntil' ] = gmdate( 'c', time() + ( $wpsso->options[ 'plugin_product_price_valid_days' ] * DAY_IN_SECONDS ) );
 				}
 			}
 
@@ -2077,9 +2077,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				if ( empty( $price_spec[ 'validThrough' ] ) ) {	// Avoid Google validator warnings.
 
-					if ( $valid_max_time = SucomUtil::get_const( 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' ) ) {
+					if ( ! empty( $wpsso->options[ 'plugin_product_price_valid_days' ] ) ) {	// Disable default 'validThrough' property value with 0.
 
-						$json_ret[ 'validThrough' ] = gmdate( 'c', time() + $valid_max_time );
+						$json_ret[ 'validThrough' ] = gmdate( 'c', time() + ( $wpsso->options[ 'plugin_product_price_valid_days' ] * DAY_IN_SECONDS ) );
 					}
 				}
 

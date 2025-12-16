@@ -215,9 +215,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 				case 'tooltip-plugin_upscale_pct_max':	// Maximum Image Upscale Percent.
 
-					$upscale_max = $this->p->opt->get_defaults( 'plugin_upscale_pct_max' );
+					$def_value = $this->p->opt->get_defaults( 'plugin_upscale_pct_max' );
 
-					$text = sprintf( __( 'When upscaling of %1$s image sizes is allowed, %2$s can make sure smaller images are not upscaled beyond reason, which would publish very low quality / fuzzy images on social and search sites (the default maximum is %3$s%%).', 'wpsso' ), $info[ 'short' ], $this->p_name_pro, $upscale_max ) . ' ';
+					$text = sprintf( __( 'When upscaling of %1$s image sizes is allowed, %2$s can make sure smaller images are not upscaled beyond reason, which would publish very low quality / fuzzy images on social and search sites (the default maximum is %3$s%%).', 'wpsso' ), $info[ 'short' ], $this->p_name_pro, $def_value ) . ' ';
 
 					$text .= __( 'If an image needs to be upscaled beyond this maximum, in either width or height, the image will not be upscaled.', 'wpsso' );
 
@@ -247,6 +247,16 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 				case 'tooltip-plugin_product_include_vat':	// Include VAT in Product Prices.
 
 					$text = __( 'Retrieve product prices from e-Commerce plugins with VAT included.', 'wpsso' ) . ' ';
+
+					break;
+
+				case 'tooltip-plugin_product_price_valid_days':	// Default Product Prices Valid For.
+					
+					$def_value = $this->p->opt->get_defaults( 'plugin_product_price_valid_days' );
+
+					$text = sprintf( __( 'The expiration time for product prices by default should reflect how often your product prices change (default is %d days).', 'wpsso' ), $def_value ) . ' ';
+
+					$text .= __( 'If a product is on sale, the expiration time for that product price will be the sale end date (if one is available).', 'wpsso' ) . ' ';
 
 					break;
 

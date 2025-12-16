@@ -1701,7 +1701,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 								$selected = false, $event_names = array( 'on_focus_load_json' ),
 									$event_args = array( 'json_var' => 'currencies' ) ) . ' ' .
 						_x( 'per', 'option comment', 'wpsso' ) . ' ' .
-						$form->get_select( 'schema_job_salary_period', $this->p->cf[ 'form' ][ 'time_text' ], 'short' ),
+						$form->get_select( 'schema_job_salary_period', $this->p->cf[ 'form' ][ 'salary_period' ], 'short' ),
 				),
 				'schema_job_empl_type' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'job.posting' ],

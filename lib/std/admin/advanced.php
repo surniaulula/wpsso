@@ -185,6 +185,13 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_no_td_checkbox( 'plugin_product_include_vat' ) .
 				WpssoAdmin::get_option_site_use( 'plugin_product_include_vat', $form, $args[ 'network' ] );
 
+			$table_rows[ 'plugin_product_price_valid_days' ] = '' .
+				$form->get_th_html( _x( 'Default Product Prices Valid For', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_product_price_valid_days' ) .
+				'<td class="blank">' . $form->get_no_input( 'plugin_product_price_valid_days', $css_class = 'short' ) . ' ' .
+					_x( 'Days', 'option comment', 'wpsso' ) . '</td>' .
+				WpssoAdmin::get_option_site_use( 'plugin_product_price_valid_days', $form, $args[ 'network' ] );
+
 			$table_rows[ 'plugin_import_aioseop_meta' ] = '' .
 				$form->get_th_html( _x( 'Import All in One SEO Pack Metadata', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_import_aioseop_meta' ) .

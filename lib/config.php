@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '21.9.1-rc.1',	// Plugin version.
-					'opt_version' => '1033',	// Increment when changing default option values.
+					'version'     => '21.10.0-dev.1',	// Plugin version.
+					'opt_version' => '1034',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1745,15 +1745,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Advanced Settings > Integration > Plugin and Theme Integration.
 					 */
-					'plugin_speakable_css_csv'        => '',	// Speakable CSS Selectors.
-					'plugin_check_head'               => 1,		// Check for Duplicate Meta Tags.
-					'plugin_product_include_vat'      => 0,		// Include VAT in Product Prices.
-					'plugin_import_aioseop_meta'      => 0,		// Import All in One SEO Pack Metadata.
-					'plugin_import_rankmath_meta'     => 0,		// Import Rank Math SEO Metadata.
-					'plugin_import_seoframework_meta' => 0,		// Import The SEO Framework Metadata.
-					'plugin_import_wpmetaseo_meta'    => 0,		// Import WP Meta SEO Metadata.
-					'plugin_import_wpseo_meta'        => 0,		// Import Yoast SEO Metadata.
-					'plugin_import_wpseo_blocks'      => 0,		// Import Yoast SEO Block Attrs.
+					'plugin_speakable_css_csv'        => '',		// Speakable CSS Selectors.
+					'plugin_check_head'               => 1,			// Check for Duplicate Meta Tags.
+					'plugin_product_include_vat'      => 0,			// Include VAT in Product Prices.
+					'plugin_product_price_valid_days' => 90,		// Default Product Prices Valid For.
+					'plugin_import_aioseop_meta'      => 0,			// Import All in One SEO Pack Metadata.
+					'plugin_import_rankmath_meta'     => 0,			// Import Rank Math SEO Metadata.
+					'plugin_import_seoframework_meta' => 0,			// Import The SEO Framework Metadata.
+					'plugin_import_wpmetaseo_meta'    => 0,			// Import WP Meta SEO Metadata.
+					'plugin_import_wpseo_meta'        => 0,			// Import Yoast SEO Metadata.
+					'plugin_import_wpseo_blocks'      => 0,			// Import Yoast SEO Block Attrs.
 
 					/*
 					 * Advanced Settings > Default Text.
@@ -2782,14 +2783,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'saturday'       => 'Saturday',
 					'publicholidays' => 'Public Holidays',
 				),
-				'time_seconds' => array(
-					'hour'  => HOUR_IN_SECONDS,
-					'day'   => DAY_IN_SECONDS,
-					'week'  => WEEK_IN_SECONDS,
-					'month' => MONTH_IN_SECONDS,
-					'year'  => YEAR_IN_SECONDS,
-				),
-				'time_text' => array(
+				'salary_period' => array(
 					'hour'  => 'Hour',
 					'day'   => 'Day',
 					'week'  => 'Week',
@@ -5165,7 +5159,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_SCHEMA_MOVIE_DIRECTORS_MAX' ]     = 5;
 			$var_const[ 'WPSSO_SCHEMA_OFFER_CATALOGS_MAX' ]      = 5;
 			$var_const[ 'WPSSO_SCHEMA_ORGANIZATION_TYPE_ID' ]    = 'organization';
-			$var_const[ 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' ]  = 3 * MONTH_IN_SECONDS;	// Default for Schema 'priceValidUntil' and 'validThrough'.
 			$var_const[ 'WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX' ]  = 40;
 			$var_const[ 'WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX' ] = 40;
 			$var_const[ 'WPSSO_SCHEMA_REVIEWS_MAX' ]             = 100;
