@@ -12282,7 +12282,7 @@ msgstr ""
 
 #: lib/messages-tooltip-plugin.php:257
 msgid ""
-"The expiration time for product prices by default should reflect how often "
+"The expiration time by default of product prices should reflect how often "
 "your product prices change (default is %d days)."
 msgstr ""
 

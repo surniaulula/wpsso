@@ -254,7 +254,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					
 					$def_value = $this->p->opt->get_defaults( 'plugin_product_price_valid_days' );
 
-					$text = sprintf( __( 'The expiration time for product prices by default should reflect how often your product prices change (default is %d days).', 'wpsso' ), $def_value ) . ' ';
+					$text = sprintf( __( 'The expiration time by default of product prices should reflect how often your product prices change (default is %d days).', 'wpsso' ), $def_value ) . ' ';
 
 					$text .= __( 'If a product is on sale, the expiration time for that product price will be the sale end date (if one is available).', 'wpsso' ) . ' ';
 
