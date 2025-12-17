@@ -15110,11 +15110,11 @@ msgstr ""
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema-single.php:2298
+#: lib/schema-single.php:2292
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:2436
+#: lib/schema-single.php:2430
 msgid "adding schema product"
 msgstr ""
 
@@ -15122,22 +15122,22 @@ msgstr ""
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:2204
+#: lib/schema.php:2221
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:2377
+#: lib/schema.php:2394
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
 "the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/schema.php:2404
+#: lib/schema.php:2421
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:4131
+#: lib/schema.php:4139
 msgid "checking schema properties"
 msgstr ""
 

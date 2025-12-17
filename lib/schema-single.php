@@ -2048,10 +2048,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			if ( empty( $json_ret[ 'priceValidUntil' ] ) ) {
 
-				if ( ! empty( $wpsso->options[ 'plugin_product_price_valid_days' ] ) ) {
-
-					$json_ret[ 'priceValidUntil' ] = gmdate( 'c', time() + ( $wpsso->options[ 'plugin_product_price_valid_days' ] * DAY_IN_SECONDS ) );
-				}
+				$json_ret[ 'priceValidUntil' ] = WpssoSchema::get_schema_product_price_valid_date();
 			}
 
 			/*
@@ -2077,10 +2074,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				if ( empty( $price_spec[ 'validThrough' ] ) ) {		// Avoid Google validator warnings.
 
-					if ( ! empty( $wpsso->options[ 'plugin_product_price_valid_days' ] ) ) {
-
-						$price_spec[ 'validThrough' ] = gmdate( 'c', time() + ( $wpsso->options[ 'plugin_product_price_valid_days' ] * DAY_IN_SECONDS ) );
-					}
+					$price_spec[ 'validThrough' ] = WpssoSchema::get_schema_product_price_valid_date();
 				}
 
 				/*
