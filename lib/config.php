@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '21.10.0-dev.2',	// Plugin version.
-					'opt_version' => '1034',	// Increment when changing default option values.
+					'version'     => '21.10.0-dev.3',	// Plugin version.
+					'opt_version' => '1035',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1475,6 +1475,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings > Schema Defaults > Product.
 					 */
 					'schema_def_product_aggr_offers'           => 0,						// Aggregate Offers by Currency.
+					'schema_def_product_price_valid_days'      => 30,						// Default Product Prices Valid For.
 					'schema_def_product_adult_type'            => 'none',						// Default Product Adult Type.
 					'schema_def_product_age_group'             => 'none',						// Default Product Age Group.
 					'schema_def_product_category'              => 'none',						// Default Product Google Category.
@@ -1748,7 +1749,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_speakable_css_csv'        => '',		// Speakable CSS Selectors.
 					'plugin_check_head'               => 1,			// Check for Duplicate Meta Tags.
 					'plugin_product_include_vat'      => 0,			// Include VAT in Product Prices.
-					'plugin_product_price_valid_days' => 90,		// Default Product Prices Valid For.
 					'plugin_import_aioseop_meta'      => 0,			// Import All in One SEO Pack Metadata.
 					'plugin_import_rankmath_meta'     => 0,			// Import Rank Math SEO Metadata.
 					'plugin_import_seoframework_meta' => 0,			// Import The SEO Framework Metadata.

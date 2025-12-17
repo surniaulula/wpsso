@@ -69,10 +69,6 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 						return 'csv_blank';
 
-					case 'plugin_product_price_valid_days':		// Default Product Prices Valid For.
-
-						return 'zero_pos_int';	// Integer options that must be 0 or more.
-
 					case 'plugin_gravatar_size':			// Gravatar Image Size.
 					case 'plugin_min_shorten':			// Minimum URL Length to Shorten.
 					case 'plugin_ratings_reviews_num_max':		// Maximum Number of Reviews.
@@ -201,6 +197,10 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 						}
 
 						return 'blank_int';
+
+					case 'schema_def_product_price_valid_days':		// Default Product Prices Valid For.
+
+						return 'zero_pos_int';	// Integer options that must be 0 or more.
 
 					case 'schema_howto_step_section':		// How-To Step or Section (0 or 1).
 					case 'schema_recipe_instruction_section':	// Recipe Instruction or Section (0 or 1).

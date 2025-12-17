@@ -250,16 +250,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				case 'tooltip-plugin_product_price_valid_days':	// Default Product Prices Valid For.
-					
-					$def_value = $this->p->opt->get_defaults( 'plugin_product_price_valid_days' );
-
-					$text = sprintf( __( 'The expiration time by default of product prices should reflect how often your product prices change (default is %d days).', 'wpsso' ), $def_value ) . ' ';
-
-					$text .= __( 'If a product is on sale, the expiration time for that product price will be the sale end date (if one is available).', 'wpsso' ) . ' ';
-
-					break;
-
 				case 'tooltip-plugin_import_aioseop_meta':	// Import All in One SEO Pack Metadata.
 
 					if ( empty( $plugin_name_transl ) ) {

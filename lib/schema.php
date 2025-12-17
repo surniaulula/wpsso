@@ -1012,9 +1012,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( null === $valid_date ) {
 
-				if ( ! empty( $wpsso->options[ 'plugin_product_price_valid_days' ] ) ) {
+				if ( ! empty( $wpsso->options[ 'schema_def_product_price_valid_days' ] ) ) {
 
-					$valid_date = gmdate( 'c', time() + ( $wpsso->options[ 'plugin_product_price_valid_days' ] * DAY_IN_SECONDS ) );
+					$valid_date = gmdate( 'c', time() + ( $wpsso->options[ 'schema_def_product_price_valid_days' ] * DAY_IN_SECONDS ) );
 				}
 			}
 
