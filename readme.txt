@@ -276,13 +276,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.10.0-dev.2 (2025/12/16)**
+**Version 21.10.0-dev.3 (2025/12/17)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added Pinterest image duplicate prevention in case the WordPress content filter is applied twice.
-	* Added a new "Default Product Prices Valid For" option under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration tab.
+	* Added a new "Default Product Prices Valid For" option under the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Product tab.
 * **Bugfixes**
 	* Fixed inconsistency of 'priceValidUntil' and 'validThrough' default values when no sale end date is available.
 * **Developer Notes**
@@ -404,9 +404,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.10.0-dev.2 =
+= 21.10.0-dev.3 =
 
-(2025/12/16) Added Pinterest image CSS ID duplicate prevention. Fixed inconsistency of 'priceValidUntil' and 'validThrough' default values. Added a new "Default Product Prices Valid For" option.
+(2025/12/17) Added Pinterest image CSS ID duplicate prevention. Fixed inconsistency of 'priceValidUntil' and 'validThrough' default values. Added a new "Default Product Prices Valid For" option.
 
 = 21.9.0 =
 
