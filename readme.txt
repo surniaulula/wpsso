@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.10.0-dev.3 (2025/12/17)**
+**Version 21.10.0-rc.1 (2025/12/17)**
 
 * **New Features**
 	* None.
@@ -404,7 +404,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.10.0-dev.3 =
+= 21.10.0-rc.1 =
 
 (2025/12/17) Added Pinterest image CSS ID duplicate prevention. Fixed inconsistency of 'priceValidUntil' and 'validThrough' default values. Added a new "Default Product Prices Valid For" option.
 
