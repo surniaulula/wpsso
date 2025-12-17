@@ -345,7 +345,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 		 			break;
 
 				case 'tooltip-schema_def_product_price_valid_days':	// Default Product Prices Valid For.
-					
+
 					$def_value = $this->p->opt->get_defaults( 'schema_def_product_price_valid_days' );
 
 					$text = sprintf( __( 'The expiration time by default of product prices should reflect how often your product prices change (default is %d days).', 'wpsso' ), $def_value ) . ' ';

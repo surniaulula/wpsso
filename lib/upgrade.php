@@ -1048,7 +1048,7 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 			}
 
 			if ( $prev_version > 0 && $prev_version <= 1030 ) {
-				
+
 				$notice_key = 'timed-notice-wpsso-plugin-review';
 
 				$this->p->notice->is_dismissed( $notice_key, $user_id = null, $force_expire = true );

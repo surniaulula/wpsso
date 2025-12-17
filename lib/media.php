@@ -2654,7 +2654,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					if ( SucomUtil::is_https( $vid_img_url ) ) {	// Just in case.
 
 						$mt_single_video[ 'og:image:secure_url' ] = $vid_img_url;
-					
+
 						unset( $mt_single_video[ 'og:image:url' ] );	// Just in case.
 
 					} else $mt_single_video[ 'og:image:url' ] = $vid_img_url;

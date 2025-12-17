@@ -353,13 +353,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								}
 
 								if ( empty( $this->p->options[ 'plugin_attached_images' ] ) ) {
-									
+
 									$text .= ' <li>' . sprintf( __( 'Enable the %s option to use attached images (recommended).',
 										'wpsso' ), $attached_img_opt_link ) . '</li>';
 								}
 
 								if ( empty( $this->p->options[ 'plugin_content_images' ] ) ) {
-									
+
 									$text .= ' <li>' . sprintf( __( 'Enable the %s option to search the content text for more images.',
 										'wpsso' ), $content_img_opt_link ) . '</li>';
 
