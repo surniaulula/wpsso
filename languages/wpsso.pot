@@ -15110,11 +15110,11 @@ msgstr ""
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema-single.php:2292
+#: lib/schema-single.php:2288
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:2430
+#: lib/schema-single.php:2426
 msgid "adding schema product"
 msgstr ""
 

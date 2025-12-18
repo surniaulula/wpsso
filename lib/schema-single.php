@@ -2041,10 +2041,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			/*
 			 * Prevents a missing property warning from the Google validator.
-			 *
-			 * By default, define normal product prices (not on sale) as valid for 1 year.
-			 *
-			 * Uses a static cache for all offers to allow for a common value in AggregateOffer markup.
 			 */
 			if ( empty( $json_ret[ 'priceValidUntil' ] ) ) {
 
