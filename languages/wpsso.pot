@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 21.10.0\n"
+"Project-Id-Version: WPSSO Core 21.11.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4381,8 +4381,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:482 gettext/gettext-lib-config.php:494
 #: gettext/gettext-lib-config.php:499 gettext/gettext-lib-config.php:506
 #: gettext/gettext-lib-config.php:518 gettext/gettext-lib-config.php:524
-#: gettext/gettext-lib-config.php:535 gettext/gettext-lib-config.php:553
-#: gettext/gettext-lib-config.php:561 gettext/gettext-lib-config.php:574
+#: gettext/gettext-lib-config.php:535 gettext/gettext-lib-config.php:554
+#: gettext/gettext-lib-config.php:562 gettext/gettext-lib-config.php:575
 #: lib/messages-tooltip-plugin.php:699 lib/users/add-person.php:101
 msgctxt "option value"
 msgid "[None]"
@@ -4398,8 +4398,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:483 gettext/gettext-lib-config.php:495
 #: gettext/gettext-lib-config.php:500 gettext/gettext-lib-config.php:507
 #: gettext/gettext-lib-config.php:519 gettext/gettext-lib-config.php:525
-#: gettext/gettext-lib-config.php:536 gettext/gettext-lib-config.php:554
-#: gettext/gettext-lib-config.php:562 gettext/gettext-lib-config.php:575
+#: gettext/gettext-lib-config.php:536 gettext/gettext-lib-config.php:555
+#: gettext/gettext-lib-config.php:563 gettext/gettext-lib-config.php:576
 msgctxt "option value"
 msgid "None"
 msgstr ""
@@ -5570,170 +5570,175 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:544
 msgctxt "option value"
-msgid "Free Return"
+msgid "Strikethrough Price"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:545
 msgctxt "option value"
-msgid "Customer Pays Shipping"
+msgid "Free Return"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:546
 msgctxt "option value"
-msgid "Return Has Shipping Fees"
+msgid "Customer Pays Shipping"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:547
 msgctxt "option value"
-msgid "Customer Responsibility"
+msgid "Return Has Shipping Fees"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:548
 msgctxt "option value"
-msgid "Download And Print"
+msgid "Customer Responsibility"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:549
 msgctxt "option value"
-msgid "Label In Box"
+msgid "Download And Print"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:550
 msgctxt "option value"
-msgid "At Kiosk"
+msgid "Label In Box"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:551
 msgctxt "option value"
-msgid "By Mail"
+msgid "At Kiosk"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:552
 msgctxt "option value"
-msgid "In Store"
+msgid "By Mail"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:555
+#: gettext/gettext-lib-config.php:553
 msgctxt "option value"
-msgid "Regular"
+msgid "In Store"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:556
 msgctxt "option value"
-msgid "Petite"
+msgid "Regular"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:557
 msgctxt "option value"
-msgid "Plus"
+msgid "Petite"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:558
 msgctxt "option value"
-msgid "Tall"
+msgid "Plus"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:559
 msgctxt "option value"
-msgid "Big"
+msgid "Tall"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:560
 msgctxt "option value"
-msgid "Maternity"
+msgid "Big"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:563
+#: gettext/gettext-lib-config.php:561
 msgctxt "option value"
-msgid "AU"
+msgid "Maternity"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:564
 msgctxt "option value"
-msgid "BR"
+msgid "AU"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:565
 msgctxt "option value"
-msgid "CN"
+msgid "BR"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:566
 msgctxt "option value"
-msgid "DE"
+msgid "CN"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:567
 msgctxt "option value"
-msgid "EU"
+msgid "DE"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:568
 msgctxt "option value"
-msgid "FR"
+msgid "EU"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:569
 msgctxt "option value"
-msgid "IT"
+msgid "FR"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:570
 msgctxt "option value"
-msgid "JP"
+msgid "IT"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:571
 msgctxt "option value"
-msgid "MX"
+msgid "JP"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:572
 msgctxt "option value"
-msgid "UK"
+msgid "MX"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:573
 msgctxt "option value"
-msgid "US"
+msgid "UK"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:576
+#: gettext/gettext-lib-config.php:574
 msgctxt "option value"
-msgid "Female"
+msgid "US"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:577
 msgctxt "option value"
-msgid "Male"
+msgid "Female"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:578
 msgctxt "option value"
-msgid "Unisex"
+msgid "Male"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:579
 msgctxt "option value"
-msgid "Development and Up"
+msgid "Unisex"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:580
 msgctxt "option value"
-msgid "Alpha and Up"
+msgid "Development and Up"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:581
 msgctxt "option value"
-msgid "Beta and Up"
+msgid "Alpha and Up"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:582
 msgctxt "option value"
-msgid "Release Candidate and Up"
+msgid "Beta and Up"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:583
+msgctxt "option value"
+msgid "Release Candidate and Up"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:584
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr ""
@@ -7616,12 +7621,12 @@ msgstr ""
 msgid "Insufficient privileges to edit comment ID %1$s."
 msgstr ""
 
-#: lib/config.php:5454
+#: lib/config.php:5455
 msgctxt "plugin type"
 msgid "plugin"
 msgstr ""
 
-#: lib/config.php:5454
+#: lib/config.php:5455
 msgctxt "plugin type"
 msgid "add-on"
 msgstr ""
@@ -9582,23 +9587,23 @@ msgstr ""
 msgid "Products Group"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1641
+#: lib/integ/ecom/woocommerce.php:1643
 msgid "World"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1868
+#: lib/integ/ecom/woocommerce.php:1870
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1871
+#: lib/integ/ecom/woocommerce.php:1873
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1874
+#: lib/integ/ecom/woocommerce.php:1876
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
@@ -15110,11 +15115,11 @@ msgstr ""
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema-single.php:2288
+#: lib/schema-single.php:2308
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:2426
+#: lib/schema-single.php:2446
 msgid "adding schema product"
 msgstr ""
 

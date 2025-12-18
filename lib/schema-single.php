@@ -2063,6 +2063,16 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( false !== $price_spec ) {
 
+				/*
+				 * Google does not support the Schema SalePrice type.
+				 *
+				 * See https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#sale-pricing-example.
+				 */
+				if ( 'https://schema.org/SalePrice' === $price_spec[ 'priceType' ] ) {
+
+					unset( $price_spec[ 'priceType' ] );
+				}
+
 				if ( empty( $price_spec[ 'priceCurrency' ] ) ) {	// Make sure we have a price currency.
 
 					$price_spec[ 'priceCurrency' ] = $wpsso->options[ 'og_def_currency' ];
@@ -2124,6 +2134,16 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					) );
 
 					if ( false !== $price_spec ) {
+
+						/*
+						 * Google does not support the Schema SalePrice type.
+						 *
+						 * See https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#sale-pricing-example.
+						 */
+						if ( 'https://schema.org/SalePrice' === $price_spec[ 'priceType' ] ) {
+
+							unset( $price_spec[ 'priceType' ] );
+						}
 
 						if ( empty( $price_spec[ 'priceCurrency' ] ) ) {	// Make sure we have a price currency.
 

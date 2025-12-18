@@ -541,6 +541,7 @@ _x( 'Minimum Advertised Price', 'option value', 'wpsso' );
 _x( 'Regular Price', 'option value', 'wpsso' );
 _x( 'Sale Price', 'option value', 'wpsso' );
 _x( 'Suggested Retail Price', 'option value', 'wpsso' );
+_x( 'Strikethrough Price', 'option value', 'wpsso' );
 _x( 'Free Return', 'option value', 'wpsso' );
 _x( 'Customer Pays Shipping', 'option value', 'wpsso' );
 _x( 'Return Has Shipping Fees', 'option value', 'wpsso' );

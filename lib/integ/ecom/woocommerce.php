@@ -1506,7 +1506,9 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 					$this->p->debug->log( 'product is on sale' );
 				}
 
-				$mt_ecom[ 'product:price:type' ] = $mt_ecom[ 'product:sale_price:type' ] = 'https://schema.org/SalePrice';
+				$mt_ecom[ 'product:price:type' ]          = 'https://schema.org/SalePrice';
+				$mt_ecom[ 'product:sale_price:type' ]     = 'https://schema.org/SalePrice';
+				$mt_ecom[ 'product:original_price:type' ] = 'https://schema.org/StrikethroughPrice';
 
 				if ( method_exists( $product, 'get_sale_price' ) ) {
 
