@@ -1986,8 +1986,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false,
-				$opt_key = false, $def_type_id, $list_el );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id, $list_el );
 
 			/*
 			 * Begin schema product markup creation.
@@ -2153,6 +2152,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						}
 					}
 				}
+
+			} elseif ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'skipped schema unit price specification: filter returned false' );
 			}
 	
 			/*
