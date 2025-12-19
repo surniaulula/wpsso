@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.11.0-dev.2 (2025/12/19)**
+**Version 21.11.0-b.1 (2025/12/19)**
 
 * **New Features**
 	* None.
@@ -284,7 +284,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added the Schema StrikethroughPrice price type in price specification markup.
 	* Removed the Schema SalePrice and ListPrice price types in price specification markup (no longer supported by Google).
 	* Removed the "Default Product Price Type" option from the SSO &gt; Advanced Settings page.
-	* Updated the following add-ons for filter name changes:
+	* Updated the add-ons for filter name changes:
 		* WPSSO Schema Breadcrumbs Markup
 		* WPSSO Ratings and Reviews
 * **Bugfixes**
@@ -427,7 +427,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.11.0-dev.2 =
+= 21.11.0-b.1 =
 
 (2025/12/19) Added Schema StrikethroughPrice and removed SalePrice and ListPrice price types in price specification markup.
 
