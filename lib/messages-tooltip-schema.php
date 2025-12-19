@@ -348,9 +348,11 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 					$def_value = $this->p->opt->get_defaults( 'schema_def_product_price_valid_days' );
 
-					$text = sprintf( __( 'The expiration time by default of product prices should reflect how often your product prices change (default is %d days).', 'wpsso' ), $def_value ) . ' ';
+					$text = sprintf( __( 'The default expiration time of product prices can be adjusted to reflect how often your product prices change (default is %d days).', 'wpsso' ), $def_value ) . ' ';
 
-					$text .= __( 'If a product is on sale, the expiration time for that product price will be the sale end date (if one is available).', 'wpsso' ) . ' ';
+					$text .= __( 'Enter "0" to disable the addition of a default product price expiration time.', 'wpsso' ) . ' ';
+
+					$text .= __( 'If a product is on sale, the expiration time for its product price will be the sale end date (if one is available) and not the default price expiration time.', 'wpsso' ) . ' ';
 
 					break;
 

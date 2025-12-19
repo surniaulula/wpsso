@@ -1161,12 +1161,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'content'  => $form->get_no_select( 'schema_def_product_category', $args[ 'select' ][ 'google_prod_cats' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
-				'schema_def_product_price_type' => array(
-					'td_class' => 'blank',
-					'label'    => _x( 'Default Product Price Type', 'option label', 'wpsso' ),
-					'tooltip'  => 'schema_def_product_price_type',
-					'content'  => $form->get_no_select( 'schema_def_product_price_type', $this->p->cf[ 'form' ][ 'price_type' ] ),
-				),
 				'schema_def_product_condition' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Product Condition', 'option label', 'wpsso' ),

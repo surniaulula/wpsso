@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '21.11.0-dev.1',	// Plugin version.
-					'opt_version' => '1035',	// Increment when changing default option values.
+					'version'     => '21.11.0-dev.2',	// Plugin version.
+					'opt_version' => '1036',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1483,7 +1483,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_def_product_energy_efficiency_min' => 'https://schema.org/EUEnergyEfficiencyCategoryD',
 					'schema_def_product_energy_efficiency_max' => 'https://schema.org/EUEnergyEfficiencyCategoryA3Plus',
 					'schema_def_product_mrp'                   => 'none',						// Default Product Return Policy.
-					'schema_def_product_price_type'            => 'https://schema.org/ListPrice',			// Default Product Price Type.
 					'schema_def_product_size_group_0'          => 'none',
 					'schema_def_product_size_group_1'          => 'none',
 					'schema_def_product_size_system'           => 'none',

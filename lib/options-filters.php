@@ -339,7 +339,6 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_def_product_energy_efficiency_min':
 					case 'schema_def_product_energy_efficiency_max':
 					case 'schema_def_product_mrp':			// Default Product Return Policy.
-					case 'schema_def_product_price_type':		// Default Product Price Type.
 					case 'schema_def_product_size_system':		// Default Product Size System.
 					case 'schema_def_pub_org_id':			// Default Publisher Org.
 					case 'schema_def_pub_person_id':		// Default Publisher Person.

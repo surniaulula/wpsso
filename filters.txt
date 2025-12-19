@@ -25,6 +25,8 @@
 
 'wpsso_add_menu_submenu_item_{menu_id}' ( $bool )	// Remove an SSO menu item (ie. 'dashboard', 'setup', etc.).
 
+'wpsso_add_schema_unit_price_specification' ( $bool )
+
 'wpsso_add_toolbar_validate' ( $bool )
 
 'wpsso_archive_page_url' ( $url, $mod )

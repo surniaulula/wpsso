@@ -1177,10 +1177,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			/*
-			 * See WpssoAmFiltersOptions->filter_add_custom_post_type_options().
-			 * See WpssoBcFiltersOptions->filter_add_custom_post_type_options().
+			 * See WpssoBcFiltersOptions->filter_custom_post_type_options().
+			 * See WpssoRarFiltersOptions->filter_custom_post_type_options().
+			 * See WpssoWpsmFiltersOptions->filter_custom_post_type_options().
 			 */
-			$opt_prefixes = apply_filters( 'wpsso_add_custom_post_type_options', $opt_prefixes );
+			$opt_prefixes = apply_filters( 'wpsso_custom_post_type_options', $opt_prefixes );
 
 			$this->p->util->add_post_type_names( $opts, $opt_prefixes );
 
@@ -1192,7 +1193,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				'schema_type_for_pta' => 'item.list',	// Advanced Settings > Document Types > Schema > Type by Post Type Archive.
 			);
 
-			$opt_prefixes = apply_filters( 'wpsso_add_custom_post_type_archive_options', $opt_prefixes );
+			$opt_prefixes = apply_filters( 'wpsso_custom_post_type_archive_options', $opt_prefixes );
 
 			$this->p->util->add_post_type_archive_names( $opts, $opt_prefixes );
 
@@ -1218,9 +1219,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			/*
-			 * See WpssoBcFiltersOptions->filter_add_custom_taxonomy_options().
+			 * See WpssoBcFiltersOptions->filter_custom_taxonomy_options().
+			 * See WpssoRarFiltersOptions->filter_custom_taxonomy_options().
+			 * See WpssoWpsmFiltersOptions->filter_custom_taxonomy_options().
 			 */
-			$opt_prefixes = apply_filters( 'wpsso_add_custom_taxonomy_options', $opt_prefixes );
+			$opt_prefixes = apply_filters( 'wpsso_custom_taxonomy_options', $opt_prefixes );
 
 			$this->p->util->add_taxonomy_names( $opts, $opt_prefixes );
 		}

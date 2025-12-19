@@ -173,7 +173,6 @@ _x( 'Default Product Prices Valid For', 'option label', 'wpsso' );
 _x( 'Days', 'option comment', 'wpsso' );
 _x( 'Default Product Return Policy', 'option label', 'wpsso' );
 _x( 'Default Product Google Category', 'option label', 'wpsso' );
-_x( 'Default Product Price Type', 'option label', 'wpsso' );
 _x( 'Default Product Condition', 'option label', 'wpsso' );
 _x( 'Default Product Energy Rating Range', 'option label', 'wpsso' );
 _x( 'to', 'option comment', 'wpsso' );

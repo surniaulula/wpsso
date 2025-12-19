@@ -545,7 +545,7 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 				914 => array(
 					'og_def_product_category'   => 'schema_def_product_category',
 					'og_def_product_condition'  => 'schema_def_product_condition',
-					'og_def_product_price_type' => 'schema_def_product_price_type',
+					'og_def_product_price_type' => '',
 				),
 				920 => array(	// Renamed for WPSSO Core v13.5.0.
 					'og_def_article_section' => 'schema_def_article_section',
@@ -665,6 +665,9 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 					'plugin_schema_type_col_tax_product_tag'      => '',
 					'plugin_schema_type_col_tax_tribe_events_cat' => '',
 					'plugin_schema_type_col_user_page'            => '',
+				),
+				1035 => array(
+					'schema_def_product_price_type' => '',
 				),
 			),
 		);

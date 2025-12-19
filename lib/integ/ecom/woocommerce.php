@@ -853,7 +853,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				$md_defs[ 'product_price_type' ]= 'https://schema.org/SalePrice';
 
-			} else $md_defs[ 'product_price_type' ] = $this->p->get_options( 'schema_def_product_price_type', 'https://schema.org/ListPrice' );
+			} else $md_defs[ 'product_price_type' ] = 'https://schema.org/ListPrice';
 
 			$md_defs[ 'product_price' ]            = $product_price_fmtd;
 			$md_defs[ 'product_currency' ]         = $product_currency;
@@ -1490,9 +1490,12 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 					$this->p->debug->log( 'get_regular_price() returned "' . $regular_price . '" (type is ' . gettype( $regular_price ) . ')' );
 				}
 
-				$mt_ecom[ 'product:original_price:type' ]     = $this->p->get_options( 'schema_def_product_price_type', 'https://schema.org/ListPrice' );
-				$mt_ecom[ 'product:original_price:amount' ]   = $regular_price_fmtd;
-				$mt_ecom[ 'product:original_price:currency' ] = $product_currency;
+				if ( '' !== $regular_price_fmtd && $regular_price_fmtd !== $product_price_fmtd ) {
+
+					$mt_ecom[ 'product:original_price:type' ]     = 'https://schema.org/ListPrice';
+					$mt_ecom[ 'product:original_price:amount' ]   = $regular_price_fmtd;
+					$mt_ecom[ 'product:original_price:currency' ] = $product_currency;
+				}
 
 			} elseif ( $this->p->debug->enabled ) {
 
@@ -1508,7 +1511,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				$mt_ecom[ 'product:price:type' ]          = 'https://schema.org/SalePrice';
 				$mt_ecom[ 'product:sale_price:type' ]     = 'https://schema.org/SalePrice';
-				$mt_ecom[ 'product:original_price:type' ] = 'https://schema.org/StrikethroughPrice';
+
+				if ( ! empty( $mt_ecom[ 'product:original_price:type' ] ) ) {
+
+					$mt_ecom[ 'product:original_price:type' ] = 'https://schema.org/StrikethroughPrice';
+				}
 
 				if ( method_exists( $product, 'get_sale_price' ) ) {
 
