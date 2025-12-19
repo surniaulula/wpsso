@@ -276,17 +276,24 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.11.0-dev.1 (2025/12/18)**
+**Version 21.11.0-dev.2 (2025/12/19)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added the Schema StrikethroughPrice price type in price specification markup.
-	* Removed the Schema SalePrice price type in price specification markup (no longer supported by Google).
+	* Removed the Schema SalePrice and ListPrice price types in price specification markup (no longer supported by Google).
+	* Removed the "Default Product Price Type" option from the SSO &gt; Advanced Settings page.
+	* Updated the following add-ons for filter name changes:
+		* WPSSO Schema Breadcrumbs Markup
+		* WPSSO Ratings and Reviews
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new 'wpsso_add_schema_unit_price_specification' filter.
+	* Renamed the 'wpsso_add_custom_post_type_options' filter to 'wpsso_custom_post_type_options'.
+	* Renamed the 'wpsso_add_custom_post_type_archive_options' filter to 'wpsso_custom_post_type_archive_options'.
+	* Renamed the 'wpsso_add_custom_taxonomy_options' filter to 'wpsso_custom_taxonomy_options'.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
@@ -420,9 +427,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.11.0-dev.1 =
+= 21.11.0-dev.2 =
 
-(2025/12/18) Added Schema StrikethroughPrice and removed the SalePrice price type in price specification markup.
+(2025/12/19) Added Schema StrikethroughPrice and removed SalePrice and ListPrice price types in price specification markup.
 
 = 21.10.0 =
 
