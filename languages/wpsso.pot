@@ -6962,60 +6962,60 @@ msgctxt "metadata title"
 msgid "%s Metadata"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1398
+#: lib/abstract/wp-meta.php:1397
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1469
+#: lib/abstract/wp-meta.php:1468
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1473
+#: lib/abstract/wp-meta.php:1472
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1476 lib/messages.php:290
+#: lib/abstract/wp-meta.php:1475 lib/messages.php:290
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1480
+#: lib/abstract/wp-meta.php:1479
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1481
+#: lib/abstract/wp-meta.php:1480
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1482
+#: lib/abstract/wp-meta.php:1481
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1483
+#: lib/abstract/wp-meta.php:1482
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1828
+#: lib/abstract/wp-meta.php:1827
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2137
+#: lib/abstract/wp-meta.php:2136
 msgid "Another review cannot be the subject of a review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2139 lib/abstract/wp-meta.php:2152
+#: lib/abstract/wp-meta.php:2138 lib/abstract/wp-meta.php:2151
 msgid ""
 "Please select a Schema type for the review subject that describes the "
 "subject being reviewed."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2150
+#: lib/abstract/wp-meta.php:2149
 msgid "Another claim review cannot be the subject of a claim review."
 msgstr ""
 
