@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.11.0-b.1 (2025/12/19)**
+**Version 21.11.0-rc.1 (2025/12/20)**
 
 * **New Features**
 	* None.
@@ -427,9 +427,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.11.0-b.1 =
+= 21.11.0-rc.1 =
 
-(2025/12/19) Added Schema StrikethroughPrice and removed SalePrice and ListPrice price types in price specification markup.
+(2025/12/20) Added Schema StrikethroughPrice and removed SalePrice and ListPrice price types in price specification markup (no longer supported by Google).
 
 = 21.10.0 =
 
