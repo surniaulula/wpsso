@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 21.11.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2025-12-19 14:42-0800\n"
+"PO-Revision-Date: 2025-12-20 08:18-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -11790,8 +11790,8 @@ msgid "Enter \"0\" to disable the addition of a default product price expiration
 msgstr "Saisissez \"0\" pour désactiver l'ajout d'une date d'expiration par défaut pour le prix du produit."
 
 #: lib/messages-tooltip-schema.php:355
-msgid "If a product is on sale, the expiration time for its product price will be the sale end date (if one is available) and not the default price expiration time."
-msgstr "Si un produit est en promotion, la date d'expiration de son prix correspondra à la date de fin de la promotion (si celle-ci est disponible) et non à la date d'expiration du prix par défaut."
+msgid "If a product is on sale, the expiration time for its product price will be the sale end date (if one is available) instead of the default price expiration time."
+msgstr "Si un produit est en promotion, la date d'expiration de son prix correspondra à la date de fin de la promotion (si celle-ci est disponible) au lieu de la date d'expiration du prix par défaut."
 
 #: lib/messages-tooltip-schema.php:365
 msgid "The %s that best describes the products on your site."

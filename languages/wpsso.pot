@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 21.11.0-b.1\n"
+"Project-Id-Version: WPSSO Core 21.11.0-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -12936,8 +12936,8 @@ msgstr ""
 #: lib/messages-tooltip-schema.php:355
 msgid ""
 "If a product is on sale, the expiration time for its product price will be "
-"the sale end date (if one is available) and not the default price expiration "
-"time."
+"the sale end date (if one is available) instead of the default price "
+"expiration time."
 msgstr ""
 
 #: lib/messages-tooltip-schema.php:365

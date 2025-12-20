@@ -352,7 +352,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 					$text .= __( 'Enter "0" to disable the addition of a default product price expiration time.', 'wpsso' ) . ' ';
 
-					$text .= __( 'If a product is on sale, the expiration time for its product price will be the sale end date (if one is available) and not the default price expiration time.', 'wpsso' ) . ' ';
+					$text .= __( 'If a product is on sale, the expiration time for its product price will be the sale end date (if one is available) instead of the default price expiration time.', 'wpsso' ) . ' ';
 
 					break;
 
