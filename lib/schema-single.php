@@ -2064,7 +2064,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					 *
 					 * See https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#sale-pricing-example.
 					 */
-					if ( 'https://schema.org/StrikethroughPrice' !== $price_spec[ 'priceType' ] ) {
+					if ( ! empty( $price_spec[ 'priceType' ] ) && 'https://schema.org/StrikethroughPrice' !== $price_spec[ 'priceType' ] ) {
 	
 						unset( $price_spec[ 'priceType' ] );
 	
@@ -2138,7 +2138,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 							 *
 							 * See https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#sale-pricing-example.
 							 */
-							if ( 'https://schema.org/SalePrice' === $price_spec[ 'priceType' ] ) {
+							if ( ! empty( $price_spec[ 'priceType' ] ) && 'https://schema.org/SalePrice' === $price_spec[ 'priceType' ] ) {
 	
 								unset( $price_spec[ 'priceType' ] );
 							}

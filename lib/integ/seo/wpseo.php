@@ -116,7 +116,26 @@ if ( ! class_exists( 'WpssoIntegSeoWpseo' ) ) {
 
 					if ( $mod[ 'is_post' ] ) {
 
-						$meta_val = $this->get_post_meta_value( $mod[ 'id' ], $meta_key = 'primary_category' );
+						$meta_key = 'primary_category';
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'calling get_post_meta_value() for ' . $meta_key );
+						}
+
+						$meta_val = $this->get_post_meta_value( $mod[ 'id' ], $meta_key );
+			
+						if ( empty( $meta_val ) ) {
+						
+							$meta_key = 'primary_' . $mod[ 'post_type' ] . '_cat';
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'calling get_post_meta_value() for ' . $meta_key );
+							}
+
+							$meta_val = $this->get_post_meta_value( $mod[ 'id' ], $meta_key );
+						}
 					}
 				}
 			}
@@ -259,6 +278,11 @@ if ( ! class_exists( 'WpssoIntegSeoWpseo' ) ) {
 
 			if ( class_exists( 'WPSEO_Meta' ) && method_exists( 'WPSEO_Meta', 'get_value' ) ) {
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'calling WPSEO_Meta::get_value() for ' . $meta_key );
+				}
+
 				if ( $meta_val = WPSEO_Meta::get_value( $meta_key, $post_obj->ID ) ) {
 
 					if ( $this->p->debug->enabled ) {
@@ -275,6 +299,11 @@ if ( ! class_exists( 'WpssoIntegSeoWpseo' ) ) {
 			if ( empty( $meta_val ) ) {	// Fallback to the value from the Yoast SEO settings.
 
 				$opts_key = $meta_key . '-' . $post_obj->post_type;
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'Checking for ' . $opts_key . ' in wpseo options (aka settings)' );
+				}
 
 				if ( empty( $this->wpseo_opts[ $opts_key ] ) ) {
 

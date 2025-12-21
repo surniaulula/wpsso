@@ -337,7 +337,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					$this->debug->log( 'WP version ' . $wp_version );
 					$this->debug->log( 'WP home URL ' . get_home_url() );
 					$this->debug->log( 'WP site URL ' . get_site_url() );
-					$this->debug->log_arr( 'generator list', $this->check->get_ext_gen_list() );
+					$this->debug->log_arr( 'generator', $this->check->get_ext_gen_list() );
+					$this->debug->log_arr( 'avail', $this->avail );
 				}
 
 			} else $this->debug = new SucomNoDebug();	// Class always loaded in WpssoConfig::require_libs().
