@@ -383,13 +383,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						}
 					}
 
-					$post_taxonomies = get_post_taxonomies( $mod[ 'wp_obj' ] );
+					$mod[ 'post_taxonomies' ] = get_post_taxonomies( $mod[ 'wp_obj' ] );
 
-					if ( is_array( $post_taxonomies ) ) {	// Just in case.
+					if ( is_array( $mod[ 'post_taxonomies' ] ) ) {	// Just in case.
 
-						if ( ! in_array( $mod[ 'post_primary_tax_slug' ], $post_taxonomies ) ) {	// Default 'category' taxonomy does not exist.
+						if ( ! in_array( $mod[ 'post_primary_tax_slug' ], $mod[ 'post_taxonomies' ] ) ) {
 
-							foreach ( $post_taxonomies as $tax_slug ) {
+							$mod[ 'post_primary_tax_slug' ] = '';	// Default value is not valid.
+
+							foreach ( $mod[ 'post_taxonomies' ] as $tax_slug ) {
 
 								if ( preg_match( '/_(cat|category)$/', $tax_slug ) ) {	// Matches WooCommerce 'product_cat' for example.
 
@@ -400,11 +402,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 									$mod[ 'post_primary_tax_slug' ] = $tax_slug;
 
+									unset( $tax_slug );
+
 									break;
 								}
 							}
 						}
-					}
+
+					} else $mod[ 'post_taxonomies' ] = array();
 
 				} else $mod[ 'wp_obj' ] = false;
 			}
@@ -1950,27 +1955,22 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 */
 			if ( 'publish' === $mod[ 'post_status' ] ) {
 
-				$post_taxonomies = get_post_taxonomies( $mod[ 'wp_obj' ] );
+				foreach ( $mod[ 'post_taxonomies' ] as $tax_slug ) {
 
-				if ( is_array( $post_taxonomies ) ) {	// Just in case.
+					$post_terms = wp_get_post_terms( $post_id, $tax_slug );	// Returns WP_Error if taxonomy does not exist.
 
-					foreach ( $post_taxonomies as $tax_slug ) {
+					if ( is_array( $post_terms ) ) {	// Just in case.
 
-						$post_terms = wp_get_post_terms( $post_id, $tax_slug );	// Returns WP_Error if taxonomy does not exist.
+						foreach ( $post_terms as $term_obj ) {
 
-						if ( is_array( $post_terms ) ) {	// Just in case.
-
-							foreach ( $post_terms as $term_obj ) {
-
-								$this->p->term->clear_cache( $term_obj->term_id, $tax_slug );
-							}
-
-							unset( $post_terms, $term_obj );
+							$this->p->term->clear_cache( $term_obj->term_id, $tax_slug );
 						}
-					}
 
-					unset( $post_taxonomies, $tax_slug );
+						unset( $post_terms, $term_obj );
+					}
 				}
+
+				unset( $tax_slug );
 			}
 
 			/*

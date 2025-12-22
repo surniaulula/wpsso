@@ -84,6 +84,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			'post_modified_timestamp' => false,	// Post modified time (Unit timestamp or false).
 			'post_parent'             => false,	// Post parent id.
 			'post_primary_tax_slug'   => 'category',	// Filtered by 'wpsso_primary_tax_slug' in WpssoPost->get_mod()..
+			'post_taxonomies'         => array(),
 			'tax_slug'                => '',
 			'tax_label_plural'        => false,	// Taxonomy plural name.
 			'tax_label_single'        => false,	// Taxonomy singular name.
