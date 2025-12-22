@@ -83,10 +83,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			'post_modified_time'      => false,	// Post modified time (ISO 8601 date or false).
 			'post_modified_timestamp' => false,	// Post modified time (Unit timestamp or false).
 			'post_parent'             => false,	// Post parent id.
-			'term_tax_id'             => false,
+			'post_primary_tax_slug'   => 'category',	// Filtered by 'wpsso_primary_tax_slug' in WpssoPost->get_mod()..
 			'tax_slug'                => '',
 			'tax_label_plural'        => false,	// Taxonomy plural name.
 			'tax_label_single'        => false,	// Taxonomy singular name.
+			'term_tax_id'             => false,
 			'user_name'               => '',	// User display name.
 			'wpml_code'               => '',	// WPML language code.
 		);
@@ -358,7 +359,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$def_weight_units    = WpssoUtilUnits::get_weight_text();
 				$def_og_type         = $this->p->og->get_mod_og_type_id( $mod, $use_md_opts = false );
 				$def_schema_type     = $this->p->schema->get_mod_schema_type_id( $mod, $use_md_opts = false );
-				$def_primary_term_id = $this->p->post->get_default_term_id( $mod, $tax_slug = 'category' );	// Returns term id or false.
+				$def_primary_term_id = $this->p->post->get_default_term_id( $mod, $mod[ 'post_primary_tax_slug' ] );	// Returns term id or false.
 				$def_reading_mins    = $this->p->page->get_reading_mins( $mod );
 				$def_currency        = $this->p->get_options( 'og_def_currency', 'USD' );
 				$def_country         = $this->p->get_options( 'og_def_country', 'none' );

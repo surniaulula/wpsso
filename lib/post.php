@@ -391,7 +391,23 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 *
 			 * See WpssoIntegUserCoAuthors->filter_get_post_mod().
 			 */
-			$mod = apply_filters( 'wpsso_get_post_mod', $mod, $post_id );
+			$filter_name = 'wpsso_get_post_mod';
+
+			if ( $this->p->debug->enabled ) {
+	
+				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
+			}
+
+			$mod = apply_filters( $filter_name, $mod, $post_id );
+
+			$filter_name = 'wpsso_primary_tax_slug';
+
+			if ( $this->p->debug->enabled ) {
+	
+				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
+			}
+
+			$mod[ 'post_primary_tax_slug' ] = apply_filters( $filter_name, $mod[ 'post_primary_tax_slug' ], $mod );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2574,20 +2590,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
 				/*
-				 * The 'wpsso_primary_tax_slug' filter is hooked by the WooCommerce integration
-				 * module. If the post type is a product, returns 'product_cat' for the 'category'
-				 * taxonomy and returns 'product_tag' for the 'tag' taxonomy.
-				 */
-				$filter_name = 'wpsso_primary_tax_slug';
-
-				if ( $this->p->debug->enabled ) {
-	
-					$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
-				}
-
-				$tax_slug = apply_filters( $filter_name, $tax_slug, $mod );
-
-				/*
 				 * Returns null if a custom primary term ID has not been selected.
 				 */
 				$primary_term_id = $this->get_options( $post_id, $md_key = 'primary_term_id' );
@@ -2626,7 +2628,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 */
 					if ( $this->p->debug->enabled ) {
 	
-						$this->p->debug->log( 'calling WpssoPost->get_default_term_id() for $tax_slug = ' . $tax_slug );
+						$this->p->debug->log( 'calling WpssoPost->get_default_term_id()' );
 					}
 	
 					$primary_term_id = $this->get_default_term_id( $mod, $tax_slug );
@@ -2651,20 +2653,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$default_term_id = false;
 
 			if ( $mod[ 'is_post' ] ) {	// Just in case.
-
-				/*
-				 * The 'wpsso_primary_tax_slug' filter is hooked by the WooCommerce integration
-				 * module. If the post type is a product, returns 'product_cat' for the 'category'
-				 * taxonomy and returns 'product_tag' for the 'tag' taxonomy.
-				 */
-				$filter_name = 'wpsso_primary_tax_slug';
-
-				if ( $this->p->debug->enabled ) {
-	
-					$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
-				}
-
-				$tax_slug = apply_filters( $filter_name, $tax_slug, $mod );
 
 				$post_terms = wp_get_post_terms( $mod[ 'id' ], $tax_slug, $args = array( 'number' => 1 ) );
 
@@ -2706,20 +2694,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $mod[ 'is_post' ] ) {	// Just in case.
 
-				/*
-				 * The 'wpsso_primary_tax_slug' filter is hooked by the WooCommerce integration
-				 * module. If the post type is a product, returns 'product_cat' for the 'category'
-				 * taxonomy and returns 'product_tag' for the 'tag' taxonomy.
-				 */
-				$filter_name = 'wpsso_primary_tax_slug';
-
-				if ( $this->p->debug->enabled ) {
-	
-					$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
-				}
-
-				$tax_slug = apply_filters( $filter_name, $tax_slug, $mod );
-
 				$post_id = $mod[ 'id' ];
 
 				/*
@@ -2727,7 +2701,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 */
 				if ( $this->p->debug->enabled ) {
 	
-					$this->p->debug->log( 'calling WpssoPost->get_primary_term_id() for $tax_slug = ' . $tax_slug );
+					$this->p->debug->log( 'calling WpssoPost->get_primary_term_id()' );
 				}
 	
 				$primary_term_id = $this->p->post->get_primary_term_id( $mod, $tax_slug );	// Returns false or term ID.

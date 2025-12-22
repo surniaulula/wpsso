@@ -42,7 +42,7 @@ if ( ! class_exists( 'WpssoEditGeneral' ) ) {
 
 			$og_types      = $this->p->og->get_og_types_select();
 			$schema_types  = $this->p->schema->get_schema_types_select();
-			$primary_terms = $this->p->post->get_primary_terms( $mod, $tax_slug = 'category', $output = 'names' );
+			$primary_terms = $this->p->post->get_primary_terms( $mod, $mod[ 'post_primary_tax_slug' ], $output = 'names' );
 			$input_limits  = WpssoConfig::get_input_limits();	// Uses a local cache.
 
 			/*
