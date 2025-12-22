@@ -116,26 +116,14 @@ if ( ! class_exists( 'WpssoIntegSeoWpseo' ) ) {
 
 					if ( $mod[ 'is_post' ] ) {
 
-						$meta_key = 'primary_category';
+						$meta_key = 'primary_' . $tax_slug;
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'calling get_post_meta_value() for ' . $meta_key );
+							$this->p->debug->log( 'calling WpssoIntegSeoWpseo->get_post_meta_value() for ' . $meta_key );
 						}
 
 						$meta_val = $this->get_post_meta_value( $mod[ 'id' ], $meta_key );
-			
-						if ( empty( $meta_val ) ) {
-						
-							$meta_key = 'primary_' . $mod[ 'post_type' ] . '_cat';
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'calling get_post_meta_value() for ' . $meta_key );
-							}
-
-							$meta_val = $this->get_post_meta_value( $mod[ 'id' ], $meta_key );
-						}
 					}
 				}
 			}

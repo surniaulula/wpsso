@@ -356,31 +356,28 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$def_dimension_units = WpssoUtilUnits::get_dimension_text();
 				$def_fluid_vol_units = WpssoUtilUnits::get_fluid_volume_text();
 				$def_weight_units    = WpssoUtilUnits::get_weight_text();
-
 				$def_og_type         = $this->p->og->get_mod_og_type_id( $mod, $use_md_opts = false );
 				$def_schema_type     = $this->p->schema->get_mod_schema_type_id( $mod, $use_md_opts = false );
 				$def_primary_term_id = $this->p->post->get_default_term_id( $mod, $tax_slug = 'category' );	// Returns term id or false.
 				$def_reading_mins    = $this->p->page->get_reading_mins( $mod );
-
-				$def_currency      = $this->p->get_options( 'og_def_currency', 'USD' );
-				$def_country       = $this->p->get_options( 'og_def_country', 'none' );
-				$def_timezone      = $this->p->get_options( 'og_def_timezone', 'UTC' );
-				$def_art_section   = $this->p->get_options( 'schema_def_article_section', 'none' );
-				$def_adult_type    = $this->p->get_options( 'schema_def_product_adult_type', 'none' );
-				$def_age_group     = $this->p->get_options( 'schema_def_product_age_group', 'none' );
-				$def_product_cat   = $this->p->get_options( 'schema_def_product_category', 'none' );	// Default Product Google Category.
-				$def_product_cond  = $this->p->get_options( 'schema_def_product_condition', 'none' );	// Default Product Condition.
-				$def_product_mrp   = $this->p->get_options( 'schema_def_product_mrp', 'none' );		// Default Product Return Policy.
-				$def_ener_eff_min  = $this->p->get_options( 'schema_def_product_energy_efficiency_min', 'https://schema.org/EUEnergyEfficiencyCategoryD' );
-				$def_ener_eff_max  = $this->p->get_options( 'schema_def_product_energy_efficiency_max', 'https://schema.org/EUEnergyEfficiencyCategoryA3Plus' );
-				$def_size_group_0  = $this->p->get_options( 'schema_def_product_size_group_0', 'none' );
-				$def_size_group_1  = $this->p->get_options( 'schema_def_product_size_group_1', 'none' );
-				$def_size_system   = $this->p->get_options( 'schema_def_product_size_system', 'none' );
-				$def_target_gender = $this->p->get_options( 'schema_def_product_target_gender', 'none' );
-
-				$def_size_name     = 'wpsso-opengraph';
-				$def_media_request = array( 'og_vid_upload' );
-				$def_media_info    = $this->p->media->get_media_info( $def_size_name, $def_media_request, $mod, $md_pre = 'none' );
+				$def_currency        = $this->p->get_options( 'og_def_currency', 'USD' );
+				$def_country         = $this->p->get_options( 'og_def_country', 'none' );
+				$def_timezone        = $this->p->get_options( 'og_def_timezone', 'UTC' );
+				$def_art_section     = $this->p->get_options( 'schema_def_article_section', 'none' );
+				$def_adult_type      = $this->p->get_options( 'schema_def_product_adult_type', 'none' );
+				$def_age_group       = $this->p->get_options( 'schema_def_product_age_group', 'none' );
+				$def_product_cat     = $this->p->get_options( 'schema_def_product_category', 'none' );		// Default Product Google Category.
+				$def_product_cond    = $this->p->get_options( 'schema_def_product_condition', 'none' );		// Default Product Condition.
+				$def_product_mrp     = $this->p->get_options( 'schema_def_product_mrp', 'none' );		// Default Product Return Policy.
+				$def_ener_eff_min    = $this->p->get_options( 'schema_def_product_energy_efficiency_min', 'https://schema.org/EUEnergyEfficiencyCategoryD' );
+				$def_ener_eff_max    = $this->p->get_options( 'schema_def_product_energy_efficiency_max', 'https://schema.org/EUEnergyEfficiencyCategoryA3Plus' );
+				$def_size_group_0    = $this->p->get_options( 'schema_def_product_size_group_0', 'none' );
+				$def_size_group_1    = $this->p->get_options( 'schema_def_product_size_group_1', 'none' );
+				$def_size_system     = $this->p->get_options( 'schema_def_product_size_system', 'none' );
+				$def_target_gender   = $this->p->get_options( 'schema_def_product_target_gender', 'none' );
+				$def_size_name       = 'wpsso-opengraph';
+				$def_media_request   = array( 'og_vid_upload' );
+				$def_media_info      = $this->p->media->get_media_info( $def_size_name, $def_media_request, $mod, $md_pre = 'none' );
 
 				$md_defs = array(
 					'checksum'          => '',	// Checksum of plugin versions.

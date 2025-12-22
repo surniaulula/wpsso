@@ -110,8 +110,7 @@ if ( ! class_exists( 'WpssoEditGeneral' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Primary Category', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-primary_term_id',
-					'content'  => $form->get_select( 'primary_term_id', $primary_terms,
-						$css_class = 'primary_term_id', $css_id = '', $is_assoc = true ),
+					'content'  => $form->get_select( 'primary_term_id', $primary_terms, $css_class = 'primary_term_id', $css_id = '', $is_assoc = true ),
 				) : '',
 				'seo_title' => $mod[ 'is_public' ] ? array(
 					'tr_class' => $seo_title_disabled ? 'hide_in_basic' : '',

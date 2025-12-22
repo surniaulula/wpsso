@@ -670,6 +670,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 					$tax_slug = $this->tag_taxonomy;
 				}
+			
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'returning $tax_slug = ' . $tax_slug );
+				}
 			}
 
 			return $tax_slug;

@@ -2550,6 +2550,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 */
 		public function get_primary_term_id( array $mod, $tax_slug = 'category' ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$primary_term_id = false;
 
 			if ( $mod[ 'is_post' ] ) {	// Just in case.
@@ -2569,7 +2574,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
 				/*
-				 * The 'wpsso_primary_tax_slug' filter is hooked by the WooCommerce integration module.
+				 * The 'wpsso_primary_tax_slug' filter is hooked by the WooCommerce integration
+				 * module. If the post type is a product, returns 'product_cat' for the 'category'
+				 * taxonomy and returns 'product_tag' for the 'tag' taxonomy.
 				 */
 				$primary_tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug, $mod );
 
@@ -2585,16 +2592,27 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 */
 				if ( ! empty( $primary_term_id ) && term_exists( (int) $primary_term_id ) ) {
 
-					$is_custom = true;
+					$filter_name = 'wpsso_primary_term_id';
+	
+					if ( $this->p->debug->enabled ) {
+	
+						$this->p->debug->log( 'applying filters "' . $filter_name . '" with $is_custom = true' );
+					}
+	
+					$primary_term_id = apply_filters( $filter_name, $primary_term_id, $mod, $tax_slug, $is_custom = true );
 
 				} else {
 
-					$is_custom = false;
-
+					/*
+					 * WpssoPost->get_default_term_id() applies the 'wpsso_primary_term_id' filter with $is_custom = false.
+					 */
+					if ( $this->p->debug->enabled ) {
+	
+						$this->p->debug->log( 'calling WpssoPost->get_default_term_id() for $tax_slug = ' . $tax_slug );
+					}
+	
 					$primary_term_id = $this->get_default_term_id( $mod, $tax_slug );
 				}
-
-				$primary_term_id = apply_filters( 'wpsso_primary_term_id', $primary_term_id, $mod, $tax_slug, $is_custom );
 
 				$local_fifo[ $post_id ][ $tax_slug ] = empty( $primary_term_id ) ? false : (int) $primary_term_id;
 			}
@@ -2607,12 +2625,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 */
 		public function get_default_term_id( array $mod, $tax_slug = 'category' ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$default_term_id = false;
 
 			if ( $mod[ 'is_post' ] ) {	// Just in case.
 
 				/*
-				 * The 'wpsso_primary_tax_slug' filter is hooked by the WooCommerce integration module.
+				 * The 'wpsso_primary_tax_slug' filter is hooked by the WooCommerce integration
+				 * module. If the post type is a product, returns 'product_cat' for the 'category'
+				 * taxonomy and returns 'product_tag' for the 'tag' taxonomy.
 				 */
 				$primary_tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug, $mod );
 
@@ -2628,7 +2653,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 				}
 
-				$default_term_id = apply_filters( 'wpsso_default_term_id', $default_term_id, $mod, $tax_slug );
+				/*
+				 * Apply the 'wpsso_primary_term_id' filter to get the Yoast SEO primary category (for example) and
+				 * use it as the default value.
+				 */
+				$filter_name = 'wpsso_primary_term_id';
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'applying filters "' . $filter_name . '" with $is_custom = false' );
+				}
+
+				$default_term_id = apply_filters( $filter_name, $default_term_id, $mod, $tax_slug, $is_custom = false );
 			}
 
 			return $default_term_id;
@@ -2655,7 +2691,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( $primary_term_id ) {
 
 					/*
-					 * The 'wpsso_primary_tax_slug' filter is hooked by the WooCommerce integration module.
+					 * The 'wpsso_primary_tax_slug' filter is hooked by the WooCommerce integration
+					 * module. If the post type is a product, returns 'product_cat' for the 'category'
+					 * taxonomy and returns 'product_tag' for the 'tag' taxonomy.
 					 */
 					$primary_tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug, $mod );
 
