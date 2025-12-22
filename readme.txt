@@ -276,6 +276,25 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 21.11.1-dev.1 (2025/12/21)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed getting the primary category ID for WooCommerce products from Yoast SEO.
+* **Developer Notes**
+	* Refactored the `WpssoIntegSeoWpseo->filter_primary_term_id()` method to use the `$tax_slug` value as part of the meta key.
+	* Added the 'wpsso_primary_term_id' filter to the `WpssoPost->get_default_term_id()` method.
+	* Removed the 'wpsso_default_term_id' filter.
+	* Removed the `WpssoIntegDataWpseoMeta->filter_save_term_options()` method.
+	* Removed the `WpssoIntegDataWpseoMeta->filter_get_term_options()` method.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v5.9.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
+
 **Version 21.11.0 (2025/12/20)**
 
 * **New Features**
@@ -317,6 +336,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 21.11.1-dev.1 =
+
+(2025/12/21) Fixed getting the primary category ID for WooCommerce products from Yoast SEO.
 
 = 21.11.0 =
 
