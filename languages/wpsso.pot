@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 21.11.1-dev.2\n"
+"Project-Id-Version: WPSSO Core 21.11.1-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6905,7 +6905,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:225 gettext/gettext-lib-pro.php:236
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:177
-#: lib/loader.php:191 lib/post.php:1833 lib/pro/util/shorten.php:336
+#: lib/loader.php:191 lib/post.php:1856 lib/pro/util/shorten.php:336
 #: lib/pro/util/shorten.php:531 lib/util-cache.php:945
 msgid "%s error:"
 msgstr ""
@@ -7390,7 +7390,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:928 lib/post.php:1177 lib/term.php:768 lib/user.php:783
+#: lib/admin.php:928 lib/post.php:1200 lib/term.php:768 lib/user.php:783
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -9553,15 +9553,15 @@ msgid ""
 "Products &gt; General</a> section."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:243 lib/integ/ecom/woocommerce.php:723
+#: lib/integ/ecom/woocommerce.php:243 lib/integ/ecom/woocommerce.php:718
 msgid "My account page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:244 lib/integ/ecom/woocommerce.php:727
+#: lib/integ/ecom/woocommerce.php:244 lib/integ/ecom/woocommerce.php:722
 msgid "Cart page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:245 lib/integ/ecom/woocommerce.php:731
+#: lib/integ/ecom/woocommerce.php:245 lib/integ/ecom/woocommerce.php:726
 msgid "Checkout page"
 msgstr ""
 
@@ -9581,23 +9581,23 @@ msgstr ""
 msgid "Products Group"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1655
+#: lib/integ/ecom/woocommerce.php:1650
 msgid "World"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1882
+#: lib/integ/ecom/woocommerce.php:1877
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1885
+#: lib/integ/ecom/woocommerce.php:1880
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1888
+#: lib/integ/ecom/woocommerce.php:1883
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
@@ -14840,140 +14840,140 @@ msgid ""
 "string."
 msgstr ""
 
-#: lib/post.php:1309
+#: lib/post.php:1332
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1342
+#: lib/post.php:1365
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1345
+#: lib/post.php:1368
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1348
+#: lib/post.php:1371
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1378
+#: lib/post.php:1401
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1380
+#: lib/post.php:1403
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1382
+#: lib/post.php:1405
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1383
+#: lib/post.php:1406
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1397
+#: lib/post.php:1420
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1411
+#: lib/post.php:1434
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1426
+#: lib/post.php:1449
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1443
+#: lib/post.php:1466
 msgid ""
 "The %1$s meta tags and Schema markup section was not found in <a href=\"%2$s"
 "\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1446
+#: lib/post.php:1469
 msgid "Does a caching plugin or service need to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1479
+#: lib/post.php:1502
 msgid "The PHP %1$s function failed to remove the %2$s meta tag section."
 msgstr ""
 
-#: lib/post.php:1481
+#: lib/post.php:1504
 msgid ""
 "This could indicate a problem with PHP's PCRE library, or an optimization "
 "plugin / service corrupting the webpage HTML."
 msgstr ""
 
-#: lib/post.php:1483
+#: lib/post.php:1506
 msgid ""
 "You should consider updating or having your hosting provider update your PHP "
 "installation and its PCRE library."
 msgstr ""
 
-#: lib/post.php:1503
+#: lib/post.php:1526
 msgid ""
 "Conflict detected - your theme or another plugin is adding %1$s to the head "
 "section of this webpage."
 msgstr ""
 
-#: lib/post.php:1522
+#: lib/post.php:1545
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1524
+#: lib/post.php:1547
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document."
 msgstr ""
 
-#: lib/post.php:1527
+#: lib/post.php:1550
 msgid ""
 "Please review the <a href=\"%1$s\">W3C Markup Validator</a> results and "
 "correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1570
+#: lib/post.php:1593
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1572
+#: lib/post.php:1595
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1580
+#: lib/post.php:1603
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1584
+#: lib/post.php:1607
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1588
+#: lib/post.php:1611
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1787
+#: lib/post.php:1810
 msgid "ajax request invalid nonce"
 msgstr ""
 
-#: lib/post.php:1804
+#: lib/post.php:1827
 msgid "post id %s invalid for metadata"
 msgstr ""
 
-#: lib/post.php:1813
+#: lib/post.php:1836
 msgid "user id %s cannot edit post id %s"
 msgstr ""
 
-#: lib/post.php:2067
+#: lib/post.php:2090
 msgid "Insufficient privileges to edit %1$s ID %2$s."
 msgstr ""
 

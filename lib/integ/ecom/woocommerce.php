@@ -664,16 +664,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				if ( 'category' === $tax_slug ) {
 
-					$tax_slug = $this->cat_taxonomy;
+					return $this->cat_taxonomy;
 
 				} elseif ( 'tag' === $tax_slug ) {
 
-					$tax_slug = $this->tag_taxonomy;
-				}
-			
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'returning $tax_slug = ' . $tax_slug );
+					return $this->tag_taxonomy;
 				}
 			}
 

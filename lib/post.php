@@ -383,6 +383,29 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						}
 					}
 
+					$post_taxonomies = get_post_taxonomies( $mod[ 'wp_obj' ] );
+
+					if ( is_array( $post_taxonomies ) ) {	// Just in case.
+
+						if ( ! in_array( $mod[ 'post_primary_tax_slug' ], $post_taxonomies ) ) {	// Default 'category' taxonomy does not exist.
+
+							foreach ( $post_taxonomies as $tax_slug ) {
+
+								if ( preg_match( '/_(cat|category)$/', $tax_slug ) ) {	// Matches WooCommerce 'product_cat' for example.
+
+									if ( $this->p->debug->enabled ) {
+	
+										$this->p->debug->log( 'using ' . $tax_slug . ' as the primary taxonomy' );
+									}
+
+									$mod[ 'post_primary_tax_slug' ] = $tax_slug;
+
+									break;
+								}
+							}
+						}
+					}
+
 				} else $mod[ 'wp_obj' ] = false;
 			}
 
