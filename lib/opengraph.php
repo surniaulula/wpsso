@@ -1054,7 +1054,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * 'wpsso_primary_tax_slug' filter, but we also need the $tax_slug value for
 			 * get_ancestors().
 			 */
-			$tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug = 'category', $mod );
+			$filter_name = 'wpsso_primary_tax_slug';
+
+			if ( $this->p->debug->enabled ) {
+	
+				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
+			}
+
+			$tax_slug = apply_filters( $filter_name, $tax_slug = 'category', $mod );
 
 			/*
 			 * Returns an associative array of term IDs and their names or objects.

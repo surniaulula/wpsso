@@ -287,6 +287,8 @@
 
 'wpsso_primary_term_id' ( $primary_term_id, $mod, $tax_slug, $is_custom )
 
+'wpsso_primary_term_id_is_default' ( $bool, $mod, $tax_slug, $primary_term_id )
+
 'wpsso_primary_terms' ( $primary_terms, $mod, $tax_slug, $output )
 
 'wpsso_product_currency' ( $currency )
