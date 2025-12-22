@@ -2578,7 +2578,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 * module. If the post type is a product, returns 'product_cat' for the 'category'
 				 * taxonomy and returns 'product_tag' for the 'tag' taxonomy.
 				 */
-				$primary_tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug, $mod );
+				$tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug, $mod );
 
 				/*
 				 * Returns null if a custom primary term ID has not been selected.
@@ -2639,9 +2639,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 * module. If the post type is a product, returns 'product_cat' for the 'category'
 				 * taxonomy and returns 'product_tag' for the 'tag' taxonomy.
 				 */
-				$primary_tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug, $mod );
+				$tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug, $mod );
 
-				$post_terms = wp_get_post_terms( $mod[ 'id' ], $primary_tax_slug, $args = array( 'number' => 1 ) );
+				$post_terms = wp_get_post_terms( $mod[ 'id' ], $tax_slug, $args = array( 'number' => 1 ) );
 
 				if ( ! empty( $post_terms ) && is_array( $post_terms ) ) {	// Have one or more terms and taxonomy exists.
 
@@ -2681,6 +2681,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $mod[ 'is_post' ] ) {	// Just in case.
 
+				/*
+				 * The 'wpsso_primary_tax_slug' filter is hooked by the WooCommerce integration
+				 * module. If the post type is a product, returns 'product_cat' for the 'category'
+				 * taxonomy and returns 'product_tag' for the 'tag' taxonomy.
+				 */
+				$tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug, $mod );
+
 				$post_id = $mod[ 'id' ];
 
 				/*
@@ -2690,18 +2697,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( $primary_term_id ) {
 
-					/*
-					 * The 'wpsso_primary_tax_slug' filter is hooked by the WooCommerce integration
-					 * module. If the post type is a product, returns 'product_cat' for the 'category'
-					 * taxonomy and returns 'product_tag' for the 'tag' taxonomy.
-					 */
-					$primary_tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug, $mod );
-
-					$primary_term_obj = get_term_by( 'id', $primary_term_id, $primary_tax_slug, OBJECT, 'raw' );
+					$primary_term_obj = get_term_by( 'id', $primary_term_id, $tax_slug, OBJECT, 'raw' );
 
 					if ( $primary_term_obj ) {
 
-						$post_terms = wp_get_post_terms( $post_id, $primary_tax_slug );
+						$post_terms = wp_get_post_terms( $post_id, $tax_slug );
 
 						if ( ! empty( $post_terms ) && is_array( $post_terms ) ) {	// Have one or more terms and taxonomy exists.
 

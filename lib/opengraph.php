@@ -1046,16 +1046,22 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		public function get_product_retailer_categories( $mod, $lists_max = 1 ) {
 
 			/*
+			 * The 'wpsso_primary_tax_slug' filter is hooked by the WooCommerce integration
+			 * module. If the post type is a product, returns 'product_cat' for the 'category'
+			 * taxonomy and returns 'product_tag' for the 'tag' taxonomy.
+			 *
+			 * The following WpssoPost->get_primary_terms() method also applies the
+			 * 'wpsso_primary_tax_slug' filter, but we also need the $tax_slug value for
+			 * get_ancestors().
+			 */
+			$tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug = 'category', $mod );
+
+			/*
 			 * Returns an associative array of term IDs and their names or objects.
 			 *
 			 * If the custom primary or default term ID exists in the post terms array, it will be moved to the top.
 			 */
-			$post_terms = $this->p->post->get_primary_terms( $mod, $tax_slug = 'category', $output = 'objects' );
-
-			/*
-			 * The 'wpsso_primary_tax_slug' filter is hooked by the WooCommerce integration module.
-			 */
-			$primary_tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug = 'category', $mod );
+			$post_terms = $this->p->post->get_primary_terms( $mod, $tax_slug, $output = 'objects' );
 
 			$category_names = array();
 
@@ -1063,7 +1069,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				$parent_term_id = $parent_term_obj->term_id;
 
-				$ancestor_ids = get_ancestors( $parent_term_id, $primary_tax_slug, $resource_type = 'taxonomy' );
+				$ancestor_ids = get_ancestors( $parent_term_id, $tax_slug, $resource_type = 'taxonomy' );
 
 				if ( empty( $ancestor_ids ) || ! is_array( $ancestor_ids ) ) {
 
