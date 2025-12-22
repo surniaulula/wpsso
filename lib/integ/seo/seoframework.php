@@ -80,7 +80,7 @@ if ( ! class_exists( 'WpssoIntegSeoSeoframework' ) ) {
 							$tsf->data()->plugin()->post()->get_primary_term_id( $mod[ 'id' ], $tax_slug ) :
 							$tsf->get_primary_term_id( $mod[ 'id' ], $tax_slug );
 
-						if ( $ret ) { return $ret; }
+						if ( $ret ) return $ret;
 					}
 				}
 			}
