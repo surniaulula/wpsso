@@ -63,26 +63,49 @@ if ( ! class_exists( 'WpssoIntegSeoSeoframework' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( ! $is_custom ) {
+			if ( $is_custom ) {
 
-				if ( $mod[ 'id' ] ) {
+				if ( $this->p->debug->enabled ) {
 
-					if ( $mod[ 'is_post' ] ) {
-
-						if ( $this->is_admin ) {
-
-							SucomUtilWP::maybe_load_post( $mod[ 'id' ] );	// Maybe re-define the $post global.
-						}
-
-						$tsf = the_seo_framework();
-
-						$ret = version_compare( THE_SEO_FRAMEWORK_VERSION, '5.0.0', '>=' ) ?
-							$tsf->data()->plugin()->post()->get_primary_term_id( $mod[ 'id' ], $tax_slug ) :
-							$tsf->get_primary_term_id( $mod[ 'id' ], $tax_slug );
-
-						if ( $ret ) return $ret;
-					}
+					$this->p->debug->log( 'exiting early: $is_custom is true' );
 				}
+
+				return $primary_term_id;
+
+			} elseif ( empty( $mod[ 'is_post' ] ) || empty( $mod[ 'id' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: not post object or no post ID' );
+				}
+
+				return $primary_term_id;
+
+			} elseif ( empty( $tax_slug ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: $tax_slug is empty' );
+				}
+
+				return $primary_term_id;
+
+			} else {
+
+				if ( $this->is_admin ) {
+
+					SucomUtilWP::maybe_load_post( $mod[ 'id' ] );	// Maybe re-define the $post global.
+				}
+
+				$tsf = the_seo_framework();
+
+				if ( version_compare( THE_SEO_FRAMEWORK_VERSION, '5.0.0', '>=' ) ) {
+
+					$ret = $tsf->data()->plugin()->post()->get_primary_term_id( $mod[ 'id' ], $tax_slug );
+
+				} else $tsf->get_primary_term_id( $mod[ 'id' ], $tax_slug );
+
+				if ( $ret ) return $ret;
 			}
 
 			return $primary_term_id;

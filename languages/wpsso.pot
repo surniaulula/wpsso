@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 21.11.1-b.1\n"
+"Project-Id-Version: WPSSO Core 21.11.1-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -14805,7 +14805,7 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
 
-#: lib/page.php:1087 lib/util-inline.php:463
+#: lib/page.php:1087 lib/util-inline.php:469
 msgid "Page %1$d of %2$d"
 msgstr ""
 

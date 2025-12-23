@@ -58,17 +58,45 @@ if ( ! class_exists( 'WpssoIntegSeoRankmath' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( ! $is_custom ) {
+			if ( $is_custom ) {
 
-				if ( $mod[ 'id' ] ) {
+				if ( $this->p->debug->enabled ) {
 
-					if ( $mod[ 'is_post' ] ) {
+					$this->p->debug->log( 'exiting early: $is_custom is true' );
+				}
 
-						if ( $ret = get_metadata( 'post', $mod[ 'id' ], $meta_key = 'rank_math_primary_category', $single = true ) ) {
+				return $primary_term_id;
 
-							return $ret;
-						}
-					}
+			} elseif ( empty( $mod[ 'is_post' ] ) || empty( $mod[ 'id' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: not post object or no post ID' );
+				}
+
+				return $primary_term_id;
+
+			} elseif ( empty( $tax_slug ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: $tax_slug is empty' );
+				}
+
+				return $primary_term_id;
+
+			} else {
+
+				$meta_key = 'rank_math_primary_category';
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'calling get_metadata() for ' . $meta_key );
+				}
+
+				if ( $ret = get_metadata( 'post', $mod[ 'id' ], $meta_key, $single = true ) ) {
+
+					return $ret;
 				}
 			}
 
