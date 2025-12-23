@@ -2071,7 +2071,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						/*
 						 * If we're using price specifications, remove the main price information.
 						 */
-						unset ( $json_ret[ 'price' ], $json_ret[ 'priceCurrency' ], $json_ret[ 'priceValidUntil' ] );
+						unset ( $json_ret[ 'price' ], $json_ret[ 'priceCurrency' ] );
 					}
 		
 					if ( empty( $price_spec[ 'priceCurrency' ] ) ) {	// Make sure we have a price currency.
