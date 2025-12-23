@@ -54,13 +54,13 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 					$this->p->debug->mark();
 				}
-			}
 
-			if ( $local_recursion > 32 ) {	// Just in case.
+			} elseif ( $local_recursion > 32 ) {	// Just in case.
 
 				return $value;
-			}
 
+			}
+			
 			if ( is_array( $value ) ) {
 
 				/*
@@ -89,11 +89,11 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 				return $value;
 
-			} elseif ( ! is_string( $value ) ) {
+			} elseif ( ! is_string( $value ) ) {	// Just in case - accept only arrays and strings.
 
 				return $value;
 
-			} elseif ( false === strpos( $value, '%%' ) ) {
+			} elseif ( false === strpos( $value, '%%' ) ) {	// No inline variable.
 
 				return $value;
 			}

@@ -121,9 +121,17 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 
 			foreach ( $this->import_opt_keys as $opt_key => $bool ) {
 
-				if ( ! empty( $this->opt_meta_keys[ 'post' ][ $opt_key ] ) ) {
+				if ( ! empty( $this->opt_meta_keys[ 'post' ][ $opt_key ] ) ) {	// Boolean is true.
 
+					/*
+					 * Example:
+					 *
+					 * 	$opt_key = 'primary_term_id'
+					 * 	$meta_key = '_yoast_wpseo_primary_%%post_primary_tax_slug%%'
+					 */
 					$meta_key = $this->opt_meta_keys[ 'post' ][ $opt_key ];
+
+					$meta_key = $this->p->util->inline->replace_variables( $meta_key, $mod );
 
 					/*
 					 * Skip options that have a custom value. An empty string and 'none' are not custom values.
