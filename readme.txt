@@ -285,8 +285,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed getting the primary category ID for WooCommerce products from Yoast SEO.
 * **Developer Notes**
-	* Added a 'post_primary_tax_slug' element to the `$mod` array.
+	* Added new 'post_primary_tax_slug' and 'post_taxonomies' elements to the `$mod` array.
 	* Added the 'wpsso_primary_term_id' filter to the `WpssoPost->get_default_term_id()` method.
+	* Added support for inline variables to `WpssoIntegDataAbstractSeoMeta->filter_get_post_options()`.
 	* Refactored the `WpssoIntegSeoWpseo->filter_primary_term_id()` method to use the `$tax_slug` value as part of the meta key.
 	* Added a new 'wpsso_primary_term_id_is_custom' filter to the `WpssoPost->get_primary_term_id()` method.
 	* Removed the 'wpsso_default_term_id' filter.
