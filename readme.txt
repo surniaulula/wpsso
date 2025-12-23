@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.11.1-b.2 (2025/12/22)**
+**Version 21.11.1-b.3 (2025/12.23)**
 
 * **New Features**
 	* None.
@@ -338,9 +338,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.11.1-b.2 =
+= 21.11.1-b.3 =
 
-(2025/12/22) Fixed getting the primary category ID for WooCommerce products from Yoast SEO.
+(2025/12.23) Fixed getting the primary category ID for WooCommerce products from Yoast SEO.
 
 = 21.11.0 =
 
