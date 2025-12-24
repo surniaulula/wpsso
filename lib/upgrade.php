@@ -1057,6 +1057,14 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 				$this->p->notice->is_dismissed( $notice_key, $user_id = null, $force_expire = true );
 			}
 
+			if ( $prev_version > 0 && $prev_version <= 1036 ) {
+				
+				if ( empty( $opts[ 'plugin_cf_product_gtin' ] ) ) {
+
+					$opts[ 'plugin_cf_product_gtin' ] = '_global_unique_id';
+				}
+			}
+
 			/*
 			 * Check for schema type IDs to be renamed.
 			 */
