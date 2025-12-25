@@ -25,6 +25,9 @@ if ( ! class_exists( 'WpssoIntegEcomAbstractWooCommerceBrands' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
+				
+				$this->p->debug->log( 'disabling the plugin_cf_product_brand option' );
+				$this->p->debug->log( 'disabling the plugin_attr_product_brand option' );
 			}
 
 			SucomUtilOptions::set_key_value_disabled( 'plugin_cf_product_brand', '', $this->p->options );

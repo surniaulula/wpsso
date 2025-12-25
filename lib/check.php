@@ -300,6 +300,8 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 								/*
 								 * WooCommerce Brands.
+								 *
+								 * See woocommerce/includes/class-wc-brands.php.
 								 */
 								case 'woocommerce-brands':
 
