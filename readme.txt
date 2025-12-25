@@ -276,6 +276,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 21.11.2-dev.1 (2025/12/25)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Updated the SSO &gt; Advanced Settings &gt; Attributes and Metadata &gt; Custom Fields &gt; Product GTIN Custom Field default option value to "_global_unique_id" for compatibility with WooCommerce.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v5.9.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
+
 **Version 21.11.1 (2025/12/23)**
 
 * **New Features**
@@ -337,6 +352,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 21.11.2-dev.1 =
+
+(2025/12/25) Updated the SSO &gt; Advanced Settings &gt; Attributes and Metadata &gt; Custom Fields &gt; Product GTIN Custom Field default option value to "_global_unique_id" for compatibility with WooCommerce.
 
 = 21.11.1 =
 
