@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.11.2-rc.1 (2025/12/25)**
+**Version 21.11.2 (2025/12/25)**
 
 * **New Features**
 	* None.
@@ -336,7 +336,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.11.2-rc.1 =
+= 21.11.2 =
 
 (2025/12/25) Updated the SSO &gt; Advanced Settings &gt; Attributes and Metadata &gt; Custom Fields &gt; Product GTIN Custom Field default option value to "_global_unique_id" for compatibility with WooCommerce.
 
