@@ -3853,8 +3853,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:152
 msgctxt "plugin description"
 msgid ""
-"MPN, ISBN, GTIN, GTIN-8, UPC, EAN, GTIN-14, net dimensions, and fluid volume "
-"for WooCommerce products and variations."
+"MPN, ISBN, GTIN-8, UPC, EAN, GTIN-14, net dimensions, and fluid volume for "
+"better WooCommerce Schema markup."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:153

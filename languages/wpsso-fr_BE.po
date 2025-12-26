@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 21.11.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2025-12-26 10:39-0800\n"
+"PO-Revision-Date: 2025-12-26 10:57-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3573,8 +3573,8 @@ msgstr "WPSSO Métadonnées de Schéma Product pour WooCommerce"
 
 #: gettext/gettext-lib-config.php:152
 msgctxt "plugin description"
-msgid "MPN, ISBN, GTIN, GTIN-8, UPC, EAN, GTIN-14, net dimensions, and fluid volume for WooCommerce products and variations."
-msgstr "MPN, ISBN, GTIN, GTIN-8, UPC, EAN, GTIN-14, dimensions nettes et volume de fluide pour les produits et variantes WooCommerce."
+msgid "MPN, ISBN, GTIN-8, UPC, EAN, GTIN-14, net dimensions, and fluid volume for better WooCommerce Schema markup."
+msgstr "MPN, ISBN, GTIN-8, UPC, EAN, GTIN-14, dimensions nettes et volume de fluide pour un meilleur balisage de Schéma WooCommerce."
 
 #: gettext/gettext-lib-config.php:153
 msgctxt "plugin name"

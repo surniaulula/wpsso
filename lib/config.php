@@ -1039,7 +1039,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssowcmd' => array(			// Plugin acronym.
 					'short'       => 'WPSSO WCMD',	// Short plugin name.
 					'name'        => 'WPSSO Schema Product Metadata for WooCommerce',
-					'desc'        => 'MPN, ISBN, GTIN, GTIN-8, UPC, EAN, GTIN-14, net dimensions, and fluid volume for WooCommerce products and variations.',
+					'desc'        => 'MPN, ISBN, GTIN-8, UPC, EAN, GTIN-14, net dimensions, and fluid volume for better WooCommerce Schema markup.',
 					'slug'        => 'wpsso-wc-metadata',
 					'base'        => 'wpsso-wc-metadata/wpsso-wc-metadata.php',
 					'update_auth' => '',		// No premium version.
