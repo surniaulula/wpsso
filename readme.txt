@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.11.2-dev.1 (2025/12/25)**
+**Version 21.11.2-b.1 (2025/12/25)**
 
 * **New Features**
 	* None.
@@ -334,26 +334,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.9.
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
-**Version 21.10.0 (2025/12/17)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added Pinterest image duplicate prevention in case the WordPress content filter is applied twice.
-	* Added a new "Default Product Prices Valid For" option under the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Product tab.
-* **Bugfixes**
-	* Fixed inconsistency of 'priceValidUntil' and 'validThrough' default values when no sale end date is available.
-* **Developer Notes**
-	* Updated `WpssoPinterest->get_mod_image_html()` method to avoid adding the Pinterest image more than once.
-	* Removed the WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME constant.
-* **Requires At Least**
-	* PHP v7.4.33.
-	* WordPress v5.9.
-	* WPSSO Update Manager v7.2.0 (for Premium edition).
-
 == Upgrade Notice ==
 
-= 21.11.2-dev.1 =
+= 21.11.2-b.1 =
 
 (2025/12/25) Updated the SSO &gt; Advanced Settings &gt; Attributes and Metadata &gt; Custom Fields &gt; Product GTIN Custom Field default option value to "_global_unique_id" for compatibility with WooCommerce.
 
@@ -364,8 +347,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 21.11.0 =
 
 (2025/12/20) Added Schema StrikethroughPrice and removed SalePrice and ListPrice price types in price specification markup (no longer supported by Google).
-
-= 21.10.0 =
-
-(2025/12/17) Added Pinterest image CSS ID duplicate prevention. Fixed inconsistency of 'priceValidUntil' and 'validThrough' default values. Added a new "Default Product Prices Valid For" option.
 
