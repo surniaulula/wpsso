@@ -6879,15 +6879,15 @@ msgid ""
 "installed."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:220 lib/pro/media/youtube.php:211
+#: gettext/gettext-lib-pro.php:220 lib/pro/media/youtube.php:220
 msgid "Video title not found for %s."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:221 lib/pro/media/youtube.php:221
+#: gettext/gettext-lib-pro.php:221 lib/pro/media/youtube.php:230
 msgid "Video description not found for %s."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:222 lib/pro/media/youtube.php:231
+#: gettext/gettext-lib-pro.php:222 lib/pro/media/youtube.php:240
 msgid "Video upload date not found for %s."
 msgstr ""
 
