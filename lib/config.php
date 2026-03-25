@@ -2,7 +2,7 @@
 /*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
- * Copyright 2012-2025 Jean-Sebastien Morisset (https://wpsso.com/)
+ * Copyright 2012-2026 Jean-Sebastien Morisset (https://wpsso.com/)
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '21.11.2',	// Plugin version.
+					'version'     => '21.12.0-dev.1',	// Plugin version.
 					'opt_version' => '1037',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
