@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.12.0-b.1 (2026/03/25)**
+**Version 21.12.0-rc.1 (2026/03/25)**
 
 * **New Features**
 	* None.
@@ -351,7 +351,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.12.0-b.1 =
+= 21.12.0-rc.1 =
 
 (2026/03/25) Added an additional check to ignore an invalid YouTube video ID or URL.
 
