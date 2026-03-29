@@ -752,7 +752,7 @@ PROTOTYPE.reposition = function(event, effect) {
 
 		// Use the mouse origin that caused the show event, if distance hiding is enabled
 		if((!adjust.mouse || this.options.hide.distance) && cache.origin && cache.origin.pageX) {
-			event =  cache.origin;
+			event = cache.origin;
 		}
 
 		// Use cached event for resize/scroll events

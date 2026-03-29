@@ -396,7 +396,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 								if ( preg_match( '/_(cat|category)$/', $tax_slug ) ) {	// Matches WooCommerce 'product_cat' for example.
 
 									if ( $this->p->debug->enabled ) {
-	
+
 										$this->p->debug->log( 'using ' . $tax_slug . ' as the primary taxonomy' );
 									}
 
@@ -422,7 +422,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$filter_name = 'wpsso_get_post_mod';
 
 			if ( $this->p->debug->enabled ) {
-	
+
 				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 			}
 
@@ -431,7 +431,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$filter_name = 'wpsso_primary_tax_slug';
 
 			if ( $this->p->debug->enabled ) {
-	
+
 				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 			}
 
@@ -1760,7 +1760,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$metabox_html .= $menu_class ? ' class="' . esc_attr( trim( $menu_class ) ) . '"' : '';
 				$metabox_html .= '>' . $link;
 				$metabox_html .= empty( $node->meta[ 'html' ] ) ? '' : $node->meta[ 'html' ];
-				$metabox_html .=  '</li>' . "\n";
+				$metabox_html .= '</li>' . "\n";
 			}
 
 			$metabox_html .= '</ul>';
@@ -2627,7 +2627,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$filter_name = 'wpsso_primary_term_id_is_custom';
 
 				if ( $this->p->debug->enabled ) {
-	
+
 					$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 				}
 
@@ -2636,12 +2636,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( $is_custom ) {
 
 					$filter_name = 'wpsso_primary_term_id';
-	
+
 					if ( $this->p->debug->enabled ) {
-	
+
 						$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 					}
-	
+
 					$primary_term_id = apply_filters( $filter_name, $primary_term_id, $mod, $tax_slug, $is_custom );
 
 				} else {
@@ -2650,10 +2650,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * WpssoPost->get_default_term_id() applies the 'wpsso_primary_term_id' filter with $is_custom = false.
 					 */
 					if ( $this->p->debug->enabled ) {
-	
+
 						$this->p->debug->log( 'calling WpssoPost->get_default_term_id()' );
 					}
-	
+
 					$primary_term_id = $this->get_default_term_id( $mod, $tax_slug );
 				}
 
@@ -2723,10 +2723,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 * Returns a custom or default term ID, or false if a term for the $tax_slug is not found.
 				 */
 				if ( $this->p->debug->enabled ) {
-	
+
 					$this->p->debug->log( 'calling WpssoPost->get_primary_term_id()' );
 				}
-	
+
 				$primary_term_id = $this->p->post->get_primary_term_id( $mod, $tax_slug );	// Returns false or term ID.
 
 				if ( $primary_term_id ) {

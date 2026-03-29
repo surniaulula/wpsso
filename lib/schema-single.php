@@ -2058,32 +2058,32 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					'validThrough'          => 'product:sale_price_dates:end',
 					'valueAddedTaxIncluded' => 'product:price:vat_included',
 				) ) ) ) {
-	
+
 					/*
 					 * Google only supports the Schem,a StrikethroughPrice type - remove other types like SalePrice or ListPrice.
 					 *
 					 * See https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#sale-pricing-example.
 					 */
 					if ( isset( $price_spec[ 'priceType' ] ) && 'https://schema.org/StrikethroughPrice' !== $price_spec[ 'priceType' ] ) {
-	
+
 						unset( $price_spec[ 'priceType' ] );
-	
+
 						/*
 						 * If we're using price specifications, remove the main price information.
 						 */
 						unset ( $json_ret[ 'price' ], $json_ret[ 'priceCurrency' ] );
 					}
-		
+
 					if ( empty( $price_spec[ 'priceCurrency' ] ) ) {	// Make sure we have a price currency.
-		
+
 						$price_spec[ 'priceCurrency' ] = $wpsso->options[ 'og_def_currency' ];
 					}
-	
+
 					if ( empty( $price_spec[ 'validThrough' ] ) ) {		// Avoid Google validator warnings.
-	
+
 						$price_spec[ 'validThrough' ] = WpssoSchema::get_schema_product_price_valid_date();
 					}
-	
+
 					/*
 					 * See http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes.
 					 */
@@ -2094,30 +2094,30 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						'unitCode' => 'product:eligible_quantity:unit_code',
 						'unitText' => 'product:eligible_quantity:unit_text',
 					) );
-	
+
 					if ( false !== $quantity ) {
-	
+
 						if ( ! isset( $quantity[ 'value' ] ) ) {
-	
+
 							if ( isset( $quantity[ 'minValue' ] ) && isset( $quantity[ 'maxValue' ] ) &&
 								$quantity[ 'minValue' ] === $quantity[ 'maxValue' ] ) {
-	
+
 								if ( $wpsso->debug->enabled ) {
-	
+
 									$wpsso->debug->log( 'identical minValue and maxValue', $quantity );
 								}
-	
+
 								$quantity[ 'value' ] = $quantity[ 'minValue' ];
-	
+
 								unset( $quantity[ 'minValue' ], $quantity[ 'maxValue' ] );
 							}
 						}
-	
+
 						$price_spec[ 'eligibleQuantity' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/QuantitativeValue', $quantity );
 					}
-	
+
 					$json_ret[ 'priceSpecification' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/UnitPriceSpecification', $price_spec );
-	
+
 					/*
 					 * If we have an original price (ie. regular or list price), and the original price type is
 					 * different to the current price type, then add the original price as well. Do not add the
@@ -2125,29 +2125,29 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					 * than the original eligible quantity.
 					 */
 					if ( ! empty( $mt_single[ 'product:original_price:type' ] ) && $mt_single[ 'product:original_price:type' ] != $mt_single[ 'product:price:type' ] ) {
-	
+
 						if ( false !== ( $price_spec = WpssoSchema::get_data_itemprop_from_assoc( $mt_single, array(
 							'priceType'             => 'product:original_price:type',
 							'price'                 => 'product:original_price:amount',
 							'priceCurrency'         => 'product:original_price:currency',
 							'valueAddedTaxIncluded' => 'product:price:vat_included',
 						) ) ) ) {
-	
+
 							/*
 							 * Google only supports the Schem,a StrikethroughPrice type - remove other types like SalePrice or ListPrice.
 							 *
 							 * See https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#sale-pricing-example.
 							 */
 							if ( isset( $price_spec[ 'priceType' ] ) && 'https://schema.org/SalePrice' === $price_spec[ 'priceType' ] ) {
-	
+
 								unset( $price_spec[ 'priceType' ] );
 							}
-	
+
 							if ( empty( $price_spec[ 'priceCurrency' ] ) ) {	// Make sure we have a price currency.
-	
+
 								$price_spec[ 'priceCurrency' ] = $wpsso->options[ 'og_def_currency' ];
 							}
-	
+
 							$json_ret[ 'priceSpecification' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/UnitPriceSpecification', $price_spec );
 						}
 					}
@@ -2157,7 +2157,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$wpsso->debug->log( 'skipped schema unit price specification: filter returned false' );
 			}
-	
+
 			/*
 			 * Schema shippingDetails property.
 			 */

@@ -211,6 +211,8 @@
 
 'wpsso_md_keys_fallback_{options_key}' ( array $fallback )
 
+'wpsso_mt_comment_review_{sanitized_meta_tag}' ( $mt_value, array $comment_mod )
+
 'wpsso_menu_title' ( $title )	// Translated menu title (default is "SSO - Social and Search Optimization").
 
 'wpsso_menu_your_sso_title' ( $title )	// Translated profile SSO title (default is "Profile SSO - Social and Search Optimization").

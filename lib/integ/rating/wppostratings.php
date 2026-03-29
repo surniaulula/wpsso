@@ -55,7 +55,7 @@ if ( ! class_exists( 'WpssoIntegRatingWpPostRatings' ) ) {
 
 				$log_pre = 'plugin conflict detected - ';
 
-				$notice_pre =  __( 'Plugin conflict detected:', 'wpsso' ) . ' ';
+				$notice_pre = __( 'Plugin conflict detected:', 'wpsso' ) . ' ';
 
 				// translators: Please ignore - translation uses a different text domain.
 				$label_transl = '<strong>' . __( 'Enable Google Rich Snippets?', 'wp-postratings' ) . '</strong>';

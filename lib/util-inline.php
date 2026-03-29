@@ -60,7 +60,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				return $value;
 
 			}
-			
+
 			if ( is_array( $value ) ) {
 
 				/*

@@ -57,7 +57,7 @@ if ( ! class_exists( 'WpssoIntegRatingRateMyPost' ) ) {
 
 				$log_pre = 'plugin conflict detected - ';
 
-				$notice_pre =  __( 'Plugin conflict detected:', 'wpsso' ) . ' ';
+				$notice_pre = __( 'Plugin conflict detected:', 'wpsso' ) . ' ';
 
 				// translators: Please ignore - translation uses a different text domain.
 				$label_transl = '<strong>' . __( 'Type of structured data for rich snippets', 'rate-my-post' ) . '</strong>';

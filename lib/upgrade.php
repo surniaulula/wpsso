@@ -1058,7 +1058,7 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 			}
 
 			if ( $prev_version > 0 && $prev_version <= 1036 ) {
-				
+
 				if ( empty( $opts[ 'plugin_cf_product_gtin' ] ) ) {
 
 					$opts[ 'plugin_cf_product_gtin' ] = '_global_unique_id';

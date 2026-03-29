@@ -145,7 +145,7 @@ if ( ! class_exists( 'WpssoIntegSeoWpseo' ) ) {
 				}
 
 				if ( $ret = $this->get_post_meta_value( $mod[ 'id' ], $meta_key ) ) {
-				
+
 					return $ret;
 				}
 			}

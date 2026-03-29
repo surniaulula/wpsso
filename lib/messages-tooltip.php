@@ -352,7 +352,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						$text = sprintf( __( '%1$s can add a %2$s attribute to resized images from the WordPress Media Library.', 'wpsso' ), $info[ 'short' ], '<code>data-pin-nopin</code>' ) . ' ';
 
-						$text .=  __( 'This prevents the Pinterest Pin It browser button from suggesting images that may be too small.', 'wpsso' ) . ' ';
+						$text .= __( 'This prevents the Pinterest Pin It browser button from suggesting images that may be too small.', 'wpsso' ) . ' ';
 
 						$text .= sprintf( __( 'When enabling this option, you should also enable the "%s" option to provide an image for the Pin It browser button.', 'wpsso' ), $add_img_html_label ) . ' ';
 

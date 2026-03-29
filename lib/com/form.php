@@ -2930,7 +2930,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 							$label_transl = trim( $label_transl . ' ' . $this->get_option_value_transl( '(no videos)' ) );
 						}
 
-					} elseif ( '' ===  $label || 'none' === $label || '[None]' === $label ) {
+					} elseif ( '' === $label || 'none' === $label || '[None]' === $label ) {
 
 						$label_transl = $this->get_option_value_transl( '[None]' );
 					}
