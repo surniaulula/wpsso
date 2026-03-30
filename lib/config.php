@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '21.13.0-dev.1',	// Plugin version.
+					'version'     => '21.13.0-dev.2',	// Plugin version.
 					'opt_version' => '1037',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1738,7 +1738,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_attached_images'         => 1,			// Consider Attached Images.
 					'plugin_content_images'          => 0,			// Consider Content Images.
 					'plugin_check_img_dims'          => 1,			// Image Dimension Checks.
-					'plugin_prevent_thumb_conflicts' => 1,			// Prevent Thumbnail Conflicts.
+					'plugin_prevent_thumb_conflicts' => 0,			// Prevent Thumbnail Conflicts.
 					'plugin_upscale_images'          => 1,			// Upscale Media Library Images.
 					'plugin_upscale_pct_max'         => 20,			// Maximum Image Upscale Percent.
 

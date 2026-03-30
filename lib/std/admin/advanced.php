@@ -107,7 +107,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_no_td_checkbox( 'plugin_page_tags' ) .
 				WpssoAdmin::get_option_site_use( 'plugin_page_tags', $form, $args[ 'network' ] );
 
-			$table_rows[ 'plugin_new_user_is_person' ] = '' .
+			$table_rows[ 'plugin_new_user_is_person' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_new_user_is_person' ) .
 				$form->get_th_html( _x( 'Add Person Role for New Users', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_new_user_is_person' ) .
 				$form->get_no_td_checkbox( 'plugin_new_user_is_person' ) .
@@ -122,16 +122,18 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'plugin_inherit_images' ] = '' .
 				$form->get_th_html( _x( 'Inherit Custom Images', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_inherit_images' ) .
-				$form->get_no_td_checkbox( 'plugin_inherit_images', _x( '(recommended)', 'option comment', 'wpsso' ) ) .
+				$form->get_no_td_checkbox( 'plugin_inherit_images',
+					_x( '(recommended)', 'option comment', 'wpsso' ) ) .
 				WpssoAdmin::get_option_site_use( 'plugin_inherit_featured', $form, $args[ 'network' ] );
 
 			$table_rows[ 'plugin_attached_images' ] = '' .
 				$form->get_th_html( _x( 'Consider Attached Images', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_attached_images' ) .
-				$form->get_no_td_checkbox( 'plugin_attached_images', _x( '(recommended for WooCommerce product gallery images)', 'option comment', 'wpsso' ) ) .
+				$form->get_no_td_checkbox( 'plugin_attached_images',
+					_x( '(recommended for WooCommerce product gallery images)', 'option comment', 'wpsso' ) ) .
 				WpssoAdmin::get_option_site_use( 'plugin_attached_images', $form, $args[ 'network' ] );
 
-			$table_rows[ 'plugin_content_images' ] = '' .
+			$table_rows[ 'plugin_content_images' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_content_images' ) .
 				$form->get_th_html( _x( 'Consider Content Images', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_content_images' ) .
 				$form->get_no_td_checkbox( 'plugin_content_images' ) .
@@ -140,13 +142,15 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'plugin_check_img_dims' ] = '' .
 				$form->get_th_html( _x( 'Image Dimension Checks', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_check_img_dims' ) .
-				$form->get_no_td_checkbox( 'plugin_check_img_dims', _x( '(recommended)', 'option comment', 'wpsso' ) ) .
+				$form->get_no_td_checkbox( 'plugin_check_img_dims',
+					_x( '(recommended)', 'option comment', 'wpsso' ) ) .
 				WpssoAdmin::get_option_site_use( 'plugin_check_img_dims', $form, $args[ 'network' ] );
 
-			$table_rows[ 'plugin_prevent_thumb_conflicts' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_prevent_thumb_conflicts' ) .
+			$table_rows[ 'plugin_prevent_thumb_conflicts' ] = '' .
 				$form->get_th_html( _x( 'Prevent Thumbnail Conflicts', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_prevent_thumb_conflicts' ) .
-				$form->get_no_td_checkbox( 'plugin_prevent_thumb_conflicts', _x( '(recommended)', 'option comment', 'wpsso' ) ) .
+				$form->get_no_td_checkbox( 'plugin_prevent_thumb_conflicts',
+					_x( '(recommended)', 'option comment', 'wpsso' ) ) .
 				WpssoAdmin::get_option_site_use( 'plugin_prevent_thumb_conflicts', $form, $args[ 'network' ] );
 
 			$table_rows[ 'plugin_upscale_images' ] = '' .
