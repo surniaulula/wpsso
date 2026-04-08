@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.4.33
 Requires At Least: 6.0
 Tested Up To: 6.9.4
-WC Tested Up To: 10.6.1
+WC Tested Up To: 10.6.2
 Stable Tag: 21.12.0
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
@@ -276,7 +276,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.13.0-dev.2 (TBD)**
+**Version 21.13.0-dev.3 (2026/04/08)**
+
+Maintenance release.
 
 * **New Features**
 	* None.
@@ -366,9 +368,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.13.0-dev.2 =
+= 21.13.0-dev.3 =
 
-(TBD) None.
+(2026/04/08) Maintenance release.
+
 
 = 21.12.0 =
 
