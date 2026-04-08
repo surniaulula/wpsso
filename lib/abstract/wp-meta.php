@@ -3209,7 +3209,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			$mt_ret[ 'review:image' ]        = isset( $mt_comment[ 'og:image' ] ) ? $mt_comment[ 'og:image' ] : array();
 			$mt_ret[ 'review:video' ]        = isset( $mt_comment[ 'og:video' ] ) ? $mt_comment[ 'og:video' ] : array();
 
-			foreach ( $mt_ret as $mt_key => $mt_val ) {
+			/* foreach ( $mt_ret as $mt_key => $mt_val ) {
 
 				$filter_name = SucomUtil::sanitize_hookname( 'wpsso_mt_comment_review_' . $mt_key );
 
@@ -3219,7 +3219,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				}
 
 				$mt_ret[ $mt_key ] = apply_filters( $filter_name, $mt_val, $comment_mod );
-			}
+			} */
 
 			/*
 			 * Review rating.
