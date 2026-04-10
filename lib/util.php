@@ -623,19 +623,30 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				switch ( $mixed ) {
 
+					case 'og':
 					case 'opengraph':
+
+						return $this->get_obj_image_size_names( $this->p->og );
+
+					case 'pin':
 					case 'pinterest':
+						
+						return $this->get_obj_image_size_names( $this->p->pinterest );
+
+					case 'thumb':
 					case 'thumbnail':
 
 						return array( 'wpsso-' . $mixed );
 
+					case 'tc':
+					case 'twitter':
+					case 'twittercard':
+						
+						return $this->get_obj_image_size_names( $this->p->tc );
+
 					case 'schema':
 
-						return (array) apply_filters( 'wpsso_image_size_names_' . $mixed, array(
-							'wpsso-schema-1x1',
-							'wpsso-schema-4x3',
-							'wpsso-schema-16x9',
-						) );
+						return $this->get_obj_image_size_names( $this->p->schema );
 
 					default:
 
@@ -644,6 +655,26 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return array();
+		}
+
+		private function get_obj_image_size_names( object $obj ) {
+
+			$names = array();
+
+			if ( is_callable( array( $obj, 'filter_plugin_image_sizes' ) ) ) {	// Just in case.
+
+				$sizes = $obj->filter_plugin_image_sizes( array() );
+
+				foreach ( $sizes as $opt_prefix => $arr ) {
+
+					if ( ! empty( $arr[ 'name' ] ) ) {
+
+						$names[] = 'wpsso-' . $arr[ 'name' ];
+					}
+				}
+			}
+
+			return $names;
 		}
 
 		/*

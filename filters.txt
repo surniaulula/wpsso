@@ -19,6 +19,12 @@
 
 'wpsso_{post_type}_tag_taxonomy' ( $taxonomy = 'post_tag', $mod )
 
+'wpsso_add_image_sizes_schema_4x3' ( $bool = true )
+
+'wpsso_add_image_sizes_schema_16x9' ( $bool = true )
+
+'wpsso_add_image_sizes_schema_thumb' ( $bool = true )
+
 'wpsso_add_link_rel_canonical' ( $bool, $mod )
 
 'wpsso_add_link_rel_shortlink' ( $bool, $mod )
@@ -116,8 +122,6 @@
 'wpsso_head_disable' ( $bool, array $mod )	// Disable (ie. do not include) meta tags and Schema markup in the head section of the webpage.
 
 'wpsso_home_url' ( $url, array $mod )
-
-'wpsso_image_size_names_schema' ( array $size_names )
 
 'wpsso_image_upscale_all' ( WPSSO_IMAGE_UPSCALE_ALL = false )
 
