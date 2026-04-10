@@ -631,11 +631,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					case 'schema':
 
-						return array(
+						return (array) apply_filters( 'wpsso_image_size_names_' . $mixed, array(
 							'wpsso-schema-1x1',
 							'wpsso-schema-4x3',
 							'wpsso-schema-16x9',
-						);
+						) );
 
 					default:
 

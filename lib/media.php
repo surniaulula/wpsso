@@ -608,8 +608,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$mt_ret = array_merge( $mt_ret, $preview_images );
 			}
 
-			$num_diff = SucomUtil::array_count_diff( $mt_ret, $num );
-
+			$num_diff   = SucomUtil::array_count_diff( $mt_ret, $num );
 			$size_names = $this->p->util->get_image_size_names( $size_names );	// Always returns an array.
 
 			if ( $this->p->debug->enabled ) {
@@ -2234,8 +2233,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				) );
 			}
 
-			$mt_ret = array();
-
+			$mt_ret     = array();
 			$size_names = $this->p->util->get_image_size_names( $size_names );	// Always returns an array.
 
 			foreach ( $size_names as $size_name ) {

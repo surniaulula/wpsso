@@ -117,6 +117,8 @@
 
 'wpsso_home_url' ( $url, array $mod )
 
+'wpsso_image_size_names_schema' ( array $size_names )
+
 'wpsso_image_upscale_all' ( WPSSO_IMAGE_UPSCALE_ALL = false )
 
 'wpsso_image_upscale_max' ( $upscale_max = 33, $image_src_args )
