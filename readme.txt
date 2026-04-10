@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.13.0-dev.4 (2026/04/09)**
+**Version 21.13.0-dev.5 (2026/04/10)**
 
 * **New Features**
 	* None.
@@ -285,7 +285,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added a new 'wpsso_image_size_names_schema' filter.
+	* Added new filters to include or exclude additional Schema image sizes (ie. not 1x1):
+		'wpsso_add_image_sizes_schema_4x3'
+		'wpsso_add_image_sizes_schema_16x9'
+		'wpsso_add_image_sizes_schema_thumb'
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v6.0.
@@ -366,10 +369,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.13.0-dev.4 =
+= 21.13.0-dev.5 =
 
-(2026/04/09) Added a new 'wpsso_image_size_names_schema' filter.
-
+(2026/04/10) Added new filters to include or exclude additional Schema image sizes (ie. not 1x1):
 
 = 21.12.0 =
 
