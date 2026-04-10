@@ -276,9 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.13.0-dev.3 (2026/04/08)**
-
-Maintenance release.
+**Version 21.13.0-dev.4 (2026/04/09)**
 
 * **New Features**
 	* None.
@@ -287,7 +285,7 @@ Maintenance release.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new 'wpsso_image_size_names_schema' filter.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v6.0.
@@ -368,9 +366,9 @@ Maintenance release.
 
 == Upgrade Notice ==
 
-= 21.13.0-dev.3 =
+= 21.13.0-dev.4 =
 
-(2026/04/08) Maintenance release.
+(2026/04/09) Added a new 'wpsso_image_size_names_schema' filter.
 
 
 = 21.12.0 =
