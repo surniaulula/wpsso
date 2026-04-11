@@ -286,9 +286,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added new filters to include or exclude additional Schema image sizes (ie. not 1x1):
-		'wpsso_add_image_sizes_schema_4x3'
-		'wpsso_add_image_sizes_schema_16x9'
-		'wpsso_add_image_sizes_schema_thumb'
+		* 'wpsso_add_image_sizes_schema_4x3'
+		* 'wpsso_add_image_sizes_schema_16x9'
+		* 'wpsso_add_image_sizes_schema_thumb'
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v6.0.
