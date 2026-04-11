@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.13.0-rc.1 (2026/04/11)**
+**Version 21.13.0 (2026/04/11)**
 
 * **New Features**
 	* None.
@@ -369,7 +369,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.13.0-rc.1 =
+= 21.13.0 =
 
 (2026/04/11) Added new filters to include or exclude additional Schema image sizes (ie. not 1x1).
 
