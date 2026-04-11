@@ -438,25 +438,34 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'pin_img_size' ) .
 				'<td class="blank">' . $form->get_no_input_image_dimensions( 'pin_img', $pin_img_disabled ) . $pin_img_msg . '</td>';
 
-			$table_rows[ 'schema_01x01_img_size' ] = '' .
+			$table_rows[ 'schema_01_01_img_size' ] = '' .
 				$form->get_th_html( _x( 'Schema 1:1 (Google Rich Results)', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'schema_1x1_img_size' ) .
 				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_1x1_img' ) . '</td>';
 
-			$table_rows[ 'schema_04x03_img_size' ] = '' .
-				$form->get_th_html( _x( 'Schema 4:3 (Google Rich Results)', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'schema_4x3_img_size' ) .
-				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_4x3_img' ) . '</td>';
+			if ( apply_filters( 'wpsso_add_image_sizes_schema_4x3', true ) ) {
 
-			$table_rows[ 'schema_16x09_img_size' ] = '' .
-				$form->get_th_html( _x( 'Schema 16:9 (Google Rich Results)', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'schema_16x9_img_size' ) .
-				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_16x9_img' ) . '</td>';
+				$table_rows[ 'schema_04_03_img_size' ] = '' .
+					$form->get_th_html( _x( 'Schema 4:3 (Google Rich Results)', 'option label', 'wpsso' ),
+						$css_class = '', $css_id = 'schema_4x3_img_size' ) .
+					'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_4x3_img' ) . '</td>';
+			}
 
-			$table_rows[ 'schema_thumb_img_size' ] = '' .
-				$form->get_th_html( _x( 'Schema Thumbnail', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'schema_thumb_img_size' ) .
-				'<td class="blank">' . $form->get_no_input_image_dimensions( 'thumb_img' ) . '</td>';
+			if ( apply_filters( 'wpsso_add_image_sizes_schema_16x9', true ) ) {
+
+				$table_rows[ 'schema_16_09_img_size' ] = '' .
+					$form->get_th_html( _x( 'Schema 16:9 (Google Rich Results)', 'option label', 'wpsso' ),
+						$css_class = '', $css_id = 'schema_16x9_img_size' ) .
+					'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_16x9_img' ) . '</td>';
+			}
+
+			if ( apply_filters( 'wpsso_add_image_sizes_schema_thumb', true ) ) {
+
+				$table_rows[ 'schema_thumb_img_size' ] = '' .
+					$form->get_th_html( _x( 'Schema Thumbnail', 'option label', 'wpsso' ),
+						$css_class = '', $css_id = 'schema_thumb_img_size' ) .
+					'<td class="blank">' . $form->get_no_input_image_dimensions( 'thumb_img' ) . '</td>';
+			}
 
 			$table_rows[ 'tc_00_sum_img_size' ] = '' .
 				$form->get_th_html( _x( 'X (Twitter) Summary Card', 'option label', 'wpsso' ),
