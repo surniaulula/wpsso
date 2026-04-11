@@ -630,7 +630,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					case 'pin':
 					case 'pinterest':
-						
+
 						return $this->get_obj_image_size_names( $this->p->pinterest );
 
 					case 'thumb':
@@ -641,7 +641,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					case 'tc':
 					case 'twitter':
 					case 'twittercard':
-						
+
 						return $this->get_obj_image_size_names( $this->p->tc );
 
 					case 'schema':
