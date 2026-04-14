@@ -276,6 +276,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 21.13.1-dev.1 (2026/04/14)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Fixed `WpssoErrorException::__construct(): Implicitly marking parameter $previous as nullable is deprecated` warning for PHP v8.4.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v6.0.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
+
 **Version 21.13.0 (2026/04/11)**
 
 * **New Features**
@@ -368,6 +383,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 21.13.1-dev.1 =
+
+(2026/04/14) Fixed `WpssoErrorException::__construct(): Implicitly marking parameter $previous as nullable is deprecated` warning for PHP v8.4.
 
 = 21.13.0 =
 
