@@ -26,7 +26,7 @@ if ( ! class_exists( 'WpssoErrorException' ) ) {
 
 		protected $p;
 
-		public function __construct( $errstr = '', $errcode = null, $severity = E_ERROR, $filename = __FILE__, $lineno = __LINE__, Exception $previous = null ) {
+		public function __construct( $errstr = '', $errcode = null, $severity = E_ERROR, $filename = __FILE__, $lineno = __LINE__, ?Exception $previous = null ) {
 
 			$this->p =& Wpsso::get_instance();
 
