@@ -1999,15 +1999,21 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					case 'plugin_comment_title':		// Comment Title.
 
+						/*
+						 * %%comment_date%% is formatted based on the WordPress Settings > General > Date Format value.
+						 */
 						return _x( 'Comment by %%comment_author%% on %%comment_date%%', 'option value', 'wpsso' );
 
 					case 'plugin_comment_reply_title':	// Reply Comment Title.
 
+						/*
+						 * %%comment_date%% is formatted based on the WordPress Settings > General > Date Format value.
+						 */
 						return _x( 'Reply by %%comment_author%% on %%comment_date%%', 'option value', 'wpsso' );
 
 					case 'plugin_comment_review_title':	// Review Comment Title.
 
-						return _x( 'Review by %%comment_author%% on %%comment_date%%', 'option value', 'wpsso' );
+						return _x( 'Review by %%comment_author%%', 'option value', 'wpsso' );
 
 					case 'plugin_product_var_title':	// Product Variation Title.
 
