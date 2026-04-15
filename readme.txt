@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.13.1-dev.1 (2026/04/14)**
+**Version 21.13.1-b.1 (2026/04/15)**
 
 * **New Features**
 	* None.
@@ -384,9 +384,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.13.1-dev.1 =
+= 21.13.1-b.1 =
 
-(2026/04/14) Fixed `WpssoErrorException::__construct(): Implicitly marking parameter $previous as nullable is deprecated` warning for PHP v8.4.
+(2026/04/15) Fixed `WpssoErrorException::__construct(): Implicitly marking parameter $previous as nullable is deprecated` warning for PHP v8.4.
 
 = 21.13.0 =
 
