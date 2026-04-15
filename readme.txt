@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.13.1-rc.1 (2026/04/15)**
+**Version 21.13.1 (2026/04/15)**
 
 * **New Features**
 	* None.
@@ -384,7 +384,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.13.1-rc.1 =
+= 21.13.1 =
 
 (2026/04/15) Changed the default "Review Comment Title" option value. Fixed `WpssoErrorException::__construct(): Implicitly marking parameter $previous as nullable is deprecated` warning for PHP v8.4.
 
