@@ -276,12 +276,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.13.1-b.1 (2026/04/15)**
+**Version 21.13.1-b.2 (2026/04/15)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Changed the default "Review Comment Title" option value from 'Review by %%comment_author%% on %%comment_date%%' to 'Review by %%comment_author%%'
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -384,9 +384,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.13.1-b.1 =
+= 21.13.1-b.2 =
 
-(2026/04/15) Fixed `WpssoErrorException::__construct(): Implicitly marking parameter $previous as nullable is deprecated` warning for PHP v8.4.
+(2026/04/15) Changed the default "Review Comment Title" option value. Fixed `WpssoErrorException::__construct(): Implicitly marking parameter $previous as nullable is deprecated` warning for PHP v8.4.
 
 = 21.13.0 =
 
