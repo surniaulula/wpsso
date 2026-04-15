@@ -1065,6 +1065,17 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 				}
 			}
 
+			if ( $prev_version > 0 && $prev_version <= 1041 ) {
+
+				if ( isset( $opts[ 'plugin_comment_review_title' ] ) ) {
+
+					if ( 'Review by %%comment_author%% on %%comment_date%%' === $opts[ 'plugin_comment_review_title' ] ) {
+
+						$opts[ 'plugin_comment_review_title' ] = 'Review by %%comment_author%%';
+					}
+				}
+			}
+
 			/*
 			 * Check for schema type IDs to be renamed.
 			 */
