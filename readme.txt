@@ -276,6 +276,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 21.13.2-dev.1 (2026/04/20)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Fixed case statements followed by semicolon in `WpssoUtilUnits->get_mixed_type()`.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v6.0.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
+
 **Version 21.13.1 (2026/04/15)**
 
 * **New Features**
@@ -310,6 +325,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 21.13.2-dev.1 =
+
+(2026/04/20) Fixed case statements followed by semicolon in `WpssoUtilUnits->get_mixed_type()`.
 
 = 21.13.1 =
 
