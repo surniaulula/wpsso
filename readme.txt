@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.13.2-dev.1 (2026/04/20)**
+**Version 21.13.2-rc.1 (2026/04/20)**
 
 * **New Features**
 	* None.
@@ -326,7 +326,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.13.2-dev.1 =
+= 21.13.2-rc.1 =
 
 (2026/04/20) Fixed case statements followed by semicolon in `WpssoUtilUnits->get_mixed_type()`.
 
