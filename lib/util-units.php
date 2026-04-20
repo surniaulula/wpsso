@@ -137,19 +137,19 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 				case 'length':
 				case 'width':
 				case 'height':
-				case ( false !== strpos( $match_key, '_length_' ) ? true : false );
-				case ( false !== strpos( $match_key, '_width_' ) ? true : false );
-				case ( false !== strpos( $match_key, '_height_' ) ? true : false );
+				case ( false !== strpos( $match_key, '_length_' ) ? true : false ):
+				case ( false !== strpos( $match_key, '_width_' ) ? true : false ):
+				case ( false !== strpos( $match_key, '_height_' ) ? true : false ):
 
 					return $local_cache[ $mixed_key ] = 'dimension';
 
 				case 'fluid_volume':
-				case ( false !== strpos( $match_key, '_fluid_volume_' ) ? true : false );
+				case ( false !== strpos( $match_key, '_fluid_volume_' ) ? true : false ):
 
 					return $local_cache[ $mixed_key ] = 'fluid_volume';
 
 				case 'weight':
-				case ( false !== strpos( $match_key, '_weight_' ) ? true : false );
+				case ( false !== strpos( $match_key, '_weight_' ) ? true : false ):
 
 					return $local_cache[ $mixed_key ] = 'weight';
 			}
