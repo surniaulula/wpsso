@@ -1408,9 +1408,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			$short_pro = $this->pkg_info[ $this->p->id ][ 'short_pro' ];
 
-			$notice_msg = sprintf( __( 'A %1$s video was found but details about this video (title, description, preview image, upload date, duration, width, height, encoding, etc.) could not be retrieved.', 'wpsso' ), $svc_transl ) . ' ';
-
-			$notice_msg .= sprintf( __( 'Video service API modules are provided with the %1$s edition.', 'wpsso' ), $short_pro );
+			$notice_msg = sprintf( __( 'A %1$s video was found but details about this video (title, description, preview image, upload date, duration, width, height, encoding, etc.) could not be retrieved as video service API modules are provided with the %2$s edition.', 'wpsso' ), $svc_transl, $short_pro );
 
 			$notice_key = 'pro-feature-video-found-notice-' . $svc_transl;
 

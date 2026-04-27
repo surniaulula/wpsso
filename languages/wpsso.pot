@@ -8083,7 +8083,7 @@ msgid ""
 "version of WPBakery Visual Composer immediately."
 msgstr ""
 
-#: lib/conflict.php:401 lib/messages.php:1445
+#: lib/conflict.php:401 lib/messages.php:1443
 msgid ""
 "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to "
 "discourage search engines from indexing this site."
@@ -14496,7 +14496,7 @@ msgctxt "option comment"
 msgid "video preview images are included first"
 msgstr ""
 
-#: lib/messages.php:1396 lib/messages.php:1413
+#: lib/messages.php:1396
 msgid "Video service API modules are provided with the %1$s edition."
 msgstr ""
 
@@ -14508,14 +14508,15 @@ msgstr ""
 msgid ""
 "A %1$s video was found but details about this video (title, description, "
 "preview image, upload date, duration, width, height, encoding, etc.) could "
-"not be retrieved."
+"not be retrieved as video service API modules are provided with the %2$s "
+"edition."
 msgstr ""
 
-#: lib/messages.php:1437
+#: lib/messages.php:1435
 msgid "The WordPress sitemaps functionality is disabled."
 msgstr ""
 
-#: lib/messages.php:1455
+#: lib/messages.php:1453
 msgid ""
 "A theme or plugin is returning <code>false</code> for the "
 "'wp_sitemaps_enabled' filter."
