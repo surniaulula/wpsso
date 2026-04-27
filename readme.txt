@@ -1,10 +1,10 @@
 === WPSSO Core - Complete Schema Markup and Meta Tags ===
-Plugin Name: WPSSO Core
+Plugin Name: WPSSO Core Premium
 Plugin Slug: wpsso
 Text Domain: wpsso
 Domain Path: /languages
-License: GPLv3
-License URI: https://www.gnu.org/licenses/gpl.txt
+License: Nontransferable License for WordPress Site Address URL
+License URI: https://wpsso.com/wp-content/plugins/wpsso/license/premium.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: schema, woocommerce, search results, optimize, meta tags
 Contributors: jsmoriss
@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.13.3-b.1 (2026/04/27)**
+**Version 21.13.3-dev.1 (2026/04/27)**
 
 * **New Features**
 	* None.
@@ -341,7 +341,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.13.3-b.1 =
+= 21.13.3-dev.1 =
 
 (2026/04/27) Fixed `Call to a member function pro_feature_video_found_notice() on null` error in the WPSSO Core Standard version.
 
