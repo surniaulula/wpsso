@@ -1,8 +1,8 @@
-# Copyright (C) 2026 WPSSO Core
-# This file is distributed under the same license as the WPSSO Core package.
+# Copyright (C) 2026 WPSSO Core Premium
+# This file is distributed under the same license as the WPSSO Core Premium package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 21.13.3-b.1\n"
+"Project-Id-Version: WPSSO Core Premium 21.13.3-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2026-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2925,198 +2925,56 @@ msgctxt "option value"
 msgid "Zimbabwe"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:5 gettext/gettext-lib-com.php:42
-#: gettext/gettext-lib-com.php:63 lib/com/bfo.php:259 lib/com/cache.php:95
+#: gettext/gettext-lib-com.php:5 gettext/gettext-lib-com.php:24
+#: gettext/gettext-lib-com.php:61 lib/com/bfo.php:259 lib/com/cache.php:95
 #: lib/com/notice.php:72
 msgid "%s Notice"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:6 gettext/gettext-lib-com.php:43
-#: gettext/gettext-lib-com.php:64 lib/com/bfo.php:264 lib/com/cache.php:100
+#: gettext/gettext-lib-com.php:6 gettext/gettext-lib-com.php:25
+#: gettext/gettext-lib-com.php:62 lib/com/bfo.php:264 lib/com/cache.php:100
 #: lib/com/notice.php:77
 msgid "Notice"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:7 lib/com/cache.php:235
-msgid "Error retrieving %1$s for caching (after %2$.3f seconds)."
-msgstr ""
-
-#: gettext/gettext-lib-com.php:8 lib/com/cache.php:240
-msgid "Error retrieving %1$s for caching."
-msgstr ""
-
-#: gettext/gettext-lib-com.php:9 lib/com/cache.php:246
-msgid "cURL error code %1$d %2$s."
-msgstr ""
-
-#: gettext/gettext-lib-com.php:10 lib/com/cache.php:252
-msgid "SSL verification failed with code %1$d."
-msgstr ""
-
-#: gettext/gettext-lib-com.php:11 lib/com/cache.php:257
-msgid "HTTP connection returned code %1$d."
-msgstr ""
-
-#: gettext/gettext-lib-com.php:12 gettext/gettext-lib-com.php:15
-#: lib/com/cache.php:272 lib/com/cache.php:289
+#: gettext/gettext-lib-com.php:7 lib/com/bfo.php:280
 msgid ""
-"The PHP \"%s\" setting is enabled - the PHP cURL library cannot follow URL "
-"redirects."
+"The \"%1$s\" hook with priority %2$d in the \"%3$s\" filter has incorrectly "
+"sent output to the webpage."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:13 lib/com/cache.php:275
+#: gettext/gettext-lib-com.php:8 lib/com/bfo.php:283
 msgid ""
-"The \"%s\" setting is deprecated since PHP version 5.3 and removed from PHP "
-"since version 5.4."
+"Unlike WordPress actions, WordPress filters must always return their text, "
+"not echo it to the webpage output."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:14 lib/com/cache.php:278
+#: gettext/gettext-lib-com.php:9 lib/com/bfo.php:286
 msgid ""
-"Please contact your hosting provider to have this setting disabled or "
-"install a newer version of PHP."
+"Please contact the author of that filter and report this issue as a coding "
+"error."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:16 lib/com/cache.php:292
-msgid "Please contact your hosting provider to have this setting disabled."
+#: gettext/gettext-lib-com.php:10 lib/com/bfo.php:329
+msgid "Incorrect webpage output:"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:17 lib/com/cache.php:297
-msgid "The maximum number of URL redirects (%d) may have been exceeded."
+#: gettext/gettext-lib-com.php:11 lib/com/bfo.php:330
+msgid "BEGIN OUTPUT"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:18 lib/com/cache.php:302
-msgid ""
-"Additional requests to retrieve this URL will be ignored for another %d "
-"second(s)."
+#: gettext/gettext-lib-com.php:12 lib/com/bfo.php:331
+msgid "END OUTPUT"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:19 gettext/gettext-lib-com.php:21
-#: lib/com/cache.php:493 lib/com/cache.php:688 lib/util-cache.php:166
-msgid "Error removing cache file %s."
-msgstr ""
-
-#: gettext/gettext-lib-com.php:20 lib/com/cache.php:585
-msgid ""
-"PHP cURL library missing - contact your hosting provider to have the cURL "
-"library installed."
-msgstr ""
-
-#: gettext/gettext-lib-com.php:22 lib/com/cache.php:946
-msgid "Cache file %s is not readable."
-msgstr ""
-
-#: gettext/gettext-lib-com.php:23 lib/com/cache.php:978
-msgid "Failed to open the cache file %s for reading."
-msgstr ""
-
-#: gettext/gettext-lib-com.php:24 lib/com/cache.php:1086
-msgid "Failed to create the %s cache folder."
-msgstr ""
-
-#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1100
-msgid "Cache folder %s is not writable."
-msgstr ""
-
-#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1114
-msgid "Failed to open the cache file %s for writing."
-msgstr ""
-
-#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1143
-msgid "Failed writing data to cache file %s."
-msgstr ""
-
-#: gettext/gettext-lib-com.php:28 gettext/gettext-lib-com.php:38
-#: lib/com/form.php:926 lib/com/form.php:2600
-msgctxt "option comment"
-msgid "days"
-msgstr ""
-
-#: gettext/gettext-lib-com.php:29 gettext/gettext-lib-com.php:39
-#: lib/com/form.php:927 lib/com/form.php:2601
-msgctxt "option comment"
-msgid "hours"
-msgstr ""
-
-#: gettext/gettext-lib-com.php:30 gettext/gettext-lib-com.php:40
-#: lib/com/form.php:928 lib/com/form.php:2602
-msgctxt "option comment"
-msgid "mins"
-msgstr ""
-
-#: gettext/gettext-lib-com.php:31 gettext/gettext-lib-com.php:41
-#: lib/com/form.php:929 lib/com/form.php:2603
-msgctxt "option comment"
-msgid "secs"
-msgstr ""
-
-#: gettext/gettext-lib-com.php:32 lib/com/form.php:964
-msgctxt "option comment"
-msgid "crop"
-msgstr ""
-
-#: gettext/gettext-lib-com.php:33 lib/com/form.php:967 lib/edit-schema.php:930
-#: lib/edit-schema.php:1913
-msgctxt "option comment"
-msgid "from"
-msgstr ""
-
-#. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:35 lib/com/form.php:977
-#: lib/media-filters.php:117 lib/media.php:1614 lib/media.php:1765
-#: lib/media.php:3829
-msgid "Media Library"
-msgstr ""
-
-#. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:37 lib/com/form.php:1060 lib/script.php:365
-msgid "Select Image"
-msgstr ""
-
-#: gettext/gettext-lib-com.php:44 lib/com/notice.php:293
-#: lib/submenu/licenses.php:94
-msgid "Edit"
-msgstr ""
-
-#: gettext/gettext-lib-com.php:45 lib/com/notice.php:297
-msgid "Reference: %s"
-msgstr ""
-
-#: gettext/gettext-lib-com.php:46 lib/com/notice.php:497
-msgid ""
-"The WordPress admin toolbar appears to be disabled (ie. the WordPress <code>"
-"%s</code> function returned false)."
-msgstr ""
-
-#: gettext/gettext-lib-com.php:47 lib/com/notice.php:500
-msgid ""
-"As a consequence, showing discreet notices in the admin toolbar is not "
-"possible."
-msgstr ""
-
-#: gettext/gettext-lib-com.php:48 lib/com/notice.php:502
-msgid "Please diagnose the issue to re-enable the admin toolbar."
-msgstr ""
-
-#: gettext/gettext-lib-com.php:49 lib/com/notice.php:1046
-msgid "Forever"
-msgstr ""
-
-#: gettext/gettext-lib-com.php:50 lib/com/notice.php:1048
-msgid "This notice can be dismissed permanently."
-msgstr ""
-
-#: gettext/gettext-lib-com.php:51 lib/com/notice.php:1060
-msgid "This notice can be dismissed for %s."
-msgstr ""
-
-#: gettext/gettext-lib-com.php:52 lib/com/bitly.php:58
+#: gettext/gettext-lib-com.php:13 lib/com/bitly.php:58
 msgid "Group name \"%s\" not found in the Bitly API response data."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:53 gettext/gettext-lib-com.php:55
-#: gettext/gettext-lib-com.php:57 gettext/gettext-lib-com.php:58
-#: gettext/gettext-lib-com.php:59 gettext/gettext-lib-com.php:60
-#: gettext/gettext-lib-com.php:62 lib/com/bitly.php:60 lib/com/bitly.php:68
+#: gettext/gettext-lib-com.php:14 gettext/gettext-lib-com.php:16
+#: gettext/gettext-lib-com.php:18 gettext/gettext-lib-com.php:19
+#: gettext/gettext-lib-com.php:20 gettext/gettext-lib-com.php:21
+#: gettext/gettext-lib-com.php:23 lib/com/bitly.php:60 lib/com/bitly.php:68
 #: lib/com/bitly.php:110 lib/com/bitly.php:170 lib/com/bitly.php:183
 #: lib/com/bitly.php:189 lib/com/bitly.php:202 lib/ext/dlmyapp.php:56
 #: lib/ext/dlmyapp.php:62 lib/ext/dlmyapp.php:74 lib/ext/owly.php:65
@@ -3126,47 +2984,189 @@ msgstr ""
 msgid "%1$s shortener API error: %2$s"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:54 lib/com/bitly.php:66
+#: gettext/gettext-lib-com.php:15 lib/com/bitly.php:66
 msgid "Groups property missing from the Bitly API response data."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:56 lib/com/bitly.php:108
+#: gettext/gettext-lib-com.php:17 lib/com/bitly.php:108
 msgid "Link property value is empty."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:61 lib/com/bitly.php:200 lib/ext/dlmyapp.php:72
+#: gettext/gettext-lib-com.php:22 lib/com/bitly.php:200 lib/ext/dlmyapp.php:72
 #: lib/ext/owly.php:201 lib/ext/yourls.php:216
 msgid "JSON response decode error code %d."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:65 lib/com/bfo.php:280
+#: gettext/gettext-lib-com.php:26 lib/com/cache.php:235
+msgid "Error retrieving %1$s for caching (after %2$.3f seconds)."
+msgstr ""
+
+#: gettext/gettext-lib-com.php:27 lib/com/cache.php:240
+msgid "Error retrieving %1$s for caching."
+msgstr ""
+
+#: gettext/gettext-lib-com.php:28 lib/com/cache.php:246
+msgid "cURL error code %1$d %2$s."
+msgstr ""
+
+#: gettext/gettext-lib-com.php:29 lib/com/cache.php:252
+msgid "SSL verification failed with code %1$d."
+msgstr ""
+
+#: gettext/gettext-lib-com.php:30 lib/com/cache.php:257
+msgid "HTTP connection returned code %1$d."
+msgstr ""
+
+#: gettext/gettext-lib-com.php:31 gettext/gettext-lib-com.php:34
+#: lib/com/cache.php:272 lib/com/cache.php:289
 msgid ""
-"The \"%1$s\" hook with priority %2$d in the \"%3$s\" filter has incorrectly "
-"sent output to the webpage."
+"The PHP \"%s\" setting is enabled - the PHP cURL library cannot follow URL "
+"redirects."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:66 lib/com/bfo.php:283
+#: gettext/gettext-lib-com.php:32 lib/com/cache.php:275
 msgid ""
-"Unlike WordPress actions, WordPress filters must always return their text, "
-"not echo it to the webpage output."
+"The \"%s\" setting is deprecated since PHP version 5.3 and removed from PHP "
+"since version 5.4."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:67 lib/com/bfo.php:286
+#: gettext/gettext-lib-com.php:33 lib/com/cache.php:278
 msgid ""
-"Please contact the author of that filter and report this issue as a coding "
-"error."
+"Please contact your hosting provider to have this setting disabled or "
+"install a newer version of PHP."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:68 lib/com/bfo.php:329
-msgid "Incorrect webpage output:"
+#: gettext/gettext-lib-com.php:35 lib/com/cache.php:292
+msgid "Please contact your hosting provider to have this setting disabled."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:69 lib/com/bfo.php:330
-msgid "BEGIN OUTPUT"
+#: gettext/gettext-lib-com.php:36 lib/com/cache.php:297
+msgid "The maximum number of URL redirects (%d) may have been exceeded."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:70 lib/com/bfo.php:331
-msgid "END OUTPUT"
+#: gettext/gettext-lib-com.php:37 lib/com/cache.php:302
+msgid ""
+"Additional requests to retrieve this URL will be ignored for another %d "
+"second(s)."
+msgstr ""
+
+#: gettext/gettext-lib-com.php:38 gettext/gettext-lib-com.php:40
+#: lib/com/cache.php:493 lib/com/cache.php:688 lib/util-cache.php:166
+msgid "Error removing cache file %s."
+msgstr ""
+
+#: gettext/gettext-lib-com.php:39 lib/com/cache.php:585
+msgid ""
+"PHP cURL library missing - contact your hosting provider to have the cURL "
+"library installed."
+msgstr ""
+
+#: gettext/gettext-lib-com.php:41 lib/com/cache.php:946
+msgid "Cache file %s is not readable."
+msgstr ""
+
+#: gettext/gettext-lib-com.php:42 lib/com/cache.php:978
+msgid "Failed to open the cache file %s for reading."
+msgstr ""
+
+#: gettext/gettext-lib-com.php:43 lib/com/cache.php:1086
+msgid "Failed to create the %s cache folder."
+msgstr ""
+
+#: gettext/gettext-lib-com.php:44 lib/com/cache.php:1100
+msgid "Cache folder %s is not writable."
+msgstr ""
+
+#: gettext/gettext-lib-com.php:45 lib/com/cache.php:1114
+msgid "Failed to open the cache file %s for writing."
+msgstr ""
+
+#: gettext/gettext-lib-com.php:46 lib/com/cache.php:1143
+msgid "Failed writing data to cache file %s."
+msgstr ""
+
+#: gettext/gettext-lib-com.php:47 gettext/gettext-lib-com.php:57
+#: lib/com/form.php:926 lib/com/form.php:2600
+msgctxt "option comment"
+msgid "days"
+msgstr ""
+
+#: gettext/gettext-lib-com.php:48 gettext/gettext-lib-com.php:58
+#: lib/com/form.php:927 lib/com/form.php:2601
+msgctxt "option comment"
+msgid "hours"
+msgstr ""
+
+#: gettext/gettext-lib-com.php:49 gettext/gettext-lib-com.php:59
+#: lib/com/form.php:928 lib/com/form.php:2602
+msgctxt "option comment"
+msgid "mins"
+msgstr ""
+
+#: gettext/gettext-lib-com.php:50 gettext/gettext-lib-com.php:60
+#: lib/com/form.php:929 lib/com/form.php:2603
+msgctxt "option comment"
+msgid "secs"
+msgstr ""
+
+#: gettext/gettext-lib-com.php:51 lib/com/form.php:964
+msgctxt "option comment"
+msgid "crop"
+msgstr ""
+
+#: gettext/gettext-lib-com.php:52 lib/com/form.php:967 lib/edit-schema.php:930
+#: lib/edit-schema.php:1913
+msgctxt "option comment"
+msgid "from"
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: gettext/gettext-lib-com.php:54 lib/com/form.php:977
+#: lib/media-filters.php:117 lib/media.php:1614 lib/media.php:1765
+#: lib/media.php:3829
+msgid "Media Library"
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: gettext/gettext-lib-com.php:56 lib/com/form.php:1060 lib/script.php:365
+msgid "Select Image"
+msgstr ""
+
+#: gettext/gettext-lib-com.php:63 lib/com/notice.php:293
+#: lib/submenu/licenses.php:94
+msgid "Edit"
+msgstr ""
+
+#: gettext/gettext-lib-com.php:64 lib/com/notice.php:297
+msgid "Reference: %s"
+msgstr ""
+
+#: gettext/gettext-lib-com.php:65 lib/com/notice.php:497
+msgid ""
+"The WordPress admin toolbar appears to be disabled (ie. the WordPress <code>"
+"%s</code> function returned false)."
+msgstr ""
+
+#: gettext/gettext-lib-com.php:66 lib/com/notice.php:500
+msgid ""
+"As a consequence, showing discreet notices in the admin toolbar is not "
+"possible."
+msgstr ""
+
+#: gettext/gettext-lib-com.php:67 lib/com/notice.php:502
+msgid "Please diagnose the issue to re-enable the admin toolbar."
+msgstr ""
+
+#: gettext/gettext-lib-com.php:68 lib/com/notice.php:1046
+msgid "Forever"
+msgstr ""
+
+#: gettext/gettext-lib-com.php:69 lib/com/notice.php:1048
+msgid "This notice can be dismissed permanently."
+msgstr ""
+
+#: gettext/gettext-lib-com.php:70 lib/com/notice.php:1060
+msgid "This notice can be dismissed for %s."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:5
@@ -6208,28 +6208,28 @@ msgctxt "option label"
 msgid "Gravatar Image Size"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:84 gettext/gettext-lib-pro.php:198
+#: gettext/gettext-lib-pro.php:84 gettext/gettext-lib-pro.php:207
 #: lib/pro/admin/advanced.php:604 lib/pro/admin/general.php:56
 #: lib/std/admin/advanced.php:589 lib/std/admin/general.php:48
 msgctxt "option label"
 msgid "Maximum Videos to Include"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:85 gettext/gettext-lib-pro.php:199
+#: gettext/gettext-lib-pro.php:85 gettext/gettext-lib-pro.php:208
 #: lib/pro/admin/advanced.php:610 lib/pro/admin/general.php:62
 #: lib/std/admin/advanced.php:595 lib/std/admin/general.php:54
 msgctxt "option label"
 msgid "Include Video Preview Images"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:86 gettext/gettext-lib-pro.php:200
+#: gettext/gettext-lib-pro.php:86 gettext/gettext-lib-pro.php:209
 #: lib/pro/admin/advanced.php:615 lib/pro/admin/general.php:67
 #: lib/std/admin/advanced.php:600 lib/std/admin/general.php:59
 msgctxt "option label"
 msgid "Force Autoplay when Possible"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:87 gettext/gettext-lib-pro.php:201
+#: gettext/gettext-lib-pro.php:87 gettext/gettext-lib-pro.php:210
 #: lib/pro/admin/advanced.php:627 lib/pro/admin/general.php:79
 #: lib/std/admin/advanced.php:612 lib/std/admin/general.php:71
 msgctxt "option label"
@@ -6271,7 +6271,7 @@ msgctxt "metabox title"
 msgid "Bitly (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:94 gettext/gettext-lib-pro.php:227
+#: gettext/gettext-lib-pro.php:94 gettext/gettext-lib-pro.php:239
 #: lib/pro/admin/advanced.php:670 lib/pro/util/shorten.php:359
 msgctxt "option label"
 msgid "Bitly Access Token"
@@ -6292,7 +6292,7 @@ msgctxt "metabox title"
 msgid "DLMY.App (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:98 gettext/gettext-lib-pro.php:229
+#: gettext/gettext-lib-pro.php:98 gettext/gettext-lib-pro.php:241
 #: lib/pro/admin/advanced.php:688 lib/pro/util/shorten.php:385
 msgctxt "option label"
 msgid "DLMY.App API Key"
@@ -6303,7 +6303,7 @@ msgctxt "metabox title"
 msgid "Ow.ly (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:100 gettext/gettext-lib-pro.php:231
+#: gettext/gettext-lib-pro.php:100 gettext/gettext-lib-pro.php:243
 #: lib/pro/admin/advanced.php:698 lib/pro/util/shorten.php:409
 msgctxt "option label"
 msgid "Ow.ly API Key"
@@ -6314,7 +6314,7 @@ msgctxt "metabox title"
 msgid "YOURLS (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:102 gettext/gettext-lib-pro.php:233
+#: gettext/gettext-lib-pro.php:102 gettext/gettext-lib-pro.php:245
 #: lib/pro/admin/advanced.php:708 lib/pro/util/shorten.php:450
 msgctxt "option label"
 msgid "YOURLS API URL"
@@ -6365,7 +6365,7 @@ msgctxt "option label"
 msgid "Get Reviews for Post Types"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:111 gettext/gettext-lib-pro.php:246
+#: gettext/gettext-lib-pro.php:111 gettext/gettext-lib-pro.php:225
 #: lib/pro/admin/advanced.php:759 lib/pro/review/judgeme.php:66
 msgctxt "metabox title"
 msgid "Judge.me (Ratings and Reviews)"
@@ -6381,7 +6381,7 @@ msgctxt "option label"
 msgid "Judge.me Shop Token"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:114 gettext/gettext-lib-pro.php:238
+#: gettext/gettext-lib-pro.php:114 gettext/gettext-lib-pro.php:229
 #: lib/pro/admin/advanced.php:775 lib/pro/review/shopperapproved.php:49
 msgctxt "metabox title"
 msgid "Shopper Approved (Ratings and Reviews)"
@@ -6397,7 +6397,7 @@ msgctxt "option label"
 msgid "Shopper Approved API Token"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:117 gettext/gettext-lib-pro.php:242
+#: gettext/gettext-lib-pro.php:117 gettext/gettext-lib-pro.php:233
 #: lib/pro/admin/advanced.php:791 lib/pro/review/stamped.php:49
 msgctxt "metabox title"
 msgid "Stamped.io (Ratings and Reviews)"
@@ -6804,74 +6804,74 @@ msgid ""
 "unchecked and disabled automatically."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:202 lib/pro/admin/edit.php:54
+#: gettext/gettext-lib-pro.php:198 lib/pro/admin/edit.php:54
 #: lib/std/admin/edit.php:39
 msgctxt "metabox title"
 msgid "Priority Video Information"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:203 lib/messages.php:1041
+#: gettext/gettext-lib-pro.php:199 lib/messages.php:1041
 #: lib/pro/admin/edit.php:58 lib/std/admin/edit.php:47
 msgctxt "option label"
 msgid "Video Embed HTML"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:204 lib/pro/admin/edit.php:64
+#: gettext/gettext-lib-pro.php:200 lib/pro/admin/edit.php:64
 #: lib/std/admin/edit.php:54
 msgctxt "option label"
 msgid "or a Video URL"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:205 lib/pro/admin/edit.php:71
+#: gettext/gettext-lib-pro.php:201 lib/pro/admin/edit.php:71
 #: lib/std/admin/edit.php:61
 msgctxt "metabox title"
 msgid "Video Information from Video API"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:206 lib/pro/admin/edit.php:75
+#: gettext/gettext-lib-pro.php:202 lib/pro/admin/edit.php:75
 #: lib/std/admin/edit.php:66
 msgctxt "option label"
 msgid "Video Name"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:207 lib/pro/admin/edit.php:82
+#: gettext/gettext-lib-pro.php:203 lib/pro/admin/edit.php:82
 #: lib/std/admin/edit.php:73
 msgctxt "option label"
 msgid "Video Description"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:208 lib/pro/admin/edit.php:89
+#: gettext/gettext-lib-pro.php:204 lib/pro/admin/edit.php:89
 #: lib/std/admin/edit.php:80
 msgctxt "option label"
 msgid "Video Stream URL"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:209 lib/pro/admin/edit.php:96
+#: gettext/gettext-lib-pro.php:205 lib/pro/admin/edit.php:96
 #: lib/std/admin/edit.php:87
 msgctxt "option label"
 msgid "Video Dimensions"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:210 lib/pro/admin/edit.php:102
+#: gettext/gettext-lib-pro.php:206 lib/pro/admin/edit.php:102
 #: lib/std/admin/edit.php:94
 msgctxt "option label"
 msgid "Video Upload Date"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:211 gettext/gettext-lib-pro.php:214
-#: gettext/gettext-lib-pro.php:217 lib/pro/media/slideshare.php:244
+#: gettext/gettext-lib-pro.php:211 gettext/gettext-lib-pro.php:216
+#: gettext/gettext-lib-pro.php:219 lib/pro/media/slideshare.php:244
 #: lib/pro/media/vimeo.php:217 lib/pro/media/wistia.php:384
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:212 gettext/gettext-lib-pro.php:215
-#: gettext/gettext-lib-pro.php:218 lib/pro/media/slideshare.php:245
+#: gettext/gettext-lib-pro.php:212 gettext/gettext-lib-pro.php:217
+#: gettext/gettext-lib-pro.php:220 lib/pro/media/slideshare.php:245
 #: lib/pro/media/vimeo.php:218 lib/pro/media/wistia.php:385
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:216
-#: gettext/gettext-lib-pro.php:219 lib/conflict.php:337
+#: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:218
+#: gettext/gettext-lib-pro.php:221 lib/conflict.php:337
 #: lib/pro/media/slideshare.php:248 lib/pro/media/vimeo.php:221
 #: lib/pro/media/wistia.php:388
 msgid ""
@@ -6879,82 +6879,82 @@ msgid ""
 "installed."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:220 lib/pro/media/youtube.php:220
-msgid "Video title not found for %s."
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:221 lib/pro/media/youtube.php:230
-msgid "Video description not found for %s."
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:222 lib/pro/media/youtube.php:240
-msgid "Video upload date not found for %s."
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:223 lib/pro/media/upscale.php:254
+#: gettext/gettext-lib-pro.php:214 lib/pro/media/upscale.php:254
 msgid ""
 "Failed to upscale image ID %1$s of %2$s by %3$s from %4$s to %5$s for the "
 "%6$s image size (exceeds %7$s maximum upscale setting)."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:224 lib/pro/media/upscale.php:262
+#: gettext/gettext-lib-pro.php:215 lib/pro/media/upscale.php:262
 msgid ""
 "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the "
 "%6$s image size."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:225 gettext/gettext-lib-pro.php:236
+#: gettext/gettext-lib-pro.php:222 lib/pro/media/youtube.php:220
+msgid "Video title not found for %s."
+msgstr ""
+
+#: gettext/gettext-lib-pro.php:223 lib/pro/media/youtube.php:230
+msgid "Video description not found for %s."
+msgstr ""
+
+#: gettext/gettext-lib-pro.php:224 lib/pro/media/youtube.php:240
+msgid "Video upload date not found for %s."
+msgstr ""
+
+#: gettext/gettext-lib-pro.php:226 lib/pro/review/judgeme.php:194
+msgid "getting judge.me ratings and reviews"
+msgstr ""
+
+#: gettext/gettext-lib-pro.php:227 gettext/gettext-lib-pro.php:231
+#: gettext/gettext-lib-pro.php:235 lib/pro/review/judgeme.php:431
+#: lib/pro/review/shopperapproved.php:352 lib/pro/review/stamped.php:341
+msgid "There has been a previous error connecting to %s for caching."
+msgstr ""
+
+#: gettext/gettext-lib-pro.php:228 gettext/gettext-lib-pro.php:232
+#: gettext/gettext-lib-pro.php:236 lib/pro/review/judgeme.php:434
+#: lib/pro/review/shopperapproved.php:355 lib/pro/review/stamped.php:344
+msgid ""
+"Requests to retrieve and cache this URL are ignored for another %d second(s)"
+msgstr ""
+
+#: gettext/gettext-lib-pro.php:230 lib/pro/review/shopperapproved.php:178
+msgid "getting shopper approved ratings and reviews"
+msgstr ""
+
+#: gettext/gettext-lib-pro.php:234 lib/pro/review/stamped.php:178
+msgid "getting stamp.io ratings and reviews"
+msgstr ""
+
+#: gettext/gettext-lib-pro.php:237 gettext/gettext-lib-pro.php:248
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:177
 #: lib/loader.php:191 lib/post.php:1861 lib/pro/util/shorten.php:336
 #: lib/pro/util/shorten.php:531 lib/util-cache.php:945
 msgid "%s error:"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:226 gettext/gettext-lib-pro.php:228
-#: gettext/gettext-lib-pro.php:230 gettext/gettext-lib-pro.php:232
+#: gettext/gettext-lib-pro.php:238 gettext/gettext-lib-pro.php:240
+#: gettext/gettext-lib-pro.php:242 gettext/gettext-lib-pro.php:244
 #: lib/pro/util/shorten.php:358 lib/pro/util/shorten.php:384
 #: lib/pro/util/shorten.php:408 lib/pro/util/shorten.php:449
 msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
 #. translators: %s is the current URL from the $_SERVER variable.
-#: gettext/gettext-lib-pro.php:234 lib/pro/util/shorten.php:456
+#: gettext/gettext-lib-pro.php:246 lib/pro/util/shorten.php:456
 msgid "Loop detected: YOURLS API URL matches current URL (%s)"
 msgstr ""
 
 #. translators: %s is the shortening service id.
-#: gettext/gettext-lib-pro.php:235 lib/pro/util/shorten.php:497
+#: gettext/gettext-lib-pro.php:247 lib/pro/util/shorten.php:497
 msgid "Unable to instantiate the \"%s\" shortening service."
 msgstr ""
 
 #. translators: %s is the shortening service id.
-#: gettext/gettext-lib-pro.php:237 lib/pro/util/shorten.php:534
+#: gettext/gettext-lib-pro.php:249 lib/pro/util/shorten.php:534
 msgid "URL shortening library file for \"%s\" is missing and required."
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:239 lib/pro/review/shopperapproved.php:178
-msgid "getting shopper approved ratings and reviews"
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:240 gettext/gettext-lib-pro.php:244
-#: gettext/gettext-lib-pro.php:248 lib/pro/review/judgeme.php:431
-#: lib/pro/review/shopperapproved.php:352 lib/pro/review/stamped.php:341
-msgid "There has been a previous error connecting to %s for caching."
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:241 gettext/gettext-lib-pro.php:245
-#: gettext/gettext-lib-pro.php:249 lib/pro/review/judgeme.php:434
-#: lib/pro/review/shopperapproved.php:355 lib/pro/review/stamped.php:344
-msgid ""
-"Requests to retrieve and cache this URL are ignored for another %d second(s)"
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:243 lib/pro/review/stamped.php:178
-msgid "getting stamp.io ratings and reviews"
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:247 lib/pro/review/judgeme.php:194
-msgid "getting judge.me ratings and reviews"
 msgstr ""
 
 #: lib/abstract/wp-meta.php:147 lib/abstract/wp-meta.php:193
@@ -16559,7 +16559,7 @@ msgid "Don't forget to re-enable caching when debugging is complete."
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-msgid "WPSSO Core"
+msgid "WPSSO Core Premium"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
