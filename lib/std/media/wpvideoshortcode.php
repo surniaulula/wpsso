@@ -70,7 +70,7 @@ if ( ! class_exists( 'WpssoStdMediaWpvideoshortcode' ) ) {
 					$content, $all_matches, PREG_SET_ORDER )  ) {
 
 				if ( $this->p->debug->enabled ) {
-	
+
 					$this->p->debug->log( 'WordPress shortcode video URL found but no video API modules' );
 				}
 

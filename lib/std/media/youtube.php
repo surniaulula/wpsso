@@ -80,7 +80,7 @@ if ( ! class_exists( 'WpssoStdMediaYoutube' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-	
+
 				$this->p->debug->log( 'YouTube video URL found but no video API modules' );
 			}
 

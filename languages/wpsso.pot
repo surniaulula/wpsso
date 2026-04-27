@@ -1,8 +1,8 @@
-# Copyright (C) 2026 WPSSO Core Premium
-# This file is distributed under the same license as the WPSSO Core Premium package.
+# Copyright (C) 2026 WPSSO Core
+# This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core Premium 21.13.3-b.1\n"
+"Project-Id-Version: WPSSO Core 21.13.3-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2026-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -16559,7 +16559,7 @@ msgid "Don't forget to re-enable caching when debugging is complete."
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-msgid "WPSSO Core Premium"
+msgid "WPSSO Core"
 msgstr ""
 
 #. Plugin URI of the plugin/theme

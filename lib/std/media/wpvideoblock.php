@@ -67,7 +67,7 @@ if ( ! class_exists( 'WpssoStdMediaWpvideoblock' ) ) {
 					$content, $all_matches, PREG_SET_ORDER )  ) {
 
 				if ( $this->p->debug->enabled ) {
-	
+
 					$this->p->debug->log( 'WordPress block video URL found but no video API modules' );
 				}
 
