@@ -67,23 +67,13 @@ if ( ! class_exists( 'WpssoStdMediaWpvideoblock' ) ) {
 					$content, $all_matches, PREG_SET_ORDER )  ) {
 
 				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( count( $all_matches ).' x <figure/> WordPress video block tag(s) found' );
+	
+					$this->p->debug->log( 'WordPress block video URL found but no video API modules' );
 				}
 
-				foreach ( $all_matches as $media ) {
+				if ( $this->p->notice->is_admin_pre_notices() ) {
 
-					$video_url = remove_query_arg( '_', $media[ 1 ] );	// Remove the instance id.
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'found video URL: ' . $video_url );
-					}
-
-					if ( $this->p->notice->is_admin_pre_notices() ) {
-
-						$this->p->msgs->pro_feature_video_found_notice( _x( 'WordPress block', 'video service name', 'wpsso' ), $mod );
-					}
+					$this->p->msgs->pro_feature_video_found_notice( _x( 'WordPress block', 'video service name', 'wpsso' ), $mod );
 				}
 
 			} elseif ( $this->p->debug->enabled ) {

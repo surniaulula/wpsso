@@ -153,6 +153,11 @@ if ( ! class_exists( 'WpssoStdMediaWistia' ) ) {
 				return array();
 			}
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'Wistia video URL found but no video API modules' );
+			}
+
 			if ( $this->p->notice->is_admin_pre_notices() ) {
 
 				$this->p->msgs->pro_feature_video_found_notice( _x( 'Wistia', 'video service name', 'wpsso' ), $mod );

@@ -78,6 +78,11 @@ if ( ! class_exists( 'WpssoStdMediaVimeo' ) ) {
 				return array();
 			}
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'Vimeo video URL found but no video API modules' );
+			}
+
 			if ( $this->p->notice->is_admin_pre_notices() ) {
 
 				$this->p->msgs->pro_feature_video_found_notice( _x( 'Vimeo', 'video service name', 'wpsso' ), $mod );

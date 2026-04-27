@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 21.13.2\n"
+"Project-Id-Version: WPSSO Core 21.13.3-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2026-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -8083,7 +8083,7 @@ msgid ""
 "version of WPBakery Visual Composer immediately."
 msgstr ""
 
-#: lib/conflict.php:401 lib/messages.php:1450
+#: lib/conflict.php:401 lib/messages.php:1445
 msgid ""
 "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to "
 "discourage search engines from indexing this site."
@@ -14496,26 +14496,26 @@ msgctxt "option comment"
 msgid "video preview images are included first"
 msgstr ""
 
-#: lib/messages.php:1396 lib/messages.php:1418
+#: lib/messages.php:1396 lib/messages.php:1413
 msgid "Video service API modules are provided with the %1$s edition."
 msgstr ""
 
-#: lib/messages.php:1412
+#: lib/messages.php:1407
 msgid "adding video markup"
 msgstr ""
 
-#: lib/messages.php:1416
+#: lib/messages.php:1411
 msgid ""
 "A %1$s video was found but details about this video (title, description, "
 "preview image, upload date, duration, width, height, encoding, etc.) could "
 "not be retrieved."
 msgstr ""
 
-#: lib/messages.php:1442
+#: lib/messages.php:1437
 msgid "The WordPress sitemaps functionality is disabled."
 msgstr ""
 
-#: lib/messages.php:1460
+#: lib/messages.php:1455
 msgid ""
 "A theme or plugin is returning <code>false</code> for the "
 "'wp_sitemaps_enabled' filter."
@@ -15198,42 +15198,42 @@ msgctxt "metabox tab"
 msgid "Integration"
 msgstr ""
 
-#: lib/std/media/facebook.php:78 lib/std/media/facebook.php:85
+#: lib/std/media/facebook.php:85 lib/std/media/facebook.php:100
 msgctxt "video service name"
 msgid "Facebook"
 msgstr ""
 
-#: lib/std/media/slideshare.php:128
+#: lib/std/media/slideshare.php:133
 msgctxt "video service name"
 msgid "SlideShare"
 msgstr ""
 
-#: lib/std/media/soundcloud.php:84
+#: lib/std/media/soundcloud.php:89
 msgctxt "video service name"
 msgid "SoundCloud"
 msgstr ""
 
-#: lib/std/media/vimeo.php:83
+#: lib/std/media/vimeo.php:88
 msgctxt "video service name"
 msgid "Vimeo"
 msgstr ""
 
-#: lib/std/media/wistia.php:158
+#: lib/std/media/wistia.php:163
 msgctxt "video service name"
 msgid "Wistia"
 msgstr ""
 
-#: lib/std/media/wpvideoblock.php:85
+#: lib/std/media/wpvideoblock.php:76
 msgctxt "video service name"
 msgid "WordPress block"
 msgstr ""
 
-#: lib/std/media/wpvideoshortcode.php:88
+#: lib/std/media/wpvideoshortcode.php:79
 msgctxt "video service name"
 msgid "WordPress shortcode"
 msgstr ""
 
-#: lib/std/media/youtube.php:84
+#: lib/std/media/youtube.php:89
 msgctxt "video service name"
 msgid "YouTube"
 msgstr ""

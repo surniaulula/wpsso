@@ -123,6 +123,11 @@ if ( ! class_exists( 'WpssoStdMediaSlideshare' ) ) {
 				return array();
 			}
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'SlideShare video URL found but no video API modules' );
+			}
+
 			if ( $this->p->notice->is_admin_pre_notices() ) {
 
 				$this->p->msgs->pro_feature_video_found_notice( _x( 'SlideShare', 'video service name', 'wpsso' ), $mod );

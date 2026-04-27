@@ -1402,11 +1402,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		public function pro_feature_video_found_notice( $svc_transl, array $mod ) {
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( $svc_transl . ' video URL found but no video API modules' );
-			}
-
 			$this->maybe_set_properties();
 
 			$canonical_url = $this->p->util->maybe_set_ref( $canonical_url = null, $mod, __( 'adding video markup', 'wpsso' ) );

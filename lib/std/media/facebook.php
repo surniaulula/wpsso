@@ -75,14 +75,30 @@ if ( ! class_exists( 'WpssoStdMediaFacebook' ) ) {
 			 */
 			} elseif ( preg_match( '/^.*(facebook\.com)\/plugins\/video.php\?href=([^\/\?\&\#<>]+).*$/', $args[ 'url' ], $match ) ) {
 
-				$this->p->msgs->pro_feature_video_found_notice( _x( 'Facebook', 'video service name', 'wpsso' ), $mod );
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'Facebook video URL found but no video API modules' );
+				}
+
+				if ( $this->p->notice->is_admin_pre_notices() ) {
+
+					$this->p->msgs->pro_feature_video_found_notice( _x( 'Facebook', 'video service name', 'wpsso' ), $mod );
+				}
 
 			/*
 			 * Example: https://www.facebook.com/DrDainHeer/videos/943226206036691/
 			 */
 			} elseif ( preg_match( '/^(.*facebook\.com\/.*\/videos\/[^\?\#]+).*$/', $args[ 'url' ], $match ) ) {
 
-				$this->p->msgs->pro_feature_video_found_notice( _x( 'Facebook', 'video service name', 'wpsso' ), $mod );
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'Facebook video URL found but no video API modules' );
+				}
+
+				if ( $this->p->notice->is_admin_pre_notices() ) {
+				
+					$this->p->msgs->pro_feature_video_found_notice( _x( 'Facebook', 'video service name', 'wpsso' ), $mod );
+				}
 			}
 
 			return array();
