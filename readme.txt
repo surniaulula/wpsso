@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.13.3-dev.1 (2026/04/27)**
+**Version 21.13.3-b.1 (2026/04/27)**
 
 * **New Features**
 	* None.
@@ -341,7 +341,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.13.3-dev.1 =
+= 21.13.3-b.1 =
 
 (2026/04/27) Fixed `Call to a member function pro_feature_video_found_notice() on null` error in the WPSSO Core Standard version.
 
