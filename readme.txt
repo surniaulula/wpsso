@@ -1,5 +1,5 @@
 === WPSSO Core - Complete Schema Markup and Meta Tags ===
-Plugin Name: WPSSO Core Premium
+Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
 Domain Path: /languages
