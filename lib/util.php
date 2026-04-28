@@ -4214,6 +4214,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$filter_name = self::sanitize_hookname( $cache_info[ 'filter' ] );
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
+				}
+
 				$cache_exp_secs = (int) apply_filters( $filter_name, $cache_exp_secs, $cache_type, $mod );
 			}
 

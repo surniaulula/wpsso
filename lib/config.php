@@ -2567,6 +2567,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							 */
 							'conditional_values' => array(
 								'is_404'        => 0,
+								'is_archive'    => WEEK_IN_SECONDS,
 								'is_attachment' => 0,
 								'is_date'       => 0,
 								'is_search'     => 0,
