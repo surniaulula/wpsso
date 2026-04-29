@@ -406,29 +406,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 		}
 
-		public function count_cron_jobs() {
-
-			$count = 0;
-
-			$cron_jobs = get_option( 'cron' );
-
-			if ( is_array( $cron_jobs ) ) {
-
-				foreach ( $cron_jobs as $cron_id => $cron_el ) {
-
-					if ( is_array( $cron_el ) ) {
-
-						foreach ( $cron_el as $sched_id => $sched_el ) {
-
-							$count++;
-						}
-					}
-				}
-			}
-
-			return $count;
-		}
-
 		/*
 		 * Get the width, height and crop value for all image sizes.
 		 *
@@ -4143,6 +4120,29 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $this->p->notice->unset_ref( $canonical_url );
 		}
 
+		public function count_cron_jobs() {
+
+			$count = 0;
+
+			$cron_jobs = get_option( 'cron' );
+
+			if ( is_array( $cron_jobs ) ) {
+
+				foreach ( $cron_jobs as $cron_id => $cron_el ) {
+
+					if ( is_array( $cron_el ) ) {
+
+						foreach ( $cron_el as $sched_id => $sched_el ) {
+
+							$count++;
+						}
+					}
+				}
+			}
+
+			return $count;
+		}
+
 		/*
 		 * See WpssoCmcfXml->get().
 		 * See WpssoGmfXml->get().
@@ -4168,61 +4168,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function get_cache_exp_secs( $cache_key, $cache_type = 'transient', $mod = false ) {
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			$cache_exp_secs = 0;	// No caching by default.
-
-			if ( empty( $this->p->cf[ 'wp' ][ 'cache' ][ $cache_type ][ $cache_key ] ) ) {
-
-				return $cache_exp_secs;
-			}
-
-			$cache_info = $this->p->cf[ 'wp' ][ 'cache' ][ $cache_type ][ $cache_key ];
-
-			if ( isset( $cache_info[ 'value' ] ) ) {	// Allow for 0.
-
-				$cache_exp_secs = (int) $cache_info[ 'value' ];
-
-			} elseif ( isset( $cache_info[ 'opt_key' ] ) && isset( $this->p->options[ $cache_info[ 'opt_key' ] ] ) ) {	// Allow for 0.
-
-				$cache_exp_secs = (int) $this->p->options[ $cache_info[ 'opt_key' ] ];
-			}
-
-			if ( is_array( $mod ) ) {
-
-				if ( ! empty( $cache_info[ 'conditional_values' ] ) ) {
-
-					foreach ( $cache_info[ 'conditional_values' ] as $cond => $val ) {
-
-						/*
-						 * If the $mod array condition is true, use the associated value.
-						 */
-						if ( ! empty( $mod[ $cond ] ) ) {
-
-							$cache_exp_secs = (int) $val;
-
-							break;	// Stop here.
-						}
-					}
-				}
-			}
-
-			if ( ! empty( $cache_info[ 'filter' ] ) ) {
-
-				$filter_name = self::sanitize_hookname( $cache_info[ 'filter' ] );
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
-				}
-
-				$cache_exp_secs = (int) apply_filters( $filter_name, $cache_exp_secs, $cache_type, $mod );
-			}
-
-			return $cache_exp_secs;
+			return $this->cache->get_cache_exp_secs( $cache_key, $cache_type, $mod );
 		}
 	}
 }

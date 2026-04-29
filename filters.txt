@@ -45,7 +45,7 @@
 
 'wpsso_cache_expire_api_response' ( $secs, $cache_type, $mod )	// Default is 1 day in seconds.
 
-'wpsso_cache_expire_head_markup' ( $secs, $cache_type, $mod )	// Default is 1 month in seconds.
+'wpsso_cache_expire_head_markup' ( $secs, $cache_type, $mod )	// Default is 1 week in seconds.
 
 'wpsso_cache_expire_image_info' ( $secs, $cache_type, $mod )	// Default is 1 day in seconds.
 

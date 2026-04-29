@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '21.13.3',	// Plugin version.
-					'opt_version' => '1042',	// Increment when changing default option values.
+					'version'     => '22.0.0-dev.1',	// Plugin version.
+					'opt_version' => '1044',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1747,6 +1747,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'plugin_speakable_css_csv'        => '',		// Speakable CSS Selectors.
 					'plugin_check_head'               => 1,			// Check for Duplicate Meta Tags.
+					'plugin_page_cache_active'        => 0,			// Cache Plugin or Service is Active.
 					'plugin_product_include_vat'      => 0,			// Include VAT in Product Prices.
 					'plugin_import_aioseop_meta'      => 0,			// Import All in One SEO Pack Metadata.
 					'plugin_import_rankmath_meta'     => 0,			// Import Rank Math SEO Metadata.
@@ -2559,7 +2560,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						 */
 						'wpsso_h_' => array(
 							'label'  => 'Document Markup',
-							'value'  => MONTH_IN_SECONDS,
+							'value'  => WEEK_IN_SECONDS,
 							'filter' => 'wpsso_cache_expire_head_markup',
 
 							/*
@@ -2567,7 +2568,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							 */
 							'conditional_values' => array(
 								'is_404'        => 0,
-								'is_archive'    => WEEK_IN_SECONDS,
+								'is_archive'    => DAY_IN_SECONDS,
 								'is_attachment' => 0,
 								'is_date'       => 0,
 								'is_search'     => 0,
@@ -3578,7 +3579,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),	// End of 'form' array.
 
 			/*
-			 * Reference for meta tag and Schema property values (limits, conversions, etc.).
+			 * Reference for meta tags and Schema property values (limits, conversions, etc.).
 			 */
 			'head' => array(
 				'limit' => array(
@@ -5128,7 +5129,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_CACHE_DIR' ]                   = self::get_cache_dir();
 			$var_const[ 'WPSSO_CACHE_FILES_EXP_SECS' ]        = WEEK_IN_SECONDS;	// See WpssoUtilCache->clear_cache_files_expired().
 			$var_const[ 'WPSSO_CACHE_REFRESH_MAX_TIME' ]      = 1800;		// 30 mins by default.
-			$var_const[ 'WPSSO_CACHE_SELECT_JSON_EXP_SECS' ]  = WEEK_IN_SECONDS;	// Javascript URLs for Schema types, article sections, and product categories.
+			$var_const[ 'WPSSO_CACHE_SELECT_JSON_EXP_SECS' ]  = WEEK_IN_SECONDS;	// JS URLs for Schema types, article sections, and product categories.
 			$var_const[ 'WPSSO_CACHE_URL' ]                   = self::get_cache_url();
 			$var_const[ 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT' ] = true;		// Monitor and fix incorrectly coded filter hooks.
 			$var_const[ 'WPSSO_CONTENT_FILTERS_MAX_TIME' ]    = 1.50;		// Issue a warning if the content filter takes longer than 1 second.
@@ -5136,7 +5137,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_DUPE_CHECK_HEADER_COUNT' ]     = 3;			// Maximum number of times to check for duplicates.
 			$var_const[ 'WPSSO_DUPE_CHECK_TIMEOUT_TIME' ]     = 3.00;		// Hard-limit - most crawlers time-out after 3 seconds.
 			$var_const[ 'WPSSO_DUPE_CHECK_WARNING_TIME' ]     = 2.50;		// Issue a warning if getting shortlink took more than 2.5 seconds.
-			$var_const[ 'WPSSO_IMAGE_MAKE_SIZE_MAX_TIME' ]    = 5.00;		// Send error to trigger_error() if image_make_intermediate_size() takes longer.
+			$var_const[ 'WPSSO_IMAGE_MAKE_SIZE_MAX_TIME' ]    = 5.00;		// Error to trigger_error() if image_make_intermediate_size() takes longer.
 			$var_const[ 'WPSSO_METABOX_TAB_LAYOUT' ]          = 'vertical';		// Default tab layout (vertical or horizontal).
 			$var_const[ 'WPSSO_PHP_GETIMGSIZE_MAX_TIME' ]     = 3.00;		// Send an error to trigger_error() if getimagesize() takes longer.
 			$var_const[ 'WPSSO_READING_WORDS_PER_MIN' ]       = 200;		// Estimated reading words per minute.

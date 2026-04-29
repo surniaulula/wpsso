@@ -1480,7 +1480,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/*
-			 * Remove the WPSSO meta tag and Schema markup section from the webpage to check for duplicate meta tags and markup.
+			 * Remove the WPSSO meta tags and Schema markup section from the webpage to check for duplicate meta tags and markup.
 			 */
 			if ( $this->p->debug->enabled ) {
 

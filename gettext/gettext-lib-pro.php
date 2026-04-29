@@ -26,6 +26,7 @@ _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' );
 _x( 'Plugin and Theme Integration', 'metabox title', 'wpsso' );
 _x( 'Speakable CSS Selectors', 'option label', 'wpsso' );
 _x( 'Check for Duplicate Meta Tags', 'option label', 'wpsso' );
+_x( 'Cache Plugin or Service is Active', 'option label', 'wpsso' );
 _x( 'Include VAT in Product Prices', 'option label', 'wpsso' );
 _x( 'Import All in One SEO Pack Metadata', 'option label', 'wpsso' );
 _x( 'Import Rank Math SEO Metadata', 'option label', 'wpsso' );

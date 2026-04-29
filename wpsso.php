@@ -15,7 +15,7 @@
  * Requires At Least: 6.0
  * Tested Up To: 6.9.4
  * WC Tested Up To: 10.6.2
- * Version: 21.13.3
+ * Version: 22.0.0-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -760,35 +760,31 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				return;
 			}
 
+			$this->debug->mark();
+
 			/*
 			 * Show constants.
 			 */
 			$defined_constants = get_defined_constants( $categorize = true );
-
 			$defined_constants[ 'user' ][ 'WPSSO_NONCE_NAME' ] = '********';
 
 			if ( is_multisite() ) {
 
-				$ms_defined_constants = SucomUtil::preg_grep_keys( '/^(MULTISITE|^SUBDOMAIN_INSTALL|.*_SITE)$/', $defined_constants[ 'user' ] );
-
-				$this->debug->show_html( $ms_defined_constants, 'multisite constants' );
+				$this->debug->log_arr( 'multisite constants', SucomUtil::preg_grep_keys( '/^(MULTISITE|^SUBDOMAIN_INSTALL|.*_SITE)$/',
+					$defined_constants[ 'user' ] ) );
 			}
 
-			$wpsso_defined_constants = SucomUtil::preg_grep_keys( '/^WPSSO_/', $defined_constants[ 'user' ] );
-
-			$this->debug->show_html( $wpsso_defined_constants, 'wpsso constants' );
+			$this->debug->log_arr( 'wpsso constants', SucomUtil::preg_grep_keys( '/^WPSSO_/', $defined_constants[ 'user' ] ) );
 
 			/*
 			 * Show active plugins.
 			 */
-			$active_plugins = SucomPlugin::get_active_plugins();
-
-			$this->debug->show_html( print_r( $active_plugins, true ), 'active plugins' );
+			$this->debug->log_arr( 'active plugins', SucomPlugin::get_active_plugins() );
 
 			/*
 			 * Show available modules.
 			 */
-			$this->debug->show_html( print_r( $this->avail, true ), 'available features' );
+			$this->debug->log_arr( 'available features', $this->avail );
 
 			/*
 			 * Show all plugin options.
@@ -810,7 +806,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				}
 			}
 
-			$this->debug->show_html( $opts, 'wpsso settings' );
+			$this->debug->log_arr( 'wpsso settings', $opts );
+
+			$this->debug->mark();
+			
+			$this->debug->show_html();
 		}
 
 		private function debug_reminder( array $is_doing ) {

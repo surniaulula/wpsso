@@ -207,6 +207,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				/*
+				 * Check to see if we have a full webpage cache plugin or service active.
+				 */
+				if ( ! empty( $this->p->avail[ 'cache' ][ 'any' ] ) ) {
+
+					$local_cache[ 'plugin_page_cache_active' ] = 1;
+				}
+
+				/*
 				 * Import metadata and block attributes from known SEO plugins.
 				 */
 				foreach ( array(

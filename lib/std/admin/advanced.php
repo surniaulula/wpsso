@@ -183,6 +183,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_no_td_checkbox( 'plugin_check_head' ) .
 				WpssoAdmin::get_option_site_use( 'plugin_check_head', $form, $args[ 'network' ] );
 
+			$table_rows[ 'plugin_page_cache_active' ] = '' .
+				$form->get_th_html( _x( 'Cache Plugin or Service is Active', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_page_cache_active' ) .
+				$form->get_no_td_checkbox( 'plugin_page_cache_active' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_page_cache_active', $form, $args[ 'network' ] );
+
 			$table_rows[ 'plugin_product_include_vat' ] = '' .
 				$form->get_th_html( _x( 'Include VAT in Product Prices', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_product_include_vat' ) .

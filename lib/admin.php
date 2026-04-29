@@ -805,7 +805,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function settings_saved_notice() {
 
-			$cache_md5_pre  = 'wpsso_h_';	// 'wpsso_cache_expire_head_markup' filter.
+			$cache_md5_pre  = 'wpsso_h_';	// Use 'wpsso_cache_expire_head_markup' filter.
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient' );
 			$user_id        = get_current_user_id();
 			$notice_msg     = '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong>' . ' ';

@@ -43,7 +43,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'plugin cache is disabled' );
+					$this->p->debug->log( 'plugin cache for head markup, xml feeds, and file content is disabled' );
 				}
 
 				$this->u->add_plugin_filters( $this, array(
@@ -52,11 +52,35 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					'cache_expire_gmf_feed_xml'      => '__return_zero',	// Used by WpssoGmfXml->get().
 					'cache_expire_gmf_inventory_xml' => '__return_zero',	// Used by WpssoGmfXml->get().
 					'cache_expire_file_content'      => '__return_zero',
-				) );
+				), -1000 );
 
-			} elseif ( $this->p->debug->enabled ) {
+			} else {
+			
+				if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'plugin cache is enabled' );
+					$this->p->debug->log( 'plugin cache for head markup, xml feeds, and file content is enabled' );
+				}
+			
+				if ( ! empty( $this->p->options[ 'plugin_page_cache_active' ] ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'plugin_page_cache_active option is true' );
+						$this->p->debug->log( 'head markup cache is disabled' );
+					}
+
+					$this->u->add_plugin_filters( $this, array(
+						'cache_expire_head_markup' => '__return_zero',	// Used by WpssoHead->get_head_array().
+					), -1000 );
+
+				} else {
+				
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'plugin_page_cache_active option is false' );
+						$this->p->debug->log( 'head markup cache is enabled' );
+					}
+				}
 			}
 		}
 
@@ -72,327 +96,24 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				$is_disabled = WPSSO_CACHE_DISABLE ? true : false;
 
-			} else $is_disabled = empty( $this->p->options[ 'plugin_cache_disable' ] ) ? false : true;
+				if ( $this->p->debug->enabled ) {
 
-			return $is_disabled;
-		}
-
-		/*
-		 * Clear cache files older than WPSSO_CACHE_FILES_EXP_SECS.
-		 */
-		public function clear_cache_files_expired() {
-
-			return $this->clear_cache_files( WPSSO_CACHE_FILES_EXP_SECS );
-		}
-
-		/*
-		 * Clear cache files.
-		 *
-		 * See WpssoUtilCache->refresh().
-		 * See WpssoAdmin->load_settings_page().
-		 */
-		public function clear_cache_files( $file_exp_secs = null, $include = array(), $exclude = array() ) {
-
-			$cleared_count = 0;
-			$cache_files   = $this->get_cache_files();	// Excludes hidden files and index.php.
-
-			foreach ( $cache_files as $cache_file ) {
-
-				if ( ! empty( $include ) ) {
-
-					foreach ( $include as $preg_match ) {
-
-						if ( ! preg_match( $preg_match, $cache_file ) ) {
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'skipping ' . $cache_file . ' (not included)' );
-							}
-
-							continue 2;
-						}
-					}
+					$this->p->debug->log( 'WPSSO_CACHE_DISABLE defined and is ' . SucomUtil::get_bool_string( $is_disabled ) );
 				}
-
-				if ( ! empty( $exclude ) ) {
-
-					foreach ( $exclude as $preg_match ) {
-
-						if ( preg_match( $preg_match, $cache_file ) ) {
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'skipping ' . $cache_file . ' (excluded)' );
-							}
-
-							continue 2;
-						}
-					}
-				}
-
-				if ( null !== $file_exp_secs ) {
-
-					/*
-					 * Skip cache files that are newer than the expiration time.
-					 */
-					if ( filemtime( $cache_file ) > time() - $file_exp_secs ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'skipping ' . $cache_file . ' (newer than expiration time)' );
-						}
-
-						continue;
-					}
-				}
-
-				if ( @unlink( $cache_file ) ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'removed the cache file ' . $cache_file );
-					}
-
-					$cleared_count++;
-
-				} else {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'error removing cache file ' . $cache_file );
-					}
-
-					$error_pre = sprintf( '%s error:', __METHOD__ );
-					$error_msg = sprintf( __( 'Error removing cache file %s.', 'wpsso' ), $cache_file );
-
-					$this->p->notice->err( $error_msg );
-
-					SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
-				}
-			}
-
-			return $cleared_count++;
-		}
-
-		/*
-		 * See WpssoSubmenuTools->add_form_buttons().
-		 */
-		public function count_cache_files() {
-
-			$cache_files = $this->get_cache_files();	// Excludes hidden files and index.php.
-
-			return count( $cache_files );
-		}
-
-		public function get_cache_files() {
-
-			$cache_files = array();
-
-			if ( $dh = @opendir( WPSSO_CACHE_DIR ) ) {
-
-				while ( $file_name = @readdir( $dh ) ) {
-
-					$cache_file = WPSSO_CACHE_DIR . $file_name;
-
-					if ( ! preg_match( '/^(\..*|index\.php)$/', $file_name ) && is_file( $cache_file ) ) {
-
-						$cache_files[] = $cache_file;
-
-					}
-				}
-
-				closedir( $dh );
 
 			} else {
+			
+				$is_disabled = empty( $this->p->options[ 'plugin_cache_disable' ] ) ? false : true;
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'failed to open the cache folder ' . WPSSO_CACHE_DIR . ' for reading' );
-				}
+					$this->p->debug->log( 'WPSSO_CACHE_DISABLE is not defined' );
 
-				$error_pre = sprintf( '%s error:', __METHOD__ );
-
-				$error_msg = sprintf( __( 'Failed to open the cache folder %s for reading.', 'wpsso' ), WPSSO_CACHE_DIR );
-
-				$this->p->notice->err( $error_msg );
-
-				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
-			}
-
-			return $cache_files;
-		}
-
-		/*
-		 * See WpssoAdmin->load_settings_page().
-		 */
-		public function clear_ignored_urls() {
-
-			return $this->p->cache->clear_ignored_urls();
-		}
-
-		/*
-		 * See WpssoSubmenuTools->add_form_buttons().
-		 */
-		public function count_ignored_urls() {
-
-			return $this->p->cache->count_ignored_urls();
-		}
-
-		/*
-		 * See WpssoSubmenuTools->add_form_buttons().
-		 */
-		public function get_ignored_urls() {
-
-			return $this->p->cache->get_ignored_urls();
-		}
-
-		public function clear_db_transients_expired() {
-
-			return $this->clear_db_transients( $key_prefix = '', $incl_shortened = true, $only_expired = true );
-		}
-
-		/*
-		 * Clear database transients, excluding transients that must be preserved (key begins with 'wpsso_!_'), and
-		 * optionally exclude shortened URL transients.
-		 *
-		 * See WpssoAdmin->load_settings_page().
-		 * See WpssoUtilCache->clear_db_transients_expired().
-		 */
-		public function clear_db_transients( $key_prefix = '', $incl_shortened = true, $only_expired = false ) {
-
-			$cleared_count = 0;
-
-			$transients_subset = $this->get_db_transients_subset( $key_prefix, $incl_shortened, $only_expired );
-
-			foreach ( $transients_subset as $key ) {
-
-				if ( delete_transient( $key ) ) {
-
-					$cleared_count++;
+					$this->p->debug->log( 'plugin_cache_disable option is ' . SucomUtil::get_bool_string( $is_disabled ) );
 				}
 			}
 
-			return $cleared_count;
-		}
-
-		public function count_db_transients_expired() {
-
-			return $this->count_db_transients( $key_prefix = '', $incl_shortened = true, $only_expired = true );
-		}
-
-		/*
-		 * Count database transients, excluding transients that must be preserved (key begins with 'wpsso_!_'), and
-		 * optionally exclude shortened URL transients.
-		 *
-		 * See WpssoSubmenuTools->add_form_buttons().
-		 */
-		public function count_db_transients( $key_prefix = '', $incl_shortened = true, $only_expired = false ) {
-
-			$transients_subset = $this->get_db_transients_subset( $key_prefix, $incl_shortened, $only_expired );
-
-			return count( $transients_subset );
-		}
-
-		/*
-		 * A wrapper for WpssoUtilCache->get_db_transients_keys() to exclude transients that must be preserved (key begins
-		 * with 'wpsso_!_'), and optionally exclude shortened URL transients.
-		 *
-		 * See WpssoUtilCache->clear_db_transients().
-		 * See WpssoUtilCache->count_db_transients().
-		 */
-		public function get_db_transients_subset( $key_prefix = '', $incl_shortened = true, $only_expired = false ) {
-
-			$transients_subset = array();
-
-			$transients_keys = $this->get_db_transients_keys( $key_prefix, $only_expired );
-
-			foreach ( $transients_keys as $key ) {
-
-				if ( '' !== $key_prefix ) {				// We're only clearing a specific prefix.
-
-					if ( 0 !== strpos( $key, $key_prefix ) ) {	// Transient does not match that prefix.
-
-						continue;
-					}
-				}
-
-				if ( 0 === strpos( $key, 'wpsso_!_' ) ) {		// Preserve transients that begin with "wpsso_!_".
-
-					continue;
-
-				} elseif ( ! $incl_shortened ) {				// Not clearing short URLs.
-
-					if ( 0 === strpos( $key, 'wpsso_s_' ) ) {	// This is a shortened URL.
-
-						continue;
-					}
-				}
-
-				$transients_subset[] = $key;
-			}
-
-			return $transients_subset;
-		}
-
-		/*
-		 * Get transients from the database, and optionally only those that are expired.
-		 *
-		 * See WpssoAdmin->show_metabox_cache_status().
-		 * See WpssoUtilCache->get_db_transients_subset().
-		 */
-		public function get_db_transients_keys( $key_prefix = '', $only_expired = false ) {
-
-			global $wpdb;
-
-			$transients_keys  = array();
-			$transient_prefix = $only_expired ? '_transient_timeout_' : '_transient_';
-			$current_time     = isset( $_SERVER[ 'REQUEST_TIME' ] ) ? (int) $_SERVER[ 'REQUEST_TIME' ] : time() ;
-
-			$db_query = 'SELECT option_name';
-			$db_query .= ' FROM ' . $wpdb->options;
-			$db_query .= ' WHERE option_name LIKE \'' . $transient_prefix . $key_prefix . '%\'';
-
-			if ( $only_expired ) $db_query .= ' AND option_value < ' . $current_time;	// Expiration time older than current time.
-
-			$db_query .= ';';	// End of query.
-
-			$result = $wpdb->get_col( $db_query );
-
-			/*
-			 * Remove '_transient_' or '_transient_timeout_' prefix from option name.
-			 */
-			foreach( $result as $option_name ) {
-
-				$transients_keys[] = str_replace( $transient_prefix, '', $option_name );
-			}
-
-			return $transients_keys;
-		}
-
-		/*
-		 * See WpssoAdmin->show_metabox_cache_status().
-		 */
-		public function get_db_transients_size_mb( $key_prefix = '' ) {
-
-			global $wpdb;
-
-			/*
-			 * The CHAR_LENGTH() function returns the number of characters in a string. It is important to note that
-			 * this function counts characters, not bytes, and it is Unicode-aware — meaning it accurately counts the
-			 * number of multibyte characters in a string.
-			 *
-			 * The LENGTH() function, on the other hand, returns the length of a string in bytes. It differs from
-			 * CHAR_LENGTH() because it is not Unicode-aware and counts bytes — which can yield different results,
-			 * especially for multibyte character sets.
-			 */
-			$db_query = 'SELECT LENGTH( option_value )';
-			$db_query .= ' FROM ' . $wpdb->options;
-			$db_query .= ' WHERE option_name LIKE \'_transient_' . $key_prefix . '%\'';
-			$db_query .= ';';	// End of query.
-
-			$result = $wpdb->get_col( $db_query );
-
-			return array_sum( $result ) / 1024 / 1024;	// Return size in MB.
+			return $is_disabled;
 		}
 
 		public function show_admin_notices() {
@@ -949,7 +670,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				$this->p->notice->err( $notice_msg, $user_id, $notice_key );
 
-				self::safe_error_log( $error_pre . ' ' . $notice_msg, $strip_html = true );
+				SucomUtil::safe_error_log( $error_pre . ' ' . $notice_msg, $strip_html = true );
 			}
 
 			return $ret;
@@ -1159,6 +880,406 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			}
 
 			return $notice_msg;
+		}
+
+		/*
+		 * Clear cache files older than WPSSO_CACHE_FILES_EXP_SECS.
+		 */
+		public function clear_cache_files_expired() {
+
+			return $this->clear_cache_files( WPSSO_CACHE_FILES_EXP_SECS );
+		}
+
+		/*
+		 * Clear cache files.
+		 *
+		 * See WpssoUtilCache->refresh().
+		 * See WpssoAdmin->load_settings_page().
+		 */
+		public function clear_cache_files( $file_exp_secs = null, $include = array(), $exclude = array() ) {
+
+			$cleared_count = 0;
+			$cache_files   = $this->get_cache_files();	// Excludes hidden files and index.php.
+
+			foreach ( $cache_files as $cache_file ) {
+
+				if ( ! empty( $include ) ) {
+
+					foreach ( $include as $preg_match ) {
+
+						if ( ! preg_match( $preg_match, $cache_file ) ) {
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'skipping ' . $cache_file . ' (not included)' );
+							}
+
+							continue 2;
+						}
+					}
+				}
+
+				if ( ! empty( $exclude ) ) {
+
+					foreach ( $exclude as $preg_match ) {
+
+						if ( preg_match( $preg_match, $cache_file ) ) {
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'skipping ' . $cache_file . ' (excluded)' );
+							}
+
+							continue 2;
+						}
+					}
+				}
+
+				if ( null !== $file_exp_secs ) {
+
+					/*
+					 * Skip cache files that are newer than the expiration time.
+					 */
+					if ( filemtime( $cache_file ) > time() - $file_exp_secs ) {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'skipping ' . $cache_file . ' (newer than expiration time)' );
+						}
+
+						continue;
+					}
+				}
+
+				if ( @unlink( $cache_file ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'removed the cache file ' . $cache_file );
+					}
+
+					$cleared_count++;
+
+				} else {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'error removing cache file ' . $cache_file );
+					}
+
+					$error_pre = sprintf( '%s error:', __METHOD__ );
+					$error_msg = sprintf( __( 'Error removing cache file %s.', 'wpsso' ), $cache_file );
+
+					$this->p->notice->err( $error_msg );
+
+					SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+				}
+			}
+
+			return $cleared_count++;
+		}
+
+		/*
+		 * See WpssoSubmenuTools->add_form_buttons().
+		 */
+		public function count_cache_files() {
+
+			$cache_files = $this->get_cache_files();	// Excludes hidden files and index.php.
+
+			return count( $cache_files );
+		}
+
+		public function get_cache_files() {
+
+			$cache_files = array();
+
+			if ( $dh = @opendir( WPSSO_CACHE_DIR ) ) {
+
+				while ( $file_name = @readdir( $dh ) ) {
+
+					$cache_file = WPSSO_CACHE_DIR . $file_name;
+
+					if ( ! preg_match( '/^(\..*|index\.php)$/', $file_name ) && is_file( $cache_file ) ) {
+
+						$cache_files[] = $cache_file;
+
+					}
+				}
+
+				closedir( $dh );
+
+			} else {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'failed to open the cache folder ' . WPSSO_CACHE_DIR . ' for reading' );
+				}
+
+				$error_pre = sprintf( '%s error:', __METHOD__ );
+
+				$error_msg = sprintf( __( 'Failed to open the cache folder %s for reading.', 'wpsso' ), WPSSO_CACHE_DIR );
+
+				$this->p->notice->err( $error_msg );
+
+				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+			}
+
+			return $cache_files;
+		}
+
+		/*
+		 * See WpssoAdmin->load_settings_page().
+		 */
+		public function clear_ignored_urls() {
+
+			return $this->p->cache->clear_ignored_urls();
+		}
+
+		/*
+		 * See WpssoSubmenuTools->add_form_buttons().
+		 */
+		public function count_ignored_urls() {
+
+			return $this->p->cache->count_ignored_urls();
+		}
+
+		/*
+		 * See WpssoSubmenuTools->add_form_buttons().
+		 */
+		public function get_ignored_urls() {
+
+			return $this->p->cache->get_ignored_urls();
+		}
+
+		public function clear_db_transients_expired() {
+
+			return $this->clear_db_transients( $key_prefix = '', $incl_shortened = true, $only_expired = true );
+		}
+
+		/*
+		 * Clear database transients, excluding transients that must be preserved (key begins with 'wpsso_!_'), and
+		 * optionally exclude shortened URL transients.
+		 *
+		 * See WpssoAdmin->load_settings_page().
+		 * See WpssoUtilCache->clear_db_transients_expired().
+		 */
+		public function clear_db_transients( $key_prefix = '', $incl_shortened = true, $only_expired = false ) {
+
+			$cleared_count = 0;
+
+			$transients_subset = $this->get_db_transients_subset( $key_prefix, $incl_shortened, $only_expired );
+
+			foreach ( $transients_subset as $key ) {
+
+				if ( delete_transient( $key ) ) {
+
+					$cleared_count++;
+				}
+			}
+
+			return $cleared_count;
+		}
+
+		public function count_db_transients_expired() {
+
+			return $this->count_db_transients( $key_prefix = '', $incl_shortened = true, $only_expired = true );
+		}
+
+		/*
+		 * Count database transients, excluding transients that must be preserved (key begins with 'wpsso_!_'), and
+		 * optionally exclude shortened URL transients.
+		 *
+		 * See WpssoSubmenuTools->add_form_buttons().
+		 */
+		public function count_db_transients( $key_prefix = '', $incl_shortened = true, $only_expired = false ) {
+
+			$transients_subset = $this->get_db_transients_subset( $key_prefix, $incl_shortened, $only_expired );
+
+			return count( $transients_subset );
+		}
+
+		/*
+		 * A wrapper for WpssoUtilCache->get_db_transients_keys() to exclude transients that must be preserved (key begins
+		 * with 'wpsso_!_'), and optionally exclude shortened URL transients.
+		 *
+		 * See WpssoUtilCache->clear_db_transients().
+		 * See WpssoUtilCache->count_db_transients().
+		 */
+		public function get_db_transients_subset( $key_prefix = '', $incl_shortened = true, $only_expired = false ) {
+
+			$transients_subset = array();
+
+			$transients_keys = $this->get_db_transients_keys( $key_prefix, $only_expired );
+
+			foreach ( $transients_keys as $key ) {
+
+				if ( '' !== $key_prefix ) {				// We're only clearing a specific prefix.
+
+					if ( 0 !== strpos( $key, $key_prefix ) ) {	// Transient does not match that prefix.
+
+						continue;
+					}
+				}
+
+				if ( 0 === strpos( $key, 'wpsso_!_' ) ) {		// Preserve transients that begin with "wpsso_!_".
+
+					continue;
+
+				} elseif ( ! $incl_shortened ) {				// Not clearing short URLs.
+
+					if ( 0 === strpos( $key, 'wpsso_s_' ) ) {	// This is a shortened URL.
+
+						continue;
+					}
+				}
+
+				$transients_subset[] = $key;
+			}
+
+			return $transients_subset;
+		}
+
+		/*
+		 * Get transients from the database, and optionally only those that are expired.
+		 *
+		 * See WpssoAdmin->show_metabox_cache_status().
+		 * See WpssoUtilCache->get_db_transients_subset().
+		 */
+		public function get_db_transients_keys( $key_prefix = '', $only_expired = false ) {
+
+			global $wpdb;
+
+			$transients_keys  = array();
+			$transient_prefix = $only_expired ? '_transient_timeout_' : '_transient_';
+			$current_time     = isset( $_SERVER[ 'REQUEST_TIME' ] ) ? (int) $_SERVER[ 'REQUEST_TIME' ] : time() ;
+
+			$db_query = 'SELECT option_name';
+			$db_query .= ' FROM ' . $wpdb->options;
+			$db_query .= ' WHERE option_name LIKE \'' . $transient_prefix . $key_prefix . '%\'';
+
+			if ( $only_expired ) $db_query .= ' AND option_value < ' . $current_time;	// Expiration time older than current time.
+
+			$db_query .= ';';	// End of query.
+
+			$result = $wpdb->get_col( $db_query );
+
+			/*
+			 * Remove '_transient_' or '_transient_timeout_' prefix from option name.
+			 */
+			foreach( $result as $option_name ) {
+
+				$transients_keys[] = str_replace( $transient_prefix, '', $option_name );
+			}
+
+			return $transients_keys;
+		}
+
+		/*
+		 * See WpssoAdmin->show_metabox_cache_status().
+		 */
+		public function get_db_transients_size_mb( $key_prefix = '' ) {
+
+			global $wpdb;
+
+			/*
+			 * The CHAR_LENGTH() function returns the number of characters in a string. It is important to note that
+			 * this function counts characters, not bytes, and it is Unicode-aware — meaning it accurately counts the
+			 * number of multibyte characters in a string.
+			 *
+			 * The LENGTH() function, on the other hand, returns the length of a string in bytes. It differs from
+			 * CHAR_LENGTH() because it is not Unicode-aware and counts bytes — which can yield different results,
+			 * especially for multibyte character sets.
+			 */
+			$db_query = 'SELECT LENGTH( option_value )';
+			$db_query .= ' FROM ' . $wpdb->options;
+			$db_query .= ' WHERE option_name LIKE \'_transient_' . $key_prefix . '%\'';
+			$db_query .= ';';	// End of query.
+
+			$result = $wpdb->get_col( $db_query );
+
+			return array_sum( $result ) / 1024 / 1024;	// Return size in MB.
+		}
+
+		/*
+		 * See WpssoCmcfXml->get().
+		 * See WpssoGmfXml->get().
+		 * See WpssoAdmin->settings_sanitation().
+		 * See WpssoAdmin->show_metabox_cache_status().
+		 * See WpssoHead->get_head_array().
+		 * See WpssoMessagesTooltipPlugin->get().
+		 * See WpssoPage->get_the_content().
+		 * See WpssoProMediaFacebook->filter_video_details().
+		 * See WpssoProMediaSlideshare->filter_video_details().
+		 * See WpssoProMediaVimeo->filter_video_details().
+		 * See WpssoProMediaWistia->filter_video_details().
+		 * See WpssoProMediaYoutube->filter_video_details().
+		 * See WpssoProReviewJudgeme->filter_og().
+		 * See WpssoProReviewShopperApproved->filter_og().
+		 * See WpssoProReviewStamped->filter_og().
+		 * See WpssoProUtilShorten->get_short_url().
+		 * See WpssoSchema->get_schema_types().
+		 * See WpssoSchema->get_schema_type_child_family().
+		 * See WpssoSchema->get_schema_type_children().
+		 * See WpssoSchema->get_schema_type_row_class().
+		 * See WpssoUtil->get_image_url_info().
+		 */
+		public function get_cache_exp_secs( $cache_key, $cache_type = 'transient', $mod = false ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			$cache_exp_secs = 0;	// No caching by default.
+
+			if ( empty( $this->p->cf[ 'wp' ][ 'cache' ][ $cache_type ][ $cache_key ] ) ) {	// No cache expiration defined.
+
+				return $cache_exp_secs;
+			}
+
+			$cache_info = $this->p->cf[ 'wp' ][ 'cache' ][ $cache_type ][ $cache_key ];
+
+			if ( isset( $cache_info[ 'value' ] ) ) {	// Allow for 0.
+
+				$cache_exp_secs = (int) $cache_info[ 'value' ];
+
+			} elseif ( isset( $cache_info[ 'opt_key' ] ) && isset( $this->p->options[ $cache_info[ 'opt_key' ] ] ) ) {	// Allow for 0.
+
+				$cache_exp_secs = (int) $this->p->options[ $cache_info[ 'opt_key' ] ];
+			}
+
+			if ( is_array( $mod ) ) {
+
+				if ( ! empty( $cache_info[ 'conditional_values' ] ) ) {
+
+					foreach ( $cache_info[ 'conditional_values' ] as $cond => $val ) {
+
+						/*
+						 * If the $mod array condition is true, use the associated value.
+						 */
+						if ( ! empty( $mod[ $cond ] ) ) {
+
+							$cache_exp_secs = (int) $val;
+
+							break;	// Stop here.
+						}
+					}
+				}
+			}
+
+			if ( ! empty( $cache_info[ 'filter' ] ) ) {
+
+				$filter_name = SucomUtil::sanitize_hookname( $cache_info[ 'filter' ] );
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
+				}
+
+				$cache_exp_secs = (int) apply_filters( $filter_name, $cache_exp_secs, $cache_type, $mod );
+			}
+
+			return $cache_exp_secs;
 		}
 	}
 }
