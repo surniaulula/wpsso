@@ -288,7 +288,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 		* WP Rocket Cache
 		* WP Super Cache
 * **Improvements**
-	* Adjusted the default meta tags and Schema markup cache expiration from 1 month to 1 week, and 1 hour if a caching plugin is detected.
+	* Changed the meta tags and Schema markup default cache expiration from 1 month to 1 week, and 1 hour if a caching plugin is detected.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -365,7 +365,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 = 22.0.0-dev.2 =
 
-(2026/04/30) Adjusted the default meta tags and Schema markup cache expiration from 1 month to 1 week, and 1 hour if a caching plugin is detected. Added a new "Cache Plugin or Service is Active" option.
+(2026/04/30) Changed the meta tags and Schema markup default cache expiration from 1 month to 1 week, and 1 hour if a caching plugin is detected. Added a new "Cache Plugin or Service is Active" option.
 
 = 21.13.3 =
 
