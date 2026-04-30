@@ -270,7 +270,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.0.0-dev.2 (2026/04/30)**
+**Version 22.0.0-b.1 (2026/04/30)**
 
 WPSSO Core can reduce its use of the WordPress transients cache (used by plugins and themes to store temporary data) for meta tags and Schema markup when a full webpage caching plugin or service is detected.
 
@@ -292,7 +292,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new `__return_half_hour_in_seconds()` function.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v6.0.
@@ -363,7 +363,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 == Upgrade Notice ==
 
-= 22.0.0-dev.2 =
+= 22.0.0-b.1 =
 
 (2026/04/30) Changed the meta tags and Schema markup default cache expiration from 1 month to 1 week, and 1 hour if a caching plugin is detected. Added a new "Cache Plugin or Service is Active" option.
 
