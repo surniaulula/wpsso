@@ -3,7 +3,7 @@ Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
 Domain Path: /languages
-License: Nontransferable License for WordPress Site Address URL
+License: GPLv3
 License URI: https://wpsso.com/wp-content/plugins/wpsso/license/premium.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: schema, woocommerce, search results, optimize, meta tags
