@@ -9,7 +9,7 @@
 <tr><th align="right" valign="top" nowrap>Tested Up To WordPress</th><td>6.9.4</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To WooCommerce</th><td>10.6.2</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
-<tr><th align="right" valign="top" nowrap>License</th><td><a href="https://wpsso.com/wp-content/plugins/wpsso/license/premium.txt">Nontransferable License for WordPress Site Address URL</a></td></tr>
+<tr><th align="right" valign="top" nowrap>License</th><td><a href="https://wpsso.com/wp-content/plugins/wpsso/license/premium.txt">GPLv3</a></td></tr>
 <tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>schema, woocommerce, search results, optimize, meta tags</td></tr>
 </table>
 
