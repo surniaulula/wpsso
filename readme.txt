@@ -270,7 +270,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.0.0-rc.1 (2026/05/01)**
+**Version 22.0.0 (2026/05/01)**
 
 WPSSO Core can reduce its use of the WordPress transients cache (used by plugins and themes to store temporary data) for meta tags and Schema markup when a full webpage caching plugin or service is detected.
 
@@ -363,7 +363,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 == Upgrade Notice ==
 
-= 22.0.0-rc.1 =
+= 22.0.0 =
 
 (2026/05/01) Changed the meta tags and Schema markup default cache expiration from 1 month to 1 week, and 1 hour if a caching plugin is detected. Added a new "Cache Plugin or Service is Active" option.
 
