@@ -1466,6 +1466,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				#wpadminbar #wp-toolbar li.has-toolbar-notices.toolbar-notices-success {
 					background-color:#46b450;	/* Green. */
 				}
+				#wpadminbar #wp-toolbar #wp-admin-bar-' . $this->plugin_id . '-toolbar-notices .ab-sub-wrapper {
+					color:#c3c4c7;
+					background-color:rgb(30, 30, 30);
+				}
 				#wpadminbar #wp-toolbar li.has-toolbar-notices #wp-admin-bar-' . $this->plugin_id . '-toolbar-notices-default {
 					padding:0;
 				}
@@ -1566,6 +1570,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					border:none;
 					vertical-align:top;
 				}
+				.' . $this->plugin_id . '-notice .notice-dismiss::before {
+					color:#c3c4c7;
+					font-size:18px;
+					display:inline-block;
+					padding:2px;
+				}
+				.' . $this->plugin_id . '-notice .notice-dismiss:hover::before {
+					color:#d63638;
+				}
 				.components-notice-list .' . $this->plugin_id . '-notice .notice-dismiss,
 				#wpadminbar .' . $this->plugin_id . '-notice .notice-dismiss,
 				.' . $this->plugin_id . '-notice .notice-dismiss {
@@ -1586,19 +1599,19 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 				#wpadminbar .' . $this->plugin_id . '-notice.notice-error .notice-label,
 				.' . $this->plugin_id . '-notice.notice-error .notice-label {
-					background-color: #fbeaea;
+					background-color:#fbeaea;
 				}
 				#wpadminbar .' . $this->plugin_id . '-notice.notice-warning .notice-label,
 				.' . $this->plugin_id . '-notice.notice-warning .notice-label {
-					background-color: #fff8e5;
+					background-color:#fff8e5;
 				}
 				#wpadminbar .' . $this->plugin_id . '-notice.notice-info .notice-label,
 				.' . $this->plugin_id . '-notice.notice-info .notice-label {
-					background-color: #e5f5fa;
+					background-color:#e5f5fa;
 				}
 				#wpadminbar .' . $this->plugin_id . '-notice.notice-success .notice-label,
 				.' . $this->plugin_id . '-notice.notice-success .notice-label {
-					background-color: #ecf7ed;
+					background-color:#ecf7ed;
 				}
 				.' . $this->plugin_id . '-notice.notice-success .notice-label::before,
 				.' . $this->plugin_id . '-notice.notice-info .notice-label::before,
@@ -1661,6 +1674,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 				#wpadminbar .' . $this->plugin_id . '-notice .notice-message p.reference-message,
 				.' . $this->plugin_id . '-notice .notice-message p.reference-message {
+					color:#c3c4c7;
 					font-size:0.9em;
 					margin:10px 0 0 0;
 				}
@@ -1714,10 +1728,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 				.' . $this->plugin_id . '-notice .notice-message .button-highlight:hover {
 					background-color:#c8e6fb;
-				}
-				.' . $this->plugin_id . '-notice .notice-dismiss::before {
-					display:inline-block;
-					padding:2px;
 				}
 			';
 
