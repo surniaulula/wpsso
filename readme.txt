@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.4.33
 Requires At Least: 6.0
 Tested Up To: 6.9.4
-WC Tested Up To: 10.6.2
+WC Tested Up To: 10.7.0
 Stable Tag: 22.0.0
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
