@@ -270,14 +270,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.0.1-dev.1 (TBD)**
+**Version 22.0.1-dev.1 (2026/05/17)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* None.
+	* Minor fixes for WordPress 7.0 notice styling.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -380,7 +380,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 = 22.0.1-dev.1 =
 
-(TBD) None.
+(2026/05/17) Minor fixes for WordPress 7.0 notice styling.
 
 = 22.0.0 =
 
