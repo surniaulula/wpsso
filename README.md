@@ -6,7 +6,7 @@
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>22.0.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires PHP</th><td>7.4.33 or newer</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires WordPress</th><td>6.0 or newer</td></tr>
-<tr><th align="right" valign="top" nowrap>Tested Up To WordPress</th><td>6.9.4</td></tr>
+<tr><th align="right" valign="top" nowrap>Tested Up To WordPress</th><td>7.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To WooCommerce</th><td>10.7.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="https://wpsso.com/wp-content/plugins/wpsso/license/premium.txt">GPLv3</a></td></tr>
