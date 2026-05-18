@@ -270,7 +270,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.1.0-dev.3 (2026/05/18)**
+**Version 22.1.0-b.1 (2026/05/18)**
 
 * **New Features**
 	* None.
@@ -378,7 +378,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 == Upgrade Notice ==
 
-= 22.1.0-dev.3 =
+= 22.1.0-b.1 =
 
 (2026/05/18) CSS update for new WordPress 7.0 styling.
 
