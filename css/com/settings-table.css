@@ -230,7 +230,7 @@ table.sucom-settings blockquote {
 	margin:20px 0;
 	padding:10px 20px 10px 25px;
 	border:none;
-	border-left:3px solid #0f533d;
+	border-left:3px solid var(--wp-admin-theme-color);
 	background-color:#fafafa;
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
@@ -291,10 +291,11 @@ table.sucom-settings th {
 	font-weight:500;
 	text-align:right;
 	vertical-align:top;
-	padding-top:4px;
 	line-height:1.6em;
+	padding-top:8px;
 	width:270px;
 	max-width:270px;
+	min-height:40px;
 }
 
 table.sucom-settings th.plugin_name {
@@ -338,6 +339,7 @@ table.sucom-settings table.plugin_list_table_cols th {
 }
 
 table.sucom-settings td {
+	min-height:40px;
 	line-height:1.6em;
 	vertical-align:top;
 }
@@ -479,8 +481,9 @@ body.rtl table.sucom-settings th.head_tags {
 
 table.sucom-settings td.head_tags {
 	text-align:left;
-	width:50px;
+	width:20px;
 	max-width:50px;
+	padding-top:8px;
 }
 
 table.sucom-settings td.weekday {
@@ -905,14 +908,14 @@ table.sucom-settings td div.linked_to_label {
 label.sucom-checkbox {
 	display:inline-block;
 	position:relative;
-	height:18px;
-	width:30px;
-	margin:4px 8px 4px 4px;
+	height:22px;
+	width:36px;
+	margin:8px 10px 8px 8px;
 }
 
 label.sucom-checkbox span.sucom-checkbox-button {
-	border:1px solid #9e9e9e;
-	border-radius:9px;
+	border:1px solid var(--wp-admin-theme-color);
+	border-radius:11px;
 	position:absolute;
 	cursor:pointer;
 	top:0;
@@ -924,12 +927,12 @@ label.sucom-checkbox span.sucom-checkbox-button {
 
 label.sucom-checkbox span.sucom-checkbox-button:before {
 	border-radius:50%;
-	border:1px solid #9e9e9e;
-	background-color:#9e9e9e;
+	border:1px solid var(--wp-admin-theme-color);
+	background-color:var(--wp-admin-theme-color);
 	position:absolute;
 	content:"";
-	height:12px;
-	width:12px;
+	height:16px;
+	width:16px;
 	left:1px;
 	bottom:1px;
 	transition:.4s;
@@ -940,11 +943,11 @@ label.sucom-checkbox input {
 }
 
 label.sucom-checkbox input:checked + span.sucom-checkbox-button {
-	background-color:#9e9e9e;
+	background-color:var(--wp-admin-theme-color);
 }
 
 label.sucom-checkbox input:checked + span.sucom-checkbox-button:before {
-	transform:translateX(12px);
+	transform:translateX(14px);
 	border:1px solid #ffffff;
 	background-color:#ffffff;
 }
@@ -953,17 +956,17 @@ label.sucom-checkbox input:checked + span.sucom-checkbox-button:before {
  * Checked and unchecked for default values.
  */
 label.sucom-checkbox input.default:checked + span.sucom-checkbox-button {
-	border:1px solid #9e9e9e;
-	background-color:#9e9e9e;
+	border:1px solid var(--wp-admin-theme-color);
+	background-color:var(--wp-admin-theme-color);
 }
 
 label.sucom-checkbox input.default:not(:checked) + span.sucom-checkbox-button {
-	border:1px solid #9e9e9e;
+	border:1px solid var(--wp-admin-theme-color);
 }
 
 label.sucom-checkbox input.default:not(:checked) + span.sucom-checkbox-button:before {
-	border:1px solid #9e9e9e;
-	background-color:#9e9e9e;
+	border:1px solid var(--wp-admin-theme-color);
+	background-color:var(--wp-admin-theme-color);
 }
 
 /*
@@ -1055,7 +1058,7 @@ table.sucom-settings td.checkbox.left {
 }
 
 table.sucom-settings td.checkbox label.sucom-checkbox {
-	margin:2px 0;
+	margin:8px 0;
 }
 
 table.sucom-settings .video {

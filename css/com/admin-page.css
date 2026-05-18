@@ -229,6 +229,7 @@ body.rtl #dashboard-widgets #wpsso-cache-status table.wpsso-dashboard-widget .ca
 	opacity:0.50;
 	filter:alpha(opacity=50);	/* IE8 and earlier. */
 	margin:0 0 0 6px;
+	vertical-align:middle;
 }
 
 body.rtl .sucom-tooltip {
@@ -239,7 +240,7 @@ body.rtl .sucom-tooltip {
 .sucom-tooltip-icon::before {
 	content:"\f29c";	/* .icon-question-circle-o */
 	font-family:"WpssoIcons";
-	font-size:1.2em;
+	font-size:1.3em;
 	font-weight:normal;
 }
 

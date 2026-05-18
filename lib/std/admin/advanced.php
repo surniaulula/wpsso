@@ -1560,7 +1560,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 					$table_cells[] = '<!-- ' . ( implode( ' ', $match ) ) . ' -->' . 	// Required for sorting.
 						'<td class="checkbox blank">' . $form->get_no_checkbox( $opt_key, $css_class, $css_id, $force, $group ) . '</td>' .
-						'<td class="xshort' . $extra_class . '">' . $match[ 1 ] . '</td>' .
+						'<td class="head_tags' . $extra_class . '">' . $match[ 1 ] . '</td>' .
 						'<td class="head_tags' . $extra_class . '">' . $match[ 2 ] . '</td>' .
 						'<th class="head_tags' . $extra_class . '">' . $match[ 3 ] . '</th>';
 				}
