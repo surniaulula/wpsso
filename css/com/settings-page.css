@@ -225,6 +225,7 @@ div.submit-buttons .button-primary,
 div.submit-buttons .button-secondary {
 	margin:5px;
 	min-width:280px;
+	min-height:40px;
 }
 
 div.submit-buttons form {
