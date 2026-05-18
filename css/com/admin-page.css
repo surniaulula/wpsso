@@ -396,7 +396,7 @@ table td .no_input_clipboard .copy_text input {
 }
 
 table td .no_input_clipboard .copy_text {
-	margin:0 60px 0 0;	/* Leave room for floating button. */
+	margin:0 80px 0 0;	/* Leave room for floating button. */
 }
 
 body.rtl table td .no_input_clipboard .copy_text {

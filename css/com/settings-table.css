@@ -74,7 +74,8 @@ table.sucom-settings textarea {
 	min-height:40px;
 }
 
-table.sucom-settings select {
+table.sucom-settings select,
+table.sucom-settings input[type="button"] {
 	min-height:40px;
 }
 
@@ -298,7 +299,7 @@ table.sucom-settings th {
 	text-align:right;
 	vertical-align:top;
 	line-height:1.6em;
-	padding-top:8px;
+	padding-top:10px;
 	width:270px;
 	max-width:270px;
 	min-height:40px;
@@ -375,7 +376,7 @@ table.sucom-settings td.ext-info-plugin-separator {
 }
 
 table.sucom-settings td.validate {
-	padding-top:8px;
+	padding-top:10px;
 }
 
 table.sucom-settings table.plugin_list_table_cols td.underline {
@@ -403,7 +404,7 @@ table.sucom-settings td p.status-msg {
 }
 
 table.sucom-settings td p.status-msg.top {
-	margin-bottom:8px;
+	margin-bottom:10px;
 }
 
 table.sucom-settings td p.status-msg.smaller {
@@ -493,7 +494,7 @@ table.sucom-settings td.head_tags {
 	text-align:left;
 	width:20px;
 	max-width:50px;
-	padding-top:8px;
+	padding-top:10px;
 }
 
 table.sucom-settings td.weekday {
@@ -725,10 +726,7 @@ table.sucom-settings th.textinfo p {
 table.sucom-settings td div.multi_container {
 	display:table;
 	border-spacing:0;
-}
-
-table.sucom-settings td div.multi_container.mixed_multi {
-	margin-bottom:8px;
+	margin-bottom:5px;
 }
 
 table.sucom-settings td div.multi_container.mixed_multi.single_line {
@@ -741,23 +739,19 @@ table.sucom-settings td div.multi_container.single_line .multi_input_el {
 
 table.sucom-settings td div.multi_number {
 	display:table-cell;
-	min-width:20px;
+	min-width:24px;
 	vertical-align:top;
 	text-align:right;
-	padding:8px 8px 0 0;
+	padding:10px 10px 0 0;
 }
 
 table.sucom-settings td div.multi_input {
 	display:table-cell;
-	padding:4px 8px 0 0;
 	width:100%;
 }
 
-table.sucom-settings td div.multi_input_el {
-	margin-bottom:5px;
-}
-
 table.sucom-settings td div.multi_input_label {
+	margin-top:10px;
 	min-width:100px;
 }
 
@@ -1108,8 +1102,8 @@ body.rtl table.sucom-settings .sucom_image_upload_preview {
 
 table.sucom-settings .sucom_image_upload_preview img {
 	width:auto;
-	min-height:28px;
-	max-height:2em;
+	min-height:38px;
+	max-height:38px;
 	margin:0;
 	padding:0;
 	vertical-align:middle;
@@ -1143,6 +1137,10 @@ table.sucom-settings td.blank {
 	color:#999;
 	background-color:#fafafa;
 	border:1px dotted #e3e3e3;
+}
+
+table.sucom-settings table.business_hours td p {
+	margin:10px 0 0 0;
 }
 
 table.sucom-settings table.business_hours td.blank {
