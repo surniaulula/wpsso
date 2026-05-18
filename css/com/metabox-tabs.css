@@ -66,8 +66,6 @@ ul.sucom-metabox-tabs.horizontal {
 	display:none;
 	white-space:nowrap;	/* Prevent inline-blocks from wrapping. */
 	list-style:none;
-	font-size:13px;
-	line-height:13px;
 	margin:12px 0 0 0;
 	padding:0;
 	border-bottom:1px solid #eee;
@@ -86,6 +84,7 @@ ul.sucom-metabox-tabs.horizontal li {
 	border-right:1px solid #eee;
 	border-bottom:1px solid #eee;
 	background-color:#fafafa;
+	min-height:40px;
 }
 
 ul.sucom-metabox-tabs li.tab_space,
