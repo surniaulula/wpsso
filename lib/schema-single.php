@@ -246,9 +246,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			return $replies_added;	// Return count of replies added.
 		}
 
-		/*
-		 * See WpssoSchemaSingle->add_organization_data().
-		 */
 		public static function add_contact_data( &$json_data, array $mod, $contact_id, $list_el = false ) {
 
 			$wpsso =& Wpsso::get_instance();
@@ -1127,7 +1124,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->mark();
+				$wpsso->debug->log_args( array(
+					'org_id'       => $org_id,
+					'org_logo_key' => $org_logo_key,
+					'list_el'      => $list_el,
+					'called_by'    => $called_by,
+				) );
 			}
 
 			if ( ! SucomUtil::is_valid_option_value( $org_id ) ) {
@@ -1205,8 +1207,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $org_opts,
-				$opt_key = 'org_schema_type', $def_type_id = 'organization', $list_el );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $org_opts, $opt_key = 'org_schema_type', $def_type_id = 'organization', $list_el );
 
 			/*
 			 * Begin schema organization markup creation.
@@ -1475,16 +1476,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			WpssoSchema::update_data_id( $json_ret, array( $type_id, $org_id, $org_logo_key ) );
 
 			/*
-			 * Add or replace the json data.
-			 */
-			self::add_or_replace_data( $json_data, $json_ret, $list_el );
-
-			unset( $json_ret );
-
-			/*
 			 * If this organization is also a sub-type of place, then add the schema place properties as well.
 			 *
 			 * Prevent recursion by making sure this method wasn't called by self::add_place_data().
+			 *
+			 * Add place adata and merge before self::add_or_replace_data() in case we're adding a list element.
 			 */
 			if ( $wpsso->schema->is_schema_type_child( $type_id, 'place' ) ) {
 
@@ -1495,8 +1491,20 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						$wpsso->debug->log( 'adding place data for org id "' . $org_id . '"' );
 					}
 
-					self::add_place_data( $json_data, $mod, $org_id, 'merge', __FUNCTION__ );
+					self::add_place_data( $json_ret, $mod, $org_id, 'merge', __FUNCTION__ );
 				}
+			}
+
+			/*
+			 * Add or replace the json data.
+			 */
+			self::add_or_replace_data( $json_data, $json_ret, $list_el );
+
+			unset( $json_ret );
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log_arr( 'json_data', $json_data );
 			}
 
 			return 1;	// Return count of organizations added.

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 22.1.0\n"
+"Project-Id-Version: WPSSO Core 22.1.1-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2026-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -15086,23 +15086,23 @@ msgctxt "taxonomy description"
 msgid "Tags for the page post type."
 msgstr ""
 
-#: lib/schema-single.php:1224
+#: lib/schema-single.php:1225
 msgid "adding schema organization"
 msgstr ""
 
-#: lib/schema-single.php:1225
+#: lib/schema-single.php:1226
 msgid "adding schema organization ID \"%s\""
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1332
+#: lib/schema-single.php:1333
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1335
+#: lib/schema-single.php:1336
 msgid ""
 "An organization banner image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
@@ -15110,54 +15110,54 @@ msgstr ""
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or
 #. organization ID.
-#: lib/schema-single.php:1338
+#: lib/schema-single.php:1339
 msgid "Enter the missing image URL in the \"%1$s\" %2$s organization settings."
 msgstr ""
 
-#: lib/schema-single.php:1374
+#: lib/schema-single.php:1375
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1388 lib/schema-single.php:1397
+#: lib/schema-single.php:1389 lib/schema-single.php:1398
 msgid "ID \"%s\""
 msgstr ""
 
-#: lib/schema-single.php:1575
+#: lib/schema-single.php:1583
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1798
+#: lib/schema-single.php:1806
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema-single.php:2310
+#: lib/schema-single.php:2318
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:2448
+#: lib/schema-single.php:2456
 msgid "adding schema product"
 msgstr ""
 
-#: lib/schema.php:739
+#: lib/schema.php:746
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:2230
+#: lib/schema.php:2237
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:2403
+#: lib/schema.php:2410
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
 "the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/schema.php:2430
+#: lib/schema.php:2437
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:4148
+#: lib/schema.php:4155
 msgid "checking schema properties"
 msgstr ""
 

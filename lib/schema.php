@@ -495,7 +495,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! empty( $graph_json[ '@graph' ] ) ) {	// Just in case.
 
-				WpssoSchemaGraph::optimize_json( $graph_json );
+				if ( SucomUtil::get_const( 'WPSSO_SCHEMA_GRAPH_OPTIMIZE_DISABLE' ) ) {
+
+					if ( $this->p->debug->enabled ) {
+				
+						$this->p->debug->log( 'WPSSO_SCHEMA_GRAPH_OPTIMIZE_DISABLE is true' );
+					}
+
+				} else WpssoSchemaGraph::optimize_json( $graph_json );
 
 				$schema_scripts[][] = '<script type="application/ld+json" id="wpsso-schema-graph">' .
 					$this->p->util->json_format( $graph_json ) . '</script>' . "\n";
