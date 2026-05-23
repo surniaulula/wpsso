@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 22.0.0\n"
+"Project-Id-Version: WPSSO Core 22.1.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2026-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2026-05-01 09:16-0700\n"
+"PO-Revision-Date: 2026-05-23 08:33-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2798,7 +2798,7 @@ msgid "Additional requests to retrieve this URL will be ignored for another %d s
 msgstr "Les demandes supplémentaires de récupération de cette URL seront ignorées pour un autre %d seconde(s)."
 
 #: gettext/gettext-lib-com.php:38 gettext/gettext-lib-com.php:40
-#: lib/com/cache.php:493 lib/com/cache.php:688 lib/util-cache.php:971
+#: lib/com/cache.php:493 lib/com/cache.php:688 lib/util-cache.php:985
 msgid "Error removing cache file %s."
 msgstr "Erreur de suppression du fichier cache %s."
 
@@ -6643,7 +6643,7 @@ msgstr "obtenir notes et critiques de stamp.io"
 #: gettext/gettext-lib-pro.php:238 gettext/gettext-lib-pro.php:249
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:177
 #: lib/loader.php:191 lib/post.php:1861 lib/pro/util/shorten.php:336
-#: lib/pro/util/shorten.php:531 lib/util-cache.php:666
+#: lib/pro/util/shorten.php:531 lib/util-cache.php:669
 msgid "%s error:"
 msgstr "Erreur %s:"
 
@@ -9421,7 +9421,7 @@ msgstr "Corruption possible de %1$s détecté - le chemin du fichier d'image ple
 msgid "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 msgstr "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 
-#: lib/media.php:1803 lib/register.php:315 lib/util-cache.php:478
+#: lib/media.php:1803 lib/register.php:315 lib/util-cache.php:481
 #: lib/util.php:897 lib/util.php:1012 lib/util.php:1044 lib/util.php:1082
 #: lib/util.php:3547
 msgid "%s warning:"
@@ -13657,71 +13657,71 @@ msgctxt "taxonomy description"
 msgid "Tags for the page post type."
 msgstr "Étiquettes pour le type de publication de page."
 
-#: lib/schema-single.php:1224
+#: lib/schema-single.php:1231
 msgid "adding schema organization"
 msgstr "ajout de schéma d'organisation"
 
-#: lib/schema-single.php:1225
+#: lib/schema-single.php:1232
 msgid "adding schema organization ID \"%s\""
 msgstr "ajout de schéma d'organisation ID \"%s\""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1332
+#: lib/schema-single.php:1339
 msgid "An organization logo image is missing and required for the \"%1$s\" organization Schema %2$s markup."
 msgstr "Une image de logo d'organisation est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1335
+#: lib/schema-single.php:1342
 msgid "An organization banner image is missing and required for the \"%1$s\" organization Schema %2$s markup."
 msgstr "Une image de bannière d'organisation est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or
 #. organization ID.
-#: lib/schema-single.php:1338
+#: lib/schema-single.php:1345
 msgid "Enter the missing image URL in the \"%1$s\" %2$s organization settings."
 msgstr "Entrez l'URL de l'image manquante dans les paramètres de l'organisation %2$s \"%1$s\"."
 
-#: lib/schema-single.php:1374
+#: lib/schema-single.php:1381
 msgid "site"
 msgstr "site"
 
-#: lib/schema-single.php:1388 lib/schema-single.php:1397
+#: lib/schema-single.php:1395 lib/schema-single.php:1404
 msgid "ID \"%s\""
 msgstr "ID \"%s\""
 
-#: lib/schema-single.php:1575
+#: lib/schema-single.php:1589
 msgid "adding schema person"
 msgstr "ajout de schéma de personne"
 
-#: lib/schema-single.php:1798
+#: lib/schema-single.php:1817
 msgid "adding schema place"
 msgstr "ajout de schéma d'endroit"
 
-#: lib/schema-single.php:2310
+#: lib/schema-single.php:2330
 msgid "adding schema product group"
 msgstr "ajout de schéma groupe de produit"
 
-#: lib/schema-single.php:2448
+#: lib/schema-single.php:2468
 msgid "adding schema product"
 msgstr "ajout de schéma de produit"
 
-#: lib/schema.php:739
+#: lib/schema.php:746
 msgid "adding schema"
 msgstr "ajout de schéma"
 
-#: lib/schema.php:2230
+#: lib/schema.php:2245
 msgid "adding schema %s #%d image"
 msgstr "ajout d'image #%d pour schéma %s"
 
-#: lib/schema.php:2403
+#: lib/schema.php:2418
 msgid "Please note that although the Schema standard allows the subject of a review to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for the Schema %2$s type</a>."
 msgstr "Veuillez noter que la norme de Schéma permette que le sujet d'une critique soit n'importe quel type de Schema, <a href=\"%1$s\">Google n'autorise pas de critiques pour le type de Schéma %2$s</a>."
 
-#: lib/schema.php:2430
+#: lib/schema.php:2445
 msgid "adding reviewed subject image"
 msgstr "ajout d'image pour le sujet critiqué"
 
-#: lib/schema.php:4148
+#: lib/schema.php:4163
 msgid "checking schema properties"
 msgstr "vérification des propriétés schéma"
 
@@ -14482,7 +14482,7 @@ msgctxt "toolbar menu title"
 msgid "View Profile"
 msgstr "Voir profil"
 
-#: lib/user.php:1891 lib/user.php:1982 lib/util-cache.php:375
+#: lib/user.php:1891 lib/user.php:1982 lib/util-cache.php:378
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr "%2$s le %1$s"
@@ -14611,7 +14611,7 @@ msgstr "<strong>Erreur</strong>: cette adresse de messagerie est déjà utilisé
 msgid "A task to %s is currently running."
 msgstr "Une tâche pour %s est en cours d'exécution."
 
-#: lib/util-cache.php:252 lib/util-cache.php:332 lib/util-cache.php:365
+#: lib/util-cache.php:252 lib/util-cache.php:332 lib/util-cache.php:368
 msgctxt "task name"
 msgid "refresh the cache"
 msgstr "rafraîchir le cache"
@@ -14640,95 +14640,95 @@ msgstr "Vous pouvez activer une extension comme %s pour gérer les événements 
 msgid "WP Crontrol"
 msgstr "WP Crontrol"
 
-#: lib/util-cache.php:376
+#: lib/util-cache.php:379
 msgid "A task to %1$s was started at %2$s."
 msgstr "Une tâche pour %1$s a été démarrée à %2$s."
 
-#: lib/util-cache.php:463
+#: lib/util-cache.php:466
 msgid "Processing %1$s ID #%2$d (%1$s %3$d of %4$d)."
 msgstr "Traitement de %1$s ID #%2$d (%1$s %3$d de %4$d)."
 
-#: lib/util-cache.php:472
+#: lib/util-cache.php:475
 msgid "The cache refresh time limit of %s has been reached."
 msgstr "La limite de temps d'actualisation du cache de %s a été atteinte."
 
-#: lib/util-cache.php:475
+#: lib/util-cache.php:478
 msgid "The cache refresh task aborted after %1$s ID #%2$d (%1$s %3$d of %4$d)."
 msgstr "La tâche d'actualisation du cache a été interrompue après %1$s ID #%2$d (%1$s %3$d sur %4$d)."
 
-#: lib/util-cache.php:494
+#: lib/util-cache.php:497
 msgid "The transient cache for %1$d posts, %2$d terms, and %3$d users has been refreshed."
 msgstr "Le cache transitoires pour %1$d articles, %2$d termes et %3$d utilisateurs a été actualisé."
 
-#: lib/util-cache.php:516
+#: lib/util-cache.php:519
 msgid "The total execution time for this task was %s (%s peak memory use)."
 msgstr "Le temps d'exécution total pour cette tâche était %s (%s utilisation maximale de la mémoire)."
 
-#: lib/util-cache.php:565
+#: lib/util-cache.php:568
 msgid "Ignoring request to %s - this task is already running."
 msgstr "Abandon de la tâche pour %s - cette tâche est déjà en cours d'exécution."
 
-#: lib/util-cache.php:668
+#: lib/util-cache.php:671
 msgid "The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr "La fonction PHP %1$s n'a pas réussi à définir une durée d'exécution maximale de %2$s pour %3$s."
 
-#: lib/util-cache.php:707
+#: lib/util-cache.php:716
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr "Le cache pour <strong>%s</strong> a été vidé aussi."
 
-#: lib/util-cache.php:716
+#: lib/util-cache.php:725
 msgid "WordPress object cache"
 msgstr "cache d'objets WordPress"
 
-#: lib/util-cache.php:731
+#: lib/util-cache.php:745
 msgid "Autoptimize"
 msgstr "Autoptimize"
 
-#: lib/util-cache.php:746
+#: lib/util-cache.php:760
 msgid "Cache Enabler"
 msgstr "Cache Enabler"
 
-#: lib/util-cache.php:759
+#: lib/util-cache.php:773
 msgid "Comet Cache"
 msgstr "Comet Cache"
 
-#: lib/util-cache.php:773
+#: lib/util-cache.php:787
 msgid "Hummingbird Cache"
 msgstr "Hummingbird Cache"
 
-#: lib/util-cache.php:788
+#: lib/util-cache.php:802
 msgid "LiteSpeed Cache"
 msgstr "LiteSpeed Cache"
 
-#: lib/util-cache.php:801
+#: lib/util-cache.php:815
 msgid "Pagely"
 msgstr "Pagely"
 
-#: lib/util-cache.php:812
+#: lib/util-cache.php:826
 msgid "Siteground Cache"
 msgstr "Siteground Cache"
 
-#: lib/util-cache.php:827
+#: lib/util-cache.php:841
 msgid "W3 Total Cache"
 msgstr "W3 Total Cache"
 
-#: lib/util-cache.php:845
+#: lib/util-cache.php:859
 msgid "WP Engine Cache"
 msgstr "WP Engine Cache"
 
-#: lib/util-cache.php:857
+#: lib/util-cache.php:871
 msgid "WP Fastest Cache"
 msgstr "WP Fastest Cache"
 
-#: lib/util-cache.php:867
+#: lib/util-cache.php:881
 msgid "WP Rocket Cache"
 msgstr "WP Rocket Cache"
 
-#: lib/util-cache.php:879
+#: lib/util-cache.php:893
 msgid "WP Super Cache"
 msgstr "WP Super Cache"
 
-#: lib/util-cache.php:1020
+#: lib/util-cache.php:1034
 msgid "Failed to open the cache folder %s for reading."
 msgstr "Impossible d'ouvrir le dossier de cache %s pour lecture."
 

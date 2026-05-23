@@ -698,7 +698,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		}
 
 		/*
-		 * Clear WP cache and (by default) known cache plugins.
+		 * Clear WP cache and (by default) all active known cache plugins.
+		 *
+		 * See WpssoUtilCache->refresh().
 		 */
 		public function clear_cache( $clear_plugins = true ) {
 
@@ -707,6 +709,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				$this->p->debug->mark();
 			}
 
+			/*
+			 * Prevent recursion in case a cache plugin calls our refresh method (which in turn calls this method).
+			 */
 			static $do_once = null;
 
 			if ( $do_once ) return;	// Stop here.
