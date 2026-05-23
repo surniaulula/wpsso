@@ -37,7 +37,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			add_action( 'wp_scheduled_delete', array( $this, 'clear_cache_files_expired' ) );
 
-			add_action( 'wpsso_refresh_cache', array( $this, 'refresh' ), 10, 1 );	// Single scheduled task.
+			add_action( 'wpsso_refresh_cache', array( $this, 'refresh' ), 10, 2 );	// Single scheduled task.
 
 			if ( $this->is_disabled() ) {
 
@@ -320,7 +320,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 * See WpssoOptions->save_options().
 		 * See WpssoRegister->activate_plugin().
 		 */
-		public function schedule_refresh( $user_id = null ) {
+		public function schedule_refresh( $user_id = null, $clear_plugins = true ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -333,7 +333,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$event_time       = time() + WPSSO_SCHEDULE_SINGLE_EVENT_TIME;	// Default event time is now + 10 seconds.
 			$human_time       = human_time_diff( 0, WPSSO_SCHEDULE_SINGLE_EVENT_TIME );
 			$event_hook       = 'wpsso_refresh_cache';
-			$event_args       = array( $user_id );
+			$event_args       = array( $user_id, $clear_plugins );
 
 			if ( $user_id ) {	// Just in case.
 
@@ -351,9 +351,12 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		}
 
 		/*
+		 * Called by the 'wpsso_refresh_cache' single scheduled event action.
+		 *
+		 * See wpsso_refresh_cache().
 		 * See WpssoRarActions->action_refresh_cache().
 		 */
-		public function refresh( $user_id = null ) {
+		public function refresh( $user_id = null, $clear_plugins = true ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -506,7 +509,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			/*
 			 * Clear WP cache and known cache plugins.
 			 */
-			$notice_msg .= $this->clear_cache();
+			$notice_msg .= $this->clear_cache( $clear_plugins );
 
 			if ( $user_id && $notice_msg ) {
 
@@ -695,14 +698,20 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		}
 
 		/*
-		 * Clear WP cache and known cache plugins.
+		 * Clear WP cache and (by default) known cache plugins.
 		 */
-		public function clear_cache() {
+		public function clear_cache( $clear_plugins = true ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
+
+			static $do_once = null;
+
+			if ( $do_once ) return;	// Stop here.
+
+			$do_once = true;
 
 			$cleared_msg = __( 'The cache for <strong>%s</strong> has also been cleared.', 'wpsso' ) . ' ';
 
@@ -714,6 +723,11 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			wp_cache_flush();
 
 			$notice_msg .= sprintf( $cleared_msg, __( 'WordPress object cache', 'wpsso' ) );
+
+			if ( ! $clear_plugins ) {
+
+				return $notice_msg;
+			}
 
 			/*
 			 * Autoptimize.
@@ -783,7 +797,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				if ( method_exists( 'LiteSpeed_Cache_API', 'purge_all' ) ) {
 
-					LiteSpeed_Cache_API::purge_all();
+					do_action( 'litespeed_purge_all', 'WPSSO Core' );
 
 					$notice_msg .= sprintf( $cleared_msg, __( 'LiteSpeed Cache', 'wpsso' ) );
 				}

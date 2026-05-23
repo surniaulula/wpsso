@@ -1207,12 +1207,18 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $org_opts, $opt_key = 'org_schema_type', $def_type_id = 'organization', $list_el );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $org_opts,
+				$opt_key = 'org_schema_type', $def_type_id = 'organization', $list_el );
 
 			/*
-			 * Begin schema organization markup creation.
+			 * Begin schema organization markup creation. Preserve the @id value if one is available.
 			 */
-			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
+			$json_ret = WpssoSchema::get_schema_type_context( $type_url, SucomUtil::preg_grep_keys( '/^@/', $json_data ) );
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log_arr( 'get_schema_type_context', $json_ret );
+			}
 
 			/*
 			 * Set the reference values for admin notices.
@@ -1480,7 +1486,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 *
 			 * Prevent recursion by making sure this method wasn't called by self::add_place_data().
 			 *
-			 * Add place adata and merge before self::add_or_replace_data() in case we're adding a list element.
+			 * Add place adata and merge BEFORE calling add_or_replace_data() in case we're adding a list element.
 			 */
 			if ( $wpsso->schema->is_schema_type_child( $type_id, 'place' ) ) {
 
@@ -1774,9 +1780,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$opt_key = 'place_schema_type', $def_type_id = 'place', $list_el );
 
 			/*
-			 * Begin schema place markup creation.
+			 * Begin schema place markup creation. Preserve the @id value if one is available.
 			 */
-			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
+			$json_ret = WpssoSchema::get_schema_type_context( $type_url, SucomUtil::preg_grep_keys( '/^@/', $json_data ) );
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log_arr( 'get_schema_type_context', $json_ret );
+			}
 
 			/*
 			 * If this place is also a sub-type of organization, then add the schema organization properties as well.
@@ -2156,7 +2167,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 								$price_spec[ 'priceCurrency' ] = $wpsso->options[ 'og_def_currency' ];
 							}
 
-							$json_ret[ 'priceSpecification' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/UnitPriceSpecification', $price_spec );
+							$json_ret[ 'priceSpecification' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/UnitPriceSpecification',
+								$price_spec );
 						}
 					}
 				}

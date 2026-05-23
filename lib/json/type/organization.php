@@ -55,6 +55,11 @@ if ( ! class_exists( 'WpssoJsonTypeOrganization' ) ) {
 
 			$json_ret = WpssoSchema::get_data_context( $json_data );	// Returns array() if no schema type found.
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( 'json_ret', $json_ret );
+			}
+
 		 	/*
 			 * Add the Organization.
 			 */
@@ -86,6 +91,14 @@ if ( ! class_exists( 'WpssoJsonTypeOrganization' ) ) {
 			if ( $is_main ) {	// Just in case.
 
 				WpssoSchema::update_data_id( $json_ret, 'knowledge-graph' );
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( 'json_data', $json_data );
+				$this->p->debug->log_arr( 'json_ret', $json_ret );
+
+				$this->p->debug->log( 'returning data from filter' );
 			}
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );

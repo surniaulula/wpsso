@@ -194,7 +194,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								 */
 								case 'litespeed':
 
-									$chk[ 'class' ] = 'LiteSpeed_Cache_API';
+									$chk[ 'function' ] = 'run_litespeed_cache';
 
 									break;
 

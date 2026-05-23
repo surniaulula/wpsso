@@ -532,7 +532,7 @@ if ( ! function_exists( 'wpsso_refresh_cache' ) ) {
 
 		$user_id = get_current_user_id();
 
-		return $wpsso->util->cache->refresh( $user_id );
+		return $wpsso->util->cache->refresh( $user_id, $clear_plugins = true );
 	}
 }
 

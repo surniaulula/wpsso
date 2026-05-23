@@ -1359,9 +1359,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$context_value = array(
 						$ext[ 1 ] . $ext[ 3 ],
-						array(
-							$ext[ 2 ] => $ext[ 0 ],
-						)
+						array( $ext[ 2 ] => $ext[ 0 ] )
 					);
 				}
 
@@ -1376,11 +1374,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					'@type'    => $type_value,
 				);
 
-				/*
-				 * Include $json_head first to keep @id, @context, and @type top-most.
-				 */
 				if ( is_array( $json_data ) ) {	// Just in case.
 
+					/*
+					 * Include $json_head first to keep @id, @context, and @type top-most.
+					 */
 					$json_data = array_merge( $json_head, $json_data, $json_values );
 
 					if ( empty( $json_data[ '@id' ] ) ) {
@@ -1952,11 +1950,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $type_url;
 		}
 
+		/*
+		 * Returns array() if no schema type found.
+		 */
 		public static function get_data_context( $json_data ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
 
 			if ( false !== ( $type_url = self::get_data_type_url( $json_data ) ) ) {
 
-				return self::get_schema_type_context( $type_url );
+				return self::get_schema_type_context( $type_url, SucomUtil::preg_grep_keys( '/^@/', $json_data ) );
 			}
 
 			return array();
