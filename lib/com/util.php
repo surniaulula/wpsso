@@ -812,13 +812,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function preg_grep_keys( $keys_preg, $in_array, $invert = false, $replace = false ) {
 
-			if ( ! is_array( $in_array ) ) {	// Just in case.
+			if ( ! is_array( $in_array ) || empty( $in_array ) ) {	// Just in case.
 
 				return array();
-
-			} elseif ( empty( $in_array ) ) {	// Nothing to do.
-
-				return $in_array;
 			}
 
 			$in_array_keys = array_keys( $in_array );
