@@ -810,9 +810,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 *
 		 * $replace can be a string or an associative array of 'pattern' => 'replacement'.
 		 */
-		public static function preg_grep_keys( $keys_preg, array $in_array, $invert = false, $replace = false ) {
+		public static function preg_grep_keys( $keys_preg, $in_array, $invert = false, $replace = false ) {
 
-			if ( empty( $in_array ) ) {	// Nothing to do.
+			if ( ! is_array( $in_array ) ) {	// Just in case.
+
+				return array();
+
+			} elseif ( empty( $in_array ) ) {	// Nothing to do.
 
 				return $in_array;
 			}
