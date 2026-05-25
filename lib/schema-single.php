@@ -3456,10 +3456,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$wpsso =& Wpsso::get_instance();
 
 			$hours_rel          = isset( $opts[ $opt_prefix . '_rel' ] ) ? $opts[ $opt_prefix . '_rel' ] : '';
-			$business_weekdays  = $wpsso->cf[ 'form' ][ 'weekdays' ];
 			$opening_hours_spec = array();
 
-			foreach ( $business_weekdays as $day_name => $day_label ) {
+			foreach ( $wpsso->cf[ 'form' ][ 'weekdays' ] as $day_key => $day_label ) {
 
 				/*
 				 * Returns an empty array or an associative array of open => close hours, including a timezone offset.
@@ -3472,10 +3471,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				 */
 				$open_close = self::get_open_close_pairs(
 					$opts,
-					$opt_prefix . '_day_' . $day_name . '_open',
+					$opt_prefix . '_day_' . $day_key . '_open',
 					$opt_prefix . '_midday_close',
 					$opt_prefix . '_midday_open',
-					$opt_prefix . '_day_' . $day_name . '_close',
+					$opt_prefix . '_day_' . $day_key . '_close',
 					$opt_prefix . '_timezone'
 				);
 
@@ -3486,7 +3485,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						$weekday_spec = array(
 							'@context'  => 'https://schema.org',
 							'@type'     => 'OpeningHoursSpecification',
-							'dayOfWeek' => $day_label,
+							'dayOfWeek' => $wpsso->cf[ 'form' ][ 'day_of_week' ][ $day_key ],
 							'opens'     => $open,
 							'closes'    => $close,
 						);

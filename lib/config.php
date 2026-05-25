@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '22.1.3-dev.2',	// Plugin version.
+					'version'     => '22.1.3-dev.3',	// Plugin version.
 					'opt_version' => '1044',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2773,7 +2773,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					1 => 'On',
 					0 => 'Off',
 				),
-				'weekdays' => array(
+				'weekdays' => array(	// See 'day_of_week' for Schema types.
 					'sunday'         => 'Sunday',
 					'monday'         => 'Monday',
 					'tuesday'        => 'Tuesday',
@@ -3223,6 +3223,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'none'                                        => '[None]',	// Removed for checklists.
 					'https://schema.org/HearingImpairedSupported' => 'Hearing Impaired',
 					'https://schema.org/TollFree'                 => 'Toll Free',
+				),
+
+				/*
+				 * Validated on 2026/05/25.
+				 *
+				 * See https://schema.org/DayOfWeek.
+				 */
+				'day_of_week' => array(
+					'sunday'         => 'https://schema.org/Sunday',
+					'monday'         => 'https://schema.org/Monday',
+					'tuesday'        => 'https://schema.org/Tuesday',
+					'wednesday'      => 'https://schema.org/Wednesday',
+					'thursday'       => 'https://schema.org/Thursday',
+					'friday'         => 'https://schema.org/Friday',
+					'saturday'       => 'https://schema.org/Saturday',
+					'publicholidays' => 'https://schema.org/PublicHolidays',
 				),
 
 				/*
