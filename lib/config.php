@@ -2773,7 +2773,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					1 => 'On',
 					0 => 'Off',
 				),
-				'weekdays' => array(	// See 'day_of_week' for Schema types.
+				'weekdays' => array(
 					'sunday'         => 'Sunday',
 					'monday'         => 'Monday',
 					'tuesday'        => 'Tuesday',
