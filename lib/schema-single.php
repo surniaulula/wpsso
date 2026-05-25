@@ -3528,13 +3528,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$is_valid_open_close = false;
 			$is_valid_midday     = false;
 
-			if ( ! empty( $opts[ $key_day_o ] ) && ! empty( $opts[ $key_day_c ] ) ) {
+			if ( isset( $opts[ $key_day_o ] ) && isset( $opts[ $key_day_c ] ) ) {
 
 				$is_valid_open_close = self::is_valid_open_close( $opts[ $key_day_o ], $opts[ $key_day_c ] );
 
-				if ( ! empty( $opts[ $key_midday_c ] ) && ! empty( $opts[ $key_midday_o ] ) ) {
+				if ( isset( $opts[ $key_midday_c ] ) && isset( $opts[ $key_midday_o ] ) ) {
 
-					$is_valid_midday = self::is_valid_midday( $opts[ $key_day_o ], $opts[ $key_midday_c ], $opts[ $key_midday_o ], $opts[ $key_day_c ] );
+					$is_valid_midday = self::is_valid_midday( $opts[ $key_midday_c ], $opts[ $key_midday_o ] );
 				}
 
 				if ( $is_valid_open_close ) {
@@ -3561,57 +3561,27 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 		private static function is_valid_open_close( $hm_o, $hm_c ) {
 
-			/*
-			 * Performa a quick sanitation before using strtotime().
-			 */
 			if ( empty( $hm_o ) || empty( $hm_c ) || 'none' === $hm_o || 'none' === $hm_c ) {
 
 				return false;
 			}
 
-			$hm_o_time = strtotime( $hm_o );
-			$hm_c_time = strtotime( $hm_c );
-
-			if ( $hm_o_time < $hm_c_time ) {
-
-				return true;
-			}
-
-			return false;
+			return true;
 		}
 
-		/*
-		 * Checks for 'none' and invalid times for midday close and open.
-		 */
-		public static function is_valid_midday( $hm_o, $hm_midday_c, $hm_midday_o, $hm_c ) {
-
-			/*
-			 * Performa a quick sanitation before using strtotime().
-			 */
-			if ( empty( $hm_o ) || empty( $hm_c ) || 'none' === $hm_o || 'none' === $hm_c ) {
-
-				return false;
-			}
+		public static function is_valid_midday( $hm_midday_c, $hm_midday_o ) {
 
 			if ( empty( $hm_midday_c ) || empty( $hm_midday_o ) || 'none' === $hm_midday_c || 'none' === $hm_midday_o ) {
 
 				return false;
 			}
 
-			$hm_o_time        = strtotime( $hm_o );
 			$hm_midday_c_time = strtotime( $hm_midday_c );
 			$hm_midday_o_time = strtotime( $hm_midday_o );
-			$hm_c_time        = strtotime( $hm_c );
 
-			if ( $hm_o_time < $hm_midday_c_time ) {
+			if ( $hm_midday_c_time < $hm_midday_o_time ) {
 
-				if ( $hm_midday_c_time < $hm_midday_o_time ) {
-
-					if ( $hm_midday_o_time < $hm_c_time ) {
-
-						return true;
-					}
-				}
+				return true;
 			}
 
 			return false;
