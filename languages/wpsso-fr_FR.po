@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 22.1.2\n"
+"Project-Id-Version: WPSSO Core 22.1.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2026-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2026-05-23 08:33-0700\n"
+"PO-Revision-Date: 2026-05-25 13:24-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2798,7 +2798,7 @@ msgid "Additional requests to retrieve this URL will be ignored for another %d s
 msgstr "Les demandes supplémentaires de récupération de cette URL seront ignorées pour un autre %d seconde(s)."
 
 #: gettext/gettext-lib-com.php:38 gettext/gettext-lib-com.php:40
-#: lib/com/cache.php:493 lib/com/cache.php:688 lib/util-cache.php:985
+#: lib/com/cache.php:493 lib/com/cache.php:688 lib/util-cache.php:990
 msgid "Error removing cache file %s."
 msgstr "Erreur de suppression du fichier cache %s."
 
@@ -7263,12 +7263,12 @@ msgstr "commentaire"
 msgid "Insufficient privileges to edit comment ID %1$s."
 msgstr "Privilèges insuffisants pour modifier le commentaire ID %1$s."
 
-#: lib/config.php:5455
+#: lib/config.php:5471
 msgctxt "plugin type"
 msgid "plugin"
 msgstr "extension"
 
-#: lib/config.php:5455
+#: lib/config.php:5471
 msgctxt "plugin type"
 msgid "add-on"
 msgstr "ajout"
@@ -13657,51 +13657,51 @@ msgctxt "taxonomy description"
 msgid "Tags for the page post type."
 msgstr "Étiquettes pour le type de publication de page."
 
-#: lib/schema-single.php:1231
+#: lib/schema-single.php:1234
 msgid "adding schema organization"
 msgstr "ajout de schéma d'organisation"
 
-#: lib/schema-single.php:1232
+#: lib/schema-single.php:1235
 msgid "adding schema organization ID \"%s\""
 msgstr "ajout de schéma d'organisation ID \"%s\""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1339
+#: lib/schema-single.php:1342
 msgid "An organization logo image is missing and required for the \"%1$s\" organization Schema %2$s markup."
 msgstr "Une image de logo d'organisation est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1342
+#: lib/schema-single.php:1345
 msgid "An organization banner image is missing and required for the \"%1$s\" organization Schema %2$s markup."
 msgstr "Une image de bannière d'organisation est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or
 #. organization ID.
-#: lib/schema-single.php:1345
+#: lib/schema-single.php:1348
 msgid "Enter the missing image URL in the \"%1$s\" %2$s organization settings."
 msgstr "Entrez l'URL de l'image manquante dans les paramètres de l'organisation %2$s \"%1$s\"."
 
-#: lib/schema-single.php:1381
+#: lib/schema-single.php:1384
 msgid "site"
 msgstr "site"
 
-#: lib/schema-single.php:1395 lib/schema-single.php:1404
+#: lib/schema-single.php:1398 lib/schema-single.php:1407
 msgid "ID \"%s\""
 msgstr "ID \"%s\""
 
-#: lib/schema-single.php:1589
+#: lib/schema-single.php:1592
 msgid "adding schema person"
 msgstr "ajout de schéma de personne"
 
-#: lib/schema-single.php:1817
+#: lib/schema-single.php:1820
 msgid "adding schema place"
 msgstr "ajout de schéma d'endroit"
 
-#: lib/schema-single.php:2330
+#: lib/schema-single.php:2333
 msgid "adding schema product group"
 msgstr "ajout de schéma groupe de produit"
 
-#: lib/schema-single.php:2468
+#: lib/schema-single.php:2471
 msgid "adding schema product"
 msgstr "ajout de schéma de produit"
 
@@ -14672,63 +14672,63 @@ msgstr "Abandon de la tâche pour %s - cette tâche est déjà en cours d'exécu
 msgid "The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr "La fonction PHP %1$s n'a pas réussi à définir une durée d'exécution maximale de %2$s pour %3$s."
 
-#: lib/util-cache.php:716
+#: lib/util-cache.php:721
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr "Le cache pour <strong>%s</strong> a été vidé aussi."
 
-#: lib/util-cache.php:725
+#: lib/util-cache.php:730
 msgid "WordPress object cache"
 msgstr "cache d'objets WordPress"
 
-#: lib/util-cache.php:745
+#: lib/util-cache.php:750
 msgid "Autoptimize"
 msgstr "Autoptimize"
 
-#: lib/util-cache.php:760
+#: lib/util-cache.php:765
 msgid "Cache Enabler"
 msgstr "Cache Enabler"
 
-#: lib/util-cache.php:773
+#: lib/util-cache.php:778
 msgid "Comet Cache"
 msgstr "Comet Cache"
 
-#: lib/util-cache.php:787
+#: lib/util-cache.php:792
 msgid "Hummingbird Cache"
 msgstr "Hummingbird Cache"
 
-#: lib/util-cache.php:802
+#: lib/util-cache.php:807
 msgid "LiteSpeed Cache"
 msgstr "LiteSpeed Cache"
 
-#: lib/util-cache.php:815
+#: lib/util-cache.php:820
 msgid "Pagely"
 msgstr "Pagely"
 
-#: lib/util-cache.php:826
+#: lib/util-cache.php:831
 msgid "Siteground Cache"
 msgstr "Siteground Cache"
 
-#: lib/util-cache.php:841
+#: lib/util-cache.php:846
 msgid "W3 Total Cache"
 msgstr "W3 Total Cache"
 
-#: lib/util-cache.php:859
+#: lib/util-cache.php:864
 msgid "WP Engine Cache"
 msgstr "WP Engine Cache"
 
-#: lib/util-cache.php:871
+#: lib/util-cache.php:876
 msgid "WP Fastest Cache"
 msgstr "WP Fastest Cache"
 
-#: lib/util-cache.php:881
+#: lib/util-cache.php:886
 msgid "WP Rocket Cache"
 msgstr "WP Rocket Cache"
 
-#: lib/util-cache.php:893
+#: lib/util-cache.php:898
 msgid "WP Super Cache"
 msgstr "WP Super Cache"
 
-#: lib/util-cache.php:1034
+#: lib/util-cache.php:1039
 msgid "Failed to open the cache folder %s for reading."
 msgstr "Impossible d'ouvrir le dossier de cache %s pour lecture."
 
