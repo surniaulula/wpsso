@@ -81,7 +81,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
 
-			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $book_opts, array(
+			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $book_opts, array(	// Returns the number of properties added.
 				'isbn'          => 'book_isbn',
 				'bookFormat'    => 'book_format',
 				'bookEdition'   => 'book_edition',
@@ -92,18 +92,21 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * The author type value should be either 'organization' or 'person'.
 			 */
 			if ( WpssoSchema::is_valid_key( $book_opts, 'book_author_type' ) ) {	// Not null, an empty string, or 'none'.
-
-				$author_type_url = $wpsso->schema->get_schema_type_url( $book_opts[ 'book_author_type' ] );
-
-				$json_ret[ 'author' ] = WpssoSchema::get_schema_type_context( $author_type_url );
-
-				WpssoSchema::add_data_itemprop_from_assoc( $json_ret[ 'author' ], $book_opts, array(
+				
+				/*
+				 * At a minimum, we need an author name.
+				 */
+				if ( WpssoSchema::add_data_itemprop_from_assoc( $json_ret[ 'author' ], $book_opts, array(	// Returns the number of properties added.
 					'name' => 'book_author_name',
-				) );
+				) ) ) {
+					$author_type_url = $wpsso->schema->get_schema_type_url( $book_opts[ 'book_author_type' ] );
+				
+					$json_ret[ 'author' ] = WpssoSchema::get_schema_type_context( $author_type_url );
 
-				if ( ! empty( $book_opts[ 'book_author_url' ] ) ) {
+					if ( ! empty( $book_opts[ 'book_author_url' ] ) ) {
 
-					$json_ret[ 'author' ][ 'sameAs' ][] = SucomUtil::esc_url_encode( $book_opts[ 'book_author_url' ] );
+						$json_ret[ 'author' ][ 'sameAs' ][] = SucomUtil::esc_url_encode( $book_opts[ 'book_author_url' ] );
+					}
 				}
 
 			} elseif ( $wpsso->debug->enabled ) {
@@ -284,7 +287,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Add schema properties from the contact options.
 			 */
-			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $contact_opts, array(
+			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $contact_opts, array(	// Returns the number of properties added.
 				'url'           => 'contact_url',
 				'name'          => 'contact_name',
 				'alternateName' => 'contact_name_alt',
@@ -305,7 +308,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			if ( $wpsso->schema->is_schema_type_child( $type_id, 'postal.address' ) ) {
 
-				WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $contact_opts, array(
+				WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $contact_opts, array(	// Returns the number of properties added.
 					'streetAddress'       => 'contact_street_address',
 					'postOfficeBoxNumber' => 'contact_po_box_number',
 					'addressLocality'     => 'contact_city',

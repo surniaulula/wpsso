@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 22.1.3-dev.1\n"
+"Project-Id-Version: WPSSO Core 22.1.3-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2026-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -15086,23 +15086,23 @@ msgctxt "taxonomy description"
 msgid "Tags for the page post type."
 msgstr ""
 
-#: lib/schema-single.php:1231
+#: lib/schema-single.php:1234
 msgid "adding schema organization"
 msgstr ""
 
-#: lib/schema-single.php:1232
+#: lib/schema-single.php:1235
 msgid "adding schema organization ID \"%s\""
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1339
+#: lib/schema-single.php:1342
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1342
+#: lib/schema-single.php:1345
 msgid ""
 "An organization banner image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
@@ -15110,31 +15110,31 @@ msgstr ""
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or
 #. organization ID.
-#: lib/schema-single.php:1345
+#: lib/schema-single.php:1348
 msgid "Enter the missing image URL in the \"%1$s\" %2$s organization settings."
 msgstr ""
 
-#: lib/schema-single.php:1381
+#: lib/schema-single.php:1384
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1395 lib/schema-single.php:1404
+#: lib/schema-single.php:1398 lib/schema-single.php:1407
 msgid "ID \"%s\""
 msgstr ""
 
-#: lib/schema-single.php:1589
+#: lib/schema-single.php:1592
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1817
+#: lib/schema-single.php:1820
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema-single.php:2330
+#: lib/schema-single.php:2333
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:2468
+#: lib/schema-single.php:2471
 msgid "adding schema product"
 msgstr ""
 
