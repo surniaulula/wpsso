@@ -277,6 +277,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
+	* Added an offers property to the Schema Book markup.
 	* Added a new option under the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Book tab:
 		* Default Book Author Type
 	* Added new options under the SSO &gt; Advanced Settings &gt; Attributes and Metadata &gt; Product Attributes tab:
@@ -291,7 +292,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new `WpssoSchema::add_type_opts_offers()` method.
+	* Refactored the following methods:
+		* `WpssoSchemaSingle->add_book_data()`
+		* `WpssoSchemaSingle->add_event_data()`
+		* `WpssoSchemaSingle->add_service_data()`
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v6.0.
@@ -391,7 +396,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 = 22.2.0-b.1 =
 
-(2026/05/28) Added several Schema Book related options in the Document SSO metabox and SSO &gt; Advanced Settings page.
+(2026/05/28) Added an offers property to the Schema Book markup. Added Schema Book related options in the Document SSO metabox and SSO &gt; Advanced Settings page.
 
 = 22.1.3 =
 
