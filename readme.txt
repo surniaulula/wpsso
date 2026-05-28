@@ -272,12 +272,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.2.0-dev.3 (2026/05/28)**
+**Version 22.2.0-b.1 (2026/05/28)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a new "Default Book Author Type" under the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Book tab.
+	* Added a new option under the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Book tab:
+		* Default Book Author Type
+	* Added new options under the SSO &gt; Advanced Settings &gt; Attributes and Metadata &gt; Product Attributes tab:
+		* Book Author Name Attribute
+		* Book ISBN Attribute
+	* Added new options in the Document SSO metabox &gt; Edit Schema &gt; Book Information section:
+		* Book Offers:
+			* Offer Name
+			* Offer Price
+			* Offer Currency
+			* Offer Availability
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -379,9 +389,9 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 == Upgrade Notice ==
 
-= 22.2.0-dev.3 =
+= 22.2.0-b.1 =
 
-(2026/05/28) Added a new "Default Book Author Type" under the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Book tab.
+(2026/05/28) Added several Schema Book related options in the Document SSO metabox and SSO &gt; Advanced Settings page.
 
 = 22.1.3 =
 
