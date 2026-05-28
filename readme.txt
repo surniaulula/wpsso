@@ -272,7 +272,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.2.0-dev.2 (2026/05/28)**
+**Version 22.2.0-dev.3 (2026/05/28)**
 
 * **New Features**
 	* None.
@@ -379,7 +379,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 == Upgrade Notice ==
 
-= 22.2.0-dev.2 =
+= 22.2.0-dev.3 =
 
 (2026/05/28) Added a new "Default Book Author Type" under the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Book tab.
 
