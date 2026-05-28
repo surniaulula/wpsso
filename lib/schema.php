@@ -3596,6 +3596,94 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
+		 * Since WPSSO Core v22.2.0.
+		 *
+		 * See WpssoSchemaSingle->add_book_data().
+		 * See WpssoSchemaSingle->add_event_data().
+		 * See WpssoSchemaSingle->add_service_data().
+		 */
+		public static function add_type_opts_offers( &$type_opts, array $mod, $obj_id, $type ) {
+			
+			$wpsso =& Wpsso::get_instance();
+			
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'checking for custom ' . $type . ' offers' );
+			}
+
+			$type          = SucomUtil::sanitize_key( $type );	// Just in case.
+			$md_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX' );
+			$canonical_url = $wpsso->util->get_canonical_url( $mod );
+			$have_offers   = false;
+
+			foreach ( range( 0, $md_offers_max - 1, 1 ) as $key_num ) {
+
+				$offer_opts = apply_filters( 'wpsso_get_' . $type . '_offer_options', false, $mod, $obj_id, $key_num );
+
+				if ( ! empty( $offer_opts ) ) {
+
+					if ( $wpsso->debug->enabled ) {
+
+						$wpsso->debug->log_arr( 'get_' . $type . '_offer_options', $offer_opts );
+					}
+				}
+
+				if ( ! is_array( $offer_opts ) ) {
+
+					$offer_opts = array();
+
+					foreach ( array(
+						'offer_name'           => 'schema_' . $type . '_offer_name',
+						'offer_url'            => 'schema_' . $type . '_offer_url',
+						'offer_price'          => 'schema_' . $type . '_offer_price',
+						'offer_price_currency' => 'schema_' . $type . '_offer_currency',
+						'offer_availability'   => 'schema_' . $type . '_offer_avail',
+					) as $opt_key => $md_pre ) {
+
+						$offer_opts[ $opt_key ] = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_pre . '_' . $key_num );
+					}
+				}
+
+				/*
+				 * Must have at least an offer name and price.
+				 */
+				if ( isset( $offer_opts[ 'offer_name' ] ) && isset( $offer_opts[ 'offer_price' ] ) ) {
+
+					if ( ! isset( $type_opts[ 'offer_url' ] ) ) {
+
+						$offer_opts[ 'offer_url' ] = $canonical_url;
+					}
+
+					if ( ! isset( $offer_opts[ 'offer_valid_from_date' ] ) ) {
+
+						if ( ! empty( $type_opts[ $type . '_offers_start_date_iso' ] ) ) {
+
+							$offer_opts[ 'offer_valid_from_date' ] = $type_opts[ $type . '_offers_start_date_iso' ];
+						}
+					}
+
+					if ( ! isset( $offer_opts[ 'offer_valid_to_date' ] ) ) {
+
+						if ( ! empty( $type_opts[ $type . '_offers_end_date_iso' ] ) ) {
+
+							$offer_opts[ 'offer_valid_to_date' ] = $type_opts[ $type . '_offers_end_date_iso' ];
+						}
+					}
+
+					if ( false === $have_offers ) {
+
+						$have_offers = true;
+
+						$type_opts[ $type . '_offers' ] = array();	// Clear offers returned by filter.
+					}
+
+					$type_opts[ $type . '_offers' ][] = $offer_opts;
+				}
+			}
+
+		}
+
+		/*
 		 * Get dates from the meta data options and add ISO formatted dates to the array (passed by reference).
 		 */
 		public static function add_mod_opts_date_iso( array $mod, &$opts, array $opts_md_pre ) {
