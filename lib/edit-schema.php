@@ -405,6 +405,9 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		 */
 		public function filter_mb_sso_edit_schema_book_rows( $table_rows, $form, $head_info, $mod, $args ) {
 
+			$currencies          = SucomUtil::get_currencies_abbrev();
+			$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
+
 			$form_rows = array(
 				'subsection_schema_book' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'book' ],
@@ -476,6 +479,40 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'tooltip'  => 'meta-schema_book_isbn',
 					'content'  => $form->get_input( 'schema_book_isbn',
 						$css_class = '', $css_id = '', array( 'min' => 10, 'max' => 13 ) ),
+				),
+				'schema_book_offers' => array(
+					'tr_class' => $args[ 'tr_class_schema' ][ 'book' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Book Offers', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_book_offers',
+					'content'  => $form->get_mixed_multi( array(
+						'schema_book_offer_name' => array(
+							'input_title' => _x( 'Book Offer Name', 'option label', 'wpsso' ),
+							'input_type'  => 'text',
+							'input_class' => 'offer_name',
+						),
+						'schema_book_offer_price' => array(
+							'input_title' => _x( 'Book Offer Price', 'option label', 'wpsso' ),
+							'input_type'  => 'text',
+							'input_class' => 'price',
+						),
+						'schema_book_offer_currency' => array(
+							'input_title'    => _x( 'Book Offer Currency', 'option label', 'wpsso' ),
+							'input_type'     => 'select',
+							'input_class'    => 'currency',
+							'select_options' => $currencies,
+							'select_default' => $this->p->options[ 'og_def_currency' ],
+							'event_names'    => array( 'on_focus_load_json' ),
+							'event_args'     => array( 'json_var' => 'currencies' ),
+						),
+						'schema_book_offer_avail' => array(
+							'input_title'    => _x( 'Book Offer Availability', 'option label', 'wpsso' ),
+							'input_type'     => 'select',
+							'input_class'    => 'stock',
+							'select_options' => $this->p->cf[ 'form' ][ 'item_availability' ],
+							'select_default' => 'https://schema.org/InStock',
+						),
+					), $css_class = 'single_line', $css_id = 'schema_book_offer', $metadata_offers_max, $show_first = 2 ),
 				),
 
 				/*

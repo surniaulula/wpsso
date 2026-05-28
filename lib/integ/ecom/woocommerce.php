@@ -880,9 +880,9 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			) = $this->get_shipping_length_width_height_weight( $product );
 
 			/*
-			 * Add event and service offer defaults.
+			 * Add book, event, and service offer defaults.
 			 */
-			foreach ( array( 'schema_event_offer', 'schema_service_offer' ) as $md_pre ) {
+			foreach ( array( 'schema_book_offer', 'schema_event_offer', 'schema_service_offer' ) as $md_pre ) {
 
 				$md_defs = SucomUtil::preg_grep_keys( '/^' . $md_pre . '_/', $md_defs, $invert = true );	// Remove any pre-existing offers.
 

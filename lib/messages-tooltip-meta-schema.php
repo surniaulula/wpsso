@@ -292,6 +292,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
+						case 'tooltip-meta-schema_book_offers':		// Book Offers.
+
+							$text = __( 'One or more offers for the book, including the offer name, price and currency.', 'wpsso' );
+
+						 	break;
+
 						case 'tooltip-meta-schema_book_audio_duration_time':	// Audiobook Duration.
 
 							$text = __( 'The total duration of the audio book.', 'wpsso' );

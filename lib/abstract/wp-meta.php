@@ -575,8 +575,20 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_book_created_timezone' => $def_timezone,				// Book Created Timezone.
 					'schema_book_edition'          => '',						// Book Edition.
 					'schema_book_format'           => $opts[ 'schema_def_book_format' ],		// Book Format.
-					'schema_book_isbn'             => '',						// Book ISBN.
 					'schema_book_pages'            => '',						// Number of Pages.
+					'schema_book_isbn'             => '',						// Book ISBN.
+					'schema_book_offer_name_0'     => '',
+					'schema_book_offer_name_1'     => '',
+					'schema_book_offer_name_2'     => '',
+					'schema_book_offer_price_0'    => '',
+					'schema_book_offer_price_1'    => '',
+					'schema_book_offer_price_2'    => '',
+					'schema_book_offer_currency_0' => $def_currency,
+					'schema_book_offer_currency_1' => $def_currency,
+					'schema_book_offer_currency_2' => $def_currency,
+					'schema_book_offer_avail_0'    => 'https://schema.org/InStock',
+					'schema_book_offer_avail_1'    => 'https://schema.org/InStock',
+					'schema_book_offer_avail_2'    => 'https://schema.org/InStock',
 
 					/*
 					 * Schema Book > Audiobook.
@@ -902,6 +914,18 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_service_latitude'             => '',						// Service Latitude.
 					'schema_service_longitude'            => '',						// Service Longitude.
 					'schema_service_radius'               => '',						// Service Radius.
+					'schema_service_offer_name_0'         => '',
+					'schema_service_offer_name_1'         => '',
+					'schema_service_offer_name_2'         => '',
+					'schema_service_offer_price_0'        => '',
+					'schema_service_offer_price_1'        => '',
+					'schema_service_offer_price_2'        => '',
+					'schema_service_offer_currency_0'     => $def_currency,
+					'schema_service_offer_currency_1'     => $def_currency,
+					'schema_service_offer_currency_2'     => $def_currency,
+					'schema_service_offer_avail_0'        => 'https://schema.org/InStock',
+					'schema_service_offer_avail_1'        => 'https://schema.org/InStock',
+					'schema_service_offer_avail_2'        => 'https://schema.org/InStock',
 					'schema_service_offer_catalog_0'      => '',						// Offer Catalog Name.
 					'schema_service_offer_catalog_1'      => '',						// Offer Catalog Name.
 					'schema_service_offer_catalog_2'      => '',						// Offer Catalog Name.
