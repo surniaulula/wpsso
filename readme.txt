@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.4.33
 Requires At Least: 6.0
 Tested Up To: 7.0
-WC Tested Up To: 10.7.0
+WC Tested Up To: 10.8.1
 Stable Tag: 22.1.3
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
@@ -270,6 +270,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 22.2.0-dev.1 (2026/05/27)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a new "Default Book Author Type" under the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Book tab.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v6.0.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
+
 **Version 22.1.3 (2026/05/26)**
 
 * **New Features**
@@ -361,6 +376,10 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 22.2.0-dev.1 =
+
+(2026/05/27) Added a new "Default Book Author Type" under the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Book tab.
 
 = 22.1.3 =
 
