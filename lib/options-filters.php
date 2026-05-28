@@ -320,6 +320,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_book_author_type':			// Book Author Type.
 					case 'schema_def_article_section':		// Default Article Section.
 					case 'schema_def_book_format':			// Default Book Format.
+					case 'schema_def_book_author_type':		// Default Book Author Type.
 					case 'schema_def_event_attendance':		// Default Event Attendance.
 					case 'schema_def_event_location_id':		// Default Event Venue.
 					case 'schema_def_event_performer_org_id':	// Default Event Performer Org.

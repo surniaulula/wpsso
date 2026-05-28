@@ -3885,6 +3885,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * Returns the number of Schema properties added to $json_data.
 		 *
+		 * $json_data can be null, and will remain null unless an element is added, in which case it will become an array.
+		 *
 		 * Example usage:
 		 *
 		 *	WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_og, array(
@@ -3902,7 +3904,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 *	) );
 		 *
 		 */
-		public static function add_data_itemprop_from_assoc( array &$json_data, array $assoc, array $key_map, $overwrite = true ) {
+		public static function add_data_itemprop_from_assoc( &$json_data, array $assoc, array $key_map, $overwrite = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -3920,6 +3922,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( ! $is_assoc ) $prop_name = $assoc_key;
 
 				if ( self::is_valid_key( $assoc, $assoc_key ) ) {	// Not null, an empty string, or 'none'.
+					
+					if ( ! is_array( $json_data ) ) $json_data = array();
 
 					if ( isset( $json_data[ $prop_name ] ) && empty( $overwrite ) ) {
 

@@ -564,19 +564,19 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/*
 					 * Schema Book.
 					 */
-					'schema_book_author_type'      => 'none',				// Book Author Type.
-					'schema_book_author_name'      => '',					// Book Author Name.
-					'schema_book_author_url'       => '',					// Book Author URL.
-					'schema_book_pub_date'         => '',					// Book Published Date (Y-m-d).
-					'schema_book_pub_time'         => 'none',				// Book Published Time (H:i).
-					'schema_book_pub_timezone'     => $def_timezone,			// Book Published Timezone.
-					'schema_book_created_date'     => '',					// Book Created Date (Y-m-d).
-					'schema_book_created_time'     => 'none',				// Book Created Time (H:i).
-					'schema_book_created_timezone' => $def_timezone,			// Book Created Timezone.
-					'schema_book_edition'          => '',					// Book Edition.
-					'schema_book_format'           => $opts[ 'schema_def_book_format' ],	// Book Format.
-					'schema_book_pages'            => '',					// Number of Pages.
-					'schema_book_isbn'             => '',					// Book ISBN.
+					'schema_book_author_type'      => $opts[ 'schema_def_book_author_type' ],	// Book Author Type.
+					'schema_book_author_name'      => '',						// Book Author Name.
+					'schema_book_author_url'       => '',						// Book Author URL.
+					'schema_book_pub_date'         => '',						// Book Published Date (Y-m-d).
+					'schema_book_pub_time'         => 'none',					// Book Published Time (H:i).
+					'schema_book_pub_timezone'     => $def_timezone,				// Book Published Timezone.
+					'schema_book_created_date'     => '',						// Book Created Date (Y-m-d).
+					'schema_book_created_time'     => 'none',					// Book Created Time (H:i).
+					'schema_book_created_timezone' => $def_timezone,				// Book Created Timezone.
+					'schema_book_edition'          => '',						// Book Edition.
+					'schema_book_format'           => $opts[ 'schema_def_book_format' ],		// Book Format.
+					'schema_book_pages'            => '',						// Number of Pages.
+					'schema_book_isbn'             => '',						// Book ISBN.
 
 					/*
 					 * Schema Book > Audiobook.

@@ -916,6 +916,13 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'content'  => $form->get_no_select( 'schema_def_book_format', $this->p->cf[ 'form' ][ 'book_format' ],
 						$css_class = '', $css_id = '', $is_assoc = true ),
 				),
+				'schema_def_book_author_type' => array(
+					'td_class' => 'blank',
+					'label'    => _x( 'Default Book Author Type', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_book_author_type',
+					'content'  => $form->get_no_select( 'schema_def_book_author_type', $this->p->cf[ 'form' ][ 'author_types' ],
+						$css_class = '', $css_id = '', $is_assoc = true ),
+				),
 			);
 
 			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows );

@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '22.1.3',	// Plugin version.
-					'opt_version' => '1044',	// Increment when changing default option values.
+					'version'     => '22.2.0-dev.1',	// Plugin version.
+					'opt_version' => '1045',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1428,7 +1428,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Advanced Settings > Schema Defaults > Book.
 					 */
-					'schema_def_book_format' => 'none',	// Default Book Format.
+					'schema_def_book_format'      => 'none',	// Default Book Format.
+					'schema_def_book_author_type' => 'person',	// Default Book Author Type.
 
 					/*
 					 * Advanced Settings > Schema Defaults > Creative Work.

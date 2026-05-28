@@ -143,6 +143,7 @@ _x( 'Type by Taxonomy', 'option label', 'wpsso' );
 _x( 'Add Article Body Property', 'option label', 'wpsso' );
 _x( 'Default Article Section', 'option label', 'wpsso' );
 _x( 'Default Book Format', 'option label', 'wpsso' );
+_x( 'Default Book Author Type', 'option label', 'wpsso' );
 _x( 'Add Date Created Property', 'option label', 'wpsso' );
 _x( 'Add Date Published Property', 'option label', 'wpsso' );
 _x( 'Add Date Modified Property', 'option label', 'wpsso' );

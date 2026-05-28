@@ -188,7 +188,13 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 				 */
 				case 'tooltip-schema_def_book_format':		// Default Book Format.
 
-					$text = __( 'Select a default format type for the Schema Book type.', 'wpsso' );
+					$text = __( 'Select a default format for the Schema Book type.', 'wpsso' );
+
+				 	break;
+
+				case 'tooltip-schema_def_book_author_type':	// Default Book Author Type.
+
+					$text = __( 'Select a default type for the Schema Book author.', 'wpsso' );
 
 				 	break;
 
