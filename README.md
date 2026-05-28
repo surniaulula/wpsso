@@ -131,6 +131,8 @@
 <p><strong>Supports additional WooCommerce product attributes:</strong></p>
 
 <ul>
+<li>Book Author Name</li>
+<li>Book ISBN</li>
 <li>Product Adult Type</li>
 <li>Product Age Group</li>
 <li>Product Availability</li>
