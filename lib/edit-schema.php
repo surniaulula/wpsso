@@ -468,7 +468,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				'schema_book_pages' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'book' ],
 					'th_class' => 'medium',
-					'label'    => _x( 'Number of Pages', 'option label', 'wpsso' ),
+					'label'    => _x( 'Book Pages', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_book_pages',
 					'content'  => $form->get_input( 'schema_book_pages', $css_class = 'short' ),
 				),

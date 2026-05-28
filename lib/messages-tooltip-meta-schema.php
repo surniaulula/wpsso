@@ -280,7 +280,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-schema_book_pages':		// Number of Pages.
+						case 'tooltip-meta-schema_book_pages':		// Book Pages.
 
 							$text = __( 'The number of pages in the book.', 'wpsso' );
 

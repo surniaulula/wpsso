@@ -188,7 +188,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 				switch ( $base_key ) {
 
-					case 'schema_book_pages':			// Number of Pages.
+					case 'schema_book_pages':			// Book Pages.
 					case 'schema_reading_mins':			// Est. Reading Time.
 
 						if ( empty( $mod[ 'name' ] ) ) {	// Must be an interger for plugin settings (ie. no module).
