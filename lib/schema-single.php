@@ -101,7 +101,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				) ) ) {
 					$author_type_url = $wpsso->schema->get_schema_type_url( $book_opts[ 'book_author_type' ] );
 				
-					$json_ret[ 'author' ] = WpssoSchema::get_schema_type_context( $author_type_url );
+					WpssoSchema::add_schema_type_context( $author_type_url, $json_ret[ 'author' ] );
 
 					if ( ! empty( $book_opts[ 'book_author_url' ] ) ) {
 

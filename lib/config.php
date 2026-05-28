@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '22.2.0-dev.1',	// Plugin version.
-					'opt_version' => '1045',	// Increment when changing default option values.
+					'version'     => '22.2.0-dev.2',	// Plugin version.
+					'opt_version' => '1046',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1982,6 +1982,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Advanced Settings > Attributes and Metadata > Product Attributes.
 					 */
+					'plugin_attr_book_author_name'                => '',			// Book Author Name.
+					'plugin_attr_book_isbn'                       => '',			// Book ISBN Attribute.
 					'plugin_attr_product_adult_type'              => 'Adult Type',		// Adult Type Attribute.
 					'plugin_attr_product_adult_type#fr_BE'        => 'Type adulte',
 					'plugin_attr_product_adult_type#fr_CA'        => 'Type adulte',
@@ -2047,6 +2049,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings > Attributes and Metadata > Custom Fields.
 					 */
 					'plugin_cf_addl_type_urls'                => '',			// Microdata Type URLs Custom Field.
+					'plugin_cf_book_author_name'              => '',			// Book Author Name Custom Field.
 					'plugin_cf_book_isbn'                     => '',			// Book ISBN Custom Field.
 					'plugin_cf_img_url'                       => '',			// Image URL Custom Field.
 					'plugin_cf_product_adult_type'            => '',			// Product Adult Type Custom Field.
@@ -2148,6 +2151,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Provides a key index for product attributes to meta data options.
 				 */
 				'attr_md_index' => array(
+					'plugin_attr_book_author_name'           => 'schema_book_author_name',	// Book Author Name (note schema prefix).
+					'plugin_attr_book_isbn'                  => 'schema_book_isbn',		// Book ISBN (note schema prefix).
 					'plugin_attr_product_adult_type'         => 'product_adult_type',
 					'plugin_attr_product_age_group'          => 'product_age_group',
 					'plugin_attr_product_brand'              => 'product_brand',
@@ -2181,7 +2186,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 */
 				'cf_md_index' => array(
 					'plugin_cf_addl_type_urls'                => 'schema_addl_type_url',		// Microdata Type URLs Custom Field.
-					'plugin_cf_book_isbn'                     => 'schema_book_isbn',
+					'plugin_cf_book_author_name'              => 'schema_book_author_name',		// Book Author Name (note schema prefix).
+					'plugin_cf_book_isbn'                     => 'schema_book_isbn',		// Book ISBN (note schema prefix).
 					'plugin_cf_img_url'                       => 'og_img_url',
 					'plugin_cf_product_adult_type'            => 'product_adult_type',
 					'plugin_cf_product_age_group'             => 'product_age_group',
@@ -2983,6 +2989,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Attribute option labels.
 				 */
 				'attr_labels' => array(
+					'plugin_attr_book_author_name'           => 'Book Author Name Attribute',
+					'plugin_attr_book_isbn'                  => 'Book ISBN Attribute',
 					'plugin_attr_product_adult_type'         => 'Adult Type Attribute',
 					'plugin_attr_product_age_group'          => 'Age Group Attribute',
 					'plugin_attr_product_brand'              => 'Brand Attribute',
@@ -3014,6 +3022,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 */
 				'cf_labels' => array(
 					'plugin_cf_addl_type_urls'                => 'Microdata Type URLs Custom Field',
+					'plugin_cf_book_author_name'              => 'Book Author Name Custom Field',
 					'plugin_cf_book_isbn'                     => 'Book ISBN Custom Field',
 					'plugin_cf_img_url'                       => 'Image URL Custom Field',
 					'plugin_cf_product_adult_type'            => 'Product Adult Type Custom Field',

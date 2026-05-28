@@ -1337,6 +1337,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $children;
 		}
 
+		public static function add_schema_type_context( $type_url, &$json_data = array() ) {
+
+			$json_data = self::get_schema_type_context( $type_url, $json_data );
+		}
+
 		public static function get_schema_type_context( $type_url, $json_data = array() ) {
 
 			if ( preg_match( '/^(.+:\/\/.+)\/([^\/]+)$/', $type_url, $match ) ) {

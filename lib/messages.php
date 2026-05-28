@@ -728,14 +728,20 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'article_section' => array(
 						'label'   => _x( 'Article Section', 'option label', 'wpsso' ),
 						'name'    => _x( 'article section', 'tooltip fragment', 'wpsso' ),
-						'desc'    => _x( 'an article section', 'tooltip fragment', 'wpsso' ),
+						'desc'    => _x( 'an article section', 'tooltip fragment', 'wpsso' ),	// Prefix with a/an when singular.
 						'about'   => __( 'https://schema.org/articleSection', 'wpsso' ),
 						'inherit' => true,
+					),
+					'book_author_name' => array(
+						'label' => _x( 'Book Author Name', 'option label', 'wpsso' ),
+						'name'  => _x( 'book author name', 'tooltip fragment', 'wpsso' ),
+						'desc'  => _x( 'a book author name', 'tooltip fragment', 'wpsso' ),	// Prefix with a/an when singular.
 					),
 					'book_isbn' => array(
 						'label' => _x( 'Book ISBN', 'option label', 'wpsso' ),
 						'name'  => _x( 'book ISBN', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'an ISBN code (aka International Standard Book Number)', 'tooltip fragment', 'wpsso' ),
+						'about' => __( 'https://support.google.com/merchants/answer/6324461', 'wpsso' ),
 					),
 					'howto_steps' => array(
 						'label' => _x( 'How-To Steps', 'option label', 'wpsso' ),
@@ -755,12 +761,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'img_url' => array(
 						'label' => _x( 'Image URL', 'option label', 'wpsso' ),
 						'name'  => _x( 'image URL', 'tooltip fragment', 'wpsso' ),
-						'desc'  => _x( 'an image URL', 'tooltip fragment', 'wpsso' ),
+						'desc'  => _x( 'an image URL', 'tooltip fragment', 'wpsso' ),	// Prefix with a/an when singular.
 					),
 					'product_adult_type' => array(
 						'label'   => _x( 'Product Adult Type', 'option label', 'wpsso' ),
 						'name'    => _x( 'product adult type', 'tooltip fragment', 'wpsso' ),
-						'desc'    => _x( 'a product adult type', 'tooltip fragment', 'wpsso' ),
+						'desc'    => _x( 'a product adult type', 'tooltip fragment', 'wpsso' ),	// Prefix with a/an when singular.
 						'about'   => __( 'https://support.google.com/merchants/answer/6324508', 'wpsso' ),
 						'values'  => WpssoSchema::get_enumeration_examples( $enum_key = 'adult_type', $val_prefix = '', $val_suffix = 'Consideration' ),
 						'inherit' => true,
@@ -768,7 +774,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'product_age_group' => array(
 						'label'   => _x( 'Product Age Group', 'option label', 'wpsso' ),
 						'name'    => _x( 'product age group', 'tooltip fragment', 'wpsso' ),
-						'desc'    => _x( 'a product age group', 'tooltip fragment', 'wpsso' ),
+						'desc'    => _x( 'a product age group', 'tooltip fragment', 'wpsso' ),	// Prefix with a/an when singular.
 						'about'   => __( 'https://support.google.com/merchants/answer/6324463', 'wpsso' ),
 						'values'  => WpssoSchema::get_enumeration_examples( $enum_key = 'age_group' ),
 						'inherit' => true,
@@ -776,21 +782,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'product_avail' => array(
 						'label'  => _x( 'Product Availability', 'option label', 'wpsso' ),
 						'name'   => _x( 'product availability', 'tooltip fragment', 'wpsso' ),
-						'desc'   => _x( 'a product availability', 'tooltip fragment', 'wpsso' ),
+						'desc'   => _x( 'a product availability', 'tooltip fragment', 'wpsso' ),	// Prefix with a/an when singular.
 						'about'  => __( 'https://support.google.com/merchants/answer/6324448', 'wpsso' ),
 						'values' => WpssoSchema::get_enumeration_examples( $enum_key = 'item_availability' ),
 					),
 					'product_brand' => array(
 						'label'   => _x( 'Product Brand', 'option label', 'wpsso' ),
 						'name'    => _x( 'product brand', 'tooltip fragment', 'wpsso' ),
-						'desc'    => _x( 'a product brand', 'tooltip fragment', 'wpsso' ),
+						'desc'    => _x( 'a product brand', 'tooltip fragment', 'wpsso' ),	// Prefix with a/an when singular.
 						'about'   => __( 'https://support.google.com/merchants/answer/6324351', 'wpsso' ),
 						'inherit' => true,
 					),
 					'product_category' => array(	// Product Google Category.
 						'label'       => _x( 'Product Google Category', 'option label', 'wpsso' ),
 						'name'        => _x( 'product Google category', 'tooltip fragment', 'wpsso' ),
-						'desc'        => _x( 'a product Google category', 'tooltip fragment', 'wpsso' ),
+						'desc'        => _x( 'a product Google category', 'tooltip fragment', 'wpsso' ), // Prefix with a/an when singular.
 						'about'       => __( 'https://support.google.com/merchants/answer/6324436', 'wpsso' ),
 						'opt_label'   => _x( 'Default Product Google Category', 'option label', 'wpsso' ),
 						'opt_menu_id' => 'advanced#sucom-tabset_schema_defs-tab_product',
@@ -799,25 +805,25 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'product_color' => array(
 						'label' => _x( 'Product Color', 'option label', 'wpsso' ),
 						'name'  => _x( 'product color', 'tooltip fragment', 'wpsso' ),
-						'desc'  => _x( 'a product color', 'tooltip fragment', 'wpsso' ),
+						'desc'  => _x( 'a product color', 'tooltip fragment', 'wpsso' ),	// Prefix with a/an when singular.
 						'about' => __( 'https://support.google.com/merchants/answer/6324487', 'wpsso' ),
 					),
 					'product_condition' => array(
 						'label'  => _x( 'Product Condition', 'option label', 'wpsso' ),
 						'name'   => _x( 'product condition', 'tooltip fragment', 'wpsso' ),
-						'desc'   => _x( 'a product condition', 'tooltip fragment', 'wpsso' ),
+						'desc'   => _x( 'a product condition', 'tooltip fragment', 'wpsso' ),	// Prefix with a/an when singular.
 						'about'  => __( 'https://support.google.com/merchants/answer/6324469', 'wpsso' ),
 						'values' => WpssoSchema::get_enumeration_examples( $enum_key = 'item_condition', $val_prefix = '', $val_suffix = 'Condition' ),
 					),
 					'product_currency' => array(
 						'label' => _x( 'Product Currency', 'option label', 'wpsso' ),
 						'name'  => _x( 'product currency', 'tooltip fragment', 'wpsso' ),
-						'desc'  => _x( 'a product currency', 'tooltip fragment', 'wpsso' ),
+						'desc'  => _x( 'a product currency', 'tooltip fragment', 'wpsso' ),	// Prefix with a/an when singular.
 					),
 					'product_energy_efficiency' => array(
 						'label'   => _x( 'Product Energy Rating', 'option label', 'wpsso' ),
 						'name'    => _x( 'product energy efficiency rating', 'tooltip fragment', 'wpsso' ),
-						'desc'    => _x( 'a product energy efficiency rating', 'tooltip fragment', 'wpsso' ),
+						'desc'    => _x( 'a product energy efficiency rating', 'tooltip fragment', 'wpsso' ),	// Prefix with a/an when singular.
 						'about'   => 'https://support.google.com/merchants/answer/7562785',
 						'values'  => WpssoSchema::get_enumeration_examples( $enum_key = 'energy_efficiency', $val_prefix = 'EUEnergyEfficiencyCategory' ),
 						'inherit' => true,
@@ -825,7 +831,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'product_energy_efficiency_min_max' => array(
 						'label'   => _x( 'Product Energy Rating Range', 'option label', 'wpsso' ),
 						'name'    => _x( 'product energy efficiency rating minimum and maximum', 'tooltip fragment', 'wpsso' ),
-						'desc'    => _x( 'a product energy efficiency rating range', 'tooltip fragment', 'wpsso' ),
+						'desc'    => _x( 'a product energy efficiency rating range', 'tooltip fragment', 'wpsso' ),	// Prefix with a/an when singular.
 						'about'   => 'https://support.google.com/merchants/answer/7562785',
 						'values'  => WpssoSchema::get_enumeration_examples( $enum_key = 'energy_efficiency', $val_prefix = 'EUEnergyEfficiencyCategory' ),
 						'inherit' => true,
@@ -833,18 +839,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'product_fluid_volume_value' => array(
 						'label' => _x( 'Product Fluid Volume', 'option label', 'wpsso' ),
 						'name'  => _x( 'product fluid volume', 'tooltip fragment', 'wpsso' ),
-						'desc'  => _x( 'a product fluid volume', 'tooltip fragment', 'wpsso' ),
+						'desc'  => _x( 'a product fluid volume', 'tooltip fragment', 'wpsso' ),	// Prefix with a/an when singular.
 					),
 					'product_gtin14' => array(
 						'label' => _x( 'Product GTIN-14', 'option label', 'wpsso' ),
 						'name'  => _x( 'product GTIN-14', 'tooltip fragment', 'wpsso' ),
-						'desc'  => _x( 'a product GTIN-14 code (aka ITF-14)', 'tooltip fragment', 'wpsso' ),
+						'desc'  => _x( 'a product GTIN-14 code (aka ITF-14)', 'tooltip fragment', 'wpsso' ),	// Prefix with a/an when singular.
 						'about' => __( 'https://support.google.com/merchants/answer/6324461', 'wpsso' ),
 					),
 					'product_gtin13' => array(
 						'label' => _x( 'Product GTIN-13 (EAN)', 'option label', 'wpsso' ),
 						'name'  => _x( 'product GTIN-13 (EAN)', 'tooltip fragment', 'wpsso' ),
-						'desc'  => _x( 'a product GTIN-13 code (aka 13-digit ISBN codes or EAN/UCC-13)', 'tooltip fragment', 'wpsso' ),
+						'desc'  => _x( 'a product GTIN-13 code (aka 13-digit ISBN codes or EAN/UCC-13)', 'tooltip fragment', 'wpsso' ),	// Prefix with a/an when singular.
 						'about' => __( 'https://support.google.com/merchants/answer/6324461', 'wpsso' ),
 					),
 					'product_gtin12' => array(

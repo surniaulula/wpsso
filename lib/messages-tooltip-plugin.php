@@ -823,7 +823,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 				/*
 				 * SSO > Advanced Settings > Attributes and Metadata > Product Attributes tab.
 				 */
-				case ( 0 === strpos( $msg_key, 'tooltip-plugin_attr_product_' ) ? true : false ):
+				case ( 0 === strpos( $msg_key, 'tooltip-plugin_attr_' ) ? true : false ):
 
 					$tp_frags    = $this->get_tooltip_fragments( preg_replace( '/^tooltip-plugin_attr_/', '', $msg_key ) );
 					$attr_key    = str_replace( 'tooltip-', '', $msg_key );
@@ -850,8 +850,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 						if ( ! empty( $tp_frags[ 'values' ] ) ) {
 
-							$text .= sprintf( __( 'The product attribute value can be an empty string or one of these values (case sensitive): %s',
-								'wpsso' ), SucomUtil::array_to_list_html( $tp_frags[ 'values' ] ) ) . ' ';
+							$text .= sprintf( __( 'The product attribute value returned by the e-commerce plugin can be an empty string or one of these values (case sensitive): %s', 'wpsso' ), SucomUtil::array_to_list_html( $tp_frags[ 'values' ] ) ) . ' ';
 						}
 
 						if ( ! empty( $is_multi ) ) {
@@ -880,8 +879,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 						$text = sprintf( __( 'If your theme or another plugin provides a custom field (aka metadata) for %s, you may enter its custom field name here.', 'wpsso' ), $tp_frags[ 'desc' ] ) . ' ';
 
 						// translators: %1$s is the metabox name, %2$s is the option name.
-						$text .= sprintf( __( 'If a custom field matching this name is found, its value will be imported for the %1$s "%2$s" option.',
-							'wpsso' ), $mb_title_transl, $tp_frags[ 'label' ] ) . ' ';
+						$text .= sprintf( __( 'If a custom field matching this name is found, its value will be imported for the %1$s "%2$s" option value.', 'wpsso' ), $mb_title_transl, $tp_frags[ 'label' ] ) . ' ';
 
 						if ( ! empty( $tp_frags[ 'about' ] ) ) {
 

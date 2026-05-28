@@ -575,8 +575,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_book_created_timezone' => $def_timezone,				// Book Created Timezone.
 					'schema_book_edition'          => '',						// Book Edition.
 					'schema_book_format'           => $opts[ 'schema_def_book_format' ],		// Book Format.
-					'schema_book_pages'            => '',						// Number of Pages.
 					'schema_book_isbn'             => '',						// Book ISBN.
+					'schema_book_pages'            => '',						// Number of Pages.
 
 					/*
 					 * Schema Book > Audiobook.

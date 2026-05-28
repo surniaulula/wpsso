@@ -474,7 +474,8 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Book ISBN', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_book_isbn',
-					'content'  => $form->get_input( 'schema_book_isbn', $css_class = '', $css_id = '', array( 'min' => 10, 'max' => 13 ) ),
+					'content'  => $form->get_input( 'schema_book_isbn',
+						$css_class = '', $css_id = '', array( 'min' => 10, 'max' => 13 ) ),
 				),
 
 				/*
