@@ -272,7 +272,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.2.0-b.1 (2026/05/28)**
+**Version 22.2.0-rc.1 (2026/05/28)**
 
 * **New Features**
 	* None.
@@ -394,7 +394,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 == Upgrade Notice ==
 
-= 22.2.0-b.1 =
+= 22.2.0-rc.1 =
 
 (2026/05/28) Added an offers property to the Schema Book markup. Added Schema Book related options in the Document SSO metabox and SSO &gt; Advanced Settings page.
 
