@@ -3598,9 +3598,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * Since WPSSO Core v22.2.0.
 		 *
-		 * See WpssoSchemaSingle->add_book_data().
-		 * See WpssoSchemaSingle->add_event_data().
-		 * See WpssoSchemaSingle->add_service_data().
+		 * See WpssoSchemaSingle::add_book_data().
+		 * See WpssoSchemaSingle::add_event_data().
+		 * See WpssoSchemaSingle::add_service_data().
 		 */
 		public static function add_type_data_offers( &$json_data, array $mod, $type_opts, $type_id, $type ) {
 
@@ -3622,7 +3622,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						continue;
 					}
 
-					if ( false !== ( $offer = WpssoSchema::get_data_itemprop_from_assoc( $offer, array(
+					if ( false !== ( $offer = self::get_data_itemprop_from_assoc( $offer, array(
 						'name'          => 'offer_name',
 						'url'           => 'offer_url',
 						'price'         => 'offer_price',
@@ -3635,7 +3635,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						/*
 						 * Add the offer.
 						 */
-						$json_data[ 'offers' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer', $offer );
+						$json_data[ 'offers' ][] = self::get_schema_type_context( 'https://schema.org/Offer', $offer );
 					}
 				}
 			}
