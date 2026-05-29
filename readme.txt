@@ -292,11 +292,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added a new `WpssoSchema::add_type_opts_offers()` method.
-	* Refactored the following methods:
-		* `WpssoSchemaSingle->add_book_data()`
-		* `WpssoSchemaSingle->add_event_data()`
-		* `WpssoSchemaSingle->add_service_data()`
+	* Added new methods:
+		* `WpssoSchema::add_type_data_offers()`
+		* `WpssoSchema::add_type_opts_offers()`
+	* Refactored methods:
+		* `WpssoSchemaSingle::add_book_data()`
+		* `WpssoSchemaSingle::add_event_data()`
+		* `WpssoSchemaSingle::add_service_data()`
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v6.0.
