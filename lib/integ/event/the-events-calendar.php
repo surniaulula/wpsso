@@ -238,11 +238,11 @@ if ( ! class_exists( 'WpssoIntegEventTheEventsCalendar' ) ) {
 				'event_end_timezone'        => $event_timezone,
 				'event_offers'              => array(	// Array of arrays.
 					array(
-						'offer_name'           => get_the_title( $post_id ),
-						'offer_url'            => tribe_get_event_link( $post_id, false ),
-						'offer_price'          => tribe_get_cost( $post_id ),
-						'offer_price_currency' => $event_currency_abbrev,
-						'offer_avail'          => 'https://schema.org/InStock',
+						'offer_name'     => get_the_title( $post_id ),
+						'offer_url'      => tribe_get_event_link( $post_id, false ),
+						'offer_price'    => tribe_get_cost( $post_id ),
+						'offer_currency' => $event_currency_abbrev,
+						'offer_avail'    => 'https://schema.org/InStock',
 					),
 				),
 			);

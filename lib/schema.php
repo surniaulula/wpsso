@@ -2557,9 +2557,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'downloadUrl'          => 'schema_review_item_software_app_dl_url',
 					) );
 
-					$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX' );
+					$md_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX' );
 
-					foreach ( range( 0, $metadata_offers_max - 1, 1 ) as $key_num ) {
+					foreach ( range( 0, $md_offers_max - 1, 1 ) as $key_num ) {
 
 						$offer_opts = SucomUtil::preg_grep_keys( '/^schema_review_item_software_app_(offer_.*)_' . $key_num. '$/',
 							$md_opts, $invert = false, $replace = '$1' );
@@ -2647,9 +2647,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$json_data[ 'brand' ] = self::get_schema_type_context( 'https://schema.org/Brand', $single_brand );
 				}
 
-				$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX' );
+				$md_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX' );
 
-				foreach ( range( 0, $metadata_offers_max - 1, 1 ) as $key_num ) {
+				foreach ( range( 0, $md_offers_max - 1, 1 ) as $key_num ) {
 
 					$offer_opts = SucomUtil::preg_grep_keys( '/^schema_review_item_product_(offer_.*)_' . $key_num. '$/',
 						$md_opts, $invert = false, $replace = '$1' );
@@ -3626,10 +3626,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'name'          => 'offer_name',
 						'url'           => 'offer_url',
 						'price'         => 'offer_price',
-						'priceCurrency' => 'offer_price_currency',
-						'availability'  => 'offer_availability',	// In stock, Out of stock, Pre-order, etc.
-						'validFrom'     => 'offer_valid_from_date',
-						'validThrough'  => 'offer_valid_to_date',
+						'priceCurrency' => 'offer_currency',
+						'availability'  => 'offer_avail',	// In stock, Out of stock, Pre-order, etc.
+						'validFrom'     => 'offer_start_date',
+						'validThrough'  => 'offer_end_date',
 					) ) ) ) {
 
 						/*
@@ -3656,7 +3656,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$type          = SucomUtil::sanitize_key( $type );	// Just in case.
 			$md_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX' );
 			$canonical_url = $wpsso->util->get_canonical_url( $mod );
-			$have_offers   = false;
+			$offers_count  = 0;
 
 			foreach ( range( 0, $md_offers_max - 1, 1 ) as $key_num ) {
 
@@ -3666,7 +3666,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log_arr( 'get_' . $type . '_offer_options', $offer_opts );
+						$wpsso->debug->log_arr( 'get_' . $type . '_offer_options #'. $key_num, $offer_opts );
 					}
 				}
 
@@ -3675,11 +3675,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$offer_opts = array();
 
 					foreach ( array(
-						'offer_name'           => 'schema_' . $type . '_offer_name',
-						'offer_url'            => 'schema_' . $type . '_offer_url',
-						'offer_price'          => 'schema_' . $type . '_offer_price',
-						'offer_price_currency' => 'schema_' . $type . '_offer_currency',
-						'offer_availability'   => 'schema_' . $type . '_offer_avail',
+						'offer_name'     => 'schema_' . $type . '_offer_name',
+						'offer_url'      => 'schema_' . $type . '_offer_url',
+						'offer_price'    => 'schema_' . $type . '_offer_price',
+						'offer_currency' => 'schema_' . $type . '_offer_currency',
+						'offer_avail'    => 'schema_' . $type . '_offer_avail',
 					) as $opt_key => $md_pre ) {
 
 						$offer_opts[ $opt_key ] = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_pre . '_' . $key_num );
@@ -3696,32 +3696,34 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$offer_opts[ 'offer_url' ] = $canonical_url;
 					}
 
-					if ( ! isset( $offer_opts[ 'offer_valid_from_date' ] ) ) {
+					if ( ! isset( $offer_opts[ 'offer_start_date' ] ) ) {
 
 						if ( ! empty( $type_opts[ $type . '_offers_start_date_iso' ] ) ) {
 
-							$offer_opts[ 'offer_valid_from_date' ] = $type_opts[ $type . '_offers_start_date_iso' ];
+							$offer_opts[ 'offer_start_date' ] = $type_opts[ $type . '_offers_start_date_iso' ];
 						}
 					}
 
-					if ( ! isset( $offer_opts[ 'offer_valid_to_date' ] ) ) {
+					if ( ! isset( $offer_opts[ 'offer_end_date' ] ) ) {
 
 						if ( ! empty( $type_opts[ $type . '_offers_end_date_iso' ] ) ) {
 
-							$offer_opts[ 'offer_valid_to_date' ] = $type_opts[ $type . '_offers_end_date_iso' ];
+							$offer_opts[ 'offer_end_date' ] = $type_opts[ $type . '_offers_end_date_iso' ];
 						}
 					}
 
-					if ( false === $have_offers ) {
-
-						$have_offers = true;
+					if ( 0 === $offers_count ) {
 
 						$type_opts[ $type . '_offers' ] = array();	// Clear offers returned by filter.
 					}
 
+					$offers_count++;
+
 					$type_opts[ $type . '_offers' ][] = $offer_opts;
 				}
 			}
+
+			return $offers_count;
 		}
 
 		/*

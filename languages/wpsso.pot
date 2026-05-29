@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 22.2.0-rc.2\n"
+"Project-Id-Version: WPSSO Core 22.2.0-rc.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2026-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -15224,7 +15224,7 @@ msgstr ""
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:4301
+#: lib/schema.php:4303
 msgid "checking schema properties"
 msgstr ""
 
