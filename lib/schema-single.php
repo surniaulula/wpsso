@@ -62,11 +62,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Add book offers.
-			 */
-			WpssoSchema::add_type_opts_offers( $book_opts, $mod, $book_id, 'book' );
-
-			/*
 			 * Add metadata defaults and custom values to the $book_opts array.
 			 *
 			 * Automatically renames 'schema_book_*' options from the Document SSO metabox to 'book_*'.
@@ -148,32 +143,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Add book offers.
 			 */
-			if ( ! empty( $book_opts[ 'book_offers' ] ) && is_array( $book_opts[ 'book_offers' ] ) ) {
-
-				foreach ( $book_opts[ 'book_offers' ] as $book_offer ) {
-
-					if ( ! is_array( $book_offer ) ) {	// Just in case.
-
-						continue;
-					}
-
-					if ( false !== ( $offer = WpssoSchema::get_data_itemprop_from_assoc( $book_offer, array(
-						'name'          => 'offer_name',
-						'url'           => 'offer_url',
-						'price'         => 'offer_price',
-						'priceCurrency' => 'offer_price_currency',
-						'availability'  => 'offer_availability',	// In stock, Out of stock, Pre-order, etc.
-						'validFrom'     => 'offer_valid_from_date',
-						'validThrough'  => 'offer_valid_to_date',
-					) ) ) ) {
-
-						/*
-						 * Add the offer.
-						 */
-						$json_ret[ 'offers' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer', $offer );
-					}
-				}
-			}
+			WpssoSchema::add_type_data_offers( $json_ret, $mod, $book_opts, $book_id, 'book' );
 
 			/*
 			 * Add or replace the json data.
@@ -440,11 +410,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			) );
 
 			/*
-			 * Add event offers.
-			 */
-			WpssoSchema::add_type_opts_offers( $event_opts, $mod, $event_id, 'event' );
-
-			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
 			list( $type_id, $type_url ) = self::get_type_info( $json_data, $event_opts, $opt_key = 'event_type', $def_type_id = 'event', $list_el );
@@ -538,29 +503,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Add event offers.
 			 */
-			if ( ! empty( $event_opts[ 'event_offers' ] ) && is_array( $event_opts[ 'event_offers' ] ) ) {
-
-				foreach ( $event_opts[ 'event_offers' ] as $event_offer ) {
-
-					if ( ! is_array( $event_offer ) ) {	// Just in case.
-
-						continue;
-					}
-
-					if ( false !== ( $offer = WpssoSchema::get_data_itemprop_from_assoc( $event_offer, array(
-						'name'          => 'offer_name',
-						'url'           => 'offer_url',
-						'price'         => 'offer_price',
-						'priceCurrency' => 'offer_price_currency',
-						'availability'  => 'offer_availability',	// In stock, Out of stock, Pre-order, etc.
-						'validFrom'     => 'offer_valid_from_date',
-						'validThrough'  => 'offer_valid_to_date',
-					) ) ) ) {
-
-						$json_ret[ 'offers' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer', $offer );
-					}
-				}
-			}
+			WpssoSchema::add_type_data_offers( $json_ret, $mod, $event_opts, $event_id, 'event' );
 
 			/*
 			 * Filter the single event data.
@@ -1954,9 +1897,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		}
 
 		/*
-		 * See WpssoSchemaSingle::get_offer_data().
+		 * See WpssoSchemaSingle::get_offer_data_mt().
 		 */
-		public static function add_offer_data( &$json_data, array $mod, array $mt_single, $def_type_id = 'offer', $list_el = true ) {
+		public static function add_offer_data_mt( &$json_data, array $mod, array $mt_single, $def_type_id = 'offer', $list_el = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2256,7 +2199,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		 *
 		 * See WpssoJsonTypeProductGroup->filter_json_data_https_schema_org_productgroup().
 		 */
-		public static function add_product_group_data( &$json_data, array $mod, array $mt_single, $def_type_id = 'product.group', $list_el = true ) {
+		public static function add_product_group_data_mt( &$json_data, array $mod, array $mt_single, $def_type_id = 'product.group', $list_el = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2406,10 +2349,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		}
 
 		/*
-		 * See WpssoSchemaSingle::get_product_data().
+		 * See WpssoSchemaSingle::get_product_data_mt().
 		 * See WpssoJsonTypeProduct->filter_json_data_https_schema_org_product().
 		 */
-		public static function add_product_data( &$json_data, array $mod, array $mt_single, $def_type_id = 'product', $list_el = true ) {
+		public static function add_product_data_mt( &$json_data, array $mod, array $mt_single, $def_type_id = 'product', $list_el = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2628,7 +2571,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				if ( empty( $mt_single[ 'product:offers' ] ) ) {
 
-					$json_ret[ 'offers' ] = self::get_offer_data( $mod, $mt_single, $def_type_id = 'offer' );
+					$json_ret[ 'offers' ] = self::get_offer_data_mt( $mod, $mt_single, $def_type_id = 'offer' );
 
 				} elseif ( is_array( $mt_single[ 'product:offers' ] ) ) {
 
@@ -2727,11 +2670,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			SucomUtil::add_multi_values( $service_opts, 'service_award', 'service_awards' );
 
 			/*
-			 * Add service offers.
-			 */
-			WpssoSchema::add_type_opts_offers( $service_opts, $mod, $service_id, 'service' );
-
-			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
 			list( $type_id, $type_url ) = self::get_type_info( $json_data, $service_opts, $opt_key = 'service_schema_type', $def_type_id = 'service', $list_el );
@@ -2797,32 +2735,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Add service offers.
 			 */
-			if ( ! empty( $service_opts[ 'service_offers' ] ) && is_array( $service_opts[ 'service_offers' ] ) ) {
-
-				foreach ( $service_opts[ 'service_offers' ] as $service_offer ) {
-
-					if ( ! is_array( $service_offer ) ) {	// Just in case.
-
-						continue;
-					}
-
-					if ( false !== ( $offer = WpssoSchema::get_data_itemprop_from_assoc( $service_offer, array(
-						'name'          => 'offer_name',
-						'url'           => 'offer_url',
-						'price'         => 'offer_price',
-						'priceCurrency' => 'offer_price_currency',
-						'availability'  => 'offer_availability',	// In stock, Out of stock, Pre-order, etc.
-						'validFrom'     => 'offer_valid_from_date',
-						'validThrough'  => 'offer_valid_to_date',
-					) ) ) ) {
-
-						/*
-						 * Add the offer.
-						 */
-						$json_ret[ 'offers' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer', $offer );
-					}
-				}
-			}
+			WpssoSchema::add_type_data_offers( $json_ret, $mod, $service_opts, $service_id, 'service' );
 
 			/*
 			 * See https://schema.org/hasOfferCatalog.
@@ -2971,10 +2884,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		/*
 		 * See WpssoSchema::add_offers_aggregate_data_mt().
 		 * See WpssoSchema::add_offers_data_mt().
-		 * See WpssoSchemaSingle::add_product_data().
+		 * See WpssoSchemaSingle::add_product_data_mt().
 		 * See WpssoJsonTypeSoftwareApplication->filter_json_data_https_schema_org_softwareapplication().
 		 */
-		public static function get_offer_data( array $mod, array $mt_single, $def_type_id = 'offer' ) {
+		public static function get_offer_data_mt( array $mod, array $mt_single, $def_type_id = 'offer' ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2985,7 +2898,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			$json_data = array();
 
-			self::add_offer_data( $json_data, $mod, $mt_single, $def_type_id = 'offer', $list_el = false );
+			self::add_offer_data_mt( $json_data, $mod, $mt_single, $def_type_id = 'offer', $list_el = false );
 
 			return $json_data;
 		}
@@ -2993,7 +2906,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		/*
 		 * See WpssoSchema::add_variants_data_mt().
 		 */
-		public static function get_product_data( array $mod, $mt_single, $def_type_id = 'product' ) {
+		public static function get_product_data_mt( array $mod, $mt_single, $def_type_id = 'product' ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -3004,7 +2917,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			$json_data = array();
 
-			self::add_product_data( $json_data, $mod, $mt_single, $def_type_id = 'product', $list_el = false );
+			self::add_product_data_mt( $json_data, $mod, $mt_single, $def_type_id = 'product', $list_el = false );
 
 			return $json_data;
 		}

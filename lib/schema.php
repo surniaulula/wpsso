@@ -3020,7 +3020,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					continue;
 				}
 
-				$single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_offer, $def_type_id = 'offer' );
+				$single_offer = WpssoSchemaSingle::get_offer_data_mt( $mod, $mt_offer, $def_type_id = 'offer' );
 
 				if ( empty( $single_offer[ 'priceCurrency' ] ) ) {	// Just in case.
 
@@ -3164,7 +3164,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					continue;
 				}
 
-				$single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_offer, $def_type_id = 'offer' );
+				$single_offer = WpssoSchemaSingle::get_offer_data_mt( $mod, $mt_offer, $def_type_id = 'offer' );
 
 				if ( false === $single_offer ) {
 
@@ -3432,7 +3432,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
-		 * See WpssoSchemaSingle->add_product_group_data().
+		 * See WpssoSchemaSingle->add_product_group_data_mt().
 		 */
 		public static function add_variants_data_mt( &$json_data, array $mt_variants ) {
 
@@ -3472,7 +3472,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					continue;
 				}
 
-				$single_variant = WpssoSchemaSingle::get_product_data( $mod, $mt_variant, $def_type_id = 'product' );
+				$single_variant = WpssoSchemaSingle::get_product_data_mt( $mod, $mt_variant, $def_type_id = 'product' );
 
 				if ( false === $single_variant ) {
 
@@ -3602,7 +3602,49 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * See WpssoSchemaSingle->add_event_data().
 		 * See WpssoSchemaSingle->add_service_data().
 		 */
-		public static function add_type_opts_offers( &$type_opts, array $mod, $obj_id, $type ) {
+		public static function add_type_data_offers( &$json_data, array $mod, $type_opts, $type_id, $type ) {
+
+			$wpsso =& Wpsso::get_instance();
+			
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
+			self::add_type_opts_offers( $type_opts, $mod, $type_id, $type );
+
+			if ( ! empty( $type_opts[ $type . '_offers' ] ) && is_array( $type_opts[ $type . '_offers' ] ) ) {
+
+				foreach ( $type_opts[ $type . '_offers' ] as $offer ) {
+
+					if ( ! is_array( $offer ) ) {	// Just in case.
+
+						continue;
+					}
+
+					if ( false !== ( $offer = WpssoSchema::get_data_itemprop_from_assoc( $offer, array(
+						'name'          => 'offer_name',
+						'url'           => 'offer_url',
+						'price'         => 'offer_price',
+						'priceCurrency' => 'offer_price_currency',
+						'availability'  => 'offer_availability',	// In stock, Out of stock, Pre-order, etc.
+						'validFrom'     => 'offer_valid_from_date',
+						'validThrough'  => 'offer_valid_to_date',
+					) ) ) ) {
+
+						/*
+						 * Add the offer.
+						 */
+						$json_data[ 'offers' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer', $offer );
+					}
+				}
+			}
+		}
+
+		/*
+		 * Since WPSSO Core v22.2.0.
+		 */
+		public static function add_type_opts_offers( &$type_opts, array $mod, $type_id, $type ) {
 			
 			$wpsso =& Wpsso::get_instance();
 			
@@ -3618,7 +3660,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			foreach ( range( 0, $md_offers_max - 1, 1 ) as $key_num ) {
 
-				$offer_opts = apply_filters( 'wpsso_get_' . $type . '_offer_options', false, $mod, $obj_id, $key_num );
+				$offer_opts = apply_filters( 'wpsso_get_' . $type . '_offer_options', false, $mod, $type_id, $key_num );
 
 				if ( ! empty( $offer_opts ) ) {
 
@@ -3680,7 +3722,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$type_opts[ $type . '_offers' ][] = $offer_opts;
 				}
 			}
-
 		}
 
 		/*
@@ -4058,8 +4099,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * See WpssoSchema::add_item_reviewed_data().
 		 * See WpssoSchema::add_data_itemprop_from_assoc().
 		 * WpssoSchemaSingle::add_book_data().
-		 * WpssoSchemaSingle::add_offer_data().
-		 * WpssoSchemaSingle::add_product_data().
+		 * WpssoSchemaSingle::add_offer_data_mt().
+		 * WpssoSchemaSingle::add_product_data_mt().
 		 */
 		public static function is_valid_key( $assoc, $key ) {
 
@@ -4239,7 +4280,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 *
 		 * See WpssoJsonTypeCreativeWork->filter_json_data_https_schema_org_creativework().
 		 * See WpssoSchema::add_itemlist_data().
-		 * See WpssoSchemaSingle::add_product_data().
+		 * See WpssoSchemaSingle::add_product_data_mt().
 		 */
 		public static function check_required_props( &$json_data, array $mod, $prop_names = array( 'image' ), $type_id = null ) {
 
