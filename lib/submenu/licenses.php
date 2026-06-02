@@ -116,7 +116,7 @@ if ( ! class_exists( 'WpssoSubmenuLicenses' ) && class_exists( 'WpssoAdmin' ) ) 
 				 */
 				$table_rows[ 'home_url' ] = '' .
 					'<th class="medium nowrap">' . _x( 'Current Site Address', 'option label', 'wpsso' ) . '</th>' .
-					'<td width="100%">' . $home_path . ' ' . $edit_link . '</td>';
+					'<td class="text"><p>' . $home_path . ' ' . $edit_link . '</p></td>';
 
 				if ( ! empty( $this->p->options[ 'plugin_' . $ext . '_tid' ] ) && class_exists( 'SucomUpdate' ) ) {
 
@@ -166,7 +166,7 @@ if ( ! class_exists( 'WpssoSubmenuLicenses' ) && class_exists( 'WpssoAdmin' ) ) 
 							}
 						}
 
-						$table_rows[ $key ] = '<th class="medium nowrap">' . $label . '</th><td width="100%">' . $val . '</td>';
+						$table_rows[ $key ] = '<th class="medium nowrap">' . $label . '</th><td class="text"><p>' . $val . '</p></td>';
 					}
 
 				} else $table_rows[] = '<th class="medium nowrap">&nbsp;</th><td width="100%">&nbsp;</td>';

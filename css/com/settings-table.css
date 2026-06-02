@@ -694,16 +694,12 @@ table.sucom-settings td.validate input[type="button"].button-secondary {
 	margin:5px 0 10px 5px;
 }
 
-table.sucom-settings th.textinfo {
-	font-weight:normal;
-	text-align:left;
-	min-width:200px;
-	width:340px;
+table.sucom-settings td.text {
+	width:100%;
 }
 
-table.sucom-settings th.textinfo p {
-	text-align:left;
-	margin:2px 2px 10px 2px;
+table.sucom-settings td.text > p {
+	margin:6px 2px;
 }
 
 /*
