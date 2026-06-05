@@ -272,6 +272,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 22.2.1-dev.1 (2026/06/05)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed inheritance of default author for the Schema Book type.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v6.0.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
+
 **Version 22.2.0 (2026/05/29)**
 
 * **New Features**
@@ -395,6 +410,10 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 22.2.1-dev.1 =
+
+(2026/06/05) Fixed inheritance of default author for the Schema Book type.
 
 = 22.2.0 =
 
