@@ -4079,8 +4079,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log( 'assigned ' . $assoc_key . ' value to itemprop ' .
-							$prop_name . ' = ' . print_r( $json_data[ $prop_name ], true ) );
+						$wpsso->debug->log( 'assigned ' . $assoc_key . ' value to itemprop ' . $prop_name . ' = ' .
+							print_r( $json_data[ $prop_name ], true ) );
 					}
 
 					$prop_added++;

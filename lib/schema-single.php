@@ -76,6 +76,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Maybe remove values related to the WordPress post object.
 			 */
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'unsetting json_data author, contributor, dateCreated, datePublished, dateModified' );
+			}
+
 			unset( $json_data[ 'author' ] );
 			unset( $json_data[ 'contributor' ] );
 			unset( $json_data[ 'dateCreated' ] );
@@ -95,24 +100,34 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			) );
 
 			/*
+			 * At a minimum, we need an author type and name.
+			 *
 			 * The author type value should be either 'organization' or 'person'.
 			 */
 			if ( WpssoSchema::is_valid_key( $book_opts, 'book_author_type' ) ) {	// Not null, an empty string, or 'none'.
 				
-				/*
-				 * At a minimum, we need an author name.
-				 */
-				if ( WpssoSchema::add_data_itemprop_from_assoc( $json_ret[ 'author' ], $book_opts, array(	// Returns the number of properties added.
-					'name' => 'book_author_name',
-				) ) ) {
-					$author_type_url = $wpsso->schema->get_schema_type_url( $book_opts[ 'book_author_type' ] );
-				
-					WpssoSchema::add_schema_type_context( $author_type_url, $json_ret[ 'author' ] );
+				if ( WpssoSchema::is_valid_key( $book_opts, 'book_author_name' ) ) {	// Not null, an empty string, or 'none'.
 
-					if ( ! empty( $book_opts[ 'book_author_url' ] ) ) {
-
-						$json_ret[ 'author' ][ 'sameAs' ][] = SucomUtil::esc_url_encode( $book_opts[ 'book_author_url' ] );
+					/*
+					 * Calling add_data_itemprop_from_assoc() with non-existant property sets it to null by default.
+					 */
+					if ( WpssoSchema::add_data_itemprop_from_assoc( $json_ret[ 'author' ], $book_opts, array(	// Returns the number of properties added.
+						'name' => 'book_author_name',
+					) ) ) {
+						$author_type_url = $wpsso->schema->get_schema_type_url( $book_opts[ 'book_author_type' ] );
+					
+						WpssoSchema::add_schema_type_context( $author_type_url, $json_ret[ 'author' ] );
+	
+						if ( WpssoSchema::is_valid_key( $book_opts, 'book_author_url' ) ) {	// Not null, an empty string, or 'none'.
+	
+							$json_ret[ 'author' ][ 'sameAs' ][] = SucomUtil::esc_url_encode( $book_opts[ 'book_author_url' ] );
+						}
+	
 					}
+			
+				} elseif ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'no book author name' );
 				}
 
 			} elseif ( $wpsso->debug->enabled ) {
