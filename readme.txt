@@ -272,7 +272,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.2.1-rc.1 (2026/06/06)**
+**Version 22.2.1 (2026/06/06)**
 
 * **New Features**
 	* None.
@@ -412,7 +412,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 == Upgrade Notice ==
 
-= 22.2.1-rc.1 =
+= 22.2.1 =
 
 (2026/06/06) Fixed inheritance of default author for the Schema Book type and missing 'datePosted' property in the Schema JobPosting type.
 
