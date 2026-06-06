@@ -60,6 +60,11 @@ if ( ! class_exists( 'WpssoJsonTypeEvent' ) ) {
 
 			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = 'subjectOf' );
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'merging json_data and json_ret arrays' );
+			}
+
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}
 	}

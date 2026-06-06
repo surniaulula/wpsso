@@ -93,6 +93,11 @@ if ( ! class_exists( 'WpssoJsonTypeMovie' ) ) {
 				WpssoSchemaSingle::add_organization_data( $json_ret[ 'productionCompany' ], $mod, $md_val, $org_logo_key, $list_el = true );
 			}
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'merging json_data and json_ret arrays' );
+			}
+
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}
 	}

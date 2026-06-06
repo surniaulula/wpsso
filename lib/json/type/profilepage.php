@@ -95,6 +95,11 @@ if ( ! class_exists( 'WpssoJsonTypeProfilePage' ) ) {
 
 			$json_data[ 'mainEntity' ] = null;
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'merging json_data and json_ret arrays' );
+			}
+
 			WpssoSchemaSingle::add_person_data( $json_data[ 'mainEntity' ], $mod, $user_id, $list_el = false );
 
 			return $json_data;

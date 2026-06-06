@@ -45,17 +45,17 @@ if ( ! class_exists( 'WpssoJsonTypeJobPosting' ) ) {
 
 			$json_ret = array();
 
+		 	/*
+			 * Add the Job.
+			 */
+			WpssoSchemaSingle::add_job_data( $json_ret, $mod, $job_id = null, $list_el = false );
+
 			/*
 			 * See https://schema.org/datePosted.
 			 */
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_og, array(
 				'datePosted' => 'article:published_time',
 			) );
-
-		 	/*
-			 * Add the Job.
-			 */
-			WpssoSchemaSingle::add_job_data( $json_ret, $mod, $job_id = null, $list_el = false );
 
 			/*
 			 * Add media.
@@ -68,6 +68,11 @@ if ( ! class_exists( 'WpssoJsonTypeJobPosting' ) ) {
 			}
 
 			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = false );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'merging json_data and json_ret arrays' );
+			}
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}

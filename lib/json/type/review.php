@@ -72,6 +72,11 @@ if ( ! class_exists( 'WpssoJsonTypeReview' ) ) {
 
 			$json_ret[ 'reviewRating' ] = apply_filters( $filter_name, $json_ret[ 'reviewRating' ], $mod, $mt_og, $page_type_id, $is_main );
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'merging json_data and json_ret arrays' );
+			}
+
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}
 	}

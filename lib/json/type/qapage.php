@@ -107,6 +107,11 @@ if ( ! class_exists( 'WpssoJsonTypeQAPage' ) ) {
 
 			$json_ret[ 'mainEntity' ] = $question;
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'merging json_data and json_ret arrays' );
+			}
+
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}
 	}

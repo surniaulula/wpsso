@@ -95,10 +95,10 @@ if ( ! class_exists( 'WpssoJsonTypeOrganization' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
+				$this->p->debug->log( 'merging json_data and json_ret arrays' );
+
 				$this->p->debug->log_arr( 'json_data', $json_data );
 				$this->p->debug->log_arr( 'json_ret', $json_ret );
-
-				$this->p->debug->log( 'returning data from filter' );
 			}
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );

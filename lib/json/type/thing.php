@@ -249,12 +249,9 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 
 			$json_ret[ 'potentialAction' ] = apply_filters( $filter_name, $json_ret[ 'potentialAction' ], $mod, $mt_og, $page_type_id, $is_main );
 
-			/*
-			 * Get additional Schema properties from the optional post content shortcode.
-			 */
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'checking for schema shortcodes' );
+				$this->p->debug->log( 'merging json_data and json_ret arrays' );
 			}
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );

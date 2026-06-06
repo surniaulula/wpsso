@@ -353,8 +353,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			self::add_or_replace_data( $json_data, $json_ret, $list_el );
 
-			unset( $json_ret );
-
 			return 1;	// Return count of contacts added.
 		}
 
@@ -1899,8 +1897,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Add or replace the json data.
 			 */
 			self::add_or_replace_data( $json_data, $json_ret, $list_el );
-
-			unset( $json_ret );
 
 			return 1;	// Return count of places added.
 		}

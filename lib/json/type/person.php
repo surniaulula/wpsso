@@ -100,6 +100,11 @@ if ( ! class_exists( 'WpssoJsonTypePerson' ) ) {
 				$json_ret[ 'url' ] = SucomUtilWP::get_home_url( $this->p->options, $mod );
 			}
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'merging json_data and json_ret arrays' );
+			}
+
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}
 	}

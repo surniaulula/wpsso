@@ -263,6 +263,11 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			 */
 			WpssoSchema::check_required_props( $json_ret, $mod, array( 'image' ), $page_type_id );
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'merging json_data and json_ret arrays' );
+			}
+
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}
 	}
