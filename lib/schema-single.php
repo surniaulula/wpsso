@@ -1808,10 +1808,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					! empty( $place_opts[ 'place_longitude' ] ) &&
 						! empty( $place_opts[ 'place_service_radius' ] ) ) {
 
-					$json_ret[ 'areaServed' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/GeoShape', array(
-						'circle' => $place_opts[ 'place_latitude' ] . ' ' .
-							$place_opts[ 'place_longitude' ] . ' ' .
-							$place_opts[ 'place_service_radius' ]
+					$json_ret[ 'areaServed' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/GeoCircle', array(
+						'geoMidpoint' => WpssoSchema::get_schema_type_context( 'https://schema.org/GeoCoordinates', array(
+							'latitude'  => $place_opts[ 'place_latitude' ],
+							'longitude' => $place_opts[ 'place_longitude' ],
+						) ),
+						'geoRadius' => $place_opts[ 'place_service_radius' ],
 					) );
 				}
 			}
@@ -2722,16 +2724,18 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * See https://schema.org/areaServed as https://schema.org/GeoShape.
+			 * See https://schema.org/areaServed as https://schema.org/GeoCircle.
 			 */
 			if ( ! empty( $service_opts[ 'service_latitude' ] ) &&
 				! empty( $service_opts[ 'service_longitude' ] ) &&
 					! empty( $service_opts[ 'service_radius' ] ) ) {
 
-				$json_ret[ 'areaServed' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/GeoShape', array(
-					'circle' => $service_opts[ 'service_latitude' ] . ' ' .
-						$service_opts[ 'service_longitude' ] . ' ' .
-						$service_opts[ 'service_radius' ]
+				$json_ret[ 'areaServed' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/GeoCircle', array(
+					'geoMidpoint' => WpssoSchema::get_schema_type_context( 'https://schema.org/GeoCoordinates', array(
+						'latitude'  => $service_opts[ 'service_latitude' ],
+						'longitude' => $service_opts[ 'service_longitude' ],
+					) ),
+					'geoRadius' => $service_opts[ 'service_radius' ],
 				) );
 			}
 

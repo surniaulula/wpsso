@@ -432,7 +432,6 @@ _x( 'Default Job Hiring Organization', 'option value', 'wpsso' );
 _x( 'Default Service Provider Organization', 'option value', 'wpsso' );
 _x( 'Default Event Venue', 'option value', 'wpsso' );
 _x( 'Default Job Location', 'option value', 'wpsso' );
-_x( 'Circular', 'option value', 'wpsso' );
 _x( '[None]', 'option value', 'wpsso' );
 _x( 'None', 'option value', 'wpsso' );
 _x( 'Alcohol', 'option value', 'wpsso' );

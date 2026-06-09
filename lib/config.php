@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '22.2.1',	// Plugin version.
+					'version'     => '22.3.0-dev.1',	// Plugin version.
 					'opt_version' => '1046',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -3165,13 +3165,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/*
-				 * GeoShape type.
-				 */
-				'geo_shape' => array(
-					'circle' => 'Circular',
-				),
-
-				/*
 				 * Validated on 2022/12/26.
 				 *
 				 * Used for the Schema Product and Offer 'hasAdultConsideration' property.
@@ -4356,7 +4349,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'engine.specification'            => 'https://schema.org/EngineSpecification',
 								'exchange.rate.specification'     => 'https://schema.org/ExchangeRateSpecification',
 								'geo.coordinates'                 => 'https://schema.org/GeoCoordinates',
-								'geo.shape'                       => 'https://schema.org/GeoShape',
+								'geo.shape'                       => array(
+									'geo.circle' => 'https://schema.org/GeoCircle',
+									'geo.shape'  => 'https://schema.org/GeoShape',
+								),
 								'interaction.counter'             => 'https://schema.org/InteractionCounter',
 								'monetary.amount'                 => 'https://schema.org/MonetaryAmount',
 								'nutrition.information'           => 'https://schema.org/NutritionInformation',
