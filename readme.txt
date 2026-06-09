@@ -281,7 +281,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new `WpssoSchemaSingle->add_sameas_property()` method.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v6.0.
