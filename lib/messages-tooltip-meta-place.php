@@ -156,6 +156,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaPlace' ) ) {
 
 					break;
 
+				case 'tooltip-meta-place_sameas_url':	// Place Same-As URLs.
+					
+					$text = $this->p->msgs->get( 'tooltip-meta-schema_sameas_url' );
+
+					break;
+
 				case 'tooltip-meta-place_days':		// Open Days / Hours.
 
 					$text = __( 'Select the days and hours that this place is open.', 'wpsso' );
@@ -170,7 +176,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaPlace' ) ) {
 
 				case 'tooltip-meta-place_service_radius':	// Service Radius.
 
-					$text = __( 'The geographic area where a service is provided, in meters around a set of latitude and longitude coordinates.', 'wpsso' );
+					$text = $this->p->msgs->get( 'tooltip-meta-schema_service_radius' );
 
 					break;
 

@@ -102,7 +102,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					$text = __( 'Additional webpage reference URL(s) that unambiguously indicates the content\'s identity.', 'wpsso' ) . ' ';
 
-					$text .= __( 'For example, the URL for the content subject\'s Wikipedia page, Wikidata entry, IMDB page, official website, etc.', 'wpsso' );
+					$text .= __( 'For example, the URL for the content subject\'s Wikipedia page, Wikidata entry, IMDB page, official website, etc.', 'wpsso' ) . ' ';
 
 					if ( ! empty( $tp_frags[ 'filter' ] ) ) {	// Just in case.
 
@@ -595,8 +595,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					$text = __( 'Select an organization for the Schema Organization markup.', 'wpsso' );
 
-					$text .= $this->maybe_ext_required( 'opm' );
-
 				 	break;
 
 				case 'tooltip-meta-schema_person_id':
@@ -612,8 +610,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 				case 'tooltip-meta-schema_place_id':
 
 					$text = __( 'Select a place for the Schema Place markup, or enter custom place information below.', 'wpsso' );
-
-					$text .= $this->maybe_ext_required( 'opm' );
 
 					break;
 
@@ -1017,6 +1013,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 						case 'tooltip-meta-schema_service_radius':	// Service Radius.
 
 							$text = __( 'The geographic area where a service is provided, in meters around a set of latitude and longitude coordinates.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-meta-schema_service_area_id':	// Service Area(s).
+
+							$text = __( 'An administrative area where a service is provided (ie. a school district, city, state/province, or country).', 'wpsso' ) . ' ';
 
 							break;
 

@@ -105,8 +105,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipSite' ) ) {
 
 					$text = __( 'Select an optional location for this organization.', 'wpsso' );
 
-					$text .= $this->maybe_ext_required( 'opm' );
-
 					break;
 
 				case 'tooltip-site_org_schema_type':	// Organization Schema Type.

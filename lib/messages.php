@@ -683,10 +683,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						break;
 				}
 
-			} else {
-
-				$text = apply_filters( 'wpsso_messages', $text, $msg_key, $info );
-			}
+			} else $text = apply_filters( 'wpsso_messages', $text, $msg_key, $info );
 
 			if ( ! empty( $info[ 'is_locale' ] ) ) {
 
@@ -694,7 +691,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$text .= ' ' . sprintf( __( 'This option is localized - <a href="%s">you may change the WordPress locale</a> to define alternate values for different languages.', 'wpsso' ), 'https://wordpress.org/plugins/wpsso-user-locale/' );
 			}
 
-			if ( ! empty( $text ) ) {
+			if ( ! empty( $text ) ) {	// Just in case.
+
+				if ( preg_match( '/_(area|contact|location|org|organization|place)_id$/', $msg_key ) ) {
+
+					$text .= $this->maybe_ext_required( 'opm' );
+				}
 
 				if ( 0 === strpos( $msg_key, 'tooltip-' ) && empty( $info[ 'no-tooltip' ] ) ) {
 
@@ -1341,7 +1343,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			$ext_name_link = $this->p->util->get_admin_url( 'addons#' . $ext, $this->p->cf[ 'plugin' ][ $ext ][ 'name' ] );
 
-			return ' ' . sprintf( _x( 'Activating the %s add-on is recommended for this option.', 'wpsso' ), $ext_name_link );
+			return ' ' . sprintf( _x( 'Activating the %s add-on is recommended to manage the values for this option.', 'wpsso' ), $ext_name_link );
 		}
 
 		/*

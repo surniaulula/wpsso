@@ -79,6 +79,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 
 			$args = array(
 				'select' => array(
+					'admin_area'       => $this->p->util->get_form_cache( 'admin_area_names', $add_none = true ),
 					'contact'          => $this->p->util->get_form_cache( 'contact_names', $add_none = true ),
 					'google_prod_cats' => $this->p->util->get_google_product_categories(),
 					'mrp'              => $this->p->util->get_form_cache( 'mrp_names', $add_none = true ),
@@ -2197,6 +2198,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		public function filter_mb_sso_edit_schema_service_rows( $table_rows, $form, $head_info, $mod, $args ) {
 
 			$currencies          = SucomUtil::get_currencies_abbrev();
+			$admin_area_max      = SucomUtil::get_const( 'WPSSO_SCHEMA_ADMIN_AREA_MAX', 5 );
 			$awards_max          = SucomUtil::get_const( 'WPSSO_SCHEMA_AWARDS_MAX', 5 );
 			$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
 			$offer_catalogs_max  = SucomUtil::get_const( 'WPSSO_SCHEMA_OFFER_CATALOGS_MAX', 5 );
@@ -2259,6 +2261,16 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'tooltip'  => 'meta-schema_service_radius',
 					'content'  => $form->get_input( 'schema_service_radius', $css_class = 'short' ) . ' ' .
 						_x( 'meters from coordinates', 'option comment', 'wpsso' ),
+				),
+				'schema_service_area_id' => array(
+					'tr_class' => $args[ 'tr_class_schema' ][ 'service' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Service Area(s)', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_service_area_id',
+					'content'  => $form->get_select_multi( 'schema_service_area_id', $args[ 'select' ][ 'admin_area' ],
+						$css_class = 'wide', $css_id = '', $is_assoc = true, $admin_area_max, $show_first = 1,
+							$is_disabled = false, $event_names = array( 'on_focus_load_json' ),
+								$event_args = array( 'json_var' => 'admin_area_names' ) ),
 				),
 				'schema_service_offers_start' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'service' ],

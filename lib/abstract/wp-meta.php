@@ -914,6 +914,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_service_latitude'             => '',						// Service Latitude.
 					'schema_service_longitude'            => '',						// Service Longitude.
 					'schema_service_radius'               => '',						// Service Radius.
+					'schema_service_area_id_0'            => 'none',					// Service Area(s).
+					'schema_service_area_id_1'            => 'none',					// Service Area(s).
+					'schema_service_area_id_2'            => 'none',					// Service Area(s).
 					'schema_service_offer_name_0'         => '',
 					'schema_service_offer_name_1'         => '',
 					'schema_service_offer_name_2'         => '',

@@ -90,10 +90,7 @@ if ( ! class_exists( 'WpssoJsonTypeWebpage' ) ) {
 
 					foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_pre . '(_[0-9]+)?$/', $md_opts ) as $opt_key => $id ) {
 
-						/*
-						 * Check that the option value is not true, false, null, empty string, or 'none'.
-						 */
-						if ( ! SucomUtil::is_valid_option_value( $id ) ) {
+						if ( ! SucomUtil::is_valid_option_value( $id ) ) {	// Not true, false, null, empty string, or 'none'.
 
 							continue;
 						}
