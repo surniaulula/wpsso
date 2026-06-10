@@ -1120,12 +1120,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Combine multiple options with a common prefix to an array of values.
-			 */
-			SucomUtil::add_multi_values( $org_opts, 'org_award', 'org_awards' );
-			SucomUtil::add_multi_values( $org_opts, 'org_contact_id', 'org_contact_ids' );
-
-			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
 			list( $type_id, $type_url ) = self::get_data_types( $json_data, $org_opts, $opt_key = 'org_schema_type', $def_type_id = 'organization', $list_el );
@@ -1155,6 +1149,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Add schema properties from the organization options.
 			 */
+			SucomUtil::add_multi_values( $org_opts, 'org_award', 'org_awards' );
+
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $org_opts, array(
 				'url'                            => 'org_url',
 				'name'                           => 'org_name',
@@ -1174,7 +1170,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * See https://schema.org/contactPoint.
 			 */
-			foreach ( $org_opts[ 'org_contact_ids' ] as $contact_id ) {
+			foreach ( SucomUtil::get_multi_values( $org_opts, 'org_contact_id' ) as $contact_id ) {
 
 				self::add_contact_data( $json_ret[ 'contactPoint' ], $mod, $contact_id, $contact_list_el = true );
 			}
@@ -2621,11 +2617,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Combine multiple options with a common prefix to an array of values.
-			 */
-			SucomUtil::add_multi_values( $service_opts, 'service_award', 'service_awards' );
-
-			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
 			list( $type_id, $type_url ) = self::get_data_types( $json_data, $service_opts, $opt_key = 'service_schema_type', $def_type_id = 'service', $list_el );
@@ -2668,6 +2659,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Add schema properties from the organization options.
 			 */
+			SucomUtil::add_multi_values( $service_opts, 'service_award', 'service_awards' );
+
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $service_opts, array(
 				'award' => 'service_awards',	// Service Awards.
 			) );
