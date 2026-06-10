@@ -1044,7 +1044,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 							$text = __( 'An administrative area where a service is provided (ie. a school district, city, state/province, or country).', 'wpsso' ) . ' ';
 
-							$text .= __( 'One or more places matching the Schema AdministrativeArea type or its sub-types can be selected.', 'wpsso' ) . ' ';
+							$text .= __( 'One or more places, matching the Schema AdministrativeArea type or its sub-types, can be selected as a service area.', 'wpsso' ) . ' ';
 
 							break;
 

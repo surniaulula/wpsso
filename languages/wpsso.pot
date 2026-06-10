@@ -11706,8 +11706,8 @@ msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:1047
 msgid ""
-"One or more places matching the Schema AdministrativeArea type or its sub-"
-"types can be selected."
+"One or more places, matching the Schema AdministrativeArea type or its sub-"
+"types, can be selected as a service area."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:1061
