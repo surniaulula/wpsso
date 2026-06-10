@@ -3611,7 +3611,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				! empty( $type_opts[ $opt_pre . '_longitude' ] ) &&
 					! empty( $type_opts[ $opt_pre . '_radius' ] ) ) {
 
-				$json_ret[ 'areaServed' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/GeoCircle', array(
+				$json_data[ 'areaServed' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/GeoCircle', array(
 					'geoMidpoint' => WpssoSchema::get_schema_type_context( 'https://schema.org/GeoCoordinates', array(
 						'latitude'  => $type_opts[ $opt_pre . '_latitude' ],
 						'longitude' => $type_opts[ $opt_pre . '_longitude' ],
@@ -3624,7 +3624,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( SucomUtil::is_valid_option_value( $val_id ) ) {	// Not true, false, null, empty string, or 'none'.
 
-					WpssoSchemaSingle::add_place_data( $json_ret[ 'areaServed' ], $mod, $val_id, $list_el = true );
+					WpssoSchemaSingle::add_place_data( $json_data[ 'areaServed' ], $mod, $val_id, $list_el = true );
 				}
 			}
 		}
