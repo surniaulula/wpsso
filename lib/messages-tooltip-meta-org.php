@@ -141,6 +141,33 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOrg' ) ) {
 					break;
 
 				/*
+				 * Organization Service section.
+				 */
+				case 'tooltip-meta-org_service_latitude':	// Service Latitude.
+
+					$text = $this->p->msgs->get( 'tooltip-meta-schema_service_latitude' );
+
+					break;
+
+				case 'tooltip-meta-org_service_longitude':	// Service Longitude.
+
+					$text = $this->p->msgs->get( 'tooltip-meta-schema_service_longitude' );
+
+					break;
+
+				case 'tooltip-meta-org_service_radius':		// Service Radius.
+
+					$text = $this->p->msgs->get( 'tooltip-meta-schema_service_radius' );
+
+					break;
+
+				case 'tooltip-meta-org_service_area_id':	// Service Areas.
+
+					$text = $this->p->msgs->get( 'tooltip-meta-schema_service_area_id' );
+
+					break;
+
+				/*
 				 * News Media Organization section.
 				 */
 				case 'tooltip-meta-org_masthead_url':		// Masthead Page URL.

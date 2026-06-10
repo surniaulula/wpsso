@@ -3596,13 +3596,47 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
+		 * Since WPSSO Core v22.3.0.
+		 */
+		public static function add_type_data_areaserved( &$json_data, array $mod, $type_opts, $type_id, $opt_pre ) {
+			
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
+			if ( ! empty( $type_opts[ $opt_pre . '_latitude' ] ) &&
+				! empty( $type_opts[ $opt_pre . '_longitude' ] ) &&
+					! empty( $type_opts[ $opt_pre . '_radius' ] ) ) {
+
+				$json_ret[ 'areaServed' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/GeoCircle', array(
+					'geoMidpoint' => WpssoSchema::get_schema_type_context( 'https://schema.org/GeoCoordinates', array(
+						'latitude'  => $type_opts[ $opt_pre . '_latitude' ],
+						'longitude' => $type_opts[ $opt_pre . '_longitude' ],
+					) ),
+					'geoRadius' => $type_opts[ $opt_pre . '_radius' ],
+				) );
+			}
+
+			foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_pre . '_area_id(_[0-9]+)?$/', $type_opts ) as $opt_key => $val_id ) {
+
+				if ( SucomUtil::is_valid_option_value( $val_id ) ) {	// Not true, false, null, empty string, or 'none'.
+
+					WpssoSchemaSingle::add_place_data( $json_ret[ 'areaServed' ], $mod, $val_id, $list_el = true );
+				}
+			}
+		}
+
+		/*
 		 * Since WPSSO Core v22.2.0.
 		 *
 		 * See WpssoSchemaSingle::add_book_data().
 		 * See WpssoSchemaSingle::add_event_data().
 		 * See WpssoSchemaSingle::add_service_data().
 		 */
-		public static function add_type_data_offers( &$json_data, array $mod, $type_opts, $type_id, $type ) {
+		public static function add_type_data_offers( &$json_data, array $mod, $type_opts, $type_id, $opt_pre ) {
 
 			$wpsso =& Wpsso::get_instance();
 			
@@ -3611,11 +3645,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			self::add_type_opts_offers( $type_opts, $mod, $type_id, $type );
+			self::add_type_opts_offers( $type_opts, $mod, $type_id, $opt_pre );
 
-			if ( ! empty( $type_opts[ $type . '_offers' ] ) && is_array( $type_opts[ $type . '_offers' ] ) ) {
+			if ( ! empty( $type_opts[ $opt_pre . '_offers' ] ) && is_array( $type_opts[ $opt_pre . '_offers' ] ) ) {
 
-				foreach ( $type_opts[ $type . '_offers' ] as $offer ) {
+				foreach ( $type_opts[ $opt_pre . '_offers' ] as $offer ) {
 
 					if ( ! is_array( $offer ) ) {	// Just in case.
 
@@ -3638,6 +3672,32 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$json_data[ 'offers' ][] = self::get_schema_type_context( 'https://schema.org/Offer', $offer );
 					}
 				}
+			}
+		}
+
+		/*
+		 * Since WPSSO Core v22.3.0.
+		 */
+		public static function add_type_data_sameas( &$json_data, array $mod, $type_opts, $type_id, $opt_pre ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
+			if ( ! empty( $type_opts[ $opt_pre . '_sameas' ] ) && is_array( $type_opts[ $opt_pre . '_sameas' ] ) ) {	// Just in case.
+
+				foreach ( $type_opts[ $opt_pre . '_sameas' ] as $url ) {
+
+					if ( ! empty( $url ) ) {	// Just in case.
+
+						$json_data[ 'sameAs' ][] = SucomUtil::esc_url_encode( $url );
+					}
+				}
+
+				self::check_prop_value_sameas( $json_data );
 			}
 		}
 

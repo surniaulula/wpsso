@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 22.3.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 22.3.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2026-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6984,60 +6984,60 @@ msgctxt "metadata title"
 msgid "%s Metadata"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1423
+#: lib/abstract/wp-meta.php:1511
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1494
+#: lib/abstract/wp-meta.php:1582
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1498
+#: lib/abstract/wp-meta.php:1586
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1501 lib/messages.php:290
+#: lib/abstract/wp-meta.php:1589 lib/messages.php:290
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1505
+#: lib/abstract/wp-meta.php:1593
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1506
+#: lib/abstract/wp-meta.php:1594
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1507
+#: lib/abstract/wp-meta.php:1595
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1508
+#: lib/abstract/wp-meta.php:1596
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1853
+#: lib/abstract/wp-meta.php:1941
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2162
+#: lib/abstract/wp-meta.php:2250
 msgid "Another review cannot be the subject of a review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2164 lib/abstract/wp-meta.php:2177
+#: lib/abstract/wp-meta.php:2252 lib/abstract/wp-meta.php:2265
 msgid ""
 "Please select a Schema type for the review subject that describes the "
 "subject being reviewed."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2175
+#: lib/abstract/wp-meta.php:2263
 msgid "Another claim review cannot be the subject of a claim review."
 msgstr ""
 
@@ -8364,12 +8364,12 @@ msgctxt "option label"
 msgid "Publisher Person"
 msgstr ""
 
-#: lib/edit-schema.php:283 lib/edit-schema.php:2216
+#: lib/edit-schema.php:283 lib/edit-schema.php:2250
 msgctxt "option label"
 msgid "Provider Org."
 msgstr ""
 
-#: lib/edit-schema.php:293 lib/edit-schema.php:2226
+#: lib/edit-schema.php:293 lib/edit-schema.php:2260
 msgctxt "option label"
 msgid "Provider Person"
 msgstr ""
@@ -9085,37 +9085,37 @@ msgstr ""
 
 #: lib/edit-schema.php:1631
 msgctxt "option label"
-msgid "Event Offers Start"
-msgstr ""
-
-#: lib/edit-schema.php:1638
-msgctxt "option label"
-msgid "Event Offers End"
-msgstr ""
-
-#: lib/edit-schema.php:1645
-msgctxt "option label"
 msgid "Event Offers"
 msgstr ""
 
-#: lib/edit-schema.php:1649
+#: lib/edit-schema.php:1635
 msgctxt "option label"
 msgid "Event Offer Name"
 msgstr ""
 
-#: lib/edit-schema.php:1654
+#: lib/edit-schema.php:1640
 msgctxt "option label"
 msgid "Event Offer Price"
 msgstr ""
 
-#: lib/edit-schema.php:1659
+#: lib/edit-schema.php:1645
 msgctxt "option label"
 msgid "Event Offer Currency"
 msgstr ""
 
-#: lib/edit-schema.php:1668
+#: lib/edit-schema.php:1654
 msgctxt "option label"
 msgid "Event Offer Availability"
+msgstr ""
+
+#: lib/edit-schema.php:1665
+msgctxt "option label"
+msgid "Event Offers Start"
+msgstr ""
+
+#: lib/edit-schema.php:1672
+msgctxt "option label"
+msgid "Event Offers End"
 msgstr ""
 
 #: lib/edit-schema.php:1694
@@ -9373,74 +9373,74 @@ msgctxt "metabox title"
 msgid "Service Information"
 msgstr ""
 
-#: lib/edit-schema.php:2236
-msgctxt "option label"
-msgid "Service Awards"
-msgstr ""
-
-#: lib/edit-schema.php:2244
+#: lib/edit-schema.php:2216
 msgctxt "option label"
 msgid "Service Latitude"
 msgstr ""
 
-#: lib/edit-schema.php:2247 lib/edit-schema.php:2255
+#: lib/edit-schema.php:2219 lib/edit-schema.php:2227
 msgctxt "option comment"
 msgid "decimal degrees"
 msgstr ""
 
-#: lib/edit-schema.php:2252
+#: lib/edit-schema.php:2224
 msgctxt "option label"
 msgid "Service Longitude"
 msgstr ""
 
-#: lib/edit-schema.php:2260
+#: lib/edit-schema.php:2232
 msgctxt "option label"
 msgid "Service Radius"
 msgstr ""
 
-#: lib/edit-schema.php:2263
+#: lib/edit-schema.php:2235
 msgctxt "option comment"
 msgid "meters from coordinates"
 msgstr ""
 
-#: lib/edit-schema.php:2268
+#: lib/edit-schema.php:2240
 msgctxt "option label"
-msgid "Service Area(s)"
+msgid "Service Areas"
+msgstr ""
+
+#: lib/edit-schema.php:2270
+msgctxt "option label"
+msgid "Service Awards"
 msgstr ""
 
 #: lib/edit-schema.php:2278
 msgctxt "option label"
-msgid "Service Offers Start"
-msgstr ""
-
-#: lib/edit-schema.php:2285
-msgctxt "option label"
-msgid "Service Offers End"
-msgstr ""
-
-#: lib/edit-schema.php:2292
-msgctxt "option label"
 msgid "Service Offers"
 msgstr ""
 
-#: lib/edit-schema.php:2296
+#: lib/edit-schema.php:2282
 msgctxt "option label"
 msgid "Service Offer Name"
 msgstr ""
 
-#: lib/edit-schema.php:2301
+#: lib/edit-schema.php:2287
 msgctxt "option label"
 msgid "Service Offer Price"
 msgstr ""
 
-#: lib/edit-schema.php:2306
+#: lib/edit-schema.php:2292
 msgctxt "option label"
 msgid "Service Offer Currency"
 msgstr ""
 
-#: lib/edit-schema.php:2315
+#: lib/edit-schema.php:2301
 msgctxt "option label"
 msgid "Service Offer Availability"
+msgstr ""
+
+#: lib/edit-schema.php:2312
+msgctxt "option label"
+msgid "Service Offers Start"
+msgstr ""
+
+#: lib/edit-schema.php:2319
+msgctxt "option label"
+msgid "Service Offers End"
 msgstr ""
 
 #: lib/edit-schema.php:2326
@@ -10454,35 +10454,35 @@ msgstr ""
 msgid "An optional email address for this contact point."
 msgstr ""
 
-#: lib/messages-tooltip-meta-contact.php:75
+#: lib/messages-tooltip-meta-contact.php:84
 msgid "An optional street address for this contact point."
 msgstr ""
 
-#: lib/messages-tooltip-meta-contact.php:81
+#: lib/messages-tooltip-meta-contact.php:90
 msgid "An optional post office box number for this contact point."
 msgstr ""
 
-#: lib/messages-tooltip-meta-contact.php:87
+#: lib/messages-tooltip-meta-contact.php:96
 msgid "An optional city name for this contact point."
 msgstr ""
 
-#: lib/messages-tooltip-meta-contact.php:93
+#: lib/messages-tooltip-meta-contact.php:102
 msgid "An optional state or province name for this contact point."
 msgstr ""
 
-#: lib/messages-tooltip-meta-contact.php:99
+#: lib/messages-tooltip-meta-contact.php:108
 msgid "An optional postal or zip code for this contact point."
 msgstr ""
 
-#: lib/messages-tooltip-meta-contact.php:105
+#: lib/messages-tooltip-meta-contact.php:114
 msgid "An optional country for this contact point."
 msgstr ""
 
-#: lib/messages-tooltip-meta-contact.php:111
+#: lib/messages-tooltip-meta-contact.php:120
 msgid "Select the days and hours that this contact point is open."
 msgstr ""
 
-#: lib/messages-tooltip-meta-contact.php:117
+#: lib/messages-tooltip-meta-contact.php:126
 msgid ""
 "If this contact point is open seasonally, select the open and close dates of "
 "the season."
@@ -10569,7 +10569,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:85
-#: lib/messages-tooltip-meta-schema.php:1113 lib/messages-tooltip-meta.php:76
+#: lib/messages-tooltip-meta-schema.php:1115 lib/messages-tooltip-meta.php:76
 #: lib/messages-tooltip-meta.php:200 lib/messages-tooltip-opengraph.php:128
 msgid "This option is disabled if a custom image URL is entered."
 msgstr ""
@@ -10587,7 +10587,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:97
-#: lib/messages-tooltip-meta-schema.php:1121 lib/messages-tooltip-meta.php:86
+#: lib/messages-tooltip-meta-schema.php:1123 lib/messages-tooltip-meta.php:86
 #: lib/messages-tooltip-meta.php:211 lib/messages-tooltip-opengraph.php:145
 msgid "This option is disabled if a custom image ID is selected."
 msgstr ""
@@ -10728,17 +10728,17 @@ msgid ""
 "description and URL."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:148
+#: lib/messages-tooltip-meta-org.php:175
 msgid "A link to the masthead page or a page listing top editorial management."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:154
+#: lib/messages-tooltip-meta-org.php:181
 msgid ""
 "A statement on coverage priorities, including any public agenda or stance on "
 "issues."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:160 lib/messages-tooltip-meta-org.php:166
+#: lib/messages-tooltip-meta-org.php:187 lib/messages-tooltip-meta-org.php:193
 msgid ""
 "A statement about policy on use of unnamed sources and the decision process "
 "required."
@@ -10768,105 +10768,105 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-place.php:63
-msgid "An optional telephone number for this place."
-msgstr ""
-
-#: lib/messages-tooltip-meta-place.php:69
-msgid "An optional fax number for this place."
-msgstr ""
-
-#: lib/messages-tooltip-meta-place.php:75
-msgid "An optional street address for this place."
-msgstr ""
-
-#: lib/messages-tooltip-meta-place.php:81
-msgid "An optional post office box number for this place."
-msgstr ""
-
-#: lib/messages-tooltip-meta-place.php:87
-msgid "An optional city name for this place."
-msgstr ""
-
-#: lib/messages-tooltip-meta-place.php:93
-msgid "An optional state or province name for this place."
-msgstr ""
-
-#: lib/messages-tooltip-meta-place.php:99
-msgid "An optional postal or zip code for this place."
-msgstr ""
-
-#: lib/messages-tooltip-meta-place.php:105
-msgid "An optional country for this place."
-msgstr ""
-
-#: lib/messages-tooltip-meta-place.php:111
 msgid ""
 "An image of this place (ie. an image of the business storefront or location)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:113
+#: lib/messages-tooltip-meta-place.php:65
 msgid ""
 "The image you select should show the physical location of this place (ie. of "
 "the latitude and longitude entered)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:115
+#: lib/messages-tooltip-meta-place.php:67
 msgid "This option is disabled if a place image URL is entered."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:121
+#: lib/messages-tooltip-meta-place.php:73
 msgid ""
 "You can enter a place image URL (including the http/https prefix) instead of "
 "selecting an image ID."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:123
+#: lib/messages-tooltip-meta-place.php:75
 #: lib/messages-tooltip-opengraph.php:139
 msgid ""
 "The image URL option allows you to choose an image outside of the WordPress "
 "Media Library and/or a smaller logo style image."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:125
+#: lib/messages-tooltip-meta-place.php:77
 msgid "This option is disabled if a place image ID is selected."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:131
+#: lib/messages-tooltip-meta-place.php:83
 msgid "The numeric decimal degrees latitude for this place (required)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:133
-#: lib/messages-tooltip-meta-place.php:141
-#: lib/messages-tooltip-meta-schema.php:1001
-#: lib/messages-tooltip-meta-schema.php:1009
+#: lib/messages-tooltip-meta-place.php:85
+#: lib/messages-tooltip-meta-place.php:93
+#: lib/messages-tooltip-meta-schema.php:988
+#: lib/messages-tooltip-meta-schema.php:996
 msgid ""
 "You may use a service like <a href=\"http://www.gps-coordinates.net/"
 "\">Google Maps GPS Coordinates</a> (as an example), to find the approximate "
 "GPS coordinates of a street address."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:139
+#: lib/messages-tooltip-meta-place.php:91
 msgid "The numeric decimal degrees longitude for this place (required)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:147
+#: lib/messages-tooltip-meta-place.php:99
 msgid ""
 "An optional numeric altitude (in meters above sea level) for this place."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:153
+#: lib/messages-tooltip-meta-place.php:105
 msgid "A timezone for the open and close hours of this place."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:155
+#: lib/messages-tooltip-meta-place.php:107
 msgid "The default timezone value is provided by WordPress."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:167
-msgid "Select the days and hours that this place is open."
+#: lib/messages-tooltip-meta-place.php:113
+msgid "An optional telephone number for this place."
+msgstr ""
+
+#: lib/messages-tooltip-meta-place.php:119
+msgid "An optional fax number for this place."
+msgstr ""
+
+#: lib/messages-tooltip-meta-place.php:134
+msgid "An optional street address for this place."
+msgstr ""
+
+#: lib/messages-tooltip-meta-place.php:140
+msgid "An optional post office box number for this place."
+msgstr ""
+
+#: lib/messages-tooltip-meta-place.php:146
+msgid "An optional city name for this place."
+msgstr ""
+
+#: lib/messages-tooltip-meta-place.php:152
+msgid "An optional state or province name for this place."
+msgstr ""
+
+#: lib/messages-tooltip-meta-place.php:158
+msgid "An optional postal or zip code for this place."
+msgstr ""
+
+#: lib/messages-tooltip-meta-place.php:164
+msgid "An optional country for this place."
 msgstr ""
 
 #: lib/messages-tooltip-meta-place.php:173
+msgid "Select the days and hours that this place is open."
+msgstr ""
+
+#: lib/messages-tooltip-meta-place.php:179
 msgid ""
 "If this place is open seasonally, select the open and close dates of the "
 "season."
@@ -11096,7 +11096,7 @@ msgid "A publisher for this creative work."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:168
-#: lib/messages-tooltip-meta-schema.php:987
+#: lib/messages-tooltip-meta-schema.php:1017
 msgid "A service provider, service operator, or service performer."
 msgstr ""
 
@@ -11276,19 +11276,19 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:407
-#: lib/messages-tooltip-meta-schema.php:1027
-msgid "The date and time when tickets go on sale."
-msgstr ""
-
-#: lib/messages-tooltip-meta-schema.php:413
-#: lib/messages-tooltip-meta-schema.php:1033
-msgid "The date and time when tickets are no longer on sale."
-msgstr ""
-
-#: lib/messages-tooltip-meta-schema.php:419
 msgid ""
 "One or more offers for the event, including the offer name, price and "
 "currency."
+msgstr ""
+
+#: lib/messages-tooltip-meta-schema.php:413
+#: lib/messages-tooltip-meta-schema.php:1035
+msgid "The date and time when tickets go on sale."
+msgstr ""
+
+#: lib/messages-tooltip-meta-schema.php:419
+#: lib/messages-tooltip-meta-schema.php:1041
+msgid "The date and time when tickets are no longer on sale."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:433
@@ -11663,79 +11663,85 @@ msgstr ""
 msgid "An optional webpage URL where this specific claim first appeared."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:993
-msgid "Awards this service has won."
-msgstr ""
-
-#: lib/messages-tooltip-meta-schema.php:999
+#: lib/messages-tooltip-meta-schema.php:986
 msgid "The numeric decimal degrees latitude for this service."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1007
+#: lib/messages-tooltip-meta-schema.php:994
 msgid "The numeric decimal degrees longitude for this service."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1015
+#: lib/messages-tooltip-meta-schema.php:1002
 msgid ""
 "The geographic area where a service is provided, in meters around a set of "
 "latitude and longitude coordinates."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1021
+#: lib/messages-tooltip-meta-schema.php:1008
 msgid ""
 "An administrative area where a service is provided (ie. a school district, "
 "city, state/province, or country)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1039
+#: lib/messages-tooltip-meta-schema.php:1010
+msgid ""
+"One or more places matching the Schema AdministrativeArea type or its sub-"
+"types can be selected."
+msgstr ""
+
+#: lib/messages-tooltip-meta-schema.php:1023
+msgid "Awards this service has won."
+msgstr ""
+
+#: lib/messages-tooltip-meta-schema.php:1029
 msgid ""
 "One or more offers for the service, including the offer name, price and "
 "currency."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1045
+#: lib/messages-tooltip-meta-schema.php:1047
 msgid ""
 "A list of offer catalogs for this service, including the catalog name, "
 "description and URL."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1059
+#: lib/messages-tooltip-meta-schema.php:1061
 msgid "Type of software application (example: %s, etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1065
+#: lib/messages-tooltip-meta-schema.php:1067
 msgid "URL to download the binary, if the application can be downloaded"
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1071
+#: lib/messages-tooltip-meta-schema.php:1073
 msgid "The operating system supported (example: %s, etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1086
+#: lib/messages-tooltip-meta-schema.php:1088
 msgid ""
 "Organizations that have reviewed the content on this web page for accuracy "
 "and/or completeness."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1092
+#: lib/messages-tooltip-meta-schema.php:1094
 msgid ""
 "Persons that have reviewed the content on this web page for accuracy and/or "
 "completeness."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1098
+#: lib/messages-tooltip-meta-schema.php:1100
 msgid ""
 "Date on which the content on this web page was last reviewed for accuracy "
 "and/or completeness."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1111
+#: lib/messages-tooltip-meta-schema.php:1113
 msgid ""
 "A customized image ID to include first in the Schema meta tags and JSON-LD "
 "markup."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1119
+#: lib/messages-tooltip-meta-schema.php:1121
 msgid ""
 "A customized image URL (instead of an image ID) to include first in the "
 "Schema meta tags and JSON-LD markup."
@@ -15159,23 +15165,23 @@ msgctxt "taxonomy description"
 msgid "Tags for the page post type."
 msgstr ""
 
-#: lib/schema-single.php:1148
+#: lib/schema-single.php:1158
 msgid "adding schema organization"
 msgstr ""
 
-#: lib/schema-single.php:1149
+#: lib/schema-single.php:1159
 msgid "adding schema organization ID \"%s\""
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1256
+#: lib/schema-single.php:1271
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1259
+#: lib/schema-single.php:1274
 msgid ""
 "An organization banner image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
@@ -15183,31 +15189,31 @@ msgstr ""
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or
 #. organization ID.
-#: lib/schema-single.php:1262
+#: lib/schema-single.php:1277
 msgid "Enter the missing image URL in the \"%1$s\" %2$s organization settings."
 msgstr ""
 
-#: lib/schema-single.php:1298
+#: lib/schema-single.php:1313
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1312 lib/schema-single.php:1321
+#: lib/schema-single.php:1327 lib/schema-single.php:1336
 msgid "ID \"%s\""
 msgstr ""
 
-#: lib/schema-single.php:1483
+#: lib/schema-single.php:1498
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1689
+#: lib/schema-single.php:1704
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema-single.php:2206
+#: lib/schema-single.php:2208
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:2343
+#: lib/schema-single.php:2345
 msgid "adding schema product"
 msgstr ""
 
@@ -15230,7 +15236,7 @@ msgstr ""
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:4303
+#: lib/schema.php:4363
 msgid "checking schema properties"
 msgstr ""
 

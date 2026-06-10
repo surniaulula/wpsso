@@ -58,54 +58,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaPlace' ) ) {
 
 					break;
 
-				case 'tooltip-meta-place_phone':	// Place Telephone.
-
-					$text = __( 'An optional telephone number for this place.', 'wpsso' );
-
-					break;
-
-				case 'tooltip-meta-place_fax':	// Place Fax.
-
-					$text = __( 'An optional fax number for this place.', 'wpsso' );
-
-					break;
-
-				case 'tooltip-meta-place_street_address':	// Street Address.
-
-					$text = __( 'An optional street address for this place.', 'wpsso' );
-
-					break;
-
-				case 'tooltip-meta-place_po_box_number':	// P.O. Box Number.
-
-					$text = __( 'An optional post office box number for this place.', 'wpsso' );
-
-					break;
-
-				case 'tooltip-meta-place_city':	// City.
-
-					$text = __( 'An optional city name for this place.', 'wpsso' );
-
-					break;
-
-				case 'tooltip-meta-place_region':	// State / Province.
-
-					$text = __( 'An optional state or province name for this place.', 'wpsso' );
-
-					break;
-
-				case 'tooltip-meta-place_postal_code':	// Zip / Postal Code.
-
-					$text = __( 'An optional postal or zip code for this place.', 'wpsso' );
-
-					break;
-
-				case 'tooltip-meta-place_country':	// Country.
-
-					$text = __( 'An optional country for this place.', 'wpsso' );
-
-					break;
-
 				case 'tooltip-meta-place_img_id':	// Place Image ID.
 
 					$text = __( 'An image of this place (ie. an image of the business storefront or location).', 'wpsso' ) . ' ';
@@ -156,12 +108,66 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaPlace' ) ) {
 
 					break;
 
+				case 'tooltip-meta-place_phone':	// Place Telephone.
+
+					$text = __( 'An optional telephone number for this place.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-meta-place_fax':	// Place Fax.
+
+					$text = __( 'An optional fax number for this place.', 'wpsso' );
+
+					break;
+
 				case 'tooltip-meta-place_sameas_url':	// Place Same-As URLs.
 					
 					$text = $this->p->msgs->get( 'tooltip-meta-schema_sameas_url' );
 
 					break;
 
+				/*
+				 * Postal Address Information.
+				 */
+				case 'tooltip-meta-place_street_address':	// Street Address.
+
+					$text = __( 'An optional street address for this place.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-meta-place_po_box_number':	// P.O. Box Number.
+
+					$text = __( 'An optional post office box number for this place.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-meta-place_city':	// City.
+
+					$text = __( 'An optional city name for this place.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-meta-place_region':	// State / Province.
+
+					$text = __( 'An optional state or province name for this place.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-meta-place_postal_code':	// Zip / Postal Code.
+
+					$text = __( 'An optional postal or zip code for this place.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-meta-place_country':	// Country.
+
+					$text = __( 'An optional country for this place.', 'wpsso' );
+
+					break;
+
+				/*
+				 * Opening Hours Information.
+				 */
 				case 'tooltip-meta-place_days':		// Open Days / Hours.
 
 					$text = __( 'Select the days and hours that this place is open.', 'wpsso' );
@@ -171,12 +177,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaPlace' ) ) {
 				case 'tooltip-meta-place_season_dates':	// Seasonal Dates.
 
 					$text = __( 'If this place is open seasonally, select the open and close dates of the season.', 'wpsso' );
-
-					break;
-
-				case 'tooltip-meta-place_service_radius':	// Service Radius.
-
-					$text = $this->p->msgs->get( 'tooltip-meta-schema_service_radius' );
 
 					break;
 

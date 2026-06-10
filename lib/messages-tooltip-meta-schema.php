@@ -402,6 +402,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
+						case 'tooltip-meta-schema_event_offers':	// Event Offers.
+
+							$text = __( 'One or more offers for the event, including the offer name, price and currency.', 'wpsso' );
+
+						 	break;
+
 						case 'tooltip-meta-schema_event_offers_start':	// Event Offers Start.
 
 							$text = __( 'The date and time when tickets go on sale.', 'wpsso' );
@@ -411,12 +417,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 						case 'tooltip-meta-schema_event_offers_end':	// Event Offers End.
 
 							$text = __( 'The date and time when tickets are no longer on sale.', 'wpsso' );
-
-						 	break;
-
-						case 'tooltip-meta-schema_event_offers':	// Event Offers.
-
-							$text = __( 'One or more offers for the event, including the offer name, price and currency.', 'wpsso' );
 
 						 	break;
 
@@ -981,19 +981,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					switch ( $msg_key ) {
 
-						case 'tooltip-meta-schema_service_prov_org_id':		// Provider Org.
-						case 'tooltip-meta-schema_service_prov_person_id':	// Provider Person.
-
-							$text = __( 'A service provider, service operator, or service performer.', 'wpsso' );
-
-		 					break;
-
-						case 'tooltip-meta-schema_service_award':	// Service Awards.
-
-							$text = __( 'Awards this service has won.', 'wpsso' );
-
-							break;
-
 						case 'tooltip-meta-schema_service_latitude':	// Service Latitude.
 
 							$text = __( 'The numeric decimal degrees latitude for this service.', 'wpsso' ) . ' ';
@@ -1016,11 +1003,32 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 							break;
 
-						case 'tooltip-meta-schema_service_area_id':	// Service Area(s).
+						case 'tooltip-meta-schema_service_area_id':	// Service Areas.
 
 							$text = __( 'An administrative area where a service is provided (ie. a school district, city, state/province, or country).', 'wpsso' ) . ' ';
 
+							$text .= __( 'One or more places matching the Schema AdministrativeArea type or its sub-types can be selected.', 'wpsso' ) . ' ';
+
 							break;
+
+						case 'tooltip-meta-schema_service_prov_org_id':		// Provider Org.
+						case 'tooltip-meta-schema_service_prov_person_id':	// Provider Person.
+
+							$text = __( 'A service provider, service operator, or service performer.', 'wpsso' );
+
+		 					break;
+
+						case 'tooltip-meta-schema_service_award':	// Service Awards.
+
+							$text = __( 'Awards this service has won.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-meta-schema_service_offers':	// Service Offers.
+
+							$text = __( 'One or more offers for the service, including the offer name, price and currency.', 'wpsso' );
+
+						 	break;
 
 						case 'tooltip-meta-schema_service_offers_start':	// Service Offers Start.
 
@@ -1031,12 +1039,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 						case 'tooltip-meta-schema_service_offers_end':	// Service Offers End.
 
 							$text = __( 'The date and time when tickets are no longer on sale.', 'wpsso' );
-
-						 	break;
-
-						case 'tooltip-meta-schema_service_offers':	// Service Offers.
-
-							$text = __( 'One or more offers for the service, including the offer name, price and currency.', 'wpsso' );
 
 						 	break;
 

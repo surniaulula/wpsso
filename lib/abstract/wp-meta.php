@@ -503,6 +503,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'product_award_0'               => '',				// Product Award.
 					'product_award_1'               => '',				// Product Award.
 					'product_award_2'               => '',				// Product Award.
+					'product_award_3'               => '',				// Product Award.
+					'product_award_4'               => '',				// Product Award.
 
 					/*
 					 * All Schema Types.
@@ -515,9 +517,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_addl_type_url_0' => '',
 					'schema_addl_type_url_1' => '',
 					'schema_addl_type_url_2' => '',
+					'schema_addl_type_url_3' => '',
+					'schema_addl_type_url_4' => '',
 					'schema_sameas_url_0'    => '',
 					'schema_sameas_url_1'    => '',
 					'schema_sameas_url_2'    => '',
+					'schema_sameas_url_3'    => '',
+					'schema_sameas_url_4'    => '',
 
 					/*
 					 * Schema Creative Work.
@@ -541,6 +547,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_award_0'         => '',						// Creative Work Awards.
 					'schema_award_1'         => '',						// Creative Work Awards.
 					'schema_award_2'         => '',						// Creative Work Awards.
+					'schema_award_3'         => '',						// Creative Work Awards.
+					'schema_award_4'         => '',						// Creative Work Awards.
 
 					/*
 					 * See https://schema.org/citation.
@@ -554,6 +562,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_citation_0' => '',	// Reference Citations.
 					'schema_citation_1' => '',	// Reference Citations.
 					'schema_citation_2' => '',	// Reference Citations.
+					'schema_citation_3' => '',	// Reference Citations.
+					'schema_citation_4' => '',	// Reference Citations.
 
 					/*
 					 * Schema Article.
@@ -580,15 +590,23 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_book_offer_name_0'     => '',
 					'schema_book_offer_name_1'     => '',
 					'schema_book_offer_name_2'     => '',
+					'schema_book_offer_name_3'     => '',
+					'schema_book_offer_name_4'     => '',
 					'schema_book_offer_price_0'    => '',
 					'schema_book_offer_price_1'    => '',
 					'schema_book_offer_price_2'    => '',
+					'schema_book_offer_price_3'    => '',
+					'schema_book_offer_price_4'    => '',
 					'schema_book_offer_currency_0' => $def_currency,
 					'schema_book_offer_currency_1' => $def_currency,
 					'schema_book_offer_currency_2' => $def_currency,
+					'schema_book_offer_currency_3' => $def_currency,
+					'schema_book_offer_currency_4' => $def_currency,
 					'schema_book_offer_avail_0'    => 'https://schema.org/InStock',
 					'schema_book_offer_avail_1'    => 'https://schema.org/InStock',
 					'schema_book_offer_avail_2'    => 'https://schema.org/InStock',
+					'schema_book_offer_avail_3'    => 'https://schema.org/InStock',
+					'schema_book_offer_avail_4'    => 'https://schema.org/InStock',
 
 					/*
 					 * Schema Book > Audiobook.
@@ -621,24 +639,32 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_event_previous_date'         => '',							// Event Previous Start Date (Y-m-d).
 					'schema_event_previous_time'         => 'none',							// Event Previous Start Time (H:i).
 					'schema_event_previous_timezone'     => $def_timezone,						// Event Previous Start Timezone.
+					'schema_event_offer_name_0'          => '',
+					'schema_event_offer_name_1'          => '',
+					'schema_event_offer_name_2'          => '',
+					'schema_event_offer_name_3'          => '',
+					'schema_event_offer_name_4'          => '',
+					'schema_event_offer_price_0'         => '',
+					'schema_event_offer_price_1'         => '',
+					'schema_event_offer_price_2'         => '',
+					'schema_event_offer_price_3'         => '',
+					'schema_event_offer_price_4'         => '',
+					'schema_event_offer_currency_0'      => $def_currency,
+					'schema_event_offer_currency_1'      => $def_currency,
+					'schema_event_offer_currency_2'      => $def_currency,
+					'schema_event_offer_currency_3'      => $def_currency,
+					'schema_event_offer_currency_4'      => $def_currency,
+					'schema_event_offer_avail_0'         => 'https://schema.org/InStock',
+					'schema_event_offer_avail_1'         => 'https://schema.org/InStock',
+					'schema_event_offer_avail_2'         => 'https://schema.org/InStock',
+					'schema_event_offer_avail_3'         => 'https://schema.org/InStock',
+					'schema_event_offer_avail_4'         => 'https://schema.org/InStock',
 					'schema_event_offers_start_date'     => '',							// Event Offers Start Date (Y-m-d).
 					'schema_event_offers_start_time'     => 'none',							// Event Offers Start Time (H:i).
 					'schema_event_offers_start_timezone' => $def_timezone,						// Event Offers Start Timezone.
 					'schema_event_offers_end_date'       => '',							// Event Offers End Date (Y-m-d).
 					'schema_event_offers_end_time'       => 'none',							// Event Offers End Time (H:i).
 					'schema_event_offers_end_timezone'   => $def_timezone,						// Event Offers End Timezone.
-					'schema_event_offer_name_0'          => '',
-					'schema_event_offer_name_1'          => '',
-					'schema_event_offer_name_2'          => '',
-					'schema_event_offer_price_0'         => '',
-					'schema_event_offer_price_1'         => '',
-					'schema_event_offer_price_2'         => '',
-					'schema_event_offer_currency_0'      => $def_currency,
-					'schema_event_offer_currency_1'      => $def_currency,
-					'schema_event_offer_currency_2'      => $def_currency,
-					'schema_event_offer_avail_0'         => 'https://schema.org/InStock',
-					'schema_event_offer_avail_1'         => 'https://schema.org/InStock',
-					'schema_event_offer_avail_2'         => 'https://schema.org/InStock',
 
 					/*
 					 * Schema How-To.
@@ -664,9 +690,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_howto_step_text_0'     => '',
 					'schema_howto_step_text_1'     => '',
 					'schema_howto_step_text_2'     => '',
+					'schema_howto_step_text_3'     => '',
+					'schema_howto_step_text_4'     => '',
 					'schema_howto_step_image_id_0' => '',
 					'schema_howto_step_image_id_1' => '',
 					'schema_howto_step_image_id_2' => '',
+					'schema_howto_step_image_id_3' => '',
+					'schema_howto_step_image_id_4' => '',
 
 					/*
 					 * Schema JobPosting.
@@ -702,9 +732,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_movie_actor_person_name_0'    => '',
 					'schema_movie_actor_person_name_1'    => '',
 					'schema_movie_actor_person_name_2'    => '',
+					'schema_movie_actor_person_name_3'    => '',
+					'schema_movie_actor_person_name_4'    => '',
 					'schema_movie_director_person_name_0' => '',
 					'schema_movie_director_person_name_1' => '',
 					'schema_movie_director_person_name_2' => '',
+					'schema_movie_director_person_name_3' => '',
+					'schema_movie_director_person_name_4' => '',
 					'schema_movie_prodco_org_id'          => 'none',	// Movie Production Company.
 					'schema_movie_released_date'          => '',		// Movie Release Date (Y-m-d).
 					'schema_movie_released_time'          => 'none',	// Movie Release Time (H:i).
@@ -761,18 +795,28 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_recipe_ingredient_0'          => '',
 					'schema_recipe_ingredient_1'          => '',
 					'schema_recipe_ingredient_2'          => '',
+					'schema_recipe_ingredient_3'          => '',
+					'schema_recipe_ingredient_4'          => '',
 					'schema_recipe_instruction_section_0' => 0,	// Recipe Instruction or Section (0 or 1).
 					'schema_recipe_instruction_section_1' => 0,	// Recipe Instruction or Section (0 or 1).
 					'schema_recipe_instruction_section_2' => 0,	// Recipe Instruction or Section (0 or 1).
+					'schema_recipe_instruction_section_3' => 0,	// Recipe Instruction or Section (0 or 1).
+					'schema_recipe_instruction_section_4' => 0,	// Recipe Instruction or Section (0 or 1).
 					'schema_recipe_instruction_0'         => '',
 					'schema_recipe_instruction_1'         => '',
 					'schema_recipe_instruction_2'         => '',
+					'schema_recipe_instruction_3'         => '',
+					'schema_recipe_instruction_4'         => '',
 					'schema_recipe_instruction_text_0'    => '',
 					'schema_recipe_instruction_text_1'    => '',
 					'schema_recipe_instruction_text_2'    => '',
+					'schema_recipe_instruction_text_3'    => '',
+					'schema_recipe_instruction_text_4'    => '',
 					'schema_recipe_instruction_img_0'     => '',
 					'schema_recipe_instruction_img_1'     => '',
 					'schema_recipe_instruction_img_2'     => '',
+					'schema_recipe_instruction_img_3'     => '',
+					'schema_recipe_instruction_img_4'     => '',
 
 					/*
 					 * Schema Recipe - Nutrition Information.
@@ -810,6 +854,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_review_item_sameas_url_0' => '',
 					'schema_review_item_sameas_url_1' => '',
 					'schema_review_item_sameas_url_2' => '',
+					'schema_review_item_sameas_url_3' => '',
+					'schema_review_item_sameas_url_4' => '',
 
 					/*
 					 * Schema Review Subject: Creative Work.
@@ -835,9 +881,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_review_item_cw_movie_actor_person_name_0'    => '',
 					'schema_review_item_cw_movie_actor_person_name_1'    => '',
 					'schema_review_item_cw_movie_actor_person_name_2'    => '',
+					'schema_review_item_cw_movie_actor_person_name_3'    => '',
+					'schema_review_item_cw_movie_actor_person_name_4'    => '',
 					'schema_review_item_cw_movie_director_person_name_0' => '',
 					'schema_review_item_cw_movie_director_person_name_1' => '',
 					'schema_review_item_cw_movie_director_person_name_2' => '',
+					'schema_review_item_cw_movie_director_person_name_3' => '',
+					'schema_review_item_cw_movie_director_person_name_4' => '',
 
 					/*
 					 * Schema Review Subject: Place.
@@ -866,15 +916,23 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_review_item_product_offer_name_0'     => '',
 					'schema_review_item_product_offer_name_1'     => '',
 					'schema_review_item_product_offer_name_2'     => '',
+					'schema_review_item_product_offer_name_3'     => '',
+					'schema_review_item_product_offer_name_4'     => '',
 					'schema_review_item_product_offer_price_0'    => '',
 					'schema_review_item_product_offer_price_1'    => '',
 					'schema_review_item_product_offer_price_2'    => '',
+					'schema_review_item_product_offer_price_3'    => '',
+					'schema_review_item_product_offer_price_4'    => '',
 					'schema_review_item_product_offer_currency_0' => $def_currency,
 					'schema_review_item_product_offer_currency_1' => $def_currency,
 					'schema_review_item_product_offer_currency_2' => $def_currency,
+					'schema_review_item_product_offer_currency_3' => $def_currency,
+					'schema_review_item_product_offer_currency_4' => $def_currency,
 					'schema_review_item_product_offer_avail_0'    => 'https://schema.org/InStock',
 					'schema_review_item_product_offer_avail_1'    => 'https://schema.org/InStock',
 					'schema_review_item_product_offer_avail_2'    => 'https://schema.org/InStock',
+					'schema_review_item_product_offer_avail_3'    => 'https://schema.org/InStock',
+					'schema_review_item_product_offer_avail_4'    => 'https://schema.org/InStock',
 					'schema_review_item_product_retailer_part_no' => '',	// Product SKU.
 					'schema_review_item_product_mfr_part_no'      => '',	// Product MPN.
 
@@ -887,15 +945,23 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_review_item_software_app_offer_name_0'     => '',
 					'schema_review_item_software_app_offer_name_1'     => '',
 					'schema_review_item_software_app_offer_name_2'     => '',
+					'schema_review_item_software_app_offer_name_3'     => '',
+					'schema_review_item_software_app_offer_name_4'     => '',
 					'schema_review_item_software_app_offer_price_0'    => '',
 					'schema_review_item_software_app_offer_price_1'    => '',
 					'schema_review_item_software_app_offer_price_2'    => '',
+					'schema_review_item_software_app_offer_price_3'    => '',
+					'schema_review_item_software_app_offer_price_4'    => '',
 					'schema_review_item_software_app_offer_currency_0' => $def_currency,
 					'schema_review_item_software_app_offer_currency_1' => $def_currency,
 					'schema_review_item_software_app_offer_currency_2' => $def_currency,
+					'schema_review_item_software_app_offer_currency_3' => $def_currency,
+					'schema_review_item_software_app_offer_currency_4' => $def_currency,
 					'schema_review_item_software_app_offer_avail_0'    => 'https://schema.org/InStock',
 					'schema_review_item_software_app_offer_avail_1'    => 'https://schema.org/InStock',
 					'schema_review_item_software_app_offer_avail_2'    => 'https://schema.org/InStock',
+					'schema_review_item_software_app_offer_avail_3'    => 'https://schema.org/InStock',
+					'schema_review_item_software_app_offer_avail_4'    => 'https://schema.org/InStock',
 
 					/*
 					 * Schema Claim Review.
@@ -906,38 +972,56 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/*
 					 * Schema Service.
 					 */
+					'schema_service_latitude'             => '',						// Service Latitude.
+					'schema_service_longitude'            => '',						// Service Longitude.
+					'schema_service_radius'               => '',						// Service Radius.
+					'schema_service_area_id_0'            => 'none',					// Service Areas.
+					'schema_service_area_id_1'            => 'none',					// Service Areas.
+					'schema_service_area_id_2'            => 'none',					// Service Areas.
+					'schema_service_area_id_3'            => 'none',					// Service Areas.
+					'schema_service_area_id_4'            => 'none',					// Service Areas.
 					'schema_service_prov_org_id'          => $opts[ 'schema_def_service_prov_org_id' ],	// Provider Org.
 					'schema_service_prov_person_id'       => $opts[ 'schema_def_service_prov_person_id' ],	// Provider Person.
 					'schema_service_award_0'              => '',						// Service Award.
 					'schema_service_award_1'              => '',						// Service Award.
 					'schema_service_award_2'              => '',						// Service Award.
-					'schema_service_latitude'             => '',						// Service Latitude.
-					'schema_service_longitude'            => '',						// Service Longitude.
-					'schema_service_radius'               => '',						// Service Radius.
-					'schema_service_area_id_0'            => 'none',					// Service Area(s).
-					'schema_service_area_id_1'            => 'none',					// Service Area(s).
-					'schema_service_area_id_2'            => 'none',					// Service Area(s).
+					'schema_service_award_3'              => '',						// Service Award.
+					'schema_service_award_4'              => '',						// Service Award.
 					'schema_service_offer_name_0'         => '',
 					'schema_service_offer_name_1'         => '',
 					'schema_service_offer_name_2'         => '',
+					'schema_service_offer_name_3'         => '',
+					'schema_service_offer_name_4'         => '',
 					'schema_service_offer_price_0'        => '',
 					'schema_service_offer_price_1'        => '',
 					'schema_service_offer_price_2'        => '',
+					'schema_service_offer_price_3'        => '',
+					'schema_service_offer_price_4'        => '',
 					'schema_service_offer_currency_0'     => $def_currency,
 					'schema_service_offer_currency_1'     => $def_currency,
 					'schema_service_offer_currency_2'     => $def_currency,
+					'schema_service_offer_currency_3'     => $def_currency,
+					'schema_service_offer_currency_4'     => $def_currency,
 					'schema_service_offer_avail_0'        => 'https://schema.org/InStock',
 					'schema_service_offer_avail_1'        => 'https://schema.org/InStock',
 					'schema_service_offer_avail_2'        => 'https://schema.org/InStock',
+					'schema_service_offer_avail_3'        => 'https://schema.org/InStock',
+					'schema_service_offer_avail_4'        => 'https://schema.org/InStock',
 					'schema_service_offer_catalog_0'      => '',						// Offer Catalog Name.
 					'schema_service_offer_catalog_1'      => '',						// Offer Catalog Name.
 					'schema_service_offer_catalog_2'      => '',						// Offer Catalog Name.
+					'schema_service_offer_catalog_3'      => '',						// Offer Catalog Name.
+					'schema_service_offer_catalog_4'      => '',						// Offer Catalog Name.
 					'schema_service_offer_catalog_text_0' => '',						// Offer Catalog Description.
 					'schema_service_offer_catalog_text_1' => '',						// Offer Catalog Description.
 					'schema_service_offer_catalog_text_2' => '',						// Offer Catalog Description.
+					'schema_service_offer_catalog_text_3' => '',						// Offer Catalog Description.
+					'schema_service_offer_catalog_text_4' => '',						// Offer Catalog Description.
 					'schema_service_offer_catalog_url_0'  => '',						// Offer Catalog URL.
 					'schema_service_offer_catalog_url_1'  => '',						// Offer Catalog URL.
 					'schema_service_offer_catalog_url_2'  => '',						// Offer Catalog URL.
+					'schema_service_offer_catalog_url_3'  => '',						// Offer Catalog URL.
+					'schema_service_offer_catalog_url_4'  => '',						// Offer Catalog URL.
 
 					/*
 					 * Schema Software Application.
@@ -952,9 +1036,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_webpage_reviewed_by_org_id_0'    => '',
 					'schema_webpage_reviewed_by_org_id_1'    => '',
 					'schema_webpage_reviewed_by_org_id_2'    => '',
+					'schema_webpage_reviewed_by_org_id_3'    => '',
+					'schema_webpage_reviewed_by_org_id_4'    => '',
 					'schema_webpage_reviewed_by_person_id_0' => '',
 					'schema_webpage_reviewed_by_person_id_1' => '',
 					'schema_webpage_reviewed_by_person_id_2' => '',
+					'schema_webpage_reviewed_by_person_id_3' => '',
+					'schema_webpage_reviewed_by_person_id_4' => '',
 					'schema_webpage_reviewed_last_date'      => '',			// Reviewed Last Date (Y-m-d).
 					'schema_webpage_reviewed_last_time'      => 'none',		// Reviewed Last Time (H:i).
 					'schema_webpage_reviewed_last_timezone'  => $def_timezone,	// Reviewed Last Timezone.

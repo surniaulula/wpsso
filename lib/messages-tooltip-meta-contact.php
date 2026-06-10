@@ -70,6 +70,15 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaContact' ) ) {
 
 					break;
 
+				case 'tooltip-meta-contact_sameas_url':	// Contact Same-As URLs.
+
+					$text = $this->p->msgs->get( 'tooltip-meta-schema_sameas_url' );
+
+					break;
+
+				/*
+				 * Postal Address Information.
+				 */
 				case 'tooltip-meta-contact_street_address':	// Street Address.
 
 					$text = __( 'An optional street address for this contact point.', 'wpsso' );
