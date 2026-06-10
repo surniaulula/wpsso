@@ -397,11 +397,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/*
 		 * Add an array of values that have a common numbered prefix key.
 		 */
-		public static function add_multi_values( array &$opts, $opt_prefix, $add_key = null ) {
+		public static function add_multi_values( array &$opts, $opt_pre, $new_key = null ) {
 
-			if ( null === $add_key ) $add_key = $opt_prefix;
+			if ( null === $new_key ) $new_key = $opt_pre;
 
-			$opts[ $add_key ] = self::get_multi_values( $opts, $opt_prefix );
+			$opts[ $new_key ] = self::get_multi_values( $opts, $opt_pre );
 		}
 
 		public static function array_count_diff( array $arr, $max = 0 ) {
@@ -716,9 +716,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/*
 		 * Return a indexed array of values that have a common prefix key.
 		 */
-		public static function get_multi_values( array &$opts, $opt_prefix ) {
+		public static function get_multi_values( array &$opts, $opt_pre ) {
 
-			$values = self::preg_grep_keys( '/^' . $opt_prefix . '_([0-9]+)$/', $opts, $invert = false, $replace = '$1' );
+			$values = self::preg_grep_keys( '/^' . $opt_pre . '_([0-9]+)$/', $opts, $invert = false, $replace = '$1' );
 
 			foreach ( $values as $num => $val ) {
 

@@ -483,12 +483,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'event_fund_person_id'      => 'funder',
 			) as $opt_pre => $prop_name ) {
 
-				foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_pre . '(_[0-9]+)?$/', $event_opts ) as $opt_key => $id ) {
-
-					/*
-					 * Check that the option value is not true, false, null, empty string, or 'none'.
-					 */
-					if ( ! SucomUtil::is_valid_option_value( $id ) ) continue;
+				foreach ( SucomUtil::get_multi_values( $event_opts, $opt_pre ) as $id ) {	// Uses is_valid_option_value().
 
 					switch ( $opt_pre ) {
 
@@ -821,12 +816,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'job_location_id'   => 'jobLocation',
 			) as $opt_pre => $prop_name ) {
 
-				foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_pre . '(_[0-9]+)?$/', $job_opts ) as $opt_key => $id ) {
-
-					/*
-					 * Check that the option value is not true, false, null, empty string, or 'none'.
-					 */
-					if ( ! SucomUtil::is_valid_option_value( $id ) ) continue;
+				foreach ( SucomUtil::get_multi_values( $job_opts, $opt_pre ) as $id ) {	// Uses is_valid_option_value().
 
 					switch ( $opt_pre ) {
 
@@ -2660,12 +2650,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'service_prov_person_id' => 'provider',	// Provider Person.
 			) as $opt_pre => $prop_name ) {
 
-				foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_pre . '(_[0-9]+)?$/', $service_opts ) as $opt_key => $id ) {
-
-					/*
-					 * Check that the option value is not true, false, null, empty string, or 'none'.
-					 */
-					if ( ! SucomUtil::is_valid_option_value( $id ) ) continue;
+				foreach ( SucomUtil::get_multi_values( $service_opts, $opt_pre ) as $id ) {	// Uses is_valid_option_value().
 
 					if ( strpos( $opt_pre, '_org_id' ) ) {
 

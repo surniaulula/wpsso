@@ -2433,7 +2433,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'description' => 'schema_review_item_desc',
 			) );
 
-			foreach ( SucomUtil::preg_grep_keys( '/^schema_review_item_sameas_url_[0-9]+$/', $md_opts ) as $url ) {
+			foreach ( SucomUtil::get_multi_values( $md_opts, 'schema_review_item_sameas_url' ) as $url ) {
 
 				$json_data[ 'sameAs' ][] = SucomUtil::esc_url_encode( $url );
 			}
@@ -3419,14 +3419,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! empty( $prop_name ) && ! empty( $assoc_key ) ) {
 
-				foreach ( SucomUtil::preg_grep_keys( '/^' . $assoc_key .'_[0-9]+$/', $assoc ) as $value ) {
+				foreach ( SucomUtil::get_multi_values( $assoc, $assoc_key ) as $value ) {
 
-					if ( ! empty( $value ) ) {
-
-						$json_data[ $prop_name ][] = self::get_schema_type_context( 'https://schema.org/Person', array(
-							'name' => $value,
-						) );
-					}
+					$json_data[ $prop_name ][] = self::get_schema_type_context( 'https://schema.org/Person', array( 'name' => $value ) );
 				}
 			}
 		}
@@ -3620,12 +3615,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				) );
 			}
 
-			foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_pre . '_area_id(_[0-9]+)?$/', $type_opts ) as $opt_key => $val_id ) {
+			foreach ( SucomUtil::get_multi_values( $type_opts, $opt_pre . '_area_id' ) as $id ) {	// Uses is_valid_option_value().
 
-				if ( SucomUtil::is_valid_option_value( $val_id ) ) {	// Not true, false, null, empty string, or 'none'.
-
-					WpssoSchemaSingle::add_place_data( $json_data[ 'areaServed' ], $mod, $val_id, $list_el = true );
-				}
+				WpssoSchemaSingle::add_place_data( $json_data[ 'areaServed' ], $mod, $id, $list_el = true );
 			}
 		}
 
@@ -3691,12 +3683,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				foreach ( $type_opts[ $opt_pre . '_sameas' ] as $url ) {
 
-					if ( ! empty( $url ) ) {	// Just in case.
-
-						$json_data[ 'sameAs' ][] = SucomUtil::esc_url_encode( $url );
-					}
+					$json_data[ 'sameAs' ][] = SucomUtil::esc_url_encode( $url );
 				}
 
+				/*
+				 * Sanitize the sameAs array - make sure URLs are valid and remove any duplicates.
+				 */
 				self::check_prop_value_sameas( $json_data );
 			}
 		}
