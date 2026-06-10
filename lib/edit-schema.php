@@ -74,7 +74,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			$def_schema_desc      = $this->p->page->get_description( $mod, $md_key = 'seo_desc', $max_len = 'schema_desc' );
 			$schema_lang_disabled = $this->p->avail[ 'lang' ][ 'any' ] ? true : false;
 			$addl_type_url_max    = SucomUtil::get_const( 'WPSSO_SCHEMA_ADDL_TYPE_URL_MAX', 5 );
-			$sameas_url_max       = SucomUtil::get_const( 'WPSSO_SCHEMA_SAMEAS_URL_MAX', 5 );
+			$sameas_url_max       = SucomUtil::get_const( 'WPSSO_SCHEMA_SAMEAS_URLS_MAX', 5 );
 			$input_limits         = WpssoConfig::get_input_limits();	// Uses a local cache.
 
 			$args = array(
@@ -950,7 +950,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
 			$movie_actors_max    = SucomUtil::get_const( 'WPSSO_SCHEMA_MOVIE_ACTORS_MAX', 15 );
 			$movie_directors_max = SucomUtil::get_const( 'WPSSO_SCHEMA_MOVIE_DIRECTORS_MAX', 5 );
-			$sameas_url_max      = SucomUtil::get_const( 'WPSSO_SCHEMA_SAMEAS_URL_MAX', 5 );
+			$sameas_url_max      = SucomUtil::get_const( 'WPSSO_SCHEMA_SAMEAS_URLS_MAX', 5 );
 
 			$form_rows = array(
 				'subsection_schema_review' => array(
@@ -2198,7 +2198,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		public function filter_mb_sso_edit_schema_service_rows( $table_rows, $form, $head_info, $mod, $args ) {
 
 			$currencies          = SucomUtil::get_currencies_abbrev();
-			$admin_area_max      = SucomUtil::get_const( 'WPSSO_SCHEMA_ADMIN_AREA_MAX', 5 );
+			$admin_area_max      = SucomUtil::get_const( 'WPSSO_SCHEMA_ADMIN_AREAS_MAX', 5 );
 			$awards_max          = SucomUtil::get_const( 'WPSSO_SCHEMA_AWARDS_MAX', 5 );
 			$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
 			$offer_catalogs_max  = SucomUtil::get_const( 'WPSSO_SCHEMA_OFFER_CATALOGS_MAX', 5 );

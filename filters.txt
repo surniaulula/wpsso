@@ -159,11 +159,7 @@
 
 'wpsso_json_data_single_organization' ( $org_data, $mod, $org_id )
 
-'wpsso_json_data_single_organization_sameas' ( $org_sameas, $mod, $org_id )
-
 'wpsso_json_data_single_person' ( $person_data, $mod, $user_id )
-
-'wpsso_json_data_single_person_sameas' ( $person_sameas, $mod, $user_id )
 
 'wpsso_json_data_single_place' ( $place_data, $mod, $place_id )
 
@@ -198,8 +194,6 @@
 'wpsso_json_prop_https_schema_org_review' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main )
 
 'wpsso_json_prop_https_schema_org_reviewrating' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main )
-
-'wpsso_json_prop_https_schema_org_sameas' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main )
 
 'wpsso_link_rel' ( $link_rel, $mod )
 

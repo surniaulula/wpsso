@@ -5204,6 +5204,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Schema limits.
 			 */
 			$var_const[ 'WPSSO_SCHEMA_ADDL_TYPE_URL_MAX' ]       = 8;
+			$var_const[ 'WPSSO_SCHEMA_ADMIN_AREAS_MAX' ]         = 5;
 			$var_const[ 'WPSSO_SCHEMA_AWARDS_MAX' ]              = 5;
 			$var_const[ 'WPSSO_SCHEMA_CITATIONS_MAX' ]           = 5;
 			$var_const[ 'WPSSO_SCHEMA_COMMENTS_MAX' ]            = 50;		// Maximum number of comments when "Break comments into pages" is unchecked.
@@ -5220,7 +5221,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX' ]  = 40;
 			$var_const[ 'WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX' ] = 40;
 			$var_const[ 'WPSSO_SCHEMA_REVIEWS_MAX' ]             = 100;
-			$var_const[ 'WPSSO_SCHEMA_SAMEAS_URL_MAX' ]          = 5;
+			$var_const[ 'WPSSO_SCHEMA_SAMEAS_URLS_MAX' ]         = 5;
 			$var_const[ 'WPSSO_SCHEMA_WEBPAGE_REVIEWED_BY_MAX' ] = 5;
 
 			/*
