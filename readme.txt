@@ -272,7 +272,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.3.0-dev.2 (2026/06/09)**
+**Version 22.3.0-dev.3 (2026/06/09)**
 
 * **New Features**
 	* None.
@@ -429,7 +429,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 == Upgrade Notice ==
 
-= 22.3.0-dev.2 =
+= 22.3.0-dev.3 =
 
 (2026/06/09) Added a new "Service Areas" option in the Document SSO metabox for the Schema Service type. Changed Schema "areaServed" markup from Schema GeoShape to GeoCircle.
 
