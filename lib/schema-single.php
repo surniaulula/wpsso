@@ -349,7 +349,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * SameAs property (ie. Google's Knowledge Graph).
+			 * SameAs property (ie. Knowledge Graph).
 			 */
 			WpssoSchema::add_type_data_sameas( $json_ret, $mod, $contact_opts, $contact_id, 'contact' );
 
@@ -1363,7 +1363,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * SameAs property (ie. Google's Knowledge Graph).
+			 * SameAs property (ie. Knowledge Graph).
 			 */
 			WpssoSchema::add_type_data_sameas( $json_ret, $mod, $org_opts, $org_id, 'org' );
 
@@ -1579,7 +1579,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * SameAs property (ie. Google's Knowledge Graph).
+			 * SameAs property (ie. Knowledge Graph).
 			 */
 			WpssoSchema::add_type_data_sameas( $json_ret, $mod, $person_opts, $person_id, 'person' );
 
@@ -1826,7 +1826,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * SameAs property (ie. Google's Knowledge Graph).
+			 * SameAs property (ie. Knowledge Graph).
 			 */
 			WpssoSchema::add_type_data_sameas( $json_ret, $mod, $place_opts, $place_id, 'place' );
 

@@ -2204,46 +2204,6 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			$offer_catalogs_max  = SucomUtil::get_const( 'WPSSO_SCHEMA_OFFER_CATALOGS_MAX', 5 );
 
 			$form_rows = array(
-				'subsection_schema_service' => array(
-					'tr_class' => $args[ 'tr_class_schema' ][ 'service' ],
-					'td_class' => 'subsection',
-					'header'   => 'h5',
-					'label'    => _x( 'Service Information', 'metabox title', 'wpsso' )
-				),
-				'schema_service_latitude' => array(
-					'tr_class' => $args[ 'tr_class_schema' ][ 'service' ],
-					'th_class' => 'medium',
-					'label'    => _x( 'Service Latitude', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-schema_service_latitude',
-					'content'  => $form->get_input( 'schema_service_latitude', $css_class = 'latitude' ) . ' ' .
-						_x( 'decimal degrees', 'option comment', 'wpsso' ),
-				),
-				'schema_service_longitude' => array(
-					'tr_class' => $args[ 'tr_class_schema' ][ 'service' ],
-					'th_class' => 'medium',
-					'label'    => _x( 'Service Longitude', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-schema_service_longitude',
-					'content'  => $form->get_input( 'schema_service_longitude', $css_class = 'longitude' ) . ' ' .
-						_x( 'decimal degrees', 'option comment', 'wpsso' ),
-				),
-				'schema_service_radius' => array(
-					'tr_class' => $args[ 'tr_class_schema' ][ 'service' ],
-					'th_class' => 'medium',
-					'label'    => _x( 'Service Radius', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-schema_service_radius',
-					'content'  => $form->get_input( 'schema_service_radius', $css_class = 'short' ) . ' ' .
-						_x( 'meters from coordinates', 'option comment', 'wpsso' ),
-				),
-				'schema_service_area_id' => array(
-					'tr_class' => $args[ 'tr_class_schema' ][ 'service' ],
-					'th_class' => 'medium',
-					'label'    => _x( 'Service Areas', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-schema_service_area_id',
-					'content'  => $form->get_select_multi( 'schema_service_area_id', $args[ 'select' ][ 'admin_area' ],
-						$css_class = 'wide', $css_id = '', $is_assoc = true, $admin_area_max, $show_first = 1,
-							$is_disabled = false, $event_names = array( 'on_focus_load_json' ),
-								$event_args = array( 'json_var' => 'admin_area_names' ) ),
-				),
 				'schema_service_prov_org_id' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'service' ],
 					'th_class' => 'medium',
@@ -2271,6 +2231,12 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'tooltip'  => 'meta-schema_service_award',
 					'content'  => $form->get_input_multi( 'schema_service_award', $css_class = 'wide', $css_id = '',
 						$awards_max, $show_first = 1),
+				),
+				'subsection_schema_service_offers' => array(
+					'tr_class' => $args[ 'tr_class_schema' ][ 'service' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Service Offers Information', 'metabox title', 'wpsso' )
 				),
 				'schema_service_offers' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'service' ],
@@ -2342,6 +2308,46 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 							'input_class' => 'wide offer_catalog_url',
 						),
 					), $css_class = '', $css_id = 'schema_service_offer_catalogs', $offer_catalogs_max, $show_first = 1 ),
+				),
+				'subsection_schema_service_area' => array(
+					'tr_class' => $args[ 'tr_class_schema' ][ 'service' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Service Area Information', 'metabox title', 'wpsso' )
+				),
+				'schema_service_latitude' => array(
+					'tr_class' => $args[ 'tr_class_schema' ][ 'service' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Service Latitude', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_service_latitude',
+					'content'  => $form->get_input( 'schema_service_latitude', $css_class = 'latitude' ) . ' ' .
+						_x( 'decimal degrees', 'option comment', 'wpsso' ),
+				),
+				'schema_service_longitude' => array(
+					'tr_class' => $args[ 'tr_class_schema' ][ 'service' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Service Longitude', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_service_longitude',
+					'content'  => $form->get_input( 'schema_service_longitude', $css_class = 'longitude' ) . ' ' .
+						_x( 'decimal degrees', 'option comment', 'wpsso' ),
+				),
+				'schema_service_radius' => array(
+					'tr_class' => $args[ 'tr_class_schema' ][ 'service' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Service Radius', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_service_radius',
+					'content'  => $form->get_input( 'schema_service_radius', $css_class = 'short' ) . ' ' .
+						_x( 'meters from coordinates', 'option comment', 'wpsso' ),
+				),
+				'schema_service_area_id' => array(
+					'tr_class' => $args[ 'tr_class_schema' ][ 'service' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Service Areas', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_service_area_id',
+					'content'  => $form->get_select_multi( 'schema_service_area_id', $args[ 'select' ][ 'admin_area' ],
+						$css_class = 'wide', $css_id = '', $is_assoc = true, $admin_area_max, $show_first = 1,
+							$is_disabled = false, $event_names = array( 'on_focus_load_json' ),
+								$event_args = array( 'json_var' => 'admin_area_names' ) ),
 				),
 			);
 

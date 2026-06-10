@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 22.3.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 22.3.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2026-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6984,60 +6984,60 @@ msgctxt "metadata title"
 msgid "%s Metadata"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1511
+#: lib/abstract/wp-meta.php:1516
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1582
+#: lib/abstract/wp-meta.php:1587
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1586
+#: lib/abstract/wp-meta.php:1591
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1589 lib/messages.php:290
+#: lib/abstract/wp-meta.php:1594 lib/messages.php:290
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1593
+#: lib/abstract/wp-meta.php:1598
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1594
+#: lib/abstract/wp-meta.php:1599
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1595
+#: lib/abstract/wp-meta.php:1600
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1596
+#: lib/abstract/wp-meta.php:1601
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1941
+#: lib/abstract/wp-meta.php:1946
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2250
+#: lib/abstract/wp-meta.php:2255
 msgid "Another review cannot be the subject of a review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2252 lib/abstract/wp-meta.php:2265
+#: lib/abstract/wp-meta.php:2257 lib/abstract/wp-meta.php:2270
 msgid ""
 "Please select a Schema type for the review subject that describes the "
 "subject being reviewed."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2263
+#: lib/abstract/wp-meta.php:2268
 msgid "Another claim review cannot be the subject of a claim review."
 msgstr ""
 
@@ -7637,12 +7637,12 @@ msgstr ""
 msgid "Insufficient privileges to edit comment ID %1$s."
 msgstr ""
 
-#: lib/config.php:5477
+#: lib/config.php:5512
 msgctxt "plugin type"
 msgid "plugin"
 msgstr ""
 
-#: lib/config.php:5477
+#: lib/config.php:5512
 msgctxt "plugin type"
 msgid "add-on"
 msgstr ""
@@ -8364,12 +8364,12 @@ msgctxt "option label"
 msgid "Publisher Person"
 msgstr ""
 
-#: lib/edit-schema.php:283 lib/edit-schema.php:2250
+#: lib/edit-schema.php:283 lib/edit-schema.php:2210
 msgctxt "option label"
 msgid "Provider Org."
 msgstr ""
 
-#: lib/edit-schema.php:293 lib/edit-schema.php:2260
+#: lib/edit-schema.php:293 lib/edit-schema.php:2220
 msgctxt "option label"
 msgid "Provider Person"
 msgstr ""
@@ -9368,99 +9368,104 @@ msgctxt "option label"
 msgid "Product Awards"
 msgstr ""
 
-#: lib/edit-schema.php:2211
-msgctxt "metabox title"
-msgid "Service Information"
-msgstr ""
-
-#: lib/edit-schema.php:2216
-msgctxt "option label"
-msgid "Service Latitude"
-msgstr ""
-
-#: lib/edit-schema.php:2219 lib/edit-schema.php:2227
-msgctxt "option comment"
-msgid "decimal degrees"
-msgstr ""
-
-#: lib/edit-schema.php:2224
-msgctxt "option label"
-msgid "Service Longitude"
-msgstr ""
-
-#: lib/edit-schema.php:2232
-msgctxt "option label"
-msgid "Service Radius"
-msgstr ""
-
-#: lib/edit-schema.php:2235
-msgctxt "option comment"
-msgid "meters from coordinates"
-msgstr ""
-
-#: lib/edit-schema.php:2240
-msgctxt "option label"
-msgid "Service Areas"
-msgstr ""
-
-#: lib/edit-schema.php:2270
+#: lib/edit-schema.php:2230
 msgctxt "option label"
 msgid "Service Awards"
 msgstr ""
 
-#: lib/edit-schema.php:2278
+#: lib/edit-schema.php:2239
+msgctxt "metabox title"
+msgid "Service Offers Information"
+msgstr ""
+
+#: lib/edit-schema.php:2244
 msgctxt "option label"
 msgid "Service Offers"
 msgstr ""
 
-#: lib/edit-schema.php:2282
+#: lib/edit-schema.php:2248
 msgctxt "option label"
 msgid "Service Offer Name"
 msgstr ""
 
-#: lib/edit-schema.php:2287
+#: lib/edit-schema.php:2253
 msgctxt "option label"
 msgid "Service Offer Price"
 msgstr ""
 
-#: lib/edit-schema.php:2292
+#: lib/edit-schema.php:2258
 msgctxt "option label"
 msgid "Service Offer Currency"
 msgstr ""
 
-#: lib/edit-schema.php:2301
+#: lib/edit-schema.php:2267
 msgctxt "option label"
 msgid "Service Offer Availability"
 msgstr ""
 
-#: lib/edit-schema.php:2312
+#: lib/edit-schema.php:2278
 msgctxt "option label"
 msgid "Service Offers Start"
 msgstr ""
 
-#: lib/edit-schema.php:2319
+#: lib/edit-schema.php:2285
 msgctxt "option label"
 msgid "Service Offers End"
 msgstr ""
 
-#: lib/edit-schema.php:2326
+#: lib/edit-schema.php:2292
 msgctxt "option label"
 msgid "Offer Catalogs"
 msgstr ""
 
-#: lib/edit-schema.php:2330
+#: lib/edit-schema.php:2296
 msgctxt "option label"
 msgid "Offer Catalog Name"
 msgstr ""
 
-#: lib/edit-schema.php:2335
+#: lib/edit-schema.php:2301
 msgctxt "option label"
 msgid "Offer Catalog Description"
 msgstr ""
 
-#: lib/edit-schema.php:2340
+#: lib/edit-schema.php:2306
 msgctxt "option label"
 msgid "Offer Catalog URL"
+msgstr ""
+
+#: lib/edit-schema.php:2316
+msgctxt "metabox title"
+msgid "Service Area Information"
+msgstr ""
+
+#: lib/edit-schema.php:2321
+msgctxt "option label"
+msgid "Service Latitude"
+msgstr ""
+
+#: lib/edit-schema.php:2324 lib/edit-schema.php:2332
+msgctxt "option comment"
+msgid "decimal degrees"
+msgstr ""
+
+#: lib/edit-schema.php:2329
+msgctxt "option label"
+msgid "Service Longitude"
+msgstr ""
+
+#: lib/edit-schema.php:2337
+msgctxt "option label"
+msgid "Service Radius"
+msgstr ""
+
+#: lib/edit-schema.php:2340
+msgctxt "option comment"
+msgid "meters from coordinates"
+msgstr ""
+
+#: lib/edit-schema.php:2345
+msgctxt "option label"
+msgid "Service Areas"
 msgstr ""
 
 #: lib/edit-validators.php:53
@@ -10805,8 +10810,8 @@ msgstr ""
 
 #: lib/messages-tooltip-meta-place.php:85
 #: lib/messages-tooltip-meta-place.php:93
-#: lib/messages-tooltip-meta-schema.php:988
-#: lib/messages-tooltip-meta-schema.php:996
+#: lib/messages-tooltip-meta-schema.php:1025
+#: lib/messages-tooltip-meta-schema.php:1033
 msgid ""
 "You may use a service like <a href=\"http://www.gps-coordinates.net/"
 "\">Google Maps GPS Coordinates</a> (as an example), to find the approximate "
@@ -11096,7 +11101,7 @@ msgid "A publisher for this creative work."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:168
-#: lib/messages-tooltip-meta-schema.php:1017
+#: lib/messages-tooltip-meta-schema.php:987
 msgid "A service provider, service operator, or service performer."
 msgstr ""
 
@@ -11282,12 +11287,12 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:413
-#: lib/messages-tooltip-meta-schema.php:1035
+#: lib/messages-tooltip-meta-schema.php:1005
 msgid "The date and time when tickets go on sale."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:419
-#: lib/messages-tooltip-meta-schema.php:1041
+#: lib/messages-tooltip-meta-schema.php:1011
 msgid "The date and time when tickets are no longer on sale."
 msgstr ""
 
@@ -11663,46 +11668,46 @@ msgstr ""
 msgid "An optional webpage URL where this specific claim first appeared."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:986
-msgid "The numeric decimal degrees latitude for this service."
-msgstr ""
-
-#: lib/messages-tooltip-meta-schema.php:994
-msgid "The numeric decimal degrees longitude for this service."
-msgstr ""
-
-#: lib/messages-tooltip-meta-schema.php:1002
-msgid ""
-"The geographic area where a service is provided, in meters around a set of "
-"latitude and longitude coordinates."
-msgstr ""
-
-#: lib/messages-tooltip-meta-schema.php:1008
-msgid ""
-"An administrative area where a service is provided (ie. a school district, "
-"city, state/province, or country)."
-msgstr ""
-
-#: lib/messages-tooltip-meta-schema.php:1010
-msgid ""
-"One or more places matching the Schema AdministrativeArea type or its sub-"
-"types can be selected."
-msgstr ""
-
-#: lib/messages-tooltip-meta-schema.php:1023
+#: lib/messages-tooltip-meta-schema.php:993
 msgid "Awards this service has won."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1029
+#: lib/messages-tooltip-meta-schema.php:999
 msgid ""
 "One or more offers for the service, including the offer name, price and "
 "currency."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1047
+#: lib/messages-tooltip-meta-schema.php:1017
 msgid ""
 "A list of offer catalogs for this service, including the catalog name, "
 "description and URL."
+msgstr ""
+
+#: lib/messages-tooltip-meta-schema.php:1023
+msgid "The numeric decimal degrees latitude for this service."
+msgstr ""
+
+#: lib/messages-tooltip-meta-schema.php:1031
+msgid "The numeric decimal degrees longitude for this service."
+msgstr ""
+
+#: lib/messages-tooltip-meta-schema.php:1039
+msgid ""
+"The geographic area where a service is provided, in meters around a set of "
+"latitude and longitude coordinates."
+msgstr ""
+
+#: lib/messages-tooltip-meta-schema.php:1045
+msgid ""
+"An administrative area where a service is provided (ie. a school district, "
+"city, state/province, or country)."
+msgstr ""
+
+#: lib/messages-tooltip-meta-schema.php:1047
+msgid ""
+"One or more places matching the Schema AdministrativeArea type or its sub-"
+"types can be selected."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:1061

@@ -812,11 +812,16 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_recipe_instruction_text_2'    => '',
 					'schema_recipe_instruction_text_3'    => '',
 					'schema_recipe_instruction_text_4'    => '',
-					'schema_recipe_instruction_img_0'     => '',
-					'schema_recipe_instruction_img_1'     => '',
-					'schema_recipe_instruction_img_2'     => '',
-					'schema_recipe_instruction_img_3'     => '',
-					'schema_recipe_instruction_img_4'     => '',
+					'schema_recipe_instruction_img_id_0'  => '',
+					'schema_recipe_instruction_img_id_1'  => '',
+					'schema_recipe_instruction_img_id_2'  => '',
+					'schema_recipe_instruction_img_id_3'  => '',
+					'schema_recipe_instruction_img_id_4'  => '',
+					'schema_recipe_instruction_img_lib_0' => '',
+					'schema_recipe_instruction_img_lib_1' => '',
+					'schema_recipe_instruction_img_lib_2' => '',
+					'schema_recipe_instruction_img_lib_3' => '',
+					'schema_recipe_instruction_img_lib_4' => '',
 
 					/*
 					 * Schema Recipe - Nutrition Information.
@@ -972,14 +977,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/*
 					 * Schema Service.
 					 */
-					'schema_service_latitude'             => '',						// Service Latitude.
-					'schema_service_longitude'            => '',						// Service Longitude.
-					'schema_service_radius'               => '',						// Service Radius.
-					'schema_service_area_id_0'            => 'none',					// Service Areas.
-					'schema_service_area_id_1'            => 'none',					// Service Areas.
-					'schema_service_area_id_2'            => 'none',					// Service Areas.
-					'schema_service_area_id_3'            => 'none',					// Service Areas.
-					'schema_service_area_id_4'            => 'none',					// Service Areas.
 					'schema_service_prov_org_id'          => $opts[ 'schema_def_service_prov_org_id' ],	// Provider Org.
 					'schema_service_prov_person_id'       => $opts[ 'schema_def_service_prov_person_id' ],	// Provider Person.
 					'schema_service_award_0'              => '',						// Service Award.
@@ -1022,6 +1019,14 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_service_offer_catalog_url_2'  => '',						// Offer Catalog URL.
 					'schema_service_offer_catalog_url_3'  => '',						// Offer Catalog URL.
 					'schema_service_offer_catalog_url_4'  => '',						// Offer Catalog URL.
+					'schema_service_latitude'             => '',						// Service Latitude.
+					'schema_service_longitude'            => '',						// Service Longitude.
+					'schema_service_radius'               => '',						// Service Radius.
+					'schema_service_area_id_0'            => 'none',					// Service Areas.
+					'schema_service_area_id_1'            => 'none',					// Service Areas.
+					'schema_service_area_id_2'            => 'none',					// Service Areas.
+					'schema_service_area_id_3'            => 'none',					// Service Areas.
+					'schema_service_area_id_4'            => 'none',					// Service Areas.
 
 					/*
 					 * Schema Software Application.
@@ -2298,10 +2303,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				 * Get multi option values indexed by their number.
 				 */
 				$md_multi_opts = SucomUtil::preg_grep_keys( '/^' . $multi_key . '_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
-
 				$md_renum_opts = array();	// Start with a fresh array.
-
-				$renum = 0;	// Start a new index at 0.
+				$renum         = 0;		// Start a new index at 0.
 
 				foreach ( $md_multi_opts as $md_num => $md_val ) {
 

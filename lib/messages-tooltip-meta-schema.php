@@ -981,36 +981,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					switch ( $msg_key ) {
 
-						case 'tooltip-meta-schema_service_latitude':	// Service Latitude.
-
-							$text = __( 'The numeric decimal degrees latitude for this service.', 'wpsso' ) . ' ';
-
-							$text .= __( 'You may use a service like <a href="http://www.gps-coordinates.net/">Google Maps GPS Coordinates</a> (as an example), to find the approximate GPS coordinates of a street address.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-meta-schema_service_longitude':	// Service Longitude.
-
-							$text = __( 'The numeric decimal degrees longitude for this service.', 'wpsso' ) . ' ';
-
-							$text .= __( 'You may use a service like <a href="http://www.gps-coordinates.net/">Google Maps GPS Coordinates</a> (as an example), to find the approximate GPS coordinates of a street address.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-meta-schema_service_radius':	// Service Radius.
-
-							$text = __( 'The geographic area where a service is provided, in meters around a set of latitude and longitude coordinates.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-meta-schema_service_area_id':	// Service Areas.
-
-							$text = __( 'An administrative area where a service is provided (ie. a school district, city, state/province, or country).', 'wpsso' ) . ' ';
-
-							$text .= __( 'One or more places matching the Schema AdministrativeArea type or its sub-types can be selected.', 'wpsso' ) . ' ';
-
-							break;
-
 						case 'tooltip-meta-schema_service_prov_org_id':		// Provider Org.
 						case 'tooltip-meta-schema_service_prov_person_id':	// Provider Person.
 
@@ -1047,6 +1017,36 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 							$text = __( 'A list of offer catalogs for this service, including the catalog name, description and URL.', 'wpsso' );
 
 						 	break;
+
+						case 'tooltip-meta-schema_service_latitude':	// Service Latitude.
+
+							$text = __( 'The numeric decimal degrees latitude for this service.', 'wpsso' ) . ' ';
+
+							$text .= __( 'You may use a service like <a href="http://www.gps-coordinates.net/">Google Maps GPS Coordinates</a> (as an example), to find the approximate GPS coordinates of a street address.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-meta-schema_service_longitude':	// Service Longitude.
+
+							$text = __( 'The numeric decimal degrees longitude for this service.', 'wpsso' ) . ' ';
+
+							$text .= __( 'You may use a service like <a href="http://www.gps-coordinates.net/">Google Maps GPS Coordinates</a> (as an example), to find the approximate GPS coordinates of a street address.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-meta-schema_service_radius':	// Service Radius.
+
+							$text = __( 'The geographic area where a service is provided, in meters around a set of latitude and longitude coordinates.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-meta-schema_service_area_id':	// Service Areas.
+
+							$text = __( 'An administrative area where a service is provided (ie. a school district, city, state/province, or country).', 'wpsso' ) . ' ';
+
+							$text .= __( 'One or more places matching the Schema AdministrativeArea type or its sub-types can be selected.', 'wpsso' ) . ' ';
+
+							break;
 
 					}	// End of 'tooltip-meta-schema_service' switch.
 
