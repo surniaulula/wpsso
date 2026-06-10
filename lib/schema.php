@@ -2597,18 +2597,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 * Property:
 				 *	address as https://schema.org/PostalAddress
 				 */
-				$postal_address = array();
+				if ( ! empty( $md_opts[ 'schema_review_item_place_street_address' ] ) ) {
 
-				if ( self::add_data_itemprop_from_assoc( $postal_address, $md_opts, array(
-					'streetAddress'       => 'schema_review_item_place_street_address',
-					'postOfficeBoxNumber' => 'schema_review_item_place_po_box_number',
-					'addressLocality'     => 'schema_review_item_place_city',
-					'addressRegion'       => 'schema_review_item_place_region',
-					'postalCode'          => 'schema_review_item_place_postal_code',
-					'addressCountry'      => 'schema_review_item_place_country',	// Alpha2 country code.
-				) ) ) {
-
-					$json_data[ 'address' ] = self::get_schema_type_context( 'https://schema.org/PostalAddress', $postal_address );
+					$json_data[ 'address' ] = self::get_schema_type_context( 'https://schema.org/PostalAddress',
+						self::get_data_itemprop_from_assoc( $md_opts, array(
+							'streetAddress'       => 'schema_review_item_place_street_address',
+							'postOfficeBoxNumber' => 'schema_review_item_place_po_box_number',
+							'addressLocality'     => 'schema_review_item_place_city',
+							'addressRegion'       => 'schema_review_item_place_region',
+							'postalCode'          => 'schema_review_item_place_postal_code',
+							'addressCountry'      => 'schema_review_item_place_country',	// Alpha2 country code.
+						) )
+					);
 				}
 
 				if ( $wpsso->schema->is_schema_type_child( $type_id, 'local.business' ) ) {

@@ -338,14 +338,17 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			if ( $wpsso->schema->is_schema_type_child( $type_id, 'postal.address' ) ) {
 
-				WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $contact_opts, array(	// Returns the number of properties added.
-					'streetAddress'       => 'contact_street_address',
-					'postOfficeBoxNumber' => 'contact_po_box_number',
-					'addressLocality'     => 'contact_city',
-					'addressRegion'       => 'contact_region',
-					'postalCode'          => 'contact_postal_code',
-					'addressCountry'      => 'contact_country',	// Alpha2 country code.
-				) );
+				if ( ! empty( $contact_opts[ 'contact_street_address' ] ) ) {	// Just in case.
+
+					WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $contact_opts, array(	// Returns the number of properties added.
+						'streetAddress'       => 'contact_street_address',
+						'postOfficeBoxNumber' => 'contact_po_box_number',
+						'addressLocality'     => 'contact_city',
+						'addressRegion'       => 'contact_region',
+						'postalCode'          => 'contact_postal_code',
+						'addressCountry'      => 'contact_country',	// Alpha2 country code.
+					) );
+				}
 			}
 
 			/*
@@ -1720,19 +1723,19 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Property:
 			 *	address as https://schema.org/PostalAddress
 			 */
-			$postal_address = array();
+			if ( ! empty( $place_opts[ 'place_street_address' ] ) ) {
 
-			if ( WpssoSchema::add_data_itemprop_from_assoc( $postal_address, $place_opts, array(
-				'name'                => 'place_name',
-				'streetAddress'       => 'place_street_address',
-				'postOfficeBoxNumber' => 'place_po_box_number',
-				'addressLocality'     => 'place_city',
-				'addressRegion'       => 'place_region',
-				'postalCode'          => 'place_postal_code',
-				'addressCountry'      => 'place_country',	// Alpha2 country code.
-			) ) ) {
-
-				$json_ret[ 'address' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/PostalAddress', $postal_address );
+				$json_ret[ 'address' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/PostalAddress',
+					WpssoSchema::get_data_itemprop_from_assoc( $place_opts, array(
+						'name'                => 'place_name',
+						'streetAddress'       => 'place_street_address',
+						'postOfficeBoxNumber' => 'place_po_box_number',
+						'addressLocality'     => 'place_city',
+						'addressRegion'       => 'place_region',
+						'postalCode'          => 'place_postal_code',
+						'addressCountry'      => 'place_country',	// Alpha2 country code.
+					) )
+				);
 			}
 
 			/*

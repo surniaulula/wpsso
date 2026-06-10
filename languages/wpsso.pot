@@ -15170,23 +15170,23 @@ msgctxt "taxonomy description"
 msgid "Tags for the page post type."
 msgstr ""
 
-#: lib/schema-single.php:1158
+#: lib/schema-single.php:1161
 msgid "adding schema organization"
 msgstr ""
 
-#: lib/schema-single.php:1159
+#: lib/schema-single.php:1162
 msgid "adding schema organization ID \"%s\""
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1271
+#: lib/schema-single.php:1274
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1274
+#: lib/schema-single.php:1277
 msgid ""
 "An organization banner image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
@@ -15194,31 +15194,31 @@ msgstr ""
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or
 #. organization ID.
-#: lib/schema-single.php:1277
+#: lib/schema-single.php:1280
 msgid "Enter the missing image URL in the \"%1$s\" %2$s organization settings."
 msgstr ""
 
-#: lib/schema-single.php:1313
+#: lib/schema-single.php:1316
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1327 lib/schema-single.php:1336
+#: lib/schema-single.php:1330 lib/schema-single.php:1339
 msgid "ID \"%s\""
 msgstr ""
 
-#: lib/schema-single.php:1498
+#: lib/schema-single.php:1501
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1704
+#: lib/schema-single.php:1707
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema-single.php:2208
+#: lib/schema-single.php:2211
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:2345
+#: lib/schema-single.php:2348
 msgid "adding schema product"
 msgstr ""
 
