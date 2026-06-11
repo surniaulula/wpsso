@@ -195,6 +195,8 @@
 
 'wpsso_json_prop_https_schema_org_reviewrating' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main )
 
+'wpsso_json_prop_https_schema_org_sameas' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main )
+
 'wpsso_link_rel' ( $link_rel, $mod )
 
 'wpsso_load_lib' ( $success = false, $filespec = '', $classname = '' )
