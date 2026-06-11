@@ -272,7 +272,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.3.0 (2026/06/09)**
+**Version 22.3.0 (2026/06/11)**
 
 * **New Features**
 	* None.
@@ -284,6 +284,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added a new `WpssoSchema->add_type_data_areaserved()` method.
 	* Added a new `WpssoSchema->add_type_data_sameas()` method.
+	* Removed filter 'wpsso_json_data_single_organization_sameas'.
+	* Removed filter 'wpsso_json_data_single_person_sameas'.
+	* Added constant `WPSSO_SCHEMA_ADMIN_AREAS_MAX`.
+	* Renamed constant `WPSSO_SCHEMA_SAMEAS_URL_MAX` to `WPSSO_SCHEMA_SAMEAS_URLS_MAX`.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v6.0.
@@ -431,7 +435,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 = 22.3.0 =
 
-(2026/06/09) Added a new "Service Areas" option in the Document SSO metabox for the Schema Service type. Changed Schema "areaServed" markup from Schema GeoShape to GeoCircle.
+(2026/06/11) Added a new "Service Areas" option in the Document SSO metabox for the Schema Service type. Changed Schema "areaServed" markup from Schema GeoShape to GeoCircle.
 
 = 22.2.1 =
 
