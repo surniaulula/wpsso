@@ -72,14 +72,30 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			$def_schema_title     = $this->p->page->get_title( $mod, $md_key = 'seo_title', $max_len = 'schema_title' );
 			$def_schema_title_alt = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_title_alt' );
 			$def_schema_desc      = $this->p->page->get_description( $mod, $md_key = 'seo_desc', $max_len = 'schema_desc' );
-			$schema_lang_disabled = $this->p->avail[ 'lang' ][ 'any' ] ? true : false;
-			$addl_type_url_max    = SucomUtil::get_const( 'WPSSO_SCHEMA_ADDL_TYPE_URL_MAX', 5 );
-			$sameas_url_max       = SucomUtil::get_const( 'WPSSO_SCHEMA_SAMEAS_URLS_MAX', 5 );
 			$input_limits         = WpssoConfig::get_input_limits();	// Uses a local cache.
+			$schema_lang_disabled = $this->p->avail[ 'lang' ][ 'any' ] ? true : false;
 
 			$args = array(
+				'max_multi' => array(
+					'addl_type_url'   => SucomUtil::get_const( 'WPSSO_SCHEMA_ADDL_TYPE_URL_MAX', 5 ),
+					'awards'          => SucomUtil::get_const( 'WPSSO_SCHEMA_AWARDS_MAX', 5 ),
+					'citations'       => SucomUtil::get_const( 'WPSSO_SCHEMA_CITATIONS_MAX', 5 ),
+					'howto_steps'     => SucomUtil::get_const( 'WPSSO_SCHEMA_HOWTO_STEPS_MAX', 40 ),
+					'howto_supplies'  => SucomUtil::get_const( 'WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX', 30 ),
+					'howto_tools'     => SucomUtil::get_const( 'WPSSO_SCHEMA_HOWTO_TOOLS_MAX', 20 ),
+					'ispartof_url'    => SucomUtil::get_const( 'WPSSO_SCHEMA_ISPARTOF_URLS_MAX', 10 ),
+					'metadata_offers' => SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 ),
+					'movie_actors'    => SucomUtil::get_const( 'WPSSO_SCHEMA_MOVIE_ACTORS_MAX', 15 ),
+					'movie_directors' => SucomUtil::get_const( 'WPSSO_SCHEMA_MOVIE_DIRECTORS_MAX', 5 ),
+					'offer_catalogs'  => SucomUtil::get_const( 'WPSSO_SCHEMA_OFFER_CATALOGS_MAX', 5 ),
+					'sameas_url'      => SucomUtil::get_const( 'WPSSO_SCHEMA_SAMEAS_URLS_MAX', 5 ),
+					'service_areas'   => SucomUtil::get_const( 'WPSSO_SCHEMA_SERVICE_AREAS_MAX', 5 ),
+					'reviewed_by'     => SucomUtil::get_const( 'WPSSO_SCHEMA_WEBPAGE_REVIEWED_BY_MAX', 5 ),
+					'recipe_ingr'     => SucomUtil::get_const( 'WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX', 40 ),
+					'recipe_inst'     => SucomUtil::get_const( 'WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX', 40 ),
+				),
 				'select' => array(
-					'admin_area'       => $this->p->util->get_form_cache( 'admin_area_names', $add_none = true ),
+					'service_areas'    => $this->p->util->get_form_cache( 'service_areas_names', $add_none = true ),
 					'contact'          => $this->p->util->get_form_cache( 'contact_names', $add_none = true ),
 					'google_prod_cats' => $this->p->util->get_google_product_categories(),
 					'mrp'              => $this->p->util->get_form_cache( 'mrp_names', $add_none = true ),
@@ -147,14 +163,14 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Microdata Type URLs', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_addl_type_url',
 					'content'  => $form->get_input_multi( 'schema_addl_type_url', $css_class = 'wide', $css_id = '',
-						$addl_type_url_max, $show_first = 1 ),
+						$args[ 'max_multi' ][ 'addl_type_url' ], $show_first = 1 ),
 				),
 				'schema_sameas_url' => array(
 					'th_class' => 'medium',
 					'label'    => _x( 'Same-As URLs', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_sameas_url',
 					'content'  => $form->get_input_multi( 'schema_sameas_url', $css_class = 'wide', $css_id = '',
-						$sameas_url_max, $show_first = 1 ),
+						$args[ 'max_multi' ][ 'sameas_url' ], $show_first = 1 ),
 				),
 			);
 
@@ -201,9 +217,6 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			$def_schema_headline     = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_headline' );
 			$def_schema_text         = $this->p->page->get_text( $mod, $md_key = '', $max_len = 'schema_text' );
 			$def_schema_keywords_csv = $this->p->page->get_keywords_csv( $mod, $md_key = '' );
-			$awards_max              = SucomUtil::get_const( 'WPSSO_SCHEMA_AWARDS_MAX' );
-			$citations_max           = SucomUtil::get_const( 'WPSSO_SCHEMA_CITATIONS_MAX' );
-			$ispartof_url_max        = SucomUtil::get_const( 'WPSSO_SCHEMA_ISPARTOF_URL_MAX' );
 			$input_limits            = WpssoConfig::get_input_limits();	// Uses a local cache.
 
 			$form_rows = array(
@@ -260,7 +273,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				'schema_pub_org_id' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'creative.work' ],
 					'th_class' => 'medium',
-					'label'    => _x( 'Publisher Org.', 'option label', 'wpsso' ),
+					'label'    => _x( 'Publisher Organization', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_pub_org_id',
 					'content'  => $form->get_select( 'schema_pub_org_id', $args[ 'select' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
@@ -280,7 +293,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				'schema_prov_org_id' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'creative.work' ],
 					'th_class' => 'medium',
-					'label'    => _x( 'Provider Org.', 'option label', 'wpsso' ),
+					'label'    => _x( 'Provider Organization', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_prov_org_id',
 					'content'  => $form->get_select( 'schema_prov_org_id', $args[ 'select' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
@@ -300,7 +313,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				'schema_fund_org_id' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'creative.work' ],
 					'th_class' => 'medium',
-					'label'    => _x( 'Funder Org.', 'option label', 'wpsso' ),
+					'label'    => _x( 'Funder Organization', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_fund_org_id',
 					'content'  => $form->get_select( 'schema_fund_org_id', $args[ 'select' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
@@ -323,7 +336,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Is Part of URLs', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_ispartof_url',
 					'content'  => $form->get_input_multi( 'schema_ispartof_url', $css_class = 'wide', $css_id = '',
-						$ispartof_url_max, $show_first = 1 ),
+						$args[ 'max_multi' ][ 'ispartof_url' ], $show_first = 1 ),
 				),
 				'schema_award' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'creative.work' ],
@@ -331,7 +344,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Creative Work Awards', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_award',
 					'content'  => $form->get_input_multi( 'schema_award', $css_class = 'wide', $css_id = '',
-						$awards_max, $show_first = 1 ),
+						$args[ 'max_multi' ][ 'awards' ], $show_first = 1 ),
 				),
 
 				/*
@@ -349,7 +362,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Reference Citations', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_citation',
 					'content'  => $form->get_textarea_multi( 'schema_citation', $css_class = 'wide', $css_id = '',
-						$max_len = 0, $citations_max, $show_first = 1 ),
+						$max_len = 0, $args[ 'max_multi' ][ 'citations' ], $show_first = 1 ),
 				),
 			);
 
@@ -406,8 +419,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		 */
 		public function filter_mb_sso_edit_schema_book_rows( $table_rows, $form, $head_info, $mod, $args ) {
 
-			$currencies          = SucomUtil::get_currencies_abbrev();
-			$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
+			$currencies = SucomUtil::get_currencies_abbrev();
 
 			$form_rows = array(
 				'subsection_schema_book' => array(
@@ -513,7 +525,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 							'select_options' => $this->p->cf[ 'form' ][ 'item_availability' ],
 							'select_default' => 'https://schema.org/InStock',
 						),
-					), $css_class = 'single_line', $css_id = 'schema_book_offer', $metadata_offers_max, $show_first = 2 ),
+					), $css_class = 'single_line', $css_id = 'schema_book_offer', $args[ 'max_multi' ][ 'metadata_offers' ], $show_first = 2 ),
 				),
 
 				/*
@@ -541,10 +553,6 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		 * Schema CreativeWork > HowTo.
 		 */
 		public function filter_mb_sso_edit_schema_howto_rows( $table_rows, $form, $head_info, $mod, $args ) {
-
-			$howto_steps_max     = SucomUtil::get_const( 'WPSSO_SCHEMA_HOWTO_STEPS_MAX', 40 );
-			$howto_supplies_max  = SucomUtil::get_const( 'WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX', 30 );
-			$howto_tools_max     = SucomUtil::get_const( 'WPSSO_SCHEMA_HOWTO_TOOLS_MAX', 20 );
 
 			$form_rows = array(
 				'subsection_schema_howto' => array(
@@ -580,7 +588,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'How-To Supplies', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_howto_supplies',
 					'content'  => $form->get_input_multi( 'schema_howto_supply', $css_class = 'wide', $css_id = '',
-						$howto_supplies_max, $show_first = 5 ),
+						$args[ 'max_multi' ][ 'howto_supplies' ], $show_first = 5 ),
 				),
 				'schema_howto_tools' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'howto' ],
@@ -588,7 +596,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'How-To Tools', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_howto_tools',
 					'content'  => $form->get_input_multi( 'schema_howto_tool', $css_class = 'wide', $css_id = '',
-						$howto_tools_max, $show_first = 5 ),
+						$args[ 'max_multi' ][ 'howto_tools' ], $show_first = 5 ),
 				),
 				'schema_howto_steps' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'howto' ],
@@ -623,7 +631,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 							'input_type'  => 'image',
 							'input_class' => 'howto_step_img',
 						),
-					), $css_class = '', $css_id = 'schema_howto_steps', $howto_steps_max, $show_first = 2 ),
+					), $css_class = '', $css_id = 'schema_howto_steps', $args[ 'max_multi' ][ 'howto_steps' ], $show_first = 2 ),
 				),
 			);
 
@@ -634,9 +642,6 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		 * Schema CreativeWork > HowTo > Recipe.
 		 */
 		public function filter_mb_sso_edit_schema_recipe_rows( $table_rows, $form, $head_info, $mod, $args ) {
-
-			$recipe_ingr_max = SucomUtil::get_const( 'WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX', 40 );
-			$recipe_inst_max = SucomUtil::get_const( 'WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX', 40 );
 
 			$form_rows = array(
 				'subsection_schema_recipe' => array(
@@ -700,7 +705,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Recipe Ingredients', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_ingredients',
 					'content'  => $form->get_input_multi( 'schema_recipe_ingredient', $css_class = 'wide', $css_id = '',
-						$recipe_ingr_max, $show_first = 5 ),
+						$args[ 'max_multi' ][ 'recipe_ingr' ], $show_first = 5 ),
 				),
 				'schema_recipe_instructions' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'recipe' ],
@@ -735,7 +740,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 							'input_type'  => 'image',
 							'input_class' => 'recipe_instruction_img',
 						),
-					), $css_class = '', $css_id = 'schema_recipe_instructions', $recipe_inst_max, $show_first = 2 ),
+					), $css_class = '', $css_id = 'schema_recipe_instructions', $args[ 'max_multi' ][ 'recipe_inst' ], $show_first = 2 ),
 				),
 
 				/*
@@ -885,9 +890,6 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		 */
 		public function filter_mb_sso_edit_schema_movie_rows( $table_rows, $form, $head_info, $mod, $args ) {
 
-			$movie_actors_max    = SucomUtil::get_const( 'WPSSO_SCHEMA_MOVIE_ACTORS_MAX', 15 );
-			$movie_directors_max = SucomUtil::get_const( 'WPSSO_SCHEMA_MOVIE_DIRECTORS_MAX', 5 );
-
 			$form_rows = array(
 				'subsection_schema_movie' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'movie' ],
@@ -901,7 +903,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Movie Cast Names', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_movie_actor_person_names',
 					'content'  => $form->get_input_multi( 'schema_movie_actor_person_name',	// Singular.
-						$css_class = 'long_name', $css_id = '', $movie_actors_max, $show_first = 3 ),
+						$css_class = 'long_name', $css_id = '', $args[ 'max_multi' ][ 'movie_actors' ], $show_first = 3 ),
 				),
 				'schema_movie_director_person_names' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'movie' ],
@@ -909,7 +911,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Movie Director Names', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_movie_director_person_names',
 					'content'  => $form->get_input_multi( 'schema_movie_director_person_name',	// Singular.
-						$css_class = 'long_name', $css_id = '', $movie_directors_max, $show_first = 1 ),
+						$css_class = 'long_name', $css_id = '', $args[ 'max_multi' ][ 'movie_directors' ], $show_first = 1 ),
 				),
 				'schema_movie_prodco_org_id' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'movie' ],
@@ -947,10 +949,6 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 
 			$currencies          = SucomUtil::get_currencies_abbrev();
 			$item_type_row_class = WpssoSchema::get_schema_type_row_class( 'schema_review_item_type' );
-			$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
-			$movie_actors_max    = SucomUtil::get_const( 'WPSSO_SCHEMA_MOVIE_ACTORS_MAX', 15 );
-			$movie_directors_max = SucomUtil::get_const( 'WPSSO_SCHEMA_MOVIE_DIRECTORS_MAX', 5 );
-			$sameas_url_max      = SucomUtil::get_const( 'WPSSO_SCHEMA_SAMEAS_URLS_MAX', 5 );
 
 			$form_rows = array(
 				'subsection_schema_review' => array(
@@ -1044,7 +1042,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Subject Same-As URLs', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_review_item_sameas_url',
 					'content'  => $form->get_input_multi( 'schema_review_item_sameas_url', $css_class = 'wide', $css_id = '',
-						$sameas_url_max, $show_first = 1 ),
+						$args[ 'max_multi' ][ 'sameas_url' ], $show_first = 1 ),
 				),
 				'schema_review_item_type' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'review' ],
@@ -1122,7 +1120,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Movie Cast Names', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_review_item_cw_movie_actor_person_names',
 					'content'  => $form->get_input_multi( 'schema_review_item_cw_movie_actor_person_name',	// Singular.
-						$css_class = 'long_name', $css_id = '', $movie_actors_max, $show_first = 3 ),
+						$css_class = 'long_name', $css_id = '', $args[ 'max_multi' ][ 'movie_actors' ], $show_first = 3 ),
 				),
 				'schema_review_item_cw_movie_director_person_names' => array(
 					'tr_class' => 'hide_schema_type ' . $item_type_row_class[ 'movie' ],
@@ -1130,7 +1128,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Movie Director Names', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_review_item_cw_movie_director_person_names',
 					'content'  => $form->get_input_multi( 'schema_review_item_cw_movie_director_person_name',	// Singular.
-						$css_class = 'long_name', $css_num = '', $movie_directors_max, $show_first = 1 ),
+						$css_class = 'long_name', $css_num = '', $args[ 'max_multi' ][ 'movie_directors' ], $show_first = 1 ),
 				),
 
 				/*
@@ -1189,7 +1187,8 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 							'select_options' => $this->p->cf[ 'form' ][ 'item_availability' ],
 							'select_default' => 'https://schema.org/InStock',
 						),
-					), $css_class = 'single_line', $css_id = 'schema_review_item_software_app_offer', $metadata_offers_max, $show_first = 2 ),
+					), $css_class = 'single_line', $css_id = 'schema_review_item_software_app_offer',
+						$args[ 'max_multi' ][ 'metadata_offers' ], $show_first = 2 ),
 				),
 
 				/*
@@ -1309,7 +1308,8 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 							'select_options' => $this->p->cf[ 'form' ][ 'item_availability' ],
 							'select_default' => 'https://schema.org/InStock',
 						),
-					), $css_class = 'single_line', $css_id = 'schema_review_item_product_offer', $metadata_offers_max, $show_first = 2 ),
+					), $css_class = 'single_line', $css_id = 'schema_review_item_product_offer',
+						$args[ 'max_multi' ][ 'metadata_offers' ], $show_first = 2 ),
 				),
 				'schema_review_item_product_retailer_part_no' => array(
 					'tr_class' => 'hide_schema_type ' . $item_type_row_class[ 'product' ],
@@ -1397,8 +1397,6 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		 */
 		public function filter_mb_sso_edit_schema_webpage_rows( $table_rows, $form, $head_info, $mod, $args ) {
 
-			$reviewed_by_max = SucomUtil::get_const( 'WPSSO_SCHEMA_WEBPAGE_REVIEWED_BY_MAX', 5 );
-
 			$form_rows = array(
 				'subsection_schema_webpage' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'webpage' ],
@@ -1412,7 +1410,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Reviewed By Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_webpage_reviewed_by_org_id',
 					'content'  => $form->get_select_multi( 'schema_webpage_reviewed_by_org_id', $args[ 'select' ][ 'org' ],
-						$css_class = 'wide', $css_id = '', $is_assoc = true, $reviewed_by_max, $show_first = 1,
+						$css_class = 'wide', $css_id = '', $is_assoc = true, $args[ 'max_multi' ][ 'reviewed_by' ], $show_first = 1,
 							$is_disabled = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'org_names' ) ),
 				),
@@ -1422,7 +1420,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Reviewed By Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_webpage_reviewed_by_person_id',
 					'content'  => $form->get_select_multi( 'schema_webpage_reviewed_by_person_id', $args[ 'select' ][ 'person' ],
-						$css_class = 'wide', $css_id = '', $is_assoc = true, $reviewed_by_max, $show_first = 1,
+						$css_class = 'wide', $css_id = '', $is_assoc = true, $args[ 'max_multi' ][ 'reviewed_by' ], $show_first = 1,
 							$is_disabled = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'person_names' ) ),
 				),
@@ -1494,8 +1492,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		 */
 		public function filter_mb_sso_edit_schema_event_rows( $table_rows, $form, $head_info, $mod, $args ) {
 
-			$currencies          = SucomUtil::get_currencies_abbrev();
-			$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
+			$currencies = SucomUtil::get_currencies_abbrev();
 
 			$form_rows = array(
 				'subsection_schema_event' => array(
@@ -1539,7 +1536,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				'schema_event_performer_org_id' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'event' ],
 					'th_class' => 'medium',
-					'label'    => _x( 'Performer Org.', 'option label', 'wpsso' ),
+					'label'    => _x( 'Performer Organization', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_performer_org_id',
 					'content'  => $form->get_select( 'schema_event_performer_org_id', $args[ 'select' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
@@ -1559,7 +1556,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				'schema_event_organizer_org_id' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'event' ],
 					'th_class' => 'medium',
-					'label'    => _x( 'Organizer Org.', 'option label', 'wpsso' ),
+					'label'    => _x( 'Organizer Organization', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_organizer_org_id',
 					'content'  => $form->get_select( 'schema_event_organizer_org_id', $args[ 'select' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
@@ -1579,7 +1576,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				'schema_event_fund_org_id' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'event' ],
 					'th_class' => 'medium',
-					'label'    => _x( 'Funder Org.', 'option label', 'wpsso' ),
+					'label'    => _x( 'Funder Organization', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_fund_org_id',
 					'content'  => $form->get_select( 'schema_event_fund_org_id', $args[ 'select' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
@@ -1657,7 +1654,8 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 							'select_options' => $this->p->cf[ 'form' ][ 'item_availability' ],
 							'select_default' => 'https://schema.org/InStock',
 						),
-					), $css_class = 'single_line', $css_id = 'schema_event_offer', $metadata_offers_max, $show_first = 2 ),
+					), $css_class = 'single_line', $css_id = 'schema_event_offer',
+						$args[ 'max_multi' ][ 'metadata_offers' ], $show_first = 2 ),
 				),
 				'schema_event_offers_start' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'event' ],
@@ -1844,7 +1842,6 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		 */
 		public function filter_mb_sso_edit_schema_product_rows( $table_rows, $form, $head_info, $mod, $args ) {
 
-			$awards_max      = SucomUtil::get_const( 'WPSSO_SCHEMA_AWARDS_MAX', 5 );
 			$currencies      = SucomUtil::get_currencies_abbrev();
 			$dimension_units = WpssoUtilUnits::get_dimension_units();
 			$fl_volume_units = WpssoUtilUnits::get_fluid_volume_units();
@@ -2184,7 +2181,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Product Awards', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_award',
 					'content'  => $form->get_input_multi( 'product_award', $css_class = 'wide', $css_id = '',
-						$awards_max, $show_first = 1 ),
+						$args[ 'max_multi' ][ 'awards' ], $show_first = 1 ),
 				),
 
 			);
@@ -2197,17 +2194,13 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		 */
 		public function filter_mb_sso_edit_schema_service_rows( $table_rows, $form, $head_info, $mod, $args ) {
 
-			$currencies          = SucomUtil::get_currencies_abbrev();
-			$admin_area_max      = SucomUtil::get_const( 'WPSSO_SCHEMA_ADMIN_AREAS_MAX', 5 );
-			$awards_max          = SucomUtil::get_const( 'WPSSO_SCHEMA_AWARDS_MAX', 5 );
-			$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
-			$offer_catalogs_max  = SucomUtil::get_const( 'WPSSO_SCHEMA_OFFER_CATALOGS_MAX', 5 );
+			$currencies = SucomUtil::get_currencies_abbrev();
 
 			$form_rows = array(
 				'schema_service_prov_org_id' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'service' ],
 					'th_class' => 'medium',
-					'label'    => _x( 'Provider Org.', 'option label', 'wpsso' ),
+					'label'    => _x( 'Provider Organization', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_service_prov_org_id',
 					'content'  => $form->get_select( 'schema_service_prov_org_id', $args[ 'select' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
@@ -2230,7 +2223,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Service Awards', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_service_award',
 					'content'  => $form->get_input_multi( 'schema_service_award', $css_class = 'wide', $css_id = '',
-						$awards_max, $show_first = 1),
+						$args[ 'max_multi' ][ 'awards' ], $show_first = 1),
 				),
 				'subsection_schema_service_offers' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'service' ],
@@ -2270,7 +2263,8 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 							'select_options' => $this->p->cf[ 'form' ][ 'item_availability' ],
 							'select_default' => 'https://schema.org/InStock',
 						),
-					), $css_class = 'single_line', $css_id = 'schema_service_offer', $metadata_offers_max, $show_first = 2 ),
+					), $css_class = 'single_line', $css_id = 'schema_service_offer',
+						$args[ 'max_multi' ][ 'metadata_offers' ], $show_first = 2 ),
 				),
 				'schema_service_offers_start' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'service' ],
@@ -2307,7 +2301,8 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 							'input_type'  => 'text',
 							'input_class' => 'wide offer_catalog_url',
 						),
-					), $css_class = '', $css_id = 'schema_service_offer_catalogs', $offer_catalogs_max, $show_first = 1 ),
+					), $css_class = '', $css_id = 'schema_service_offer_catalogs',
+						$args[ 'max_multi' ][ 'offer_catalogs' ], $show_first = 1 ),
 				),
 				'subsection_schema_service_area' => array(
 					'tr_class' => $args[ 'tr_class_schema' ][ 'service' ],
@@ -2344,10 +2339,10 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Service Areas', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_service_area_id',
-					'content'  => $form->get_select_multi( 'schema_service_area_id', $args[ 'select' ][ 'admin_area' ],
-						$css_class = 'wide', $css_id = '', $is_assoc = true, $admin_area_max, $show_first = 1,
+					'content'  => $form->get_select_multi( 'schema_service_area_id', $args[ 'select' ][ 'service_areas' ],
+						$css_class = 'wide', $css_id = '', $is_assoc = true, $args[ 'max_multi' ][ 'service_areas' ], $show_first = 1,
 							$is_disabled = false, $event_names = array( 'on_focus_load_json' ),
-								$event_args = array( 'json_var' => 'admin_area_names' ) ),
+								$event_args = array( 'json_var' => 'service_areas_names' ) ),
 				),
 			);
 

@@ -969,7 +969,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				),
 				'schema_def_pub_org_id' => array(
 					'td_class' => 'blank',
-					'label'    => _x( 'Default Publisher Org.', 'option label', 'wpsso' ),
+					'label'    => _x( 'Default Publisher Organization', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_pub_org_id',
 					'content'  => $form->get_no_select( 'schema_def_pub_org_id', $args[ 'select' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
@@ -983,7 +983,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				),
 				'schema_def_prov_org_id' => array(
 					'td_class' => 'blank',
-					'label'    => _x( 'Default Provider Org.', 'option label', 'wpsso' ),
+					'label'    => _x( 'Default Provider Organization', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_prov_org_id',
 					'content'  => $form->get_no_select( 'schema_def_prov_org_id', $args[ 'select' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
@@ -997,7 +997,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				),
 				'schema_def_fund_org_id' => array(
 					'td_class' => 'blank',
-					'label'    => _x( 'Default Funder Org.', 'option label', 'wpsso' ),
+					'label'    => _x( 'Default Funder Organization', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_fund_org_id',
 					'content'  => $form->get_no_select( 'schema_def_fund_org_id', $args[ 'select' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),

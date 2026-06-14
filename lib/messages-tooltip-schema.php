@@ -239,14 +239,14 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-schema_def_pub_org_id':		// Default Publisher Org.
+				case 'tooltip-schema_def_pub_org_id':		// Default Publisher Organization.
 				case 'tooltip-schema_def_pub_person_id':	// Default Publisher Person.
 
 					$text = __( 'Select a default publisher for the Schema CreativeWork type and/or its sub-types (Article, BlogPosting, WebPage, etc).', 'wpsso' );
 
-				case 'tooltip-schema_def_prov_org_id':			// Default Provider Org.
+				case 'tooltip-schema_def_prov_org_id':			// Default Provider Organization.
 				case 'tooltip-schema_def_prov_person_id':		// Default Provider Person.
-				case 'tooltip-schema_def_service_prov_org_id':		// Default Service Provider Org.
+				case 'tooltip-schema_def_service_prov_org_id':		// Default Service Provider Organization.
 				case 'tooltip-schema_def_service_prov_person_id':	// Default Service Provider Person.
 
 
@@ -254,7 +254,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-schema_def_fund_org_id':		// Default Funder Org.
+				case 'tooltip-schema_def_fund_org_id':		// Default Funder Organization.
 				case 'tooltip-schema_def_fund_person_id':	// Default Funder Person.
 
 					$text = __( 'Select a default funder that supports (sponsors) the Schema CreativeWork type and/or its sub-types through somekind of financial contribution.', 'wpsso' );
@@ -276,21 +276,21 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-schema_def_event_performer_org_id':	// Default Event Performer Org.
+				case 'tooltip-schema_def_event_performer_org_id':	// Default Event Performer Organization.
 				case 'tooltip-schema_def_event_performer_person_id':	// Default Event Performer Person.
 
 					$text = __( 'Select a default performer for the Schema Event type.', 'wpsso' );
 
 				 	break;
 
-				case 'tooltip-schema_def_event_organizer_org_id':	// Default Event Organizer Org.
+				case 'tooltip-schema_def_event_organizer_org_id':	// Default Event Organizer Organization.
 				case 'tooltip-schema_def_event_organizer_person_id':	// Default Event Organizer Person.
 
 					$text = __( 'Select a default organizer for the Schema Event type.', 'wpsso' );
 
 				 	break;
 
-				case 'tooltip-schema_def_event_fund_org_id':		// Default Event Funder Org.
+				case 'tooltip-schema_def_event_fund_org_id':		// Default Event Funder Organization.
 				case 'tooltip-schema_def_event_fund_person_id':		// Default Event Funder Person.
 
 					$text = __( 'Select a default funder that supports (sponsors) the Schema Event type through somekind of financial contribution.', 'wpsso' );
@@ -300,7 +300,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 				/*
 				 * SSO > Advanced Settings > Schema Defaults > Job Posting tab.
 				 */
-				case 'tooltip-schema_def_job_hiring_org_id':	// Default Job Hiring Org.
+				case 'tooltip-schema_def_job_hiring_org_id':	// Default Job Hiring Organization.
 
 					$text = __( 'Select a default organization for the Schema JobPosting hiring organization.', 'wpsso' );
 

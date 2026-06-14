@@ -2637,7 +2637,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Use $opt_pre => $prop_name association as the property name may be repeated (ie. non-unique).
 			 */
 			foreach ( array(
-				'service_prov_org_id'    => 'provider',	// Provider Org.
+				'service_prov_org_id'    => 'provider',	// Provider Organization.
 				'service_prov_person_id' => 'provider',	// Provider Person.
 			) as $opt_pre => $prop_name ) {
 

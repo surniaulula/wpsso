@@ -1203,11 +1203,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return preg_replace( '/^(.*)( [\[\(].+[\)\]])?$/U', '$1 ' . $pkg . '$2', $name );
 		}
 
-		public function get_form_cache( $name, $add_none = false ) {
+		public function get_form_cache( $name, $add_none = false, $excl_keys = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark();
+				$this->p->debug->log_args( array(
+					'name'     => $name,
+					'add_none' => $add_none,
+				) );
 			}
 
 			static $local_cache = array();
@@ -1264,7 +1267,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						break;
 
 					case 'org_types_select':
-					case 'strict_org_types_select':	// Use strict for Google.
+					case 'org_types_select_strict':	// Use strict for Google.
 
 						$this->get_form_cache( 'org_types' );	// Sets $local_cache[ 'org_types' ].
 
@@ -1273,7 +1276,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						/*
 						 * Remove Schema types that are also places.
 						 */
-						if ( 'strict_org_types_select' === $filter_key ) {
+						if ( 'org_types_select_strict' === $filter_key ) {
 
 							foreach ( $this->get_form_cache( 'place_types_select' ) as $key => $val ) {
 
@@ -1298,7 +1301,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						break;
 
 					case 'place_types_select':
-					case 'strict_place_types_select':
+					case 'place_types_select_strict':
 
 						$this->get_form_cache( 'place_types' );
 
@@ -1307,7 +1310,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						/*
 						 * Remove Schema types that are also organizations.
 						 */
-						if ( 'strict_place_types_select' === $filter_key ) {
+						if ( 'place_types_select_strict' === $filter_key ) {
 
 							foreach ( $this->get_form_cache( 'org_types_select' ) as $key => $val ) {
 
@@ -1347,12 +1350,45 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				unset( $local_cache[ $filter_key ][ 'none' ] );
 			}
 
-			if ( $add_none ) {
+			/*
+			 * Maybe modify the returned array.
+			 */
+			if ( empty( $add_none ) && empty( $excl_keys ) ) {
 
-				return array( 'none' => '[None]' ) + $local_cache[ $filter_key ];
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'returning cached array' );
+				}
+
+				return $local_cache[ $filter_key ];
 			}
 
-			return $local_cache[ $filter_key ];
+			$ret = $local_cache[ $filter_key ];
+
+			if ( $add_none ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'adding "none" as first element' );
+				}
+
+				$ret = array( 'none' => '[None]' ) + $ret;
+			}
+
+			if ( ! empty( $excl_keys ) ) {
+
+				foreach ( $excl_keys as $key ) {
+
+					unset( $ret[ $key ] );
+				}
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( 'returning modified array', $ret );
+			}
+
+			return $ret;
 		}
 
 		/*

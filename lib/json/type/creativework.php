@@ -63,11 +63,11 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 				 * value to a property array.
 				 */
 				foreach ( array(
-					'schema_pub_org_id'     => 'publisher',	// Publisher Org.
+					'schema_pub_org_id'     => 'publisher',	// Publisher Organization.
 					'schema_pub_person_id'  => 'publisher',	// Publisher Person.
-					'schema_prov_org_id'    => 'provider',	// Provider Org.
+					'schema_prov_org_id'    => 'provider',	// Provider Organization.
 					'schema_prov_person_id' => 'provider',	// Provider Person.
-					'schema_fund_org_id'    => 'funder',	// Funder Org.
+					'schema_fund_org_id'    => 'funder',	// Funder Organization.
 					'schema_fund_person_id' => 'funder',	// Funder Person.
 				) as $md_key => $prop_name ) {
 

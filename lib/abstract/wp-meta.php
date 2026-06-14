@@ -535,11 +535,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_family_friendly' => $opts[ 'schema_def_family_friendly' ],	// Family Friendly.
 					'schema_copyright_year'  => '',						// Copyright Year.
 					'schema_license_url'     => '',						// License URL.
-					'schema_pub_org_id'      => $opts[ 'schema_def_pub_org_id' ],		// Publisher Org.
+					'schema_pub_org_id'      => $opts[ 'schema_def_pub_org_id' ],		// Publisher Organization.
 					'schema_pub_person_id'   => $opts[ 'schema_def_pub_person_id' ],	// Publisher Person.
-					'schema_prov_org_id'     => $opts[ 'schema_def_prov_org_id' ],		// Provider Org.
+					'schema_prov_org_id'     => $opts[ 'schema_def_prov_org_id' ],		// Provider Organization.
 					'schema_prov_person_id'  => $opts[ 'schema_def_prov_person_id' ],	// Provider Person.
-					'schema_fund_org_id'     => $opts[ 'schema_def_fund_org_id' ],		// Funder Org.
+					'schema_fund_org_id'     => $opts[ 'schema_def_fund_org_id' ],		// Funder Organization.
 					'schema_fund_person_id'  => $opts[ 'schema_def_fund_person_id' ],	// Funder Person.
 					'schema_ispartof_url_0'  => '',						// Is Part of URLs.
 					'schema_ispartof_url_1'  => '',						// Is Part of URLs.
@@ -623,11 +623,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_event_attendance'            => $opts[ 'schema_def_event_attendance' ],			// Event Attendance.
 					'schema_event_online_url'            => '',							// Event Online URL.
 					'schema_event_location_id'           => $opts[ 'schema_def_event_location_id' ],		// Event Venue.
-					'schema_event_performer_org_id'      => $opts[ 'schema_def_event_performer_org_id' ],		// Performer Org.
+					'schema_event_performer_org_id'      => $opts[ 'schema_def_event_performer_org_id' ],		// Performer Organization.
 					'schema_event_performer_person_id'   => $opts[ 'schema_def_event_performer_person_id' ],	// Performer Person.
-					'schema_event_organizer_org_id'      => $opts[ 'schema_def_event_organizer_org_id' ],		// Organizer Org.
+					'schema_event_organizer_org_id'      => $opts[ 'schema_def_event_organizer_org_id' ],		// Organizer Organization.
 					'schema_event_organizer_person_id'   => $opts[ 'schema_def_event_organizer_person_id' ],	// Organizer Person.
-					'schema_event_fund_org_id'           => $opts[ 'schema_def_event_fund_org_id' ],		// Funder Org.
+					'schema_event_fund_org_id'           => $opts[ 'schema_def_event_fund_org_id' ],		// Funder Organization.
 					'schema_event_fund_person_id'        => $opts[ 'schema_def_event_fund_person_id' ],		// Funder Person.
 					'schema_event_status'                => 'https://schema.org/EventScheduled',			// Event Status.
 					'schema_event_start_date'            => '',							// Event Start Date (Y-m-d).
@@ -702,7 +702,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 * Schema JobPosting.
 					 */
 					'schema_job_title'                => '',					// Job Title.
-					'schema_job_hiring_org_id'        => $opts[ 'schema_def_job_hiring_org_id' ],	// Job Hiring Org.
+					'schema_job_hiring_org_id'        => $opts[ 'schema_def_job_hiring_org_id' ],	// Job Hiring Organization.
 					'schema_job_location_id'          => $opts[ 'schema_def_job_location_id' ],	// Job Location.
 					'schema_job_location_type'        => $opts[ 'schema_def_job_location_type' ],	// Job Location Type.
 					'schema_job_salary'               => '',					// Job Base Salary.
@@ -977,7 +977,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/*
 					 * Schema Service.
 					 */
-					'schema_service_prov_org_id'          => $opts[ 'schema_def_service_prov_org_id' ],	// Provider Org.
+					'schema_service_prov_org_id'          => $opts[ 'schema_def_service_prov_org_id' ],	// Provider Organization.
 					'schema_service_prov_person_id'       => $opts[ 'schema_def_service_prov_person_id' ],	// Provider Person.
 					'schema_service_award_0'              => '',						// Service Award.
 					'schema_service_award_1'              => '',						// Service Award.

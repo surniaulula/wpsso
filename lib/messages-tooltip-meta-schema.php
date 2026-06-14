@@ -155,21 +155,21 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-schema_pub_org_id':		// Publisher Org.
+				case 'tooltip-meta-schema_pub_org_id':		// Publisher Organization.
 				case 'tooltip-meta-schema_pub_person_id':	// Publisher Person.
 
 					$text = __( 'A publisher for this creative work.', 'wpsso' );
 
 				 	break;
 
-				case 'tooltip-meta-schema_prov_org_id':		// Provider Org.
+				case 'tooltip-meta-schema_prov_org_id':		// Provider Organization.
 				case 'tooltip-meta-schema_prov_person_id':	// Provider Person.
 
 					$text = __( 'A service provider, service operator, or service performer.', 'wpsso' );
 
 				 	break;
 
-				case 'tooltip-meta-schema_fund_org_id':		// Funder Org.
+				case 'tooltip-meta-schema_fund_org_id':		// Funder Organization.
 				case 'tooltip-meta-schema_fund_person_id':	// Funder Person.
 
 					$text = __( 'A funder that supports (sponsors) this creative work through somekind of financial contribution.', 'wpsso' );
@@ -336,21 +336,21 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-schema_event_performer_org_id':	// Performer Org.
+						case 'tooltip-meta-schema_event_performer_org_id':	// Performer Organization.
 						case 'tooltip-meta-schema_event_performer_person_id':	// Performer Person.
 
 							$text = __( 'Select a performer for the event.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_event_organizer_org_id':	// Organizer Org.
+						case 'tooltip-meta-schema_event_organizer_org_id':	// Organizer Organization.
 						case 'tooltip-meta-schema_event_organizer_person_id':	// Organizer Person.
 
 							$text = __( 'Select an organizer for the event.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_event_fund_org_id':		// Funder Org.
+						case 'tooltip-meta-schema_event_fund_org_id':		// Funder Organization.
 						case 'tooltip-meta-schema_event_fund_person_id':	// Funder Person.
 
 							$text = __( 'Select a funder that supports (sponsors) the event through somekind of financial contribution.', 'wpsso' );
@@ -480,7 +480,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-schema_job_hiring_org_id':	// Job Hiring Org.
+						case 'tooltip-meta-schema_job_hiring_org_id':	// Job Hiring Organization.
 
 							$text = __( 'Select a organization for the Schema JobPosting hiring organization.', 'wpsso' );
 
@@ -981,7 +981,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					switch ( $msg_key ) {
 
-						case 'tooltip-meta-schema_service_prov_org_id':		// Provider Org.
+						case 'tooltip-meta-schema_service_prov_org_id':		// Provider Organization.
 						case 'tooltip-meta-schema_service_prov_person_id':	// Provider Person.
 
 							$text = __( 'A service provider, service operator, or service performer.', 'wpsso' );
@@ -1083,7 +1083,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					switch ( $msg_key ) {
 
-						case 'tooltip-meta-schema_webpage_reviewed_by_org_id':	// Reviewed By Org.
+						case 'tooltip-meta-schema_webpage_reviewed_by_org_id':	// Reviewed By Organization.
 
 							$text = __( 'Organizations that have reviewed the content on this web page for accuracy and/or completeness.', 'wpsso' );
 

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '22.3.0',	// Plugin version.
+					'version'     => '22.4.0-dev.1',	// Plugin version.
 					'opt_version' => '1048',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1439,11 +1439,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_def_add_date_modified'  => 1,		// Add Date Modified Property.
 					'schema_def_add_text_prop'      => 0,		// Add Text Property.
 					'schema_def_family_friendly'    => 'none',	// Default Family Friendly.
-					'schema_def_pub_org_id'         => 'site',	// Default Publisher Org.
+					'schema_def_pub_org_id'         => 'site',	// Default Publisher Organization.
 					'schema_def_pub_person_id'      => 'none',	// Default Publisher Person.
-					'schema_def_prov_org_id'        => 'none',	// Default Provider Org.
+					'schema_def_prov_org_id'        => 'none',	// Default Provider Organization.
 					'schema_def_prov_person_id'     => 'none',	// Default Provider Person.
-					'schema_def_fund_org_id'        => 'none',	// Default Funder Org.
+					'schema_def_fund_org_id'        => 'none',	// Default Funder Organization.
 					'schema_def_fund_person_id'     => 'none',	// Default Funder Person.
 
 					/*
@@ -1451,17 +1451,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'schema_def_event_attendance'          => 'https://schema.org/OfflineEventAttendanceMode',	// Default Event Attendance.
 					'schema_def_event_location_id'         => 'none',						// Default Event Venue.
-					'schema_def_event_performer_org_id'    => 'none',						// Default Event Performer Org.
+					'schema_def_event_performer_org_id'    => 'none',						// Default Event Performer Organization.
 					'schema_def_event_performer_person_id' => 'none',						// Default Event Performer Person.
-					'schema_def_event_organizer_org_id'    => 'none',						// Default Event Organizer Org.
+					'schema_def_event_organizer_org_id'    => 'none',						// Default Event Organizer Organization.
 					'schema_def_event_organizer_person_id' => 'none',						// Default Event Organizer Person.
-					'schema_def_event_fund_org_id'         => 'none',						// Default Event Funder Org.
+					'schema_def_event_fund_org_id'         => 'none',						// Default Event Funder Organization.
 					'schema_def_event_fund_person_id'      => 'none',						// Default Event Funder Person.
 
 					/*
 					 * Advanced Settings > Schema Defaults > Job Posting.
 					 */
-					'schema_def_job_hiring_org_id' => 'none',	// Default Hiring Org.
+					'schema_def_job_hiring_org_id' => 'none',	// Default Hiring Organization.
 					'schema_def_job_location_id'   => 'none',	// Default Job Location.
 					'schema_def_job_location_type' => 'none',	// Default Job Location Type.
 
@@ -1504,7 +1504,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Advanced Settings > Schema Defaults > Service.
 					 */
-					'schema_def_service_prov_org_id'    => 'none',	// Default Service Provider Org.
+					'schema_def_service_prov_org_id'    => 'none',	// Default Service Provider Organization.
 					'schema_def_service_prov_person_id' => 'none',	// Default Service Provider Person.
 
 					/*
@@ -1555,7 +1555,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'sc_publisher_url'        => '',	// Soundcloud Business Page URL (localized).
 					'tiktok_publisher_url'    => '',	// TikTok Business Page URL (localized).
 					'tumblr_publisher_url'    => '',	// Tumblr Business Page URL (localized).
-					'wikipedia_publisher_url' => '',	// Wikipedia Org. Page URL (localized).
+					'wikipedia_publisher_url' => '',	// Wikipedia Organization Page URL (localized).
 					'yt_publisher_url'        => '',	// YouTube Business Channel URL (localized).
 
 					/*
@@ -5204,7 +5204,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Schema limits.
 			 */
 			$var_const[ 'WPSSO_SCHEMA_ADDL_TYPE_URL_MAX' ]       = 8;
-			$var_const[ 'WPSSO_SCHEMA_ADMIN_AREAS_MAX' ]         = 5;
+			$var_const[ 'WPSSO_SCHEMA_SERVICE_AREAS_MAX' ]       = 5;
 			$var_const[ 'WPSSO_SCHEMA_AWARDS_MAX' ]              = 5;
 			$var_const[ 'WPSSO_SCHEMA_CITATIONS_MAX' ]           = 5;
 			$var_const[ 'WPSSO_SCHEMA_COMMENTS_MAX' ]            = 50;		// Maximum number of comments when "Break comments into pages" is unchecked.
@@ -5212,7 +5212,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_SCHEMA_HOWTO_STEPS_MAX' ]         = 40;
 			$var_const[ 'WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX' ]      = 30;
 			$var_const[ 'WPSSO_SCHEMA_HOWTO_TOOLS_MAX' ]         = 20;
-			$var_const[ 'WPSSO_SCHEMA_ISPARTOF_URL_MAX' ]        = 10;
+			$var_const[ 'WPSSO_SCHEMA_ISPARTOF_URLS_MAX' ]       = 10;
 			$var_const[ 'WPSSO_SCHEMA_METADATA_OFFERS_MAX' ]     = 5;
 			$var_const[ 'WPSSO_SCHEMA_MOVIE_ACTORS_MAX' ]        = 10;
 			$var_const[ 'WPSSO_SCHEMA_MOVIE_DIRECTORS_MAX' ]     = 5;
