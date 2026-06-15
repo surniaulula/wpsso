@@ -12,7 +12,7 @@ Requires PHP: 7.4.33
 Requires At Least: 6.0
 Tested Up To: 7.0
 WC Tested Up To: 10.8.1
-Stable Tag: 22.3.0
+Stable Tag: 22.4.0
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
@@ -272,7 +272,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.4.0-rc.1 (2026/06/15)**
+**Version 22.4.0 (2026/06/15)**
 
 * **New Features**
 	* None.
@@ -452,7 +452,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 == Upgrade Notice ==
 
-= 22.4.0-rc.1 =
+= 22.4.0 =
 
 (2026/06/15) Added Schema Places to the "Service Areas" option (excluding Places that are also Organization sub-types).
 
