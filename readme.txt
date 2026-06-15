@@ -272,7 +272,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.4.0-dev.1 (TBD)**
+**Version 22.4.0-dev.1 (2026/06/14)**
 
 * **New Features**
 	* None.
@@ -454,7 +454,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 = 22.4.0-dev.1 =
 
-(TBD) Added Schema Places to the "Service Areas" option (excluding Places that are also Organization sub-types).
+(2026/06/14) Added Schema Places to the "Service Areas" option (excluding Places that are also Organization sub-types).
 
 = 22.3.0 =
 
