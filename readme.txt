@@ -279,6 +279,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
+	* Fixed missing dismiss time text in SSO notices.
 	* Fixed possible "null as an array offset is deprecated" error in `WpssoSchema::is_valid_key()`.
 * **Developer Notes**
 	* Added a new `SucomUtilWP::table_index_exists()` method.
@@ -469,7 +470,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 = 22.5.1-dev.2 =
 
-(2026/07/20) Fixed possible "null as an array offset is deprecated" error in `WpssoSchema::is_valid_key()`.
+(2026/07/20) Fixed missing dismiss time text in SSO notices. Fixed possible "null as an array offset is deprecated" error.
 
 = 22.4.0 =
 
