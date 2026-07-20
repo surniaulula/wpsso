@@ -60,6 +60,8 @@
 .icon-dashicons-sos:before { content: '\e83a'; } /* '' */
 .icon-dashicons-shield-alt:before { content: '\e83b'; } /* '' */
 .icon-robot-5:before { content: '\e83c'; } /* '' */
+.icon-cancel-circled:before { content: '\e83d'; } /* '' */
+.icon-cancel-circled2:before { content: '\e83e'; } /* '' */
 .icon-download-tray:before { content: '\f02e'; } /* '' */
 .icon-upload-tray:before { content: '\f02f'; } /* '' */
 .icon-info-circled-alt:before { content: '\f086'; } /* '' */

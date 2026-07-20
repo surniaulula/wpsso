@@ -262,6 +262,11 @@ body.rtl .qtip.sucom-qtip .qtip-content {
 	padding:15px 20px;
 }
 
+.wpsso-notice.wpsso-dismissible .notice-dismiss:before {
+	content:"\e83d";	/* .icon-cancel-circled */
+	font-family:"WpssoIcons";
+}
+
 .wpsso-notice.update-nag,
 .qtip.sucom-qtip.qtip-lime-green {
 	color:#144e14;
