@@ -1172,18 +1172,18 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$transient_prefix = $only_expired ? '_transient_timeout_' : '_transient_';
 			$current_time     = isset( $_SERVER[ 'REQUEST_TIME' ] ) ? (int) $_SERVER[ 'REQUEST_TIME' ] : time() ;
 
-			$db_query = 'SELECT option_name';
-			$db_query .= ' FROM ' . $wpdb->options;
-			$db_query .= ' WHERE option_name LIKE \'' . $transient_prefix . $key_prefix . '%\'';
+			$query = 'SELECT option_name';
+			$query .= ' FROM ' . $wpdb->options;
+			$query .= ' WHERE option_name LIKE \'' . $transient_prefix . $key_prefix . '%\'';
 
 			if ( $only_expired ) { // Only check the value when querying for expires transients (ie. prefix is '_transient_timeout_').
 			
-				$db_query .= ' AND option_value < ' . $current_time;	// Expiration time older than current time.
+				$query .= ' AND option_value < ' . $current_time;	// Expiration time older than current time.
 			}
 
-			$db_query .= ';';	// End of query.
+			$query .= ';';	// End of query.
 
-			$result = $wpdb->get_col( $db_query );
+			$result = $wpdb->get_col( $query );
 
 			/*
 			 * Remove '_transient_' or '_transient_timeout_' prefix from option name.
@@ -1212,12 +1212,12 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			 * CHAR_LENGTH() because it is not Unicode-aware and counts bytes — which can yield different results,
 			 * especially for multibyte character sets.
 			 */
-			$db_query = 'SELECT LENGTH( option_value )';
-			$db_query .= ' FROM ' . $wpdb->options;
-			$db_query .= ' WHERE option_name LIKE \'_transient_' . $key_prefix . '%\'';
-			$db_query .= ';';	// End of query.
+			$query = 'SELECT LENGTH( option_value )';
+			$query .= ' FROM ' . $wpdb->options;
+			$query .= ' WHERE option_name LIKE \'_transient_' . $key_prefix . '%\'';
+			$query .= ';';	// End of query.
 
-			$result = $wpdb->get_col( $db_query );
+			$result = $wpdb->get_col( $query );
 
 			return array_sum( $result ) / 1024 / 1024;	// Return size in MB.
 		}

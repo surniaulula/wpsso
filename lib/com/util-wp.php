@@ -718,7 +718,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		 */
 		public static function comment_exists( $comment_id ) {
 
-			return self::table_object_id_exists( 'comments', $comment_id );	// Uses a local cache.
+			return self::table_row_id_exists( 'comments', $comment_id );	// Uses a local cache.
 		}
 
 		/*
@@ -726,7 +726,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		 */
 		public static function post_exists( $post_id ) {
 
-			return self::table_object_id_exists( 'posts', $post_id );	// Uses a local cache.
+			return self::table_row_id_exists( 'posts', $post_id );	// Uses a local cache.
 		}
 
 		public static function role_exists( $role ) {
@@ -747,33 +747,42 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		public static function term_exists( $term_id ) {
 
-			return self::table_object_id_exists( 'terms', $term_id );	// Uses a local cache.
+			return self::table_row_id_exists( 'terms', $term_id );	// Uses a local cache.
 		}
 
 		public static function user_exists( $user_id ) {
 
-			return self::table_object_id_exists( 'users', $user_id );	// Uses a local cache.
+			return self::table_row_id_exists( 'users', $user_id );	// Uses a local cache.
 		}
 
-		private static function table_object_id_exists( $table, $obj_id ) {
+		public static function table_index_exists( $table, $index ) {
 
-			if ( $table && is_numeric( $obj_id ) && $obj_id > 0 ) {
+			global $wpdb;
+
+			$sql = 'SELECT 1 FROM INFORMATION_SCHEMA.STATISTICS WHERE TABLE_SCHEMA = %s AND TABLE_NAME = %s AND INDEX_NAME = %s';
+
+			return $wpdb->get_var( $wpdb->prepare( $sql, DB_NAME, $wpdb->$table, $index ) ) ? true : false;
+		}
+
+		private static function table_row_id_exists( $table, $row_id ) {
+
+			if ( $table && is_numeric( $row_id ) && $row_id > 0 ) {
 
 				static $local_cache = array();
 
-				$obj_id = (int) $obj_id;	// Cast as integer for the cache index.
+				$row_id = (int) $row_id;	// Cast as integer for the cache index.
 
-				if ( isset( $local_cache[ $table ][ $obj_id ] ) ) {
+				if ( isset( $local_cache[ $table ][ $row_id ] ) ) {
 
-					return $local_cache[ $table ][ $obj_id ];
+					return $local_cache[ $table ][ $row_id ];
 
 				} elseif ( ! isset( $local_cache[ $table ] ) ) $local_cache[ $table ] = array();
 
 				global $wpdb;
 
-				$select_sql = 'SELECT COUNT(ID) FROM ' . $wpdb->$table . ' WHERE ID = %d';
+				$sql = 'SELECT COUNT(ID) FROM ' . $wpdb->$table . ' WHERE ID = %d';
 
-				return $local_cache[ $table ][ $obj_id ] = $wpdb->get_var( $wpdb->prepare( $select_sql, $obj_id ) ) ? true : false;
+				return $local_cache[ $table ][ $row_id ] = $wpdb->get_var( $wpdb->prepare( $sql, $row_id ) ) ? true : false;
 			}
 
 			return false;

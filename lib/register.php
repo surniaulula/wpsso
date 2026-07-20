@@ -101,9 +101,9 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 				global $wpdb;
 
-				$db_query = 'SELECT blog_id FROM ' . $wpdb->blogs;
+				$query = 'SELECT blog_id FROM ' . $wpdb->blogs;
 
-				$blog_ids = $wpdb->get_col( $db_query );
+				$blog_ids = $wpdb->get_col( $query );
 
 				foreach ( $blog_ids as $blog_id ) {
 
@@ -187,48 +187,37 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 		public function maybe_add_indexes() {
 
-			global $wpdb;
+			if ( wp_using_ext_object_cache() ) return;
 
 			/*
 			 * Index to improve the performance of the WordPress delete_expired_transients() function.
 			 *
 			 * See https://github.com/WordPress/WordPress/blob/master/wp-includes/option.php#L1651
 			 */
-			if ( ! self::wp_index_exists( $wpdb->options, WPSSO_DB_INDEX_TRANSIENT_TIMEOUT ) ) {
+			if ( ! SucomUtilWP::table_index_exists( 'options', WPSSO_DB_INDEX_TRANSIENT_NAME ) ) {
 
-				$wpdb->query( 'ALTER TABLE ' . $wpdb->options . ' ADD INDEX ' . WPSSO_DB_INDEX_TRANSIENT_TIMEOUT . ' (option_name, option_value(10))' ) ;
+				global $wpdb;
 
-				error_log( 'index created' );
+				$wpdb->query( 'ALTER TABLE ' . $wpdb->options . ' ADD INDEX ' . WPSSO_DB_INDEX_TRANSIENT_NAME .
+					' (option_name, option_value(' . WPSSO_DB_INDEX_TRANSIENT_LEN . '))' );
 			}
 		}
 
 		public function maybe_drop_indexes() {
 
-			global $wpdb;
+			if ( wp_using_ext_object_cache() ) return;
 
 			/*
 			 * Index to improve the performance of the WordPress delete_expired_transients() function.
 			 *
 			 * See https://github.com/WordPress/WordPress/blob/master/wp-includes/option.php#L1651
 			 */
-			if ( self::wp_index_exists( $wpdb->options, WPSSO_DB_INDEX_TRANSIENT_TIMEOUT ) ) {
+			if ( SucomUtilWP::table_index_exists( 'options', WPSSO_DB_INDEX_TRANSIENT_NAME ) ) {
 
-				$wpdb->query( 'ALTER TABLE ' . $wpdb->options . ' DROP INDEX ' . WPSSO_DB_INDEX_TRANSIENT_TIMEOUT ) ;
-				
-				error_log( 'index removed' );
+				global $wpdb;
+
+				$wpdb->query( 'ALTER TABLE ' . $wpdb->options . ' DROP INDEX ' . WPSSO_DB_INDEX_TRANSIENT_NAME );
 			}
-		}
-
-		private static function wp_index_exists( $table, $index ) {
-
-			global $wpdb;
-
-			return $wpdb->query(
-				$wpdb->prepare(
-					"SELECT 1 FROM INFORMATION_SCHEMA.STATISTICS WHERE TABLE_SCHEMA = %s AND TABLE_NAME = %s AND INDEX_NAME = %s;",
-					DB_NAME, $table, $index
-				)
-			);
 		}
 
 		/*
@@ -305,9 +294,9 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			 */
 			global $wpdb;
 
-			$prefix   = '_transient_';
-			$db_query = 'SELECT option_name FROM ' . $wpdb->options . ' WHERE option_name LIKE \'' . $prefix . 'wpsso_%\';';
-			$result   = $wpdb->get_col( $db_query );
+			$prefix = '_transient_';
+			$query  = 'SELECT option_name FROM ' . $wpdb->options . ' WHERE option_name LIKE \'' . $prefix . 'wpsso_%\';';
+			$result = $wpdb->get_col( $query );
 
 			foreach( $result as $option_name ) {
 

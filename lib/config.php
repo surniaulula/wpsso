@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '22.5.0-dev.1',	// Plugin version.
+					'version'     => '22.5.0-dev.2',	// Plugin version.
 					'opt_version' => '1048',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -5152,7 +5152,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 *
 			 * See https://github.com/WordPress/WordPress/blob/master/wp-includes/option.php#L1651
 			 */
-			$var_const[ 'WPSSO_DB_INDEX_TRANSIENT_TIMEOUT' ] = 'transient_timeout';
+			$var_const[ 'WPSSO_DB_INDEX_TRANSIENT_NAME' ] = 'transient_time';
+			$var_const[ 'WPSSO_DB_INDEX_TRANSIENT_LEN' ]  = 20;
 
 			if ( defined( 'WPSSO_PLUGINDIR' ) ) {
 
