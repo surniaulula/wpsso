@@ -4158,7 +4158,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public static function is_valid_key( $assoc, $key ) {
 
-			if ( ! isset( $assoc[ $key ] ) ) {
+			if ( null === $key ) {	// Array key cannot be null.
+
+				return false;
+				
+			} elseif ( ! isset( $assoc[ $key ] ) ) {
 
 				return false;
 
