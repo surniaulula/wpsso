@@ -151,11 +151,6 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			WpssoUtilReg::update_ext_version( 'wpsso', $version );
 
 			/*
-			 * Maybe create optimization indexes.
-			 */
-			$this->p->reg->maybe_add_indexes();
-
-			/*
 			 * Refresh cache on activate.
 			 */
 			$user_id = get_current_user_id();
@@ -166,11 +161,6 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		private function deactivate_plugin() {
 
 			$this->reset_admin_checks();
-			
-			/*
-			 * Maybe remove optimization indexes.
-			 */
-			$this->p->reg->maybe_drop_indexes();
 		}
 
 		/*
@@ -183,41 +173,6 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			delete_option( WPSSO_POST_CHECK_COUNT_NAME );
 			delete_option( WPSSO_TMPL_HEAD_CHECK_NAME );
 			delete_option( WPSSO_WP_CONFIG_CHECK_NAME );
-		}
-
-		public function maybe_add_indexes() {
-
-			if ( wp_using_ext_object_cache() ) return;
-
-			/*
-			 * Index to improve the performance of the WordPress delete_expired_transients() function.
-			 *
-			 * See https://github.com/WordPress/WordPress/blob/master/wp-includes/option.php#L1651
-			 */
-			if ( ! SucomUtilWP::table_index_exists( 'options', WPSSO_DB_INDEX_TRANSIENT_NAME ) ) {
-
-				global $wpdb;
-
-				$wpdb->query( 'ALTER TABLE ' . $wpdb->options . ' ADD INDEX ' . WPSSO_DB_INDEX_TRANSIENT_NAME .
-					' (option_name, option_value(' . WPSSO_DB_INDEX_TRANSIENT_LEN . '))' );
-			}
-		}
-
-		public function maybe_drop_indexes() {
-
-			if ( wp_using_ext_object_cache() ) return;
-
-			/*
-			 * Index to improve the performance of the WordPress delete_expired_transients() function.
-			 *
-			 * See https://github.com/WordPress/WordPress/blob/master/wp-includes/option.php#L1651
-			 */
-			if ( SucomUtilWP::table_index_exists( 'options', WPSSO_DB_INDEX_TRANSIENT_NAME ) ) {
-
-				global $wpdb;
-
-				$wpdb->query( 'ALTER TABLE ' . $wpdb->options . ' DROP INDEX ' . WPSSO_DB_INDEX_TRANSIENT_NAME );
-			}
 		}
 
 		/*

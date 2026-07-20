@@ -5147,14 +5147,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 			$var_const = array();
 
-			/*
-			 * Index to improve WordPress transient expiration queries.
-			 *
-			 * See https://github.com/WordPress/WordPress/blob/master/wp-includes/option.php#L1651
-			 */
-			$var_const[ 'WPSSO_DB_INDEX_TRANSIENT_NAME' ] = 'transient_time';
-			$var_const[ 'WPSSO_DB_INDEX_TRANSIENT_LEN' ]  = 20;
-
 			if ( defined( 'WPSSO_PLUGINDIR' ) ) {
 
 				$var_const[ 'WPSSO_ARTICLE_SECTIONS_LIST' ]   = WPSSO_PLUGINDIR . 'share/article-sections.txt';
