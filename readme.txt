@@ -272,16 +272,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.5.0-dev.2 (2026/07/20)**
+**Version 22.5.1-dev.2 (2026/07/20)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* None.
+	* Fixed possible "null as an array offset is deprecated" error in `WpssoSchema::is_valid_key()`.
 * **Developer Notes**
-	* Added a new `SucomUtilWP::wp_index_exists()` method.
+	* Added a new `SucomUtilWP::table_index_exists()` method.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v6.0.
@@ -467,9 +467,9 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 == Upgrade Notice ==
 
-= 22.5.0-dev.2 =
+= 22.5.1-dev.2 =
 
-(2026/07/20) None.
+(2026/07/20) Fixed possible "null as an array offset is deprecated" error in `WpssoSchema::is_valid_key()`.
 
 = 22.4.0 =
 
