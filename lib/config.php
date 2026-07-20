@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '22.4.0',	// Plugin version.
+					'version'     => '22.5.0-dev.1',	// Plugin version.
 					'opt_version' => '1048',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -5147,12 +5147,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 			$var_const = array();
 
+			/*
+			 * Index to improve WordPress transient expiration queries.
+			 *
+			 * See https://github.com/WordPress/WordPress/blob/master/wp-includes/option.php#L1651
+			 */
+			$var_const[ 'WPSSO_DB_INDEX_TRANSIENT_TIMEOUT' ] = 'transient_timeout';
+
 			if ( defined( 'WPSSO_PLUGINDIR' ) ) {
 
 				$var_const[ 'WPSSO_ARTICLE_SECTIONS_LIST' ]   = WPSSO_PLUGINDIR . 'share/article-sections.txt';
 				$var_const[ 'WPSSO_PRODUCT_CATEGORIES_LIST' ] = WPSSO_PLUGINDIR . 'share/product-categories.txt';
 			}
-
 
 			/*
 			 * MENU_ORDER (aka menu_position):

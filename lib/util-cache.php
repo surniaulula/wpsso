@@ -1176,7 +1176,10 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$db_query .= ' FROM ' . $wpdb->options;
 			$db_query .= ' WHERE option_name LIKE \'' . $transient_prefix . $key_prefix . '%\'';
 
-			if ( $only_expired ) $db_query .= ' AND option_value < ' . $current_time;	// Expiration time older than current time.
+			if ( $only_expired ) { // Only check the value when querying for expires transients (ie. prefix is '_transient_timeout_').
+			
+				$db_query .= ' AND option_value < ' . $current_time;	// Expiration time older than current time.
+			}
 
 			$db_query .= ';';	// End of query.
 

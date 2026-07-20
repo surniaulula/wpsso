@@ -1570,6 +1570,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					border:none;
 					vertical-align:top;
 				}
+				.' . $this->plugin_id . '-notice .notice-dismiss-text {
+					color:#c3c4c7;
+				}
 				.' . $this->plugin_id . '-notice .notice-dismiss::before {
 					color:#c3c4c7;
 					font-size:18px;

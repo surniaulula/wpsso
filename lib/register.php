@@ -151,6 +151,11 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			WpssoUtilReg::update_ext_version( 'wpsso', $version );
 
 			/*
+			 * Maybe create optimization indexes.
+			 */
+			$this->p->reg->maybe_add_indexes();
+
+			/*
 			 * Refresh cache on activate.
 			 */
 			$user_id = get_current_user_id();
@@ -161,6 +166,11 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		private function deactivate_plugin() {
 
 			$this->reset_admin_checks();
+			
+			/*
+			 * Maybe remove optimization indexes.
+			 */
+			$this->p->reg->maybe_drop_indexes();
 		}
 
 		/*
@@ -173,6 +183,52 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			delete_option( WPSSO_POST_CHECK_COUNT_NAME );
 			delete_option( WPSSO_TMPL_HEAD_CHECK_NAME );
 			delete_option( WPSSO_WP_CONFIG_CHECK_NAME );
+		}
+
+		public function maybe_add_indexes() {
+
+			global $wpdb;
+
+			/*
+			 * Index to improve the performance of the WordPress delete_expired_transients() function.
+			 *
+			 * See https://github.com/WordPress/WordPress/blob/master/wp-includes/option.php#L1651
+			 */
+			if ( ! self::wp_index_exists( $wpdb->options, WPSSO_DB_INDEX_TRANSIENT_TIMEOUT ) ) {
+
+				$wpdb->query( 'ALTER TABLE ' . $wpdb->options . ' ADD INDEX ' . WPSSO_DB_INDEX_TRANSIENT_TIMEOUT . ' (option_name, option_value(10))' ) ;
+
+				error_log( 'index created' );
+			}
+		}
+
+		public function maybe_drop_indexes() {
+
+			global $wpdb;
+
+			/*
+			 * Index to improve the performance of the WordPress delete_expired_transients() function.
+			 *
+			 * See https://github.com/WordPress/WordPress/blob/master/wp-includes/option.php#L1651
+			 */
+			if ( self::wp_index_exists( $wpdb->options, WPSSO_DB_INDEX_TRANSIENT_TIMEOUT ) ) {
+
+				$wpdb->query( 'ALTER TABLE ' . $wpdb->options . ' DROP INDEX ' . WPSSO_DB_INDEX_TRANSIENT_TIMEOUT ) ;
+				
+				error_log( 'index removed' );
+			}
+		}
+
+		private static function wp_index_exists( $table, $index ) {
+
+			global $wpdb;
+
+			return $wpdb->query(
+				$wpdb->prepare(
+					"SELECT 1 FROM INFORMATION_SCHEMA.STATISTICS WHERE TABLE_SCHEMA = %s AND TABLE_NAME = %s AND INDEX_NAME = %s;",
+					DB_NAME, $table, $index
+				)
+			);
 		}
 
 		/*

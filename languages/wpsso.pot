@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 22.4.0\n"
+"Project-Id-Version: WPSSO Core 22.5.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2026-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -7637,12 +7637,12 @@ msgstr ""
 msgid "Insufficient privileges to edit comment ID %1$s."
 msgstr ""
 
-#: lib/config.php:5513
+#: lib/config.php:5519
 msgctxt "plugin type"
 msgid "plugin"
 msgstr ""
 
-#: lib/config.php:5513
+#: lib/config.php:5519
 msgctxt "plugin type"
 msgid "add-on"
 msgstr ""
@@ -9917,7 +9917,7 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1803 lib/register.php:315 lib/util-cache.php:481
+#: lib/media.php:1803 lib/register.php:371 lib/util-cache.php:481
 #: lib/util.php:897 lib/util.php:1012 lib/util.php:1044 lib/util.php:1082
 #: lib/util.php:3583
 msgid "%s warning:"
@@ -13692,7 +13692,7 @@ msgid ""
 "WooCommerce</a>."
 msgstr ""
 
-#: lib/messages.php:483 lib/register.php:324
+#: lib/messages.php:483 lib/register.php:380
 msgid ""
 "You are using %1$s version %2$s - <a href=\"%3$s\">this %1$s version is "
 "outdated, unsupported, possibly insecure</a>, and may lack important updates "
@@ -15079,93 +15079,93 @@ msgstr ""
 msgid "Invalid user ID."
 msgstr ""
 
-#: lib/register.php:317 lib/register.php:325
+#: lib/register.php:373 lib/register.php:381
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: lib/register.php:327
+#: lib/register.php:383
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/register.php:336
+#: lib/register.php:392
 msgid "Page Tags"
 msgstr ""
 
-#: lib/register.php:337
+#: lib/register.php:393
 msgid "Page Tag"
 msgstr ""
 
-#: lib/register.php:338
+#: lib/register.php:394
 msgctxt "admin menu name"
 msgid "Page Tags"
 msgstr ""
 
-#: lib/register.php:339
+#: lib/register.php:395
 msgid "All Page Tags"
 msgstr ""
 
-#: lib/register.php:340
+#: lib/register.php:396
 msgid "Edit Page Tag"
 msgstr ""
 
-#: lib/register.php:341
+#: lib/register.php:397
 msgid "View Page Tag"
 msgstr ""
 
-#: lib/register.php:342
+#: lib/register.php:398
 msgid "Update Page Tag"
 msgstr ""
 
-#: lib/register.php:343
+#: lib/register.php:399
 msgid "Add New Page Tag"
 msgstr ""
 
-#: lib/register.php:344
+#: lib/register.php:400
 msgid "New Page Tag Name"
 msgstr ""
 
-#: lib/register.php:345
+#: lib/register.php:401
 msgid "Parent Page Tag"
 msgstr ""
 
-#: lib/register.php:346
+#: lib/register.php:402
 msgid "Parent Page Tag:"
 msgstr ""
 
-#: lib/register.php:347
+#: lib/register.php:403
 msgid "Search Page Tags"
 msgstr ""
 
-#: lib/register.php:348
+#: lib/register.php:404
 msgid "Popular Page Tags"
 msgstr ""
 
-#: lib/register.php:349
+#: lib/register.php:405
 msgid "Separate page tags with commas"
 msgstr ""
 
-#: lib/register.php:350
+#: lib/register.php:406
 msgid "Add or remove page tags"
 msgstr ""
 
-#: lib/register.php:351
+#: lib/register.php:407
 msgid "Choose from the most used"
 msgstr ""
 
-#: lib/register.php:352
+#: lib/register.php:408
 msgid "No page tags found."
 msgstr ""
 
-#: lib/register.php:353
+#: lib/register.php:409
 msgid "← Back to page tags"
 msgstr ""
 
-#: lib/register.php:357
+#: lib/register.php:413
 msgctxt "taxonomy label"
 msgid "Page Tags"
 msgstr ""
 
-#: lib/register.php:368
+#: lib/register.php:424
 msgctxt "taxonomy description"
 msgid "Tags for the page post type."
 msgstr ""
