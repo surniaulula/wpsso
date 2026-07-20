@@ -10,7 +10,7 @@ Tags: schema, woocommerce, search results, optimize, meta tags
 Contributors: jsmoriss
 Requires PHP: 7.4.33
 Requires At Least: 6.0
-Tested Up To: 7.0
+Tested Up To: 7.0.2
 WC Tested Up To: 10.8.1
 Stable Tag: 22.4.0
 
@@ -272,6 +272,24 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 22.5.0-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added an index to improve the performance of the WordPress `delete_expired_transients()` function.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new `WPSSO_DB_INDEX_TRANSIENT_TIMEOUT` contant.
+	* Added a new `WpssoRegister->maybe_add_indexes()` method.
+	* Added a new `WpssoRegister->maybe_drop_indexes()` method.
+	* Added a new `WpssoRegister::wp_index_exists()` method.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v6.0.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
+
 **Version 22.4.0 (2026/06/15)**
 
 * **New Features**
@@ -451,6 +469,10 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 22.5.0-dev.1 =
+
+(TBD) Added an index to improve the performance of the WordPress `delete_expired_transients()` function.
 
 = 22.4.0 =
 
