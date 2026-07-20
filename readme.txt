@@ -272,19 +272,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.5.0-dev.2 (2026/07/19)**
+**Version 22.5.0-dev.2 (2026/07/20)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added an index to improve the performance of the WordPress `delete_expired_transients()` function.
+	* None.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added a new `WPSSO_DB_INDEX_TRANSIENT_TIMEOUT` constant.
-	* Added a new `WpssoRegister->maybe_add_indexes()` method.
-	* Added a new `WpssoRegister->maybe_drop_indexes()` method.
-	* Added a new `WpssoRegister::wp_index_exists()` method.
+	* Added a new `SucomUtilWP::wp_index_exists()` method.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v6.0.
@@ -472,7 +469,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 = 22.5.0-dev.2 =
 
-(2026/07/19) Added an index to improve the performance of the WordPress `delete_expired_transients()` function.
+(2026/07/20) None.
 
 = 22.4.0 =
 
