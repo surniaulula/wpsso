@@ -272,7 +272,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.5.0-dev.1 (TBD)**
+**Version 22.5.0-dev.1 (2026/07/19)**
 
 * **New Features**
 	* None.
@@ -472,7 +472,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 = 22.5.0-dev.1 =
 
-(TBD) Added an index to improve the performance of the WordPress `delete_expired_transients()` function.
+(2026/07/19) Added an index to improve the performance of the WordPress `delete_expired_transients()` function.
 
 = 22.4.0 =
 
