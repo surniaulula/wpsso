@@ -171,7 +171,11 @@ h1 > div.dashicons-before::before {
 }
 
 #wpbody-content {
-	padding-bottom:20px;
+	padding-bottom:30px;
+}
+
+#wpbody-content #post-body-content {
+	margin-bottom:20px;	/* Default value. */
 }
 
 #wpfooter {
