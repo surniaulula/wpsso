@@ -272,7 +272,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.5.1-rc.1 (2026/07/21)**
+**Version 22.5.1 (2026/07/21)**
 
 * **New Features**
 	* None.
@@ -468,7 +468,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 == Upgrade Notice ==
 
-= 22.5.1-rc.1 =
+= 22.5.1 =
 
 (2026/07/21) Fixed missing dismiss time text in SSO notices. Fixed possible "null as an array offset is deprecated" error.
 
