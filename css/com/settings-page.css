@@ -279,7 +279,7 @@ body.sso-social-and-search-optimization_page_wpsso-tools #wpfooter {
 	left:auto;
 	bottom:auto;
 	width:auto;
-	margin:20px 0;
+	margin:0 0 40px 0;
 	text-align:left;
 	background-color:inherit;
 	border:none;
@@ -292,8 +292,8 @@ body.rtl #tools-content div.submit-buttons {
 #tools-content div.submit-buttons input[type=submit],
 #tools-content div.submit-buttons input[type=button] {
 	display:block;
-	min-width:360px;
-	margin:5px 0;
+	min-width:400px;
+	margin:10px 0;
 }
 
 #tools-content div.submit-buttons form {
