@@ -776,7 +776,10 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 					return $local_cache[ $table ][ $row_id ];
 
-				} elseif ( ! isset( $local_cache[ $table ] ) ) $local_cache[ $table ] = array();
+				} elseif ( ! isset( $local_cache[ $table ] ) ) {
+				
+					$local_cache[ $table ] = array();
+				}
 
 				global $wpdb;
 
