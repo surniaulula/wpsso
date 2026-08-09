@@ -536,21 +536,46 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			} elseif ( is_account_page() ) {
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'is_account_page() is true' );
+				}
+
 				$use_post = $this->page_ids[ 'account' ];
 
 			} elseif ( is_cart() ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'is_cart() is true' );
+				}
 
 				$use_post = $this->page_ids[ 'cart' ];
 
 			} elseif ( is_checkout() ) {
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'is_checkout() is true' );
+				}
+
 				$use_post = $this->page_ids[ 'checkout' ];
 
 			} elseif ( is_shop() ) {
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'is_shop() is true' );
+				}
+
 				$use_post = $this->page_ids[ 'shop' ];
 
 			} elseif ( is_product() ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'is_product() is true' );
+				}
 
 				$use_post = true;
 
