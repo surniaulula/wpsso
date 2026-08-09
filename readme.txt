@@ -272,7 +272,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.5.2-dev.1 (TBD)**
+**Version 22.5.2-dev.1 (2026/08/09)**
 
 * **New Features**
 	* None.
@@ -281,7 +281,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added debug messages to the `WpssoIntegEcomWooCommerce->filter_use_post()` method.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v6.0.
@@ -485,7 +485,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 = 22.5.2-dev.1 =
 
-(TBD) None.
+(2026/08/09) Added debug messages to the `WpssoIntegEcomWooCommerce->filter_use_post()` method.
 
 = 22.5.1 =
 
