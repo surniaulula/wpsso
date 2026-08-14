@@ -272,7 +272,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.5.2-rc.1 (2026/08/14)**
+**Version 22.5.2 (2026/08/14)**
 
 * **New Features**
 	* None.
@@ -483,7 +483,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 == Upgrade Notice ==
 
-= 22.5.2-rc.1 =
+= 22.5.2 =
 
 (2026/08/14) Added debug messages to the `WpssoIntegEcomWooCommerce->filter_use_post()` method.
 
