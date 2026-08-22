@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 22.5.2\n"
+"Project-Id-Version: WPSSO Core 22.5.3-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2026-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -7023,21 +7023,21 @@ msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1946
+#: lib/abstract/wp-meta.php:1942
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2255
+#: lib/abstract/wp-meta.php:2251
 msgid "Another review cannot be the subject of a review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2257 lib/abstract/wp-meta.php:2270
+#: lib/abstract/wp-meta.php:2253 lib/abstract/wp-meta.php:2266
 msgid ""
 "Please select a Schema type for the review subject that describes the "
 "subject being reviewed."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2268
+#: lib/abstract/wp-meta.php:2264
 msgid "Another claim review cannot be the subject of a claim review."
 msgstr ""
 

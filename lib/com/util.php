@@ -2281,20 +2281,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 *	'is_home_url:https_example_com'				// When a canonical URL is provided.
 		 * 	'post:123_type:page_url:https_example_com_page-slug'	// When a canonical URL is provided.
 		 * 	'url:https_example_com_2022_01'				// When a canonical URL is provided.
-		 *
-		 * See SucomUtil::get_mod_css_id().
-		 * See SucomUtilWP::get_locale().
-		 * See WpssoAbstractWpMeta->check_sortable_meta().
-		 * See WpssoHead->clear_head_array().
-		 * See WpssoHead->get_head_array().
-		 * See WpssoOpenGraph->get_mod_og_type().
-		 * See WpssoPage->clear_the_content().
-		 * See WpssoPage->get_the_content().
-		 * See WpssoPinterest->get_mod_image_html().
-		 * See WpssoSchema->get_mod_schema_type().
-		 * See WpssoUtil->get_canonical_url().
-		 * See WpssoUtil->clear_uniq_urls().
-		 * See WpssoUtil->is_uniq_url().
 		 */
 		public static function get_mod_salt( $mod = false, $canonical_url = false, $sep = '_' ) {
 

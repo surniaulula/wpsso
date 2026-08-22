@@ -133,7 +133,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				/*
 				 * Maybe create or update the user column content.
 				 */
-				add_action( 'get_user_metadata', array( $this, 'check_sortable_meta' ), 10, 4 );
+				add_action( 'get_user_metadata', array( $this, 'maybe_update_sortable_meta' ), 1000, 4 );
 
 				/*
 				 * Hooks when editing a user.
