@@ -281,7 +281,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Renamed the `WpssoAbstractWpMeta->check_sortable_meta()` method to `maybe_update_sortable_meta()` and refactored:
+		* Added a check to exclude 'auto-draft' posts.
+		* Added a check to run only once per page load.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v6.0.
@@ -500,7 +502,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 = 22.5.3-dev.2 =
 
-(2026/08/22) None.
+(2026/08/22) Renamed the `WpssoAbstractWpMeta->check_sortable_meta()` method to `maybe_update_sortable_meta()` and refactored.
 
 = 22.5.2 =
 
