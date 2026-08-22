@@ -190,7 +190,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/*
 			 * Maybe create or update the post column content.
 			 */
-			add_filter( 'get_post_metadata', array( $this, 'maybe_update_sortable_meta' ), 1000, 4 );
+			add_filter( 'get_post_metadata', array( $this, 'check_sortable_meta' ), 1000, 4 );
 
 			/*
 			 * Maybe inherit a featured image ID from the post/page parent, if the 'plugin_inherit_featured' option is
@@ -2891,6 +2891,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public static function update_meta( $post_id, $meta_key, $value ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'calling update_metadata() for post id ' . $post_id . ' meta key ' . $meta_key . ' value = ' . $value );
+			}
 
 			return update_metadata( 'post', $post_id, $meta_key, $value );
 		}

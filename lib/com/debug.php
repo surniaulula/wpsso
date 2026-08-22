@@ -340,7 +340,11 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		 */
 		public function mark_caller( $comment = '' ) {
 
-			$this->mark( $id = false, $comment, $class_seq = 4 );
+			$stack      = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS );
+			$class_seq  = 2;
+			$class_name = empty( $stack[ $class_seq ][ 'class' ] ) ? '' : $stack[ $class_seq ][ 'class' ];
+
+			$this->log( trim( 'called by ' . $class_name . ' ' . $comment ), $class_seq );
 		}
 
 		public function mark_diff( $comment = '', $class_seq = 2 ) {

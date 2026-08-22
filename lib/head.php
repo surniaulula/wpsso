@@ -314,7 +314,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark( 'build head array' );	// Begin timer.
+				$this->p->debug->mark( 'building head array' );	// Begin timer.
 			}
 
 			/*
@@ -427,7 +427,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 								$this->p->debug->log( 'cache index found in transient cache' );
 
-								$this->p->debug->mark( 'build head array' );	// End timer.
+								$this->p->debug->mark( 'building head array' );	// End timer.
 							}
 
 							return $cache_array[ $cache_index ];	// Stop here.
@@ -565,7 +565,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark( 'build head array' );	// End timer.
+				$this->p->debug->mark( 'building head array' );	// End timer.
 			}
 
 			return $cache_array[ $cache_index ];

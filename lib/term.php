@@ -107,7 +107,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				/*
 				 * Maybe create or update the term column content.
 				 */
-				add_filter( 'get_term_metadata', array( $this, 'maybe_update_sortable_meta' ), 1000, 4 );
+				add_filter( 'get_term_metadata', array( $this, 'check_sortable_meta' ), 1000, 4 );
 
 				if ( ( $this->query_term_id = SucomUtil::get_request_value( 'tag_ID' ) ) === '' ) {	// Uses sanitize_text_field.
 

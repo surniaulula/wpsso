@@ -1636,7 +1636,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
-		 * See WpssoAbstractWpMeta->maybe_update_sortable_meta().
+		 * See WpssoAbstractWpMeta->check_sortable_meta().
 		 * See WpssoOembed->post_oembed_response_data().
 		 * See WpssoOembed->post_oembed_response_data_rich.
 		 * See WpssoOembed->the_embed_thumbnail_url().
@@ -1646,11 +1646,21 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 */
 		public function get_head_info( $mixed, $read_cache = true ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( 'getting head info' );	// Start timer.
+			}
+
 			static $local_fifo = array();
 
 			$mod = is_array( $mixed ) ? $mixed : $this->get_mod( $mixed );	// Uses a local cache.
 
 			unset( $mixed );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'getting head info for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
+			}
 
 			/*
 			 * Maybe return the array from the local cache.
@@ -1659,14 +1669,36 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				if ( isset( $local_fifo[ $mod[ 'id' ] ] ) ) {
 
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'exiting early: returning head info from cache' );
+					}
+
 					return $local_fifo[ $mod[ 'id' ] ];
 				}
 			}
 
 			$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );	// Maybe limit the number of array elements.
 			$use_post   = 'post' === $mod[ 'name' ] ? $mod[ 'id' ] : false;
-			$head_tags  = $this->p->head->get_head_array( $use_post, $mod, $read_cache );
-			$head_info  = $this->p->head->extract_head_info( $head_tags, $mod );
+			
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'calling WpssoHead->get_head_array()' );
+			}
+
+			$head_tags = $this->p->head->get_head_array( $use_post, $mod, $read_cache );
+			
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'calling WpssoHead->extract_head_info()' );
+			}
+
+			$head_info = $this->p->head->extract_head_info( $head_tags, $mod );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( 'getting head info' );	// End timer.
+			}
 
 			return $local_fifo[ $mod[ 'id' ] ] = $head_info;
 		}
@@ -2569,7 +2601,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
-		 * See WpssoAbstractWpMeta->maybe_update_sortable_meta().
+		 * See WpssoAbstractWpMeta->check_sortable_meta().
 		 */
 		public static function get_column_info_by_meta_key( $meta_key ) {
 
@@ -2682,9 +2714,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
+		 * Check that the post, term, or user '_wpsso_head_info_' meta key value is not an empty string.
+		 *
 		 * Hooked to the WordPress 'get_post_metadata', 'get_term_metadata', 'get_user_metadata' actions.
 		 */
-		public function maybe_update_sortable_meta( $value, $obj_id, $meta_key, $single ) {
+		public function check_sortable_meta( $value, $obj_id, $meta_key, $single ) {
 
 			/*
 			 * Only check the '_wpsso_head_info_' meta key values.
@@ -2752,6 +2786,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				if ( '' === $metadata ) {
 
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( $meta_key . ' meta key value is an empty string' );
+					}
+
 					$do_head_info = true;
 
 				} elseif ( ! empty( $col_info[ 'localized' ] ) ) {	// Value stored by locale.
@@ -2759,6 +2798,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					$locale = SucomUtilWP::get_locale();
 
 					if ( empty( $metadata[ $locale ] ) ) {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( $meta_key . ' meta key value for locale ' . $locale . ' is empty' );
+						}
 
 						$do_head_info = true;
 					}
@@ -2768,7 +2812,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'calling WpssoAbstractWpMeta->get_head_info()' );
+						$this->p->debug->log( 'calling ' . get_class( $this ) . '->get_head_info()' );
 					}
 
 					$this->get_head_info( $mod, $read_cache = true );	// Uses a local cache.
@@ -2780,7 +2824,17 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 		public function update_sortable_meta( $obj_id, $col_key, $content ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			if ( empty( $obj_id ) ) {	// Just in case.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: obj_id is empty' );
+				}
 
 				return;
 			}
@@ -2810,6 +2864,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 * See WpssoTerm::update_meta()
 					 * See WpssoUser::update_meta()
 					 */
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'calling ' . get_class( $this ) . '::update_meta()' );
+					}
+
 					static::update_meta( $obj_id, $col_info[ 'meta_key' ], $content );	// Use static method from child.
 				}
 			}

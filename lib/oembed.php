@@ -144,6 +144,11 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 
 			if ( ! empty( $post->ID ) ) {	// Just in case.
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'calling WpssoPost->get_head_info()' );
+				}
+
 				$head_info = $this->p->post->get_head_info( $post->ID );	// Uses a local cache.
 
 				if ( ! empty( $head_info[ 'og:title' ] ) ) {
@@ -169,6 +174,11 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 		public function post_oembed_response_data_rich( $data, $post, $width, $height ) {
 
 			if ( ! empty( $post->ID ) ) {	// Just in case.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'calling WpssoPost->get_head_info()' );
+				}
 
 				$head_info = $this->p->post->get_head_info( $post->ID );	// Uses a local cache.
 
@@ -206,6 +216,11 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 
 			if ( ! empty( $post->ID ) ) {	// Just in case.
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'calling WpssoPost->get_head_info()' );
+				}
+
 				$head_info = $this->p->post->get_head_info( $post->ID );	// Uses a local cache.
 
 				if ( $image_url = SucomUtil::get_first_mt_media_url( $head_info ) ) {
@@ -222,6 +237,11 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			global $post;
 
 			if ( ! empty( $post->ID ) ) {	// Just in case.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'calling WpssoPost->get_head_info()' );
+				}
 
 				$head_info = $this->p->post->get_head_info( $post->ID );	// Uses a local cache.
 
@@ -249,6 +269,11 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			global $post;
 
 			if ( ! empty( $post->ID ) ) {	// Just in case.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'calling WpssoPost->get_head_info()' );
+				}
 
 				$head_info = $this->p->post->get_head_info( $post->ID );	// Uses a local cache.
 
@@ -294,6 +319,11 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			global $post;
 
 			if ( ! empty( $post->ID ) ) {	// Just in case.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'calling WpssoPost->get_head_info()' );
+				}
 
 				$head_info = $this->p->post->get_head_info( $post->ID );	// Uses a local cache.
 
