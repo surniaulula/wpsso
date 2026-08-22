@@ -55,12 +55,12 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				), -1000 );
 
 			} else {
-			
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'plugin cache for head markup, xml feeds, and file content is enabled' );
 				}
-			
+
 				if ( ! empty( $this->p->options[ 'plugin_page_cache_active' ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
@@ -74,7 +74,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					), -1000 );
 
 				} else {
-				
+
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( 'plugin_page_cache_active option is false' );
@@ -102,7 +102,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				}
 
 			} else {
-			
+
 				$is_disabled = empty( $this->p->options[ 'plugin_cache_disable' ] ) ? false : true;
 
 				if ( $this->p->debug->enabled ) {
@@ -1177,7 +1177,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$query .= ' WHERE option_name LIKE \'' . $transient_prefix . $key_prefix . '%\'';
 
 			if ( $only_expired ) { // Only check the value when querying for expires transients (ie. prefix is '_transient_timeout_').
-			
+
 				$query .= ' AND option_value < ' . $current_time;	// Expiration time older than current time.
 			}
 

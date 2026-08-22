@@ -809,7 +809,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->debug->log_arr( 'wpsso settings', $opts );
 
 			$this->debug->mark();
-			
+
 			$this->debug->show_html();
 		}
 

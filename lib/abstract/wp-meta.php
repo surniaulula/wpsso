@@ -1680,14 +1680,14 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );	// Maybe limit the number of array elements.
 			$use_post   = 'post' === $mod[ 'name' ] ? $mod[ 'id' ] : false;
-			
+
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'calling WpssoHead->get_head_array()' );
 			}
 
 			$head_tags = $this->p->head->get_head_array( $use_post, $mod, $read_cache );
-			
+
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'calling WpssoHead->extract_head_info()' );
@@ -2734,14 +2734,23 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			}
 
 			$mod = $this->get_mod( $obj_id );	// Get the post, term, or user $mod array.
-			
-			if ( 'auto-draft' === $mod[ 'post_status' ] ) {	// The post object may not yet exist.
+
+			if ( empty( $mod[ 'name' ] ) || empty( $mod[ 'id' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: mod name or id is empty' );
+				}
+
+				return $value;
+
+			} elseif ( 'auto-draft' === $mod[ 'post_status' ] ) {	// The post object may not yet exist.
 
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'exiting early: post status is ' . $mod[ 'post_status' ] );
 				}
-				
+
 				return $value;
 			}
 

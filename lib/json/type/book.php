@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoJsonTypeBook' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
-				
+
 				$this->p->debug->log( 'calling WpssoSchemaSingle::add_book_data() with empty json_ret array' );
 			}
 

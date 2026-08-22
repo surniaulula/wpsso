@@ -121,7 +121,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaPlace' ) ) {
 					break;
 
 				case 'tooltip-meta-place_sameas_url':	// Place Same-As URLs.
-					
+
 					$text = $this->p->msgs->get( 'tooltip-meta-schema_sameas_url' );
 
 					break;

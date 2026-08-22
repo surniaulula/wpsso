@@ -498,7 +498,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( SucomUtil::get_const( 'WPSSO_SCHEMA_GRAPH_OPTIMIZE_DISABLE' ) ) {
 
 					if ( $this->p->debug->enabled ) {
-				
+
 						$this->p->debug->log( 'WPSSO_SCHEMA_GRAPH_OPTIMIZE_DISABLE is true' );
 					}
 
@@ -3594,7 +3594,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Since WPSSO Core v22.3.0.
 		 */
 		public static function add_type_data_areaserved( &$json_data, array $mod, $type_opts, $type_id, $opt_pre ) {
-			
+
 			$wpsso =& Wpsso::get_instance();
 
 			if ( $wpsso->debug->enabled ) {
@@ -3631,7 +3631,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public static function add_type_data_offers( &$json_data, array $mod, $type_opts, $type_id, $opt_pre ) {
 
 			$wpsso =& Wpsso::get_instance();
-			
+
 			if ( $wpsso->debug->enabled ) {
 
 				$wpsso->debug->mark();
@@ -3697,9 +3697,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Since WPSSO Core v22.2.0.
 		 */
 		public static function add_type_opts_offers( &$type_opts, array $mod, $type_id, $type ) {
-			
+
 			$wpsso =& Wpsso::get_instance();
-			
+
 			if ( $wpsso->debug->enabled ) {
 
 				$wpsso->debug->log( 'checking for custom ' . $type . ' offers' );
@@ -4110,7 +4110,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( ! $is_assoc ) $prop_name = $assoc_key;
 
 				if ( self::is_valid_key( $assoc, $assoc_key ) ) {	// Not null, an empty string, or 'none'.
-					
+
 					if ( ! is_array( $json_data ) ) $json_data = array();
 
 					if ( isset( $json_data[ $prop_name ] ) && empty( $overwrite ) ) {
@@ -4161,7 +4161,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( null === $key ) {	// Array key cannot be null.
 
 				return false;
-				
+
 			} elseif ( ! isset( $assoc[ $key ] ) ) {
 
 				return false;
