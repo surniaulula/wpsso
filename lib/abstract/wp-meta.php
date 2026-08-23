@@ -2744,7 +2744,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				return $value;
 
-			} elseif ( 'auto-draft' === $mod[ 'post_status' ] ) {	// The post object may not yet exist.
+			} elseif ( isset( $mod[ 'post_status' ] ) && 'auto-draft' === $mod[ 'post_status' ] ) {	// The post object may not yet exist.
 
 				if ( $this->p->debug->enabled ) {
 

@@ -2896,7 +2896,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log( 'calling update_metadata() for post id ' . $post_id . ' meta key ' . $meta_key . ' value = ' . $value );
+				$wpsso->debug->log( 'calling update_metadata() for post id ' . $post_id . ' meta key ' . $meta_key . ' value = ' . print_r( $value, true ) );
 			}
 
 			return update_metadata( 'post', $post_id, $meta_key, $value );
