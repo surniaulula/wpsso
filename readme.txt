@@ -272,7 +272,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.5.3-b.1 (2026/08/22)**
+**Version 22.5.3-rc.1 (2026/08/22)**
 
 * **New Features**
 	* None.
@@ -500,7 +500,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 == Upgrade Notice ==
 
-= 22.5.3-b.1 =
+= 22.5.3-rc.1 =
 
 (2026/08/22) Refactored the `WpssoAbstractWpMeta->check_sortable_meta()` method.
 
