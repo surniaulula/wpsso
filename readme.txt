@@ -272,7 +272,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.5.3-rc.2 (2026/08/22)**
+**Version 22.5.3 (2026/08/24)**
 
 * **New Features**
 	* None.
@@ -282,8 +282,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Refactored the `WpssoAbstractWpMeta->check_sortable_meta()` method:
-		* Added a check to exclude 'auto-draft' posts.
 		* Added a check to run only once per page load.
+		* Added a check to exclude 'auto-draft' posts.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v6.0.
@@ -500,9 +500,9 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 == Upgrade Notice ==
 
-= 22.5.3-rc.2 =
+= 22.5.3 =
 
-(2026/08/22) Refactored the `WpssoAbstractWpMeta->check_sortable_meta()` method.
+(2026/08/24) Refactored the `WpssoAbstractWpMeta->check_sortable_meta()` method.
 
 = 22.5.2 =
 
