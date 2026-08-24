@@ -2714,7 +2714,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
-		 * Check that the post, term, or user '_wpsso_head_info_' meta key value is not an empty string.
+		 * Check the post, term, or user '_wpsso_head_info_' meta key value is not an empty string.
 		 *
 		 * Hooked to the WordPress 'get_post_metadata', 'get_term_metadata', 'get_user_metadata' actions.
 		 */
@@ -2768,7 +2768,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			static $local_cache = array();	// Only check once per page load.
 
-			if ( ! empty( $local_cache[ $cache_salt ][ $meta_key ] ) ) {
+			if ( ! empty( $local_cache[ $cache_salt ][ $meta_key ] ) ) {	// Meta key already checked.
 
 				if ( $this->p->debug->enabled ) {
 
@@ -2778,6 +2778,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				return $value;	// Return null.
 			}
 
+			$local_cache[ $cache_salt ][ $meta_key ] = true;	// Check once and also prevents recursion.
+
 			$col_info = self::get_column_info_by_meta_key( $meta_key );
 
 			if ( ! empty( $col_info ) ) {
@@ -2786,8 +2788,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					$this->p->debug->log( 'checking ' . $meta_key . ' meta key value' );
 				}
-
-				$local_cache[ $cache_salt ][ $meta_key ] = true;	// Prevent recursion.
 
 				$metadata = static::get_meta( $obj_id, $meta_key, $single = true );	// Use static method from child.
 
