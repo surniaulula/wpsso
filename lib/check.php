@@ -897,6 +897,15 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 									break;
 
 								/*
+								 * Yoast Duplicate Post.
+								 */
+								case 'duplicate-post':
+
+									$chk[ 'constant' ] = 'DUPLICATE_POST_CURRENT_VERSION';
+
+									break;
+
+								/*
 								 * Elementor.
 								 */
 								case 'elementor':

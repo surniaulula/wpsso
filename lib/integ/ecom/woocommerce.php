@@ -78,6 +78,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				add_action( 'woocommerce_ajax_save_product_variations', array( $this, 'ajax_save_product_variations' ), 1000, 1 );
 
 				/*
+				 * Exclude head info metadata keys.
+				 */
+				add_filter( 'woocommerce_duplicate_product_exclude_meta', array( $this, 'duplicate_product_exclude_meta' ), 1000, 2 );
+
+				/*
 				 * Add WPSSO RAR add-on filters.
 				 *
 				 * See WpssoIntegEcomWooCommerce->disable_options_keys().
@@ -283,6 +288,14 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			echo ' sucomToolbarNotices( \'wpsso\', \'' . $admin_l10n . '\' );';
 			echo '}';
 			echo '</script>' . "\n";
+		}
+
+		public function duplicate_product_exclude_meta( $exclude_keys, $meta_keys ) {
+
+			$exclude_preg  = '/^_wpsso_(head_info_.*|average_rating|rating_counts|review_count)$/';
+			$exclude_keys = array_merge( $exclude_keys, preg_grep( $exclude_preg, $meta_keys ) );
+
+			return $exclude_keys;
 		}
 
 		/*

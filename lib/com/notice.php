@@ -1669,6 +1669,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				#wpadminbar .' . $this->plugin_id . '-notice .notice-message pre,
 				.' . $this->plugin_id . '-notice .notice-message p,
 				.' . $this->plugin_id . '-notice .notice-message pre {
+					color:inherit;
 					margin:0.8em 0 0 0;
 				}
 				#wpadminbar .' . $this->plugin_id . '-notice .notice-message .top,

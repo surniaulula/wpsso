@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '22.5.3',	// Plugin version.
+					'version'     => '22.6.0-dev.1',	// Plugin version.
 					'opt_version' => '1048',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -155,9 +155,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'ultimate-member'      => 'Ultimate Member',
 							),
 							'util' => array(
-								'elementor'     => 'Elementor Website Builder',
-								'jetpack'       => 'Jetpack',
-								'jetpack-boost' => 'Jetpack Boost',
+								'duplicate-post' => 'Yoast Duplicate Post',
+								'elementor'      => 'Elementor Website Builder',
+								'jetpack'        => 'Jetpack',
+								'jetpack-boost'  => 'Jetpack Boost',
 							),
 						),
 						'json' => array(
