@@ -272,7 +272,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.6.0-dev.1 (2026/08/31)**
+**Version 22.6.0-rc.1 (2026/08/31)**
 
 * **New Features**
 	* None.
@@ -516,7 +516,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 == Upgrade Notice ==
 
-= 22.6.0-dev.1 =
+= 22.6.0-rc.1 =
 
 (2026/08/28) Added filters to prevent the WooCommerce and Yoast Duplicate Post plugins from creating duplicate metadata.
 
