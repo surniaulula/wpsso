@@ -25,9 +25,15 @@ if ( ! class_exists( 'WpssoIntegUtilDuplicatePost' ) ) {
 				$this->p->debug->mark();
 			}
 			
+			/*
+			 * Prevent Yoast Duplicate Post from creating duplicate entries in the metadata table.
+			 */
 			add_filter( 'duplicate_post_excludelist_filter', array( $this, 'duplicate_post_excludelist_filter' ), 10, 1 );
 		}
 
+		/*
+		 * Prevent Yoast Duplicate Post from creating duplicate entries in the metadata table.
+		 */
 		public function duplicate_post_excludelist_filter( $exclude ) {
 
 			$exclude[] = '_wpsso_head_info_*';

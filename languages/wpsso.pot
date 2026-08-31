@@ -9615,15 +9615,15 @@ msgid ""
 "Products &gt; General</a> section."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:248 lib/integ/ecom/woocommerce.php:756
+#: lib/integ/ecom/woocommerce.php:248 lib/integ/ecom/woocommerce.php:759
 msgid "My account page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:249 lib/integ/ecom/woocommerce.php:760
+#: lib/integ/ecom/woocommerce.php:249 lib/integ/ecom/woocommerce.php:763
 msgid "Cart page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:250 lib/integ/ecom/woocommerce.php:764
+#: lib/integ/ecom/woocommerce.php:250 lib/integ/ecom/woocommerce.php:767
 msgid "Checkout page"
 msgstr ""
 
@@ -9635,31 +9635,31 @@ msgstr ""
 msgid "The WooCommerce \"%1$s\" option value is missing or invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:345
+#: lib/integ/ecom/woocommerce.php:348
 msgid "Suggested attributes:"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:687
+#: lib/integ/ecom/woocommerce.php:690
 msgid "Products Group"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1688
+#: lib/integ/ecom/woocommerce.php:1691
 msgid "World"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1915
+#: lib/integ/ecom/woocommerce.php:1918
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1918
+#: lib/integ/ecom/woocommerce.php:1921
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1921
+#: lib/integ/ecom/woocommerce.php:1924
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
