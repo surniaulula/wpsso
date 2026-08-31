@@ -272,6 +272,24 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 22.6.1-dev.1 (2026/08/28)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new `WpssoAbstractWpMeta::add_duplicate_exclude_meta_keys()` method.
+	* Added a new `WpssoAbstractWpMeta::get_duplicate_exclude_meta_keys()` method.
+	* Refactored the `WpssoIntegEcomWooCommerce->duplicate_product_exclude_meta()` method.
+	* Refactored the `WpssoIntegUtilDuplicatePost->duplicate_post_excludelist_filter()` method.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v6.0.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
+
 **Version 22.6.0 (2026/08/31)**
 
 * **New Features**
@@ -515,6 +533,10 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 22.6.1-dev.1 =
+
+(2026/08/28) None.
 
 = 22.6.0 =
 
