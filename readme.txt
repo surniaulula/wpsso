@@ -272,6 +272,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 22.6.0-dev.1 (2026/08/31)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added filters to prevent the WooCommerce and Yoast Duplicate Post plugins from creating duplicate metadata.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new `WpssoIntegUtilDuplicatePost` integration module to prevent the Yoast Duplicate Post plugin from creating duplicate metadata.
+	* Added a new `WpssoIntegEcomWooCommerce->duplicate_product_exclude_meta()` filter to prevent WooCommerce from creating duplicate metadata.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v6.0.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
+
 **Version 22.5.3 (2026/08/24)**
 
 * **New Features**
@@ -499,6 +515,10 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 22.6.0-dev.1 =
+
+(2026/08/28) Added filters to prevent the WooCommerce and Yoast Duplicate Post plugins from creating duplicate metadata.
 
 = 22.5.3 =
 
