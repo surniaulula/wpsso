@@ -295,10 +295,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		 */
 		public function duplicate_product_exclude_meta( $exclude_keys, $meta_keys ) {
 
-			$exclude_preg  = '/^_wpsso_(head_info_.*|average_rating|rating_counts|review_count)$/';
-			$exclude_keys = array_merge( $exclude_keys, preg_grep( $exclude_preg, $meta_keys ) );
-
-			return $exclude_keys;
+			return WpssoAbstractWpMeta::add_duplicate_exclude_meta_keys( $exclude_keys );
 		}
 
 		/*

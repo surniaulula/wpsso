@@ -2714,6 +2714,35 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
+		 * Adds metadata keys to an existing array to ignore when copying a post object.
+		 *
+		 * See WpssoIntegEcomWooCommerce->duplicate_product_exclude_meta().
+		 */
+		public static function add_duplicate_exclude_meta_keys( array $exclude_keys = array() ) {
+
+			return array_merge( $exclude_keys, self::get_duplicate_exclude_meta_keys() );
+		}
+
+		/*
+		 * Returns an array of metadata keys to ignore when copying a post object.
+		 */
+		public static function get_duplicate_exclude_meta_keys() {
+
+			$meta_keys = array_values( self::get_column_meta_keys() );
+
+			foreach ( array(
+				'WPSSORAR_META_AVERAGE_RATING' => '_wpsso_average_rating',
+				'WPSSORAR_META_RATING_COUNTS'  => '_wpsso_rating_counts',
+				'WPSSORAR_META_REVIEW_COUNT'   => '_wpsso_review_count',
+			) as $name => $default ) {
+
+				$meta_keys[] = SucomUtil::get_const( $name, $default );
+			}
+
+			return $meta_keys;
+		}
+
+		/*
 		 * Check the post, term, or user '_wpsso_head_info_' meta key value is not an empty string.
 		 *
 		 * Hooked to the WordPress 'get_post_metadata', 'get_term_metadata', 'get_user_metadata' actions.

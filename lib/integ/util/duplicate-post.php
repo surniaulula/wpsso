@@ -34,14 +34,9 @@ if ( ! class_exists( 'WpssoIntegUtilDuplicatePost' ) ) {
 		/*
 		 * Prevent Yoast Duplicate Post from creating duplicate entries in the metadata table.
 		 */
-		public function duplicate_post_excludelist_filter( $exclude ) {
+		public function duplicate_post_excludelist_filter( $exclude_keys ) {
 
-			$exclude[] = '_wpsso_head_info_*';
-			$exclude[] = '_wpsso_average_rating';
-			$exclude[] = '_wpsso_rating_counts';
-			$exclude[] = '_wpsso_review_count';
-
-			return $exclude;
+			return WpssoAbstractWpMeta::add_duplicate_exclude_meta_keys( $exclude_keys );
 		}
 	}
 }

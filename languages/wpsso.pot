@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 22.6.0\n"
+"Project-Id-Version: WPSSO Core 22.6.1-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2026-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -9615,15 +9615,15 @@ msgid ""
 "Products &gt; General</a> section."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:248 lib/integ/ecom/woocommerce.php:759
+#: lib/integ/ecom/woocommerce.php:248 lib/integ/ecom/woocommerce.php:756
 msgid "My account page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:249 lib/integ/ecom/woocommerce.php:763
+#: lib/integ/ecom/woocommerce.php:249 lib/integ/ecom/woocommerce.php:760
 msgid "Cart page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:250 lib/integ/ecom/woocommerce.php:767
+#: lib/integ/ecom/woocommerce.php:250 lib/integ/ecom/woocommerce.php:764
 msgid "Checkout page"
 msgstr ""
 
@@ -9635,31 +9635,31 @@ msgstr ""
 msgid "The WooCommerce \"%1$s\" option value is missing or invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:348
+#: lib/integ/ecom/woocommerce.php:345
 msgid "Suggested attributes:"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:690
+#: lib/integ/ecom/woocommerce.php:687
 msgid "Products Group"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1691
+#: lib/integ/ecom/woocommerce.php:1688
 msgid "World"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1918
+#: lib/integ/ecom/woocommerce.php:1915
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1921
+#: lib/integ/ecom/woocommerce.php:1918
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1924
+#: lib/integ/ecom/woocommerce.php:1921
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
