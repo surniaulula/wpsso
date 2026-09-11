@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 22.6.1\n"
+"Project-Id-Version: WPSSO Core 22.7.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2026-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -9603,63 +9603,63 @@ msgstr ""
 msgid "adding schema json-ld markup"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:241
+#: lib/integ/ecom/woocommerce.php:242
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Advanced &gt; Page setup</a> section."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:244
+#: lib/integ/ecom/woocommerce.php:245
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Products &gt; General</a> section."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:248 lib/integ/ecom/woocommerce.php:756
+#: lib/integ/ecom/woocommerce.php:249 lib/integ/ecom/woocommerce.php:777
 msgid "My account page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:249 lib/integ/ecom/woocommerce.php:760
+#: lib/integ/ecom/woocommerce.php:250 lib/integ/ecom/woocommerce.php:781
 msgid "Cart page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:250 lib/integ/ecom/woocommerce.php:764
+#: lib/integ/ecom/woocommerce.php:251 lib/integ/ecom/woocommerce.php:785
 msgid "Checkout page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:251
+#: lib/integ/ecom/woocommerce.php:252
 msgid "Shop page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:257
+#: lib/integ/ecom/woocommerce.php:258
 msgid "The WooCommerce \"%1$s\" option value is missing or invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:345
+#: lib/integ/ecom/woocommerce.php:346
 msgid "Suggested attributes:"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:687
+#: lib/integ/ecom/woocommerce.php:708
 msgid "Products Group"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1688
+#: lib/integ/ecom/woocommerce.php:1709
 msgid "World"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1915
+#: lib/integ/ecom/woocommerce.php:1936
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1918
+#: lib/integ/ecom/woocommerce.php:1939
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1921
+#: lib/integ/ecom/woocommerce.php:1942
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 

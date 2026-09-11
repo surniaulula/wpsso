@@ -128,6 +128,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			$this->p->util->add_plugin_filters( $this, array(
 				'request_url_query_cache_disable' => 4,
 				'head_cache_index'                => 1,
+				'body_class'                      => 2,
 				'use_post'                        => 1,
 				'get_post_type'                   => 2,
 				'schema_type'                     => 3,
@@ -526,6 +527,26 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			}
 
 			return $cache_index . '_currency:' . $this->get_product_currency();
+		}
+
+		/*
+		 * Add information about the product $mod to the body tag class.
+		 *
+		 * $classes = An array of body class names.
+		 */
+		public function filter_body_class( array $classes, array $mod ) {
+
+			if ( SucomUtilWP::is_mod_post_type( $mod, $this->prod_post_type ) ) {
+
+				if ( $product = $this->p->util->wc->get_product( $mod[ 'id' ] ) ) {
+
+					$product_type = $this->p->util->wc->get_product_type( $product );
+
+					$classes[] = 'wpsso-wc-product-type-' . $product_type;
+				}
+			}
+
+			return $classes;
 		}
 
 		public function filter_use_post( $use_post ) {

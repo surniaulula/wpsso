@@ -1774,7 +1774,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return $file_name;
 			}
 
-			$special_chars = array( '?', '[', ']', '/', '\\', '=', '<', '>', ':', ';', ',', '\'', '"', '&', '$', '#', '*', '(', ')', '|', '~', '`', '!', '{', '}', '%', '+', chr( 0 ) );
+			$special_chars = array( '?', '[', ']', '/', '\\', '=', '<', '>', ':', ';', ',', '\'', '"',
+				'&', '$', '#', '*', '(', ')', '|', '~', '`', '!', '{', '}', '%', '+', chr( 0 ) );
 
 			$file_name = preg_replace( '#\x{00a0}#siu', ' ', $file_name );
 			$file_name = str_replace( $special_chars, '', $file_name );
@@ -1876,14 +1877,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( is_scalar( $key ) ) {	// Int, float, string or bool.
 
-				$key = strtolower( $key );	// Convert upper case characters to lower case.
-
+				$key = strtolower( $key );			// Convert upper case characters to lower case.
 				$key = preg_replace( '/[_\-]/', '.', $key );	// Convert underscores and hyphens to periods.
+				$key = preg_replace( '/[^a-z\.]/', '', $key );	// Keep only alphabetic and period characters.
 
-				return preg_replace( '/[^a-z\.]/', '', $key );	// Keep only alphabetic and period characters.
-			}
+			} else $key = '';
 
-			return '';
+			return $key;
 		}
 
 		public static function sanitize_locale( $locale ) {
@@ -1898,6 +1898,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$meta_key = self::decode_html( $meta_key );
 			$meta_key = self::strip_html( $meta_key );
+			$meta_key = preg_replace( '/[\'\"]/', '', $meta_key );
 
 			return $meta_key;
 		}

@@ -109,7 +109,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$classes[] = 'wpsso-' . SucomUtil::get_mod_css_id( $mod );
 
-			return $classes;
+			return (array) apply_filters( 'wpsso_body_class', $classes, $mod );
 		}
 
 		/*
