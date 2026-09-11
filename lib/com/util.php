@@ -1894,6 +1894,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $locale;
 		}
 
+		/*
+		 * Decode/remove html/js/css and quotes.
+		 */
 		public static function sanitize_meta_key( $meta_key ) {
 
 			$meta_key = self::decode_html( $meta_key );
