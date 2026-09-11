@@ -272,6 +272,23 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 22.7.0-dev.1 (2026/09/11)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a class with the product type for WooCommerce products.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new 'wpsso_body_class' filter.
+	* Added a new `WpssoIntegEcomWooCommerce->filter_body_class()` method.
+	* Updated the `SucomUtil::sanitize_meta_key()` method to remove single and double quotes.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v6.0.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
+
 **Version 22.6.1 (2026/09/01)**
 
 * **New Features**
@@ -533,6 +550,10 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 22.7.0-dev.1 =
+
+(2026/09/11) Added a class with the product type for WooCommerce products.
 
 = 22.6.1 =
 
