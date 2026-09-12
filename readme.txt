@@ -12,7 +12,7 @@ Requires PHP: 7.4.33
 Requires At Least: 6.0
 Tested Up To: 7.1
 WC Tested Up To: 11.1.0
-Stable Tag: 22.6.1
+Stable Tag: 22.7.0
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
@@ -277,7 +277,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a class with the product type for WooCommerce products.
+	* Added a body tag class with the product type for WooCommerce products.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -553,7 +553,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 = 22.7.0 =
 
-(2026/09/12) Added a class with the product type for WooCommerce products.
+(2026/09/12) Added a body tag class with the product type for WooCommerce products.
 
 = 22.6.1 =
 
