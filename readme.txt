@@ -272,7 +272,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.7.0-rc.1 (2026/09/11)**
+**Version 22.7.0-rc.1 (2026/09/12)**
 
 * **New Features**
 	* None.
@@ -553,7 +553,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 = 22.7.0-rc.1 =
 
-(2026/09/11) Added a class with the product type for WooCommerce products.
+(2026/09/12) Added a class with the product type for WooCommerce products.
 
 = 22.6.1 =
 
