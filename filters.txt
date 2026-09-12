@@ -43,6 +43,8 @@
 
 'wpsso_attached_image_ids' ( $attach_ids, $post_id )
 
+'wpsso_body_class' ( array $classes, array $mod )
+
 'wpsso_cache_expire_api_response' ( $secs, $cache_type, $mod )	// Default is 1 day in seconds.
 
 'wpsso_cache_expire_head_markup' ( $secs, $cache_type, $mod )	// Default is 1 week in seconds, 1 hour if a caching plugin is active.

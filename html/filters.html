@@ -61,11 +61,13 @@
 
 <tr><th>wpsso_archive_page_url</th><td>(&nbsp;$url, $mod&nbsp;)</td></tr>
 
-<tr><th>wpsso_article_sections</th><td>(&nbsp;array $sections&nbsp;)</td></tr>
+<tr><th>wpsso_article_sections</th><td>(&nbsp;array&nbsp;$sections&nbsp;)</td></tr>
 
 <tr><th>wpsso_attached_accept_img_dims</th><td>(&nbsp;$accept, $img_url, $img_width, $img_height, $size_name, $pid&nbsp;)</td></tr>
 
 <tr><th>wpsso_attached_image_ids</th><td>(&nbsp;$attach_ids, $post_id&nbsp;)</td></tr>
+
+<tr><th>wpsso_body_class</th><td>(&nbsp;array&nbsp;$classes, array&nbsp;$mod&nbsp;)</td></tr>
 
 <tr><th>wpsso_cache_expire_api_response</th><td>(&nbsp;$secs, $cache_type, $mod&nbsp;)</td><td>Default is 1 day in seconds.</td></tr>
 
@@ -111,33 +113,33 @@
 
 <tr><th>wpsso_form_select_{option_name}</th><td>(&nbsp;$values&nbsp;)</td></tr>
 
-<tr><th>wpsso_get_avail</th><td>(&nbsp;array $avail&nbsp;)</td></tr>
+<tr><th>wpsso_get_avail</th><td>(&nbsp;array&nbsp;$avail&nbsp;)</td></tr>
 
-<tr><th>wpsso_get_config</th><td>(&nbsp;array $cf&nbsp;)</td></tr>
+<tr><th>wpsso_get_config</th><td>(&nbsp;array&nbsp;$cf&nbsp;)</td></tr>
 
 <tr><th>wpsso_get_defaults</th><td>(&nbsp;$defaults&nbsp;)</td></tr>
 
-<tr><th>wpsso_get_md_defaults</th><td>(&nbsp;array $md_defs, array $mod&nbsp;)</td></tr>
+<tr><th>wpsso_get_md_defaults</th><td>(&nbsp;array&nbsp;$md_defs, array&nbsp;$mod&nbsp;)</td></tr>
 
-<tr><th>wpsso_get_md_options</th><td>(&nbsp;array $md_opts, array $mod&nbsp;)</td></tr>
+<tr><th>wpsso_get_md_options</th><td>(&nbsp;array&nbsp;$md_opts, array&nbsp;$mod&nbsp;)</td></tr>
 
-<tr><th>wpsso_get_post_defaults</th><td>(&nbsp;array $md_defs, $post_id, array $mod&nbsp;)</td></tr>
+<tr><th>wpsso_get_post_defaults</th><td>(&nbsp;array&nbsp;$md_defs, $post_id, array&nbsp;$mod&nbsp;)</td></tr>
 
-<tr><th>wpsso_get_post_options</th><td>(&nbsp;array $md_opts, $post_id, array $mod&nbsp;)</td></tr>
+<tr><th>wpsso_get_post_options</th><td>(&nbsp;array&nbsp;$md_opts, $post_id, array&nbsp;$mod&nbsp;)</td></tr>
 
 <tr><th>wpsso_get_short_url</th><td>(&nbsp;$url, $service, $mod&nbsp;)</td></tr>
 
 <tr><th>wpsso_get_site_defaults</th><td>(&nbsp;$site_defaults&nbsp;)</td></tr>
 
-<tr><th>wpsso_get_term_defaults</th><td>(&nbsp;array $md_opts, $term_id, array $mod&nbsp;)</td></tr>
+<tr><th>wpsso_get_term_defaults</th><td>(&nbsp;array&nbsp;$md_opts, $term_id, array&nbsp;$mod&nbsp;)</td></tr>
 
-<tr><th>wpsso_get_term_options</th><td>(&nbsp;array $md_opts, $term_id, array $mod&nbsp;)</td></tr>
+<tr><th>wpsso_get_term_options</th><td>(&nbsp;array&nbsp;$md_opts, $term_id, array&nbsp;$mod&nbsp;)</td></tr>
 
-<tr><th>wpsso_get_user_defaults</th><td>(&nbsp;array $md_opts, $user_id, array $mod&nbsp;)</td></tr>
+<tr><th>wpsso_get_user_defaults</th><td>(&nbsp;array&nbsp;$md_opts, $user_id, array&nbsp;$mod&nbsp;)</td></tr>
 
-<tr><th>wpsso_get_user_options</th><td>(&nbsp;array $md_opts, $user_id, array $mod&nbsp;)</td></tr>
+<tr><th>wpsso_get_user_options</th><td>(&nbsp;array&nbsp;$md_opts, $user_id, array&nbsp;$mod&nbsp;)</td></tr>
 
-<tr><th>wpsso_google_product_categories</th><td>(&nbsp;array $categories&nbsp;)</td></tr>
+<tr><th>wpsso_google_product_categories</th><td>(&nbsp;array&nbsp;$categories&nbsp;)</td></tr>
 
 <tr><th>wpsso_hashtags</th><td>(&nbsp;$hashtags, $post_id&nbsp;)</td></tr>
 
@@ -153,13 +155,13 @@
 
 <tr><th>wpsso_image_upscale_test</th><td>(&nbsp;WPSSO_IMAGE_UPSCALE_TEST = false, $image_src_args&nbsp;)</td></tr>
 
-<tr><th>wpsso_import_cf_{custom_field_name}</th><td>(&nbsp;$value, array $mod, array $wp_meta&nbsp;)</td><td>The WordPress custom field (aka metadata) does not need to exist - $value = null if the custom field does not exist.</td></tr>
+<tr><th>wpsso_import_cf_{custom_field_name}</th><td>(&nbsp;$value, array&nbsp;$mod, array&nbsp;$wp_meta&nbsp;)</td><td>The WordPress custom field (aka metadata) does not need to exist - $value = null if the custom field does not exist.</td></tr>
 
-<tr><th>wpsso_import_content_blocks</th><td>(&nbsp;array $md_opts, array $mod, $content&nbsp;)</td></tr>
+<tr><th>wpsso_import_content_blocks</th><td>(&nbsp;array&nbsp;$md_opts, array&nbsp;$mod, $content&nbsp;)</td></tr>
 
-<tr><th>wpsso_import_custom_fields</th><td>(&nbsp;array $md_opts, array $mod, array $wp_meta&nbsp;)</td></tr>
+<tr><th>wpsso_import_custom_fields</th><td>(&nbsp;array&nbsp;$md_opts, array&nbsp;$mod, array&nbsp;$wp_meta&nbsp;)</td></tr>
 
-<tr><th>wpsso_import_product_attributes</th><td>(&nbsp;array $md_opts, array $mod, $wp_obj&nbsp;)</td></tr>
+<tr><th>wpsso_import_product_attributes</th><td>(&nbsp;array&nbsp;$md_opts, array&nbsp;$mod, $wp_obj&nbsp;)</td></tr>
 
 <tr><th>wpsso_inherit_custom_images</th><td>(&nbsp;$bool, $mod&nbsp;)</td></tr>
 
@@ -167,7 +169,7 @@
 
 <tr><th>wpsso_init_json_filter_{lib_dir}_{lib_id}</th><td>(&nbsp;$bool = true&nbsp;)</td></tr>
 
-<tr><th>wpsso_input_limits_{options_key}</th><td>(&nbsp;array $limits&nbsp;)</td></tr>
+<tr><th>wpsso_input_limits_{options_key}</th><td>(&nbsp;array&nbsp;$limits&nbsp;)</td></tr>
 
 <tr><th>wpsso_is_functions</th><td>(&nbsp;$is_functions&nbsp;)</td></tr>
 
@@ -225,17 +227,17 @@
 
 <tr><th>wpsso_load_lib</th><td>(&nbsp;$success = false, $filespec = '', $classname = ''&nbsp;)</td></tr>
 
-<tr><th>wpsso_mb_{settings_page}_{metabox}_{tab_key}_rows</th><td>(&nbsp;array $table_rows, $form, $args&nbsp;)</td></tr>
+<tr><th>wpsso_mb_{settings_page}_{metabox}_{tab_key}_rows</th><td>(&nbsp;array&nbsp;$table_rows, $form, $args&nbsp;)</td></tr>
 
-<tr><th>wpsso_mb_{settings_page}_{metabox}_rows</th><td>(&nbsp;array $table_rows, $form, $args&nbsp;)</td></tr>
+<tr><th>wpsso_mb_{settings_page}_{metabox}_rows</th><td>(&nbsp;array&nbsp;$table_rows, $form, $args&nbsp;)</td></tr>
 
-<tr><th>wpsso_mb_{settings_page}_{metabox}_tabs</th><td>(&nbsp;array $tabs&nbsp;)</td></tr>
+<tr><th>wpsso_mb_{settings_page}_{metabox}_tabs</th><td>(&nbsp;array&nbsp;$tabs&nbsp;)</td></tr>
 
-<tr><th>wpsso_mb_sso_{tab_key}_rows</th><td>(&nbsp;array $table_rows, $form, $head_info, $mod&nbsp;)</td></tr>
+<tr><th>wpsso_mb_sso_{tab_key}_rows</th><td>(&nbsp;array&nbsp;$table_rows, $form, $head_info, $mod&nbsp;)</td></tr>
 
-<tr><th>wpsso_mb_sso_tabs</th><td>(&nbsp;array $tabs, $mod&nbsp;)</td></tr>
+<tr><th>wpsso_mb_sso_tabs</th><td>(&nbsp;array&nbsp;$tabs, $mod&nbsp;)</td></tr>
 
-<tr><th>wpsso_md_keys_fallback_{options_key}</th><td>(&nbsp;array $fallback&nbsp;)</td></tr>
+<tr><th>wpsso_md_keys_fallback_{options_key}</th><td>(&nbsp;array&nbsp;$fallback&nbsp;)</td></tr>
 
 <tr><th>wpsso_menu_title</th><td>(&nbsp;$title&nbsp;)</td><td>Translated menu title (default is "SSO - Social and Search Optimization").</td></tr>
 
@@ -243,7 +245,7 @@
 
 <tr><th>wpsso_meta_name</th><td>(&nbsp;$mt_name, $mod&nbsp;)</td></tr>
 
-<tr><th>wpsso_og</th><td>(&nbsp;array $mt_og, $mod&nbsp;)</td></tr>
+<tr><th>wpsso_og</th><td>(&nbsp;array&nbsp;$mt_og, $mod&nbsp;)</td></tr>
 
 <tr><th>wpsso_og_add_media_from_url</td></td>(&nbsp;$url, $service&nbsp;)</td><td>$service = 'facebook' or 'soundcloud'.</td></tr>
 
@@ -261,7 +263,7 @@
 
 <tr><th>wpsso_og_attached_images</th><td>(&nbsp;$mt_ret, $num, $size_name, $post_id&nbsp;)</td></tr>
 
-<tr><th>wpsso_og_data_https_ogp_me_ns_{og_type}</th><td>(&nbsp;array $mt_og, $mod&nbsp;)</td></tr>
+<tr><th>wpsso_og_data_https_ogp_me_ns_{og_type}</th><td>(&nbsp;array&nbsp;$mt_og, $mod&nbsp;)</td></tr>
 
 <tr><th>wpsso_og_default_img_id</th><td>(&nbsp;$image_id&nbsp;)</td></tr>
 
@@ -279,7 +281,7 @@
 
 <tr><th>wpsso_og_ns</th><td>(&nbsp;$ns&nbsp;)</td></tr>
 
-<tr><th>wpsso_og_seed</th><td>(&nbsp;array $mt_og, $mod&nbsp;)</td></tr>
+<tr><th>wpsso_og_seed</th><td>(&nbsp;array&nbsp;$mt_og, $mod&nbsp;)</td></tr>
 
 <tr><th>wpsso_og_type</th><td>(&nbsp;$type_id, $mod, $is_custom&nbsp;)</td></tr>
 
@@ -291,13 +293,13 @@
 
 <tr><th>wpsso_plugin_image_sizes</th><td>(&nbsp;$sizes&nbsp;)</td></tr>
 
-<tr><th>wpsso_post_image_ids</th><td>(&nbsp;array $ids, $size_name, $post_id&nbsp;)</td></tr>
+<tr><th>wpsso_post_image_ids</th><td>(&nbsp;array&nbsp;$ids, $size_name, $post_id&nbsp;)</td></tr>
 
-<tr><th>wpsso_post_image_urls</th><td>(&nbsp;array $urls, $size_name, $post_id&nbsp;)</td></tr>
+<tr><th>wpsso_post_image_urls</th><td>(&nbsp;array&nbsp;$urls, $size_name, $post_id&nbsp;)</td></tr>
 
-<tr><th>wpsso_post_public_ids</th><td>(&nbsp;array $public_ids, array $posts_args&nbsp;)</td></tr>
+<tr><th>wpsso_post_public_ids</th><td>(&nbsp;array&nbsp;$public_ids, array&nbsp;$posts_args&nbsp;)</td></tr>
 
-<tr><th>wpsso_post_public_ids_posts_args</th><td>(&nbsp;array $posts_args&nbsp;)</td></tr>
+<tr><th>wpsso_post_public_ids_posts_args</th><td>(&nbsp;array&nbsp;$posts_args&nbsp;)</td></tr>
 
 <tr><th>wpsso_post_public_ids_suppress_filters</th><td>(&nbsp;true&nbsp;)</td><td>False when the WPML or qTranslate-XT plugins are active.</td></tr>
 
@@ -383,11 +385,11 @@
 
 <tr><th>wpsso_tc</th><td>(&nbsp;$tc, $mod&nbsp;)</td></tr>
 
-<tr><th>wpsso_term_image_ids</th><td>(&nbsp;array $ids, $size_name, $term_id&nbsp;)</td></tr>
+<tr><th>wpsso_term_image_ids</th><td>(&nbsp;array&nbsp;$ids, $size_name, $term_id&nbsp;)</td></tr>
 
-<tr><th>wpsso_term_image_urls</th><td>(&nbsp;array $urls, $size_name, $term_id&nbsp;)</td></tr>
+<tr><th>wpsso_term_image_urls</th><td>(&nbsp;array&nbsp;$urls, $size_name, $term_id&nbsp;)</td></tr>
 
-<tr><th>wpsso_term_public_ids</th><td>(&nbsp;array $public_ids, array $terms_args&nbsp;)</td></tr>
+<tr><th>wpsso_term_public_ids</th><td>(&nbsp;array&nbsp;$public_ids, array&nbsp;$terms_args&nbsp;)</td></tr>
 
 <tr><th>wpsso_term_url</th><td>(&nbsp;$url, $mod&nbsp;)</td></tr>
 
@@ -413,23 +415,23 @@
 
 <tr><th>wpsso_title</th><td>(&nbsp;$title_text, $mod, $num_hashtags, $md_key, $title_sep&nbsp;)</td><td>Example $md_key value: 'og_title', 'schema_title', 'schema_title_alt', 'schema_title_bc'.</td></tr>
 
-<tr><th>wpsso_user_image_ids</th><td>(&nbsp;array $ids, $size_name, $user_id&nbsp;)</td></tr>
+<tr><th>wpsso_user_image_ids</th><td>(&nbsp;array&nbsp;$ids, $size_name, $user_id&nbsp;)</td></tr>
 
-<tr><th>wpsso_user_image_urls</th><td>(&nbsp;array $urls, $size_name, $user_id&nbsp;)</td></tr>
+<tr><th>wpsso_user_image_urls</th><td>(&nbsp;array&nbsp;$urls, $size_name, $user_id&nbsp;)</td></tr>
 
-<tr><th>wpsso_user_public_ids</th><td>(&nbsp;array $public_ids, array $users_args&nbsp;)</td></tr>
+<tr><th>wpsso_user_public_ids</th><td>(&nbsp;array&nbsp;$public_ids, array&nbsp;$users_args&nbsp;)</td></tr>
 
 <tr><th>wpsso_user_url</th><td>(&nbsp;$url, $mod&nbsp;)</td></tr>
 
-<tr><th>wpsso_wc_shipping_delivery_time</th><td>(&nbsp;array $delivery_time, $zone_id, $method_inst_id, $shipping_class_id, $product_parent_url&nbsp;)</td></tr>
+<tr><th>wpsso_wc_shipping_delivery_time</th><td>(&nbsp;array&nbsp;$delivery_time, $zone_id, $method_inst_id, $shipping_class_id, $product_parent_url&nbsp;)</td></tr>
 
 <tr><th>wpsso_wc_shipping_zone_location_postal_code_country</th><td>(&nbsp;$country, $zone_obj, $location_key, $location_obj&nbsp;)</td></tr>
 
-<tr><th>wpsso_wc_shipping_zone_methods</th><td>(&nbsp;array $zone_methods, $zone_id, $zone_obj&nbsp;)</td><td>Filters the output from <code>WC_Shipping_Zone-&gt;get_shipping_methods()</code></td></tr>
+<tr><th>wpsso_wc_shipping_zone_methods</th><td>(&nbsp;array&nbsp;$zone_methods, $zone_id, $zone_obj&nbsp;)</td><td>Filters the output from <code>WC_Shipping_Zone-&gt;get_shipping_methods()</code></td></tr>
 
-<tr><th>wpsso_wc_shipping_zone_offer</th><td>(&nbsp;array $shipping_offer, $zone_id, $zone_name, $method_inst_id, $method_obj, $shipping_class_id, $product, $product_parent&nbsp;)</td></tr>
+<tr><th>wpsso_wc_shipping_zone_offer</th><td>(&nbsp;array&nbsp;$shipping_offer, $zone_id, $zone_name, $method_inst_id, $method_obj, $shipping_class_id, $product, $product_parent&nbsp;)</td></tr>
 
-<tr><th>wpsso_wc_shipping_zones</th><td>(&nbsp;array $shipping_zones&nbsp;)</td><td>Filters the output from <code>WC_Shipping_Zones::get_zones( $context = 'admin' )</code>.</td></tr>
+<tr><th>wpsso_wc_shipping_zones</th><td>(&nbsp;array&nbsp;$shipping_zones&nbsp;)</td><td>Filters the output from <code>WC_Shipping_Zones::get_zones( $context = 'admin' )</code>.</td></tr>
 
 <tr><th>wpsso_weight_units</th><td>(&nbsp;$units&nbsp;)</td></tr>
 
