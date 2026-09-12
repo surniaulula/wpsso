@@ -1895,7 +1895,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/*
-		 * Decode/remove html/js/css and quotes.
+		 * Decode and remove html/js/css and quotes.
 		 */
 		public static function sanitize_meta_key( $meta_key ) {
 

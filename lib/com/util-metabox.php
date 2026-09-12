@@ -56,7 +56,7 @@ if ( ! class_exists( 'SucomUtilMetabox' ) ) {
 				$row_count++;
 
 				$is_added_meta = isset( $metadata[ $meta_key ] ) ? false : true;	// Check before sanitizing key.
-				$meta_key      = SucomUtil::sanitize_meta_key( $meta_key );		// Decode/remove html/js/css and quotes.
+				$meta_key      = SucomUtil::sanitize_meta_key( $meta_key );		// Decode and remove html/js/css and quotes.
 				$meta_key_esc  = esc_html( $meta_key );
 				$value         = is_string( $value ) ? $value : self::array_maybe_unserialize( $value );
 				$value_esc     = esc_html( var_export( $value, true ) );
