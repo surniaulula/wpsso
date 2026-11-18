@@ -123,7 +123,6 @@ Present your content at its best for social sites and search results, no matter 
 * <a href="https://wordpress.org/plugins/wp-recipe-maker/">WP Recipe Maker</a>
 * WPML
 * <a href="https://wordpress.org/plugins/yith-woocommerce-brands-add-on/">YITH WooCommerce Brands Add-on</a>
-* <a href="https://wordpress.org/plugins/yotpo-social-reviews-for-woocommerce/">Yotpo Social Reviews for WooCommerce</a>
 
 <p><strong>Supports additional WooCommerce product attributes:</strong></p>
 
@@ -271,6 +270,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 <p><strong>WPSSO Core Standard edition users (ie. the plugin hosted on WordPress.org) have access to <a href="https://wordpress.org/plugins/wpsso/advanced/">the latest development version under the Advanced Options section</a>.</strong></p>
 
 <h3>Changelog / Release Notes</h3>
+
+**Version 22.7.1-dev.1 (2026/11/18)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Removed support for "Yotpo Social Reviews for WooCommerce" as ratings and reviews from `get_product_bottom_line()` are no longer available since version 2.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v6.0.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 **Version 22.7.0 (2026/09/12)**
 
@@ -550,6 +564,10 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 22.7.1-dev.1 =
+
+(2026/11/18) Removed support for "Yotpo Social Reviews for WooCommerce" as ratings and reviews from `get_product_bottom_line()` are no longer available since version 2.
 
 = 22.7.0 =
 
