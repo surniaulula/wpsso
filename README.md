@@ -125,7 +125,6 @@
 <li><a href="https://wordpress.org/plugins/wp-recipe-maker/">WP Recipe Maker</a></li>
 <li>WPML</li>
 <li><a href="https://wordpress.org/plugins/yith-woocommerce-brands-add-on/">YITH WooCommerce Brands Add-on</a></li>
-<li><a href="https://wordpress.org/plugins/yotpo-social-reviews-for-woocommerce/">Yotpo Social Reviews for WooCommerce</a></li>
 </ul>
 
 <p><strong>Supports additional WooCommerce product attributes:</strong></p>
