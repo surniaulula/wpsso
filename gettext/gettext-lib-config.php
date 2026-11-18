@@ -36,7 +36,6 @@ _x( 'WP-PostRatings', 'lib file description', 'wpsso' );
 _x( 'WP Recipe Maker', 'lib file description', 'wpsso' );
 _x( 'Judge.me Product Reviews for WooCommerce', 'lib file description', 'wpsso' );
 _x( 'WP Product Review', 'lib file description', 'wpsso' );
-_x( 'Yotpo Social Reviews for WooCommerce', 'lib file description', 'wpsso' );
 _x( 'All in One SEO Pack', 'lib file description', 'wpsso' );
 _x( 'Rank Math SEO', 'lib file description', 'wpsso' );
 _x( 'The SEO Framework', 'lib file description', 'wpsso' );

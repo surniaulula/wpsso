@@ -690,17 +690,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 									$chk[ 'class' ] = 'WPPR';
 
 									break;
-
-								/*
-								 * Yotpo: Product & Photo Reviews for WooCommerce.
-								 *
-								 * See https://wordpress.org/plugins/yotpo-social-reviews-for-woocommerce/.
-								 */
-								case 'yotpowc':
-
-									$chk[ 'function' ] = 'wc_yotpo_init';
-
-									break;
 							}
 
 							break;

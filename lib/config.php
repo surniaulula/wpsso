@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '22.7.0',	// Plugin version.
+					'version'     => '22.7.1-dev.1',	// Plugin version.
 					'opt_version' => '1048',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -139,7 +139,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'review' => array(
 								'judgeme-for-wc'  => 'Judge.me Product Reviews for WooCommerce',
 								'wpproductreview' => 'WP Product Review',
-								'yotpowc'         => 'Yotpo Social Reviews for WooCommerce',
 							),
 							'seo' => array(
 								'aioseop'      => 'All in One SEO Pack',
