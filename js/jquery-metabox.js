@@ -27,19 +27,19 @@ function wpssoInitMetabox( container_id, doing_ajax ) {
 	 * When the Schema type is changed, maybe update the Open Graph type.
 	 */
 	jQuery( table_id + ' select#select_og_schema_type' ).show( wpssoOgSchemaType );
-	jQuery( table_id + ' select#select_og_schema_type' ).change( wpssoOgSchemaType );
+	jQuery( table_id + ' select#select_og_schema_type' ).on( 'change', wpssoOgSchemaType );
 
 	/*
 	 * When an Organization ID is selected, disable the Place ID.
 	 */
 	jQuery( table_id + ' select#select_schema_organization_id' ).show( wpssoSchemaOrgId );
-	jQuery( table_id + ' select#select_schema_organization_id' ).change( wpssoSchemaOrgId );
+	jQuery( table_id + ' select#select_schema_organization_id' ).on( 'change', wpssoSchemaOrgId );
 
 	/*
 	 * When a Place ID is selected, disable the Organization ID.
 	 */
 	jQuery( table_id + ' select#select_schema_place_id' ).show( wpssoSchemaPlaceId );
-	jQuery( table_id + ' select#select_schema_place_id' ).change( wpssoSchemaPlaceId );
+	jQuery( table_id + ' select#select_schema_place_id' ).on( 'change', wpssoSchemaPlaceId );
 
 	/*
 	 * The sucomInitMetabox() function is located in the 'sucom-metabox' script located in js/com/jquery-metabox.js.

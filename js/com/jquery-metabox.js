@@ -88,7 +88,7 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 
 		if ( jQuery( this ).has( table_id ).length != 0 ) {
 
-			jQuery( this ).submit( function ( event ) {
+			jQuery( this ).on( 'submit', function ( event ) {
 
 				sucomDisableUnchanged( container_id );
 			} );
@@ -448,7 +448,7 @@ function sucomPlaceholderDep( container_id, container_dep_id ) {
 
 	if ( '' === dep_val ) dep_val = dep_el.attr( 'placeholder' );
 
-	el.attr( 'placeholder', dep_val ).change();
+	el.attr( 'placeholder', dep_val ).on( 'change' );
 }
 
 /*
