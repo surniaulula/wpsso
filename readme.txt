@@ -271,6 +271,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 22.8.0-dev.1 (2026/11/26)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v6.0.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
+
 **Version 22.7.2 (2026/11/25)**
 
 * **New Features**
@@ -580,6 +595,10 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 22.8.0-dev.1 =
+
+(2026/11/26) None.
 
 = 22.7.2 =
 
