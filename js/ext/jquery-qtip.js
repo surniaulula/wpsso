@@ -304,14 +304,14 @@ PROTOTYPE.destroy = function(immediate) {
 	return this.target;
 };
 ;function invalidOpt(a) {
-	return a === NULL || $.type(a) !== 'object';
+	return a === NULL || typeof a !== 'object';
 }
 
 function invalidContent(c) {
 	return !($.isFunction(c) ||
             c && c.attr ||
             c.length ||
-            $.type(c) === 'object' && (c.jquery || c.then));
+            typeof c === 'object' && (c.jquery || c.then));
 }
 
 // Option object sanitizer
@@ -739,7 +739,7 @@ PROTOTYPE.reposition = function(event, effect) {
 		pluginCalculations, offset, adjusted, newClass;
 
 	// Check if absolute position was passed
-	if($.isArray(target) && target.length === 2) {
+	if(Array.isArray(target) && target.length === 2) {
 		// Force left top and set position
 		at = { x: LEFT, y: TOP };
 		position = { left: target[0], top: target[1] };
@@ -1458,8 +1458,8 @@ PROTOTYPE._assignInitialEvents = function(event) {
 	var options = this.options,
 		showTarget = options.show.target,
 		hideTarget = options.hide.target,
-		showEvents = options.show.event ? $.trim('' + options.show.event).split(' ') : [],
-		hideEvents = options.hide.event ? $.trim('' + options.hide.event).split(' ') : [];
+		showEvents = options.show.event ? String.prototype.trim('' + options.show.event).split(' ') : [],
+		hideEvents = options.hide.event ? String.prototype.trim('' + options.hide.event).split(' ') : [];
 
 	// Catch remove/removeqtip events on target element to destroy redundant tooltips
 	this._bind(this.elements.target, ['remove', 'removeqtip'], function() {
@@ -1525,8 +1525,8 @@ PROTOTYPE._assignEvents = function() {
 		documentTarget = $(document),
 		windowTarget = $(window),
 
-		showEvents = options.show.event ? $.trim('' + options.show.event).split(' ') : [],
-		hideEvents = options.hide.event ? $.trim('' + options.hide.event).split(' ') : [];
+		showEvents = options.show.event ? String.prototype.trim('' + options.show.event).split(' ') : [],
+		hideEvents = options.hide.event ? String.prototype.trim('' + options.hide.event).split(' ') : [];
 
 
 	// Assign passed event callbacks
@@ -1839,7 +1839,7 @@ QTIP = $.fn.qtip = function(options, notation, newValue)
 			var api, id;
 
 			// Find next available ID, or use custom ID if provided
-			id = $.isArray(opts.id) ? opts.id[i] : opts.id;
+			id = Array.isArray(opts.id) ? opts.id[i] : opts.id;
 			id = !id || id === FALSE || id.length < 1 || QTIP.api[id] ? QTIP.nextid++ : id;
 
 			// Initialize the qTip and re-grab newly sanitized options

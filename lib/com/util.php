@@ -718,7 +718,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_multi_values( array &$opts, $opt_pre ) {
 
-			$values = self::preg_grep_keys( '/^' . $opt_pre . '_([0-9]+)$/', $opts, $invert = false, $replace = '$1' );
+			$values = self::preg_grep_keys( '/^' . $opt_pre . '(|_[0-9]+)$/', $opts, $invert = false, $replace = '$1' );
 
 			foreach ( $values as $num => $val ) {
 

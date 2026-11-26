@@ -690,6 +690,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 
 					$md_opts = apply_filters( $filter_name, $md_opts, $mod );
+			
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log_arr( 'md_opts', $md_opts );
+					}
+
 				}
 			}
 

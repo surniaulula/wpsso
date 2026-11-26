@@ -2616,6 +2616,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				return 0;	// Return count of services added.
 			}
 
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log_arr( 'service_opts', $service_opts );
+			}
+
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
@@ -2640,6 +2645,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'service_prov_org_id'    => 'provider',	// Provider Organization.
 				'service_prov_person_id' => 'provider',	// Provider Person.
 			) as $opt_pre => $prop_name ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'getting multi values for "' . $opt_pre . '"' );
+				}
 
 				foreach ( SucomUtil::get_multi_values( $service_opts, $opt_pre ) as $id ) {	// Uses is_valid_option_value().
 
