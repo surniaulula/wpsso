@@ -279,6 +279,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Bugfixes**
 	* Fixed deprecated jQuery function calls.
+	* Fixed `SucomUtil::get_multi_values()` to include non-suffixed (ie. non-multi) option keys.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -582,7 +583,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 = 22.7.2-dev.2 =
 
-(2026/11/25) Fixed deprecated jQuery function calls.
+(2026/11/25) Fixed deprecated jQuery function calls. Fixed `SucomUtil::get_multi_values()` to include non-suffixed (ie. non-multi) option keys.
 
 = 22.7.1 =
 
