@@ -878,7 +878,7 @@ table.sucom-settings td input[type="text"].css_id,
 table.sucom-settings td input[type="text"].latitude,
 table.sucom-settings td input[type="text"].longitude,
 table.sucom-settings td input[type="text"].altitude,
-table.sucom-settings td input[type="text"].offer_name { width:200px; }
+table.sucom-settings td input[type="text"].offer_name{ width:200px; }
 
 table.sucom-settings td input[type="text"].tid { width:320px; }
 

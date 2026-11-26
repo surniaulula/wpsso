@@ -499,7 +499,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Book Offers', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_book_offers',
 					'content'  => $form->get_mixed_multi( array(
-						'schema_book_offer_name' => array(
+						'schema_book_offer' => array(	// Index key for linked multi options.
 							'input_title' => _x( 'Book Offer Name', 'option label', 'wpsso' ),
 							'input_type'  => 'text',
 							'input_class' => 'offer_name',
@@ -611,7 +611,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 							'input_values'  => array( 0, 1 ),
 							'input_default' => 0,
 						),
-						'schema_howto_step' => array(
+						'schema_howto_step' => array(	// Index key for linked multi options.
 							'input_label' => _x( 'Name', 'option label', 'wpsso' ),
 							'input_type'  => 'text',
 							'input_class' => 'wide howto_step_name',
@@ -720,7 +720,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 							'input_values'  => array( 0, 1 ),
 							'input_default' => 0,
 						),
-						'schema_recipe_instruction' => array(
+						'schema_recipe_instruction' => array(	// Index key for linked multi options.
 							'input_label' => _x( 'Name', 'option label', 'wpsso' ),
 							'input_type'  => 'text',
 							'input_class' => 'wide recipe_instruction_name',
@@ -1161,7 +1161,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Software App Offers', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_review_item_software_app_offers',
 					'content'  => $form->get_mixed_multi( array(
-						'schema_review_item_software_app_offer_name' => array(
+						'schema_review_item_software_app_offer' => array(	// Index key for linked multi options.
 							'input_title' => _x( 'Software App Offer Name', 'option label', 'wpsso' ),
 							'input_type'  => 'text',
 							'input_class' => 'offer_name',
@@ -1282,7 +1282,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Subject Product Offers', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_review_item_product_offers',
 					'content'  => $form->get_mixed_multi( array(
-						'schema_review_item_product_offer_name' => array(
+						'schema_review_item_product_offer' => array(	// Index key for linked multi options.
 							'input_title' => _x( 'Product Offer Name', 'option label', 'wpsso' ),
 							'input_type'  => 'text',
 							'input_class' => 'offer_name',
@@ -1628,7 +1628,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Event Offers', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_offers',
 					'content'  => $form->get_mixed_multi( array(
-						'schema_event_offer_name' => array(
+						'schema_event_offer' => array(	// Index key for linked multi options.
 							'input_title' => _x( 'Event Offer Name', 'option label', 'wpsso' ),
 							'input_type'  => 'text',
 							'input_class' => 'offer_name',
@@ -2237,7 +2237,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Service Offers', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_service_offers',
 					'content'  => $form->get_mixed_multi( array(
-						'schema_service_offer_name' => array(
+						'schema_service_offer' => array(	// Index key for linked multi options.
 							'input_title' => _x( 'Service Offer Name', 'option label', 'wpsso' ),
 							'input_type'  => 'text',
 							'input_class' => 'offer_name',
@@ -2286,7 +2286,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Offer Catalogs', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_service_offer_catalogs',
 					'content'  => $form->get_mixed_multi( array(
-						'schema_service_offer_catalog' => array(
+						'schema_service_offer_catalog' => array(	// Index key for linked multi options.
 							'input_label' => _x( 'Offer Catalog Name', 'option label', 'wpsso' ),
 							'input_type'  => 'text',
 							'input_class' => 'wide offer_catalog_name',

@@ -143,6 +143,13 @@ if ( ! class_exists( 'WpssoUpgradeMeta' ) ) {
 					'schema_recipe_instruction_anchor'       => 'schema_recipe_instruction_anchor_id',
 					'schema_recipe_instruction_container_id' => 'schema_recipe_instruction_anchor_id',
 				),
+				1049 => array(	// Note that original key matches /(:disabled|:use|#.*|_[0-9]+)?$/.
+					'schema_book_offer_name'                     => 'schema_book_offer',
+					'schema_event_offer_name'                    => 'schema_event_offer',
+					'schema_review_item_product_offer_name'      => 'schema_review_item_product_offer',
+					'schema_review_item_software_app_offer_name' => 'schema_review_item_software_app_offer',
+					'schema_service_offer_name'                  => 'schema_service_offer',
+				),
 			),
 		);
 

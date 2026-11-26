@@ -544,6 +544,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_ispartof_url_0'  => '',						// Is Part of URLs.
 					'schema_ispartof_url_1'  => '',						// Is Part of URLs.
 					'schema_ispartof_url_2'  => '',						// Is Part of URLs.
+					'schema_ispartof_url_3'  => '',						// Is Part of URLs.
+					'schema_ispartof_url_4'  => '',						// Is Part of URLs.
 					'schema_award_0'         => '',						// Creative Work Awards.
 					'schema_award_1'         => '',						// Creative Work Awards.
 					'schema_award_2'         => '',						// Creative Work Awards.
@@ -587,11 +589,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_book_format'           => $opts[ 'schema_def_book_format' ],		// Book Format.
 					'schema_book_pages'            => '',						// Book Pages.
 					'schema_book_isbn'             => '',						// Book ISBN.
-					'schema_book_offer_name_0'     => '',
-					'schema_book_offer_name_1'     => '',
-					'schema_book_offer_name_2'     => '',
-					'schema_book_offer_name_3'     => '',
-					'schema_book_offer_name_4'     => '',
+					'schema_book_offer_0'          => '',
+					'schema_book_offer_1'          => '',
+					'schema_book_offer_2'          => '',
+					'schema_book_offer_3'          => '',
+					'schema_book_offer_4'          => '',
 					'schema_book_offer_price_0'    => '',
 					'schema_book_offer_price_1'    => '',
 					'schema_book_offer_price_2'    => '',
@@ -639,11 +641,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_event_previous_date'         => '',							// Event Previous Start Date (Y-m-d).
 					'schema_event_previous_time'         => 'none',							// Event Previous Start Time (H:i).
 					'schema_event_previous_timezone'     => $def_timezone,						// Event Previous Start Timezone.
-					'schema_event_offer_name_0'          => '',
-					'schema_event_offer_name_1'          => '',
-					'schema_event_offer_name_2'          => '',
-					'schema_event_offer_name_3'          => '',
-					'schema_event_offer_name_4'          => '',
+					'schema_event_offer_0'               => '',
+					'schema_event_offer_1'               => '',
+					'schema_event_offer_2'               => '',
+					'schema_event_offer_3'               => '',
+					'schema_event_offer_4'               => '',
 					'schema_event_offer_price_0'         => '',
 					'schema_event_offer_price_1'         => '',
 					'schema_event_offer_price_2'         => '',
@@ -681,17 +683,23 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_howto_supply_0'        => '',
 					'schema_howto_supply_1'        => '',
 					'schema_howto_supply_2'        => '',
+					'schema_howto_supply_3'        => '',
+					'schema_howto_supply_4'        => '',
 					'schema_howto_step_section_0'  => 0,	// How-To Step or Section (0 or 1).
 					'schema_howto_step_section_1'  => 0,	// How-To Step or Section (0 or 1).
 					'schema_howto_step_section_2'  => 0,	// How-To Step or Section (0 or 1).
-					'schema_howto_step_0'          => '',
-					'schema_howto_step_1'          => '',
-					'schema_howto_step_2'          => '',
-					'schema_howto_step_text_0'     => '',
-					'schema_howto_step_text_1'     => '',
-					'schema_howto_step_text_2'     => '',
-					'schema_howto_step_text_3'     => '',
-					'schema_howto_step_text_4'     => '',
+					'schema_howto_step_section_3'  => 0,	// How-To Step or Section (0 or 1).
+					'schema_howto_step_section_4'  => 0,	// How-To Step or Section (0 or 1).
+					'schema_howto_step_0'          => '',	// How-To Step Name.
+					'schema_howto_step_1'          => '',	// How-To Step Name.
+					'schema_howto_step_2'          => '',	// How-To Step Name.
+					'schema_howto_step_3'          => '',	// How-To Step Name.
+					'schema_howto_step_4'          => '',	// How-To Step Name.
+					'schema_howto_step_text_0'     => '',	// How-To Step Description.
+					'schema_howto_step_text_1'     => '',	// How-To Step Description.
+					'schema_howto_step_text_2'     => '',	// How-To Step Description.
+					'schema_howto_step_text_3'     => '',	// How-To Step Description.
+					'schema_howto_step_text_4'     => '',	// How-To Step Description.
 					'schema_howto_step_image_id_0' => '',
 					'schema_howto_step_image_id_1' => '',
 					'schema_howto_step_image_id_2' => '',
@@ -792,26 +800,26 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_recipe_total_hours'           => 0,	// Recipe Total Time (Hours).
 					'schema_recipe_total_mins'            => 0,	// Recipe Total Time (Mins).
 					'schema_recipe_total_secs'            => 0,	// Recipe Total Time (Secs).
-					'schema_recipe_ingredient_0'          => '',
-					'schema_recipe_ingredient_1'          => '',
-					'schema_recipe_ingredient_2'          => '',
-					'schema_recipe_ingredient_3'          => '',
-					'schema_recipe_ingredient_4'          => '',
+					'schema_recipe_ingredient_0'          => '',	// Recipe Ingredient.
+					'schema_recipe_ingredient_1'          => '',	// Recipe Ingredient.
+					'schema_recipe_ingredient_2'          => '',	// Recipe Ingredient.
+					'schema_recipe_ingredient_3'          => '',	// Recipe Ingredient.
+					'schema_recipe_ingredient_4'          => '',	// Recipe Ingredient.
 					'schema_recipe_instruction_section_0' => 0,	// Recipe Instruction or Section (0 or 1).
 					'schema_recipe_instruction_section_1' => 0,	// Recipe Instruction or Section (0 or 1).
 					'schema_recipe_instruction_section_2' => 0,	// Recipe Instruction or Section (0 or 1).
 					'schema_recipe_instruction_section_3' => 0,	// Recipe Instruction or Section (0 or 1).
 					'schema_recipe_instruction_section_4' => 0,	// Recipe Instruction or Section (0 or 1).
-					'schema_recipe_instruction_0'         => '',
-					'schema_recipe_instruction_1'         => '',
-					'schema_recipe_instruction_2'         => '',
-					'schema_recipe_instruction_3'         => '',
-					'schema_recipe_instruction_4'         => '',
-					'schema_recipe_instruction_text_0'    => '',
-					'schema_recipe_instruction_text_1'    => '',
-					'schema_recipe_instruction_text_2'    => '',
-					'schema_recipe_instruction_text_3'    => '',
-					'schema_recipe_instruction_text_4'    => '',
+					'schema_recipe_instruction_0'         => '',	// Recipe Instruction Name.
+					'schema_recipe_instruction_1'         => '',	// Recipe Instruction Name.
+					'schema_recipe_instruction_2'         => '',	// Recipe Instruction Name.
+					'schema_recipe_instruction_3'         => '',	// Recipe Instruction Name.
+					'schema_recipe_instruction_4'         => '',	// Recipe Instruction Name.
+					'schema_recipe_instruction_text_0'    => '',	// Recipe Instruction Description.
+					'schema_recipe_instruction_text_1'    => '',	// Recipe Instruction Description.
+					'schema_recipe_instruction_text_2'    => '',	// Recipe Instruction Description.
+					'schema_recipe_instruction_text_3'    => '',	// Recipe Instruction Description.
+					'schema_recipe_instruction_text_4'    => '',	// Recipe Instruction Description.
 					'schema_recipe_instruction_img_id_0'  => '',
 					'schema_recipe_instruction_img_id_1'  => '',
 					'schema_recipe_instruction_img_id_2'  => '',
@@ -918,11 +926,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 * Schema Review Subject: Product.
 					 */
 					'schema_review_item_product_brand'            => '',	// Product Brand.
-					'schema_review_item_product_offer_name_0'     => '',
-					'schema_review_item_product_offer_name_1'     => '',
-					'schema_review_item_product_offer_name_2'     => '',
-					'schema_review_item_product_offer_name_3'     => '',
-					'schema_review_item_product_offer_name_4'     => '',
+					'schema_review_item_product_offer_0'          => '',
+					'schema_review_item_product_offer_1'          => '',
+					'schema_review_item_product_offer_2'          => '',
+					'schema_review_item_product_offer_3'          => '',
+					'schema_review_item_product_offer_4'          => '',
 					'schema_review_item_product_offer_price_0'    => '',
 					'schema_review_item_product_offer_price_1'    => '',
 					'schema_review_item_product_offer_price_2'    => '',
@@ -947,11 +955,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_review_item_software_app_cat'              => '',	// Application Category.
 					'schema_review_item_software_app_os'               => '',	// Operating System.
 					'schema_review_item_software_app_dl_url'           => '',	// Download URL.
-					'schema_review_item_software_app_offer_name_0'     => '',
-					'schema_review_item_software_app_offer_name_1'     => '',
-					'schema_review_item_software_app_offer_name_2'     => '',
-					'schema_review_item_software_app_offer_name_3'     => '',
-					'schema_review_item_software_app_offer_name_4'     => '',
+					'schema_review_item_software_app_offer_0'          => '',
+					'schema_review_item_software_app_offer_1'          => '',
+					'schema_review_item_software_app_offer_2'          => '',
+					'schema_review_item_software_app_offer_3'          => '',
+					'schema_review_item_software_app_offer_4'          => '',
 					'schema_review_item_software_app_offer_price_0'    => '',
 					'schema_review_item_software_app_offer_price_1'    => '',
 					'schema_review_item_software_app_offer_price_2'    => '',
@@ -984,11 +992,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_service_award_2'              => '',						// Service Award.
 					'schema_service_award_3'              => '',						// Service Award.
 					'schema_service_award_4'              => '',						// Service Award.
-					'schema_service_offer_name_0'         => '',
-					'schema_service_offer_name_1'         => '',
-					'schema_service_offer_name_2'         => '',
-					'schema_service_offer_name_3'         => '',
-					'schema_service_offer_name_4'         => '',
+					'schema_service_offer_0'              => '',
+					'schema_service_offer_1'              => '',
+					'schema_service_offer_2'              => '',
+					'schema_service_offer_3'              => '',
+					'schema_service_offer_4'              => '',
 					'schema_service_offer_price_0'        => '',
 					'schema_service_offer_price_1'        => '',
 					'schema_service_offer_price_2'        => '',
@@ -2247,7 +2255,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					$is_valid_offer = false;
 
 					foreach ( array(
-						$md_pre . '_offer_name',
+						$md_pre . '_offer',
 						$md_pre . '_offer_price'
 					) as $md_offer_pre ) {
 

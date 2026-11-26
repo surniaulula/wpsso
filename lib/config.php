@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '22.7.2',	// Plugin version.
-					'opt_version' => '1048',	// Increment when changing default option values.
+					'version'     => '22.8.0-dev.1',	// Plugin version.
+					'opt_version' => '1050',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -2255,19 +2255,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_addl_type_url' => true,				// Microdata Type URLs.
 					'schema_award'         => true,				// Creative Work Awards.
 					'schema_book_offer'    => array(
-						'schema_book_offer_name',
 						'schema_book_offer_price',
 						'schema_book_offer_currency',
 						'schema_book_offer_avail',
 					),
 					'schema_citation'      => true,				// Reference Citations.
 					'schema_event_offer'    => array(
-						'schema_event_offer_name',
 						'schema_event_offer_price',
 						'schema_event_offer_currency',
 						'schema_event_offer_avail',
 					),
-					'schema_howto_step'    => array(			// How-To Name.
+					'schema_howto_step'    => array(			// How-To Step Name.
 						'schema_howto_step_section',			// How-To Step or Section.
 						'schema_howto_step_text',			// How-To Step Description.
 						'schema_howto_step_anchor_id',			// How-To Step Anchor ID.
@@ -2279,8 +2277,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_ispartof_url'               => true,		// Is Part of URLs.
 					'schema_movie_actor_person_name'    => true,
 					'schema_movie_director_person_name' => true,
-					'schema_recipe_ingredient'          => true,		// Recipe Ingredients.
-					'schema_recipe_instruction'         => array(		// Recipe Instructions.
+					'schema_recipe_ingredient'          => true,		// Recipe Ingredient.
+					'schema_recipe_instruction'         => array(		// Recipe Instruction Name.
 						'schema_recipe_instruction_section',		// Recipe Instruction or Section.
 						'schema_recipe_instruction_text',		// Recipe Instruction Description.
 						'schema_recipe_instruction_anchor_id',		// Recipe Instruction Anchor ID.
@@ -2290,13 +2288,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_review_item_cw_movie_actor_person_name'    => true,
 					'schema_review_item_cw_movie_director_person_name' => true,
 					'schema_review_item_product_offer'                 => array(
-						'schema_review_item_product_offer_name',
 						'schema_review_item_product_offer_price',
 						'schema_review_item_product_offer_currency',
 						'schema_review_item_product_offer_avail',
 					),
 					'schema_review_item_software_app_offer' => array(
-						'schema_review_item_software_app_offer_name',
 						'schema_review_item_software_app_offer_price',
 						'schema_review_item_software_app_offer_currency',
 						'schema_review_item_software_app_offer_avail',
@@ -2304,7 +2300,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_sameas_url'    => true,					// Same-As URLs.
 					'schema_service_award' => true,					// Service Awards.
 					'schema_service_offer' => array(
-						'schema_service_offer_name',
 						'schema_service_offer_price',
 						'schema_service_offer_currency',
 						'schema_service_offer_avail',

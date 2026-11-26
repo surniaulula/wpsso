@@ -148,7 +148,7 @@ if ( ! class_exists( 'WpssoIntegEventTheEventsCalendar' ) ) {
 			$event_opts[ 'schema_event_end_date' ]         = date( 'Y-m-d', $event_end_ts );
 			$event_opts[ 'schema_event_end_time' ]         = date( 'H:i', $event_end_ts );
 			$event_opts[ 'schema_event_end_timezone' ]     = $event_timezone;
-			$event_opts[ 'schema_event_offer_name_0' ]     = get_the_title( $post_id );
+			$event_opts[ 'schema_event_offer_0' ]          = get_the_title( $post_id );
 			$event_opts[ 'schema_event_offer_url_0' ]      = tribe_get_event_link( $post_id, false );
 			$event_opts[ 'schema_event_offer_price_0' ]    = tribe_get_cost( $post_id );
 			$event_opts[ 'schema_event_offer_currency_0' ] = $event_currency_abbrev;
@@ -229,16 +229,16 @@ if ( ! class_exists( 'WpssoIntegEventTheEventsCalendar' ) ) {
 			date_default_timezone_set( $event_timezone );	// Set reference timezone for the event.
 
 			$event_opts = array(
-				'event_type'                => $this->p->post->get_options( $post_id, 'schema_type' ),
-				'event_start_date'          => date( 'Y-m-d', $event_start_ts ),
-				'event_start_time'          => date( 'H:i', $event_start_ts ),
-				'event_start_timezone'      => $event_timezone,
-				'event_end_date'            => date( 'Y-m-d', $event_end_ts ),
-				'event_end_time'            => date( 'H:i', $event_end_ts ),
-				'event_end_timezone'        => $event_timezone,
-				'event_offers'              => array(	// Array of arrays.
+				'event_type'           => $this->p->post->get_options( $post_id, 'schema_type' ),
+				'event_start_date'     => date( 'Y-m-d', $event_start_ts ),
+				'event_start_time'     => date( 'H:i', $event_start_ts ),
+				'event_start_timezone' => $event_timezone,
+				'event_end_date'       => date( 'Y-m-d', $event_end_ts ),
+				'event_end_time'       => date( 'H:i', $event_end_ts ),
+				'event_end_timezone'   => $event_timezone,
+				'event_offers'         => array(	// Array of arrays.
 					array(
-						'offer_name'     => get_the_title( $post_id ),
+						'offer'          => get_the_title( $post_id ),
 						'offer_url'      => tribe_get_event_link( $post_id, false ),
 						'offer_price'    => tribe_get_cost( $post_id ),
 						'offer_currency' => $event_currency_abbrev,

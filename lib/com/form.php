@@ -2170,6 +2170,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								}
 
 								break;
+							
+							case 'hidden':
+								
+								$input_value = isset( $atts[ 'input_value' ] ) ? $atts[ 'input_value' ] : '';
+
+								$html .= $this->get_hidden( $input_name, $input_value );
+
+								break;
 						}
 					}
 

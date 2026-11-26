@@ -274,7 +274,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_headline':				// Headline.
 					case 'schema_text':				// Full Text.
 					case 'schema_copyright_year':			// Copyright Year.
-					case 'schema_event_offer_name':
+					case 'schema_event_offer':
 					case 'schema_howto_step':			// How-To Step Name.
 					case 'schema_howto_step_text':			// How-To Step Description.
 					case 'schema_howto_supply':			// How-To Supplies.
@@ -287,8 +287,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_recipe_cook_method':
 					case 'schema_recipe_course':
 					case 'schema_recipe_cuisine':
-					case 'schema_recipe_ingredient':		// Recipe Ingredients.
-					case 'schema_recipe_instruction':		// Recipe Instructions.
+					case 'schema_recipe_ingredient':		// Recipe Ingredient.
+					case 'schema_recipe_instruction':		// Recipe Instruction Name.
 					case 'schema_recipe_instruction_text':		// Recipe Instruction Description.
 					case 'schema_recipe_nutri_serv':
 					case 'schema_recipe_yield':			// Recipe Makes.
