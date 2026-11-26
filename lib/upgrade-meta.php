@@ -16,6 +16,9 @@ if ( ! class_exists( 'WpssoUpgradeMeta' ) ) {
 
 		private $p;	// Wpsso class object.
 
+		/*
+		 * Note that original keys match /^.*(:disabled|:use|#.*|_[0-9]+)?$/.
+		 */
 		private static $rename_md_options = array(
 			'wpsso' => array(
 				499 => array(
@@ -50,11 +53,6 @@ if ( ! class_exists( 'WpssoUpgradeMeta' ) ) {
 				649 => array(
 					'product_ean' => 'product_gtin13',
 				),
-
-				/*
-				 * The custom width, height, and crop options were removed in preference for attachment specific
-				 * options (ie. 'attach_img_crop_x' and 'attach_img_crop_y').
-				 */
 				660 => array(
 					'og_img_width'              => '',
 					'og_img_height'             => '',
@@ -143,7 +141,7 @@ if ( ! class_exists( 'WpssoUpgradeMeta' ) ) {
 					'schema_recipe_instruction_anchor'       => 'schema_recipe_instruction_anchor_id',
 					'schema_recipe_instruction_container_id' => 'schema_recipe_instruction_anchor_id',
 				),
-				1049 => array(	// Note that original key matches /(:disabled|:use|#.*|_[0-9]+)?$/.
+				1049 => array(	// Renamed for WPSSO Core v22.8.0.
 					'schema_book_offer_name'                     => 'schema_book_offer',
 					'schema_event_offer_name'                    => 'schema_event_offer',
 					'schema_review_item_product_offer_name'      => 'schema_review_item_product_offer',
