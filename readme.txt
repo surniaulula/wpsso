@@ -271,13 +271,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.7.2-dev.1 (2026/11/25)**
+**Version 22.7.2-dev.2 (2026/11/25)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* None.
 * **Bugfixes**
+	* Fixed `SucomUtil::get_multi_values()` for compatibility with non-suffixed (ie. non-multi) option keys.
 	* Fixed deprecated jQuery function calls.
 * **Developer Notes**
 	* None.
@@ -580,7 +581,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 == Upgrade Notice ==
 
-= 22.7.2-dev.1 =
+= 22.7.2-dev.2 =
 
 (2026/11/25) Fixed deprecated jQuery function calls.
 
