@@ -2572,7 +2572,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						if ( self::is_valid_key( $offer_opts, 'offer' ) && self::is_valid_key( $offer_opts, 'offer_price' ) ) {
 
 							if ( false !== ( $offer = self::get_data_itemprop_from_assoc( $offer_opts, array(
-								'name'          => 'offer',
+								'name'          => 'offer_name',
 								'price'         => 'offer_price',
 								'priceCurrency' => 'offer_currency',
 								'availability'  => 'offer_avail',	// In stock, Out of stock, Pre-order, etc.
@@ -2662,7 +2662,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( self::is_valid_key( $offer_opts, 'offer' ) && self::is_valid_key( $offer_opts, 'offer_price' ) ) {
 
 						if ( false !== ( $offer = self::get_data_itemprop_from_assoc( $offer_opts, array(
-							'name'          => 'offer',
+							'name'          => 'offer_name',
 							'price'         => 'offer_price',
 							'priceCurrency' => 'offer_currency',
 							'availability'  => 'offer_avail',	// In stock, Out of stock, Pre-order, etc.
@@ -3649,7 +3649,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 
 					if ( false !== ( $offer = self::get_data_itemprop_from_assoc( $offer, array(
-						'name'          => 'offer',
+						'name'          => 'offer_name',
 						'url'           => 'offer_url',
 						'price'         => 'offer_price',
 						'priceCurrency' => 'offer_currency',
@@ -3727,7 +3727,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$offer_opts = array();
 
 					foreach ( array(
-						'offer'          => 'schema_' . $type . '_offer',
+						'offer_name'     => 'schema_' . $type . '_offer',
 						'offer_url'      => 'schema_' . $type . '_offer_url',
 						'offer_price'    => 'schema_' . $type . '_offer_price',
 						'offer_currency' => 'schema_' . $type . '_offer_currency',
@@ -3741,7 +3741,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/*
 				 * Must have at least an offer name and price.
 				 */
-				if ( isset( $offer_opts[ 'offer' ] ) && isset( $offer_opts[ 'offer_price' ] ) ) {
+				if ( isset( $offer_opts[ 'offer_name' ] ) && isset( $offer_opts[ 'offer_price' ] ) ) {
 
 					if ( ! isset( $type_opts[ 'offer_url' ] ) ) {
 
