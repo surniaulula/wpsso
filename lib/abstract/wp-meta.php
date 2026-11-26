@@ -2255,8 +2255,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					$is_valid_offer = false;
 
 					foreach ( array(
-						$md_pre . '_offer',
-						$md_pre . '_offer_price'
+						$md_pre . '_offer',		// Offer Name.
+						$md_pre . '_offer_price'	// Offer Price.
 					) as $md_offer_pre ) {
 
 						if ( isset( $md_opts[ $md_offer_pre . '_' . $key_num ] ) && '' !== $md_opts[ $md_offer_pre . '_' . $key_num ] ) {
@@ -2267,8 +2267,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					if ( ! $is_valid_offer ) {
 
-						unset( $md_opts[ $md_pre . '_offer_currency_' . $key_num ] );
-						unset( $md_opts[ $md_pre . '_offer_avail_' . $key_num ] );
+						unset( $md_opts[ $md_pre . '_offer_currency_' . $key_num ] );	// Offer Currency.
+						unset( $md_opts[ $md_pre . '_offer_avail_' . $key_num ] );	// Offer Availability.
 					}
 				}
 			}

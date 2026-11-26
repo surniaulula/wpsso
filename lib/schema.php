@@ -2569,7 +2569,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						 *
 						 * Values cannot be null, an empty string, or 'none'.
 						 */
-						if ( self::is_valid_key( $offer_opts, 'offer' ) && self::is_valid_key( $offer_opts, 'offer_price' ) ) {
+						if ( self::is_valid_key( $offer_opts, 'offer_name' ) && self::is_valid_key( $offer_opts, 'offer_price' ) ) {
 
 							if ( false !== ( $offer = self::get_data_itemprop_from_assoc( $offer_opts, array(
 								'name'          => 'offer_name',
@@ -2659,7 +2659,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					 *
 					 * Values cannot be null, an empty string, or 'none'.
 					 */
-					if ( self::is_valid_key( $offer_opts, 'offer' ) && self::is_valid_key( $offer_opts, 'offer_price' ) ) {
+					if ( self::is_valid_key( $offer_opts, 'offer_name' ) && self::is_valid_key( $offer_opts, 'offer_price' ) ) {
 
 						if ( false !== ( $offer = self::get_data_itemprop_from_assoc( $offer_opts, array(
 							'name'          => 'offer_name',
