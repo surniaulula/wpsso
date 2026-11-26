@@ -10,7 +10,7 @@ Tags: schema, woocommerce, search results, optimize, meta tags
 Contributors: jsmoriss
 Requires PHP: 7.4.33
 Requires At Least: 6.0
-Tested Up To: 7.1.4
+Tested Up To: 7.2
 WC Tested Up To: 11.1.2
 Stable Tag: 22.7.1
 
@@ -271,7 +271,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.7.2-rc.1 (2026/11/25)**
+**Version 22.7.2 (2026/11/25)**
 
 * **New Features**
 	* None.
@@ -581,7 +581,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 == Upgrade Notice ==
 
-= 22.7.2-rc.1 =
+= 22.7.2 =
 
 (2026/11/25) Fixed deprecated jQuery function calls. Fixed `SucomUtil::get_multi_values()` to include non-suffixed (ie. non-multi) option keys.
 
