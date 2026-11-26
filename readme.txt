@@ -271,7 +271,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.8.0-dev.2 (2026/11/26)**
+**Version 22.8.0-rc.1 (2026/11/26)**
 
 * **New Features**
 	* None.
@@ -596,7 +596,7 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 == Upgrade Notice ==
 
-= 22.8.0-dev.2 =
+= 22.8.0-rc.1 =
 
 (2026/11/26) None.
 
