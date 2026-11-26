@@ -271,16 +271,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.8.0-rc.1 (2026/11/26)**
+**Version 22.8.0 (2026/11/26)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* None.
+	* Fixed issue with saving custom offers for books, events, reviewed items, and services.
 * **Developer Notes**
-	* None.
+	* Updated offer name option keys to match the logic of how-to and recipe option keys.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v6.0.
@@ -596,9 +596,9 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 == Upgrade Notice ==
 
-= 22.8.0-rc.1 =
+= 22.8.0 =
 
-(2026/11/26) None.
+(2026/11/26) Fixed issue with saving custom offers for books, events, reviewed items, and services.
 
 = 22.7.2 =
 
