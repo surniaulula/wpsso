@@ -3734,7 +3734,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'offer_avail'    => 'schema_' . $type . '_offer_avail',
 					) as $opt_key => $md_pre ) {
 
-						$offer_opts[ $opt_key ] = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_pre . '_' . $key_num );
+						$offer_opts[ $opt_key ] = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_pre . '_' . $key_num,
+							$filter_opts = true, $merge_defs = true );
 					}
 				}
 
