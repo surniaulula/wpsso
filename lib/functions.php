@@ -260,6 +260,17 @@ if ( ! function_exists( 'wpsso_get_post_job_options' ) ) {
 }
 
 /*
+ * Get third-party and custom post options for a given service ID.
+ */
+if ( ! function_exists( 'wpsso_get_post_service_options' ) ) {
+
+	function wpsso_get_post_service_options( $post_id, $service_id = false ) {
+
+		return WpssoSchema::get_post_type_options( $post_id, $type = 'service', $service_id );
+	}
+}
+
+/*
  * Get the $mod array for a given post ID.
  */
 if ( ! function_exists( 'wpsso_get_post_mod' ) ) {
