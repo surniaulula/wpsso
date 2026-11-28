@@ -271,14 +271,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 22.8.1-rc.1 (2026/11/28)**
+**Version 22.8.1 (2026/11/28)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fixed inheritance of default values in offers markup.
+	* Fixed inheritance of default values for custom offers markup.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -611,9 +611,9 @@ WPSSO Core can reduce its use of the WordPress transients cache (used by plugins
 
 == Upgrade Notice ==
 
-= 22.8.1-rc.1 =
+= 22.8.1 =
 
-(2026/11/28) Fixed inheritance of default values in offers markup.
+(2026/11/28) Fixed inheritance of default values for custom offers markup.
 
 = 22.8.0 =
 
