@@ -2211,17 +2211,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$step_pos    = 0;
 				$step_idx    = 0;
 
-				/*
-				 * $md_val is the howto section/step name.
-				 */
-				foreach ( $steps as $num => $md_val ) {
+				foreach ( $steps as $num => $step_name ) {
 
 					/*
 					 * Maybe get a longer text / description value.
 					 */
-					$step_text = isset( $md_opts[ $opt_pre . '_text_' . $num ] ) ? $md_opts[ $opt_pre . '_text_' . $num ] : $md_val;
+					$step_text = isset( $md_opts[ $opt_pre . '_text_' . $num ] ) ? $md_opts[ $opt_pre . '_text_' . $num ] : $step_name;
 
-					if ( empty( $md_val ) && empty( $step_text ) ) {	// Just in case.
+					if ( empty( $step_name ) && empty( $step_text ) ) {	// Just in case.
 
 						if ( $wpsso->debug->enabled ) {
 
@@ -2275,7 +2272,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$json_data[ $prop_name ][ $step_idx ] = self::get_schema_type_context( 'https://schema.org/HowToSection',
 							array(
 								'url'             => $step_url,
-								'name'            => $md_val,	// Section name.
+								'name'            => $step_name,	// Section name.
 								'description'     => $step_text,
 								'numberOfItems'   => 0,
 								'itemListOrder'   => 'https://schema.org/ItemListOrderAscending',
@@ -2305,7 +2302,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							array(
 								'position' => $step_pos,
 								'url'      => $step_url,
-								'name'     => $md_val,	// Step name.
+								'name'     => $step_name,	// Step name.
 								'text'     => $step_text,
 								'image'    => null,
 							)
@@ -2668,9 +2665,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							'availability'  => 'offer_avail',	// In stock, Out of stock, Pre-order, etc.
 						) ) ) ) {
 
-							/*
-							 * Add the offer.
-							 */
 							$json_data[ 'offers' ][] = self::get_schema_type_context( 'https://schema.org/Offer', $offer );
 						}
 					}
@@ -2937,17 +2931,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$catalog_data = array();
 				$catalog_pos  = 0;
 
-				/*
-				 * $md_val is the offer catalog name.
-				 */
-				foreach ( $catalogs as $num => $md_val ) {
+				foreach ( $catalogs as $num => $catalog_name ) {
 
 					/*
 					 * Maybe get a longer text / description value.
 					 */
 					$catalog_text = isset( $md_opts[ $opt_pre . '_text_' . $num ] ) ? $md_opts[ $opt_pre . '_text_' . $num ] : null;
 
-					if ( empty( $md_val ) && empty( $catalog_text ) ) {	// Just in case.
+					if ( empty( $catalog_name ) && empty( $catalog_text ) ) {	// Just in case.
 
 						if ( $wpsso->debug->enabled ) {
 
@@ -2963,7 +2954,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						array(
 							'position' => $catalog_pos,
 							'url'      => $catalog_url,
-							'name'     => $md_val,	// Step name.
+							'name'     => $catalog_name,
 							'text'     => $catalog_text,
 						)
 					);
@@ -3658,9 +3649,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'validThrough'  => 'offer_end_date',
 					) ) ) ) {
 
-						/*
-						 * Add the offer.
-						 */
 						$json_data[ 'offers' ][] = self::get_schema_type_context( 'https://schema.org/Offer', $offer );
 					}
 				}
@@ -3722,7 +3710,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 
-				if ( ! is_array( $offer_opts ) ) {
+				if ( ! is_array( $offer_opts ) ) {	// No offers array from integration module or add-on.
 
 					$offer_opts = array();
 
@@ -3734,8 +3722,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'offer_avail'    => 'schema_' . $type . '_offer_avail',
 					) as $opt_key => $md_pre ) {
 
-						$offer_opts[ $opt_key ] = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_pre . '_' . $key_num,
-							$filter_opts = true, $merge_defs = true );
+						$offer_opts[ $opt_key ] = $mod[ 'obj' ]->get_options( $mod[ 'id' ],
+							$md_pre . '_' . $key_num, $filter_opts = true, $merge_defs = true );
 					}
 				}
 
